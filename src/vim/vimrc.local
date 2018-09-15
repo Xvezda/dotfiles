@@ -36,12 +36,11 @@ nnoremap <silent> <Leader>ln :set relativenumber!<CR>
 nnoremap <silent> ci( f(ci(
 nnoremap <silent> ci) F(ci(
 nnoremap <silent> ci< f<ci<
-nnoremap <silent> ci> F>ci>
+nnoremap <silent> ci> F<ci<
 nnoremap <silent> ci[ f[ci[
 nnoremap <silent> ci] F[ci[
 nnoremap <silent> ci{ f{ci{
 nnoremap <silent> ci} F{ci{
-
 
 " Key maps for writing default templates to each specific languages
 autocmd BufNewFile,BufReadPost *.c  nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/c<CR>jddf<a
