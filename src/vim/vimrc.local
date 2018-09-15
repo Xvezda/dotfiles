@@ -1,0 +1,53 @@
+" Limits string
+set colorcolumn=72
+
+" Disable and change shortcut for textobj-comment
+let g:textobj_comment_no_default_key_mappings = 1
+xmap am <Plug>(textobj-comment-a)
+omap am <Plug>(textobj-comment-a)
+xmap im <Plug>(textobj-comment-i)
+omap im <Plug>(textobj-comment-i)
+xmap aM <Plug>(textobj-comment-big-a)
+omap aM <Plug>(textobj-comment-big-a)
+
+" Enable bracket match
+filetype plugin on
+runtime macros/matchit.vim
+
+" Enable vim python3 annotation
+let g:syntastic_python_python_exec = 'python3'
+
+" Set brew installed macvim path
+let g:vimshell_editor_command = '/usr/local/Cellar/macvim/8.1-151/bin/vim'
+
+" Enforcing purity
+noremap <Up>    <Nop>
+noremap <Down>  <Nop>
+noremap <Left>  <Nop>
+noremap <Right> <Nop>
+
+" Insert empty newline with short cut
+nnoremap <C-o> o<Esc>
+
+" Relative number toggle short cut <,ln>
+nnoremap <silent> <Leader>ln :set relativenumber!<CR>
+
+" Map change in brace
+nnoremap <silent> ci( f(ci(
+nnoremap <silent> ci) F(ci(
+nnoremap <silent> ci< f<ci<
+nnoremap <silent> ci> F>ci>
+nnoremap <silent> ci[ f[ci[
+nnoremap <silent> ci] F[ci[
+nnoremap <silent> ci{ f{ci{
+nnoremap <silent> ci} F{ci{
+
+
+" Key maps for writing default templates to each specific languages
+autocmd BufNewFile,BufReadPost  *.c  nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/c<CR>jddf<a
+autocmd BufNewFile,BufReadPost *.h  nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/h<CR>f_i<C-R>=toupper(expand("%:t:r"))<CR><Esc>By$jp:$<CR>P:$Commentary<CR>:%s/<C-r>"/_<C-r>"_/<CR>:noh<CR>3ki
+autocmd BufNewFile,BufReadPost  *.cpp,*.cc nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/cpp<CR>jddf<a
+autocmd BufNewFile,BufReadPost  *.html,*.htm nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/html<CR>Gdd3kcit
+autocmd BufNewFile,BufReadPost  *.sh nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/sh<CR>jo
+
+" vim:ft=vim

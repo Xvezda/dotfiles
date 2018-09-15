@@ -1,0 +1,28 @@
+" Plugins
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'christoomey/vim-titlecase'
+Plug 'christoomey/vim-sort-motion'
+Plug 'christoomey/vim-system-copy'
+
+" Text objects
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-function'
+Plug 'glts/vim-textobj-comment'
+Plug 'fvictorio/vim-textobj-backticks'
+Plug 'deathlyfrantic/vim-textobj-blanklines'
+Plug 'lucapette/vim-textobj-underscore'
+Plug 'sgur/vim-textobj-parameter'
+Plug 'beloglazov/vim-textobj-quotes'
+Plug 'rhysd/vim-textobj-continuous-line'
+
+" Text objects for specific languages
+Plug 'bps/vim-textobj-python'
+Plug 'tek/vim-textobj-ruby'
+Plug 'nelstrom/vim-textobj-rubyblock'
+
+" vim:ft=vim
