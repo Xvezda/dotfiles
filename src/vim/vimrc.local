@@ -44,10 +44,12 @@ nnoremap <silent> ci} F{ci{
 
 
 " Key maps for writing default templates to each specific languages
-autocmd BufNewFile,BufReadPost  *.c  nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/c<CR>jddf<a
+autocmd BufNewFile,BufReadPost *.c  nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/c<CR>jddf<a
 autocmd BufNewFile,BufReadPost *.h  nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/h<CR>f_i<C-R>=toupper(expand("%:t:r"))<CR><Esc>By$jp:$<CR>P:$Commentary<CR>:%s/<C-r>"/_<C-r>"_/<CR>:noh<CR>3ki
-autocmd BufNewFile,BufReadPost  *.cpp,*.cc nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/cpp<CR>jddf<a
-autocmd BufNewFile,BufReadPost  *.html,*.htm nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/html<CR>Gdd3kcit
-autocmd BufNewFile,BufReadPost  *.sh nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/sh<CR>jo
+autocmd BufNewFile,BufReadPost *.cpp,*.cc nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/cpp<CR>jddf<a
+autocmd BufNewFile,BufReadPost *.html,*.htm nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/html<CR>Gdd3kcit
+autocmd BufNewFile,BufReadPost *.js nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/js<CR>ji
+autocmd BufNewFile,BufReadPost *.css nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/css<CR>ji
+autocmd BufNewFile,BufReadPost *.sh nnoremap <buffer> <Leader><C-t> :-1read $HOME/.vim/template/sh<CR>jo
 
 " vim:ft=vim
