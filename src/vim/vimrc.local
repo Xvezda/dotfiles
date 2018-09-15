@@ -3,12 +3,12 @@ set colorcolumn=72
 
 " Disable and change shortcut for textobj-comment
 let g:textobj_comment_no_default_key_mappings = 1
-xmap am <Plug>(textobj-comment-a)
-omap am <Plug>(textobj-comment-a)
-xmap im <Plug>(textobj-comment-i)
-omap im <Plug>(textobj-comment-i)
-xmap aM <Plug>(textobj-comment-big-a)
-omap aM <Plug>(textobj-comment-big-a)
+xmap aj <Plug>(textobj-comment-a)
+omap aj <Plug>(textobj-comment-a)
+xmap ij <Plug>(textobj-comment-i)
+omap ij <Plug>(textobj-comment-i)
+xmap aJ <Plug>(textobj-comment-big-a)
+omap aJ <Plug>(textobj-comment-big-a)
 
 " Enable bracket match
 filetype plugin on
