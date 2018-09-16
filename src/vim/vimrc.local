@@ -1,6 +1,17 @@
 " Limits string
 set colorcolumn=72
 
+" Override vim-bootstrap default python colorcolumn value to 72
+" https://www.python.org/dev/peps/pep-0008/#maximum-line-length
+autocmd FileType python setlocal colorcolumn=72
+
+" Highlight characters over 75
+" https://stackoverflow.com/a/10993757
+augroup vimrc_autocmds
+  highlight OverLength ctermbg=darkgrey guibg=#111111
+  call matchadd('OverLength', '\%75v.\+')
+augroup END
+
 " Disable and change shortcut for textobj-comment
 let g:textobj_comment_no_default_key_mappings = 1
 xmap aj <Plug>(textobj-comment-a)
