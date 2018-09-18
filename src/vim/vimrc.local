@@ -40,16 +40,6 @@ nnoremap <C-o> o<Esc>
 " Relative number toggle short cut <,ln>
 nnoremap <silent> <Leader>ln :set relativenumber!<CR>
 
-" Map change in brace
-nnoremap <silent> ci( f(ci(
-nnoremap <silent> ci) F(ci(
-nnoremap <silent> ci< f<ci<
-nnoremap <silent> ci> F<ci<
-nnoremap <silent> ci[ f[ci[
-nnoremap <silent> ci] F[ci[
-nnoremap <silent> ci{ f{ci{
-nnoremap <silent> ci} F{ci{
-
 " Key maps for writing default templates to each specific languages
 autocmd BufNewFile,BufReadPost *.c
     \ nnoremap <buffer> <Leader><C-t>
