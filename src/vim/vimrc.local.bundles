@@ -1,4 +1,5 @@
 " Plugins
+Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/ReplaceWithRegister'
