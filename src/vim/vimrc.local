@@ -31,11 +31,8 @@ let g:syntastic_python_python_exec = 'python3'
 " Set brew installed macvim path
 let g:vimshell_editor_command = '/usr/local/Cellar/macvim/8.1-151/bin/vim'
 
-" Enforcing purity
-noremap <Up>    <Nop>
-noremap <Down>  <Nop>
-noremap <Left>  <Nop>
-noremap <Right> <Nop>
+" Set always on vim hardtime plugin
+let g:hardtime_default_on = 1
 
 " Insert empty newline with short cut
 nnoremap <C-o> o<Esc>
