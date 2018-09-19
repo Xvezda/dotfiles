@@ -8,8 +8,8 @@ My dev environment configuration files
 commands | Actions
 --- | ---
 <kbd>,</kbd><kbd>l</kbd><kbd>n</kbd> | Toggle relative line number.
-<kbd>,</kbd><kbd>r</kbd><kbd>l</kbd> | Reload Vim Configuration
+<kbd>,</kbd><kbd>r</kbd><kbd>l</kbd> | Reload Vim configuration
 <kbd>a,i</kbd><kbd>j,J</kbd> | For textobj-comment all or in.
-<kbd>ctrl</kbd>+<kbd>o</kbd> | Insert empty line.
+<kbd>[,]</kbd>+<kbd>Space</kbd> | Insert empty line.
 <kbd>,</kbd><kbd>ctrl</kbd>+<kbd>t</kbd> | Create default template for specific language.
 <kbd>&uparrow;</kbd><kbd>&downarrow;</kbd><kbd>&leftarrow;</kbd><kbd>&rightarrow;</kbd> | ![NOP](https://i.imgur.com/CoWZ05t.gif)
