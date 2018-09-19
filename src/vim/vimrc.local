@@ -1,71 +1,13 @@
-" Limits string
-set colorcolumn=72
+" Manage vim local config file, split into smaller chunks
+" https://github.com/christoomey/dotfiles
 
-" Override vim-bootstrap default python colorcolumn value to 72
-" https://www.python.org/dev/peps/pep-0008/#maximum-line-length
-autocmd FileType python setlocal colorcolumn=72
+function! s:SourceConfigFilesIn(directory)
+  let directory_splat = '~/.vim/' . a:directory . '/*'
+  for config_file in split(glob(directory_splat), '\n')
+    if filereadable(config_file)
+      execute 'source' config_file
+    endif
+  endfor
+endfunction
 
-" Highlight characters over 75
-" https://stackoverflow.com/a/10993757
-augroup vimrc_autocmds
-  highlight OverLength ctermbg=darkgrey guibg=#111111
-  call matchadd('OverLength', '\%75v.\+')
-augroup END
-
-" Add more contrast to visual mode
-hi Visual term=reverse cterm=reverse guibg=Grey
-
-" Disable and change shortcut for textobj-comment
-let g:textobj_comment_no_default_key_mappings = 1
-xmap aj <Plug>(textobj-comment-a)
-omap aj <Plug>(textobj-comment-a)
-xmap ij <Plug>(textobj-comment-i)
-omap ij <Plug>(textobj-comment-i)
-xmap aJ <Plug>(textobj-comment-big-a)
-omap aJ <Plug>(textobj-comment-big-a)
-
-" Enable bracket match
-filetype plugin on
-runtime macros/matchit.vim
-
-" Enable vim python3 annotation
-let g:syntastic_python_python_exec = 'python3'
-
-" Set brew installed macvim path
-let g:vimshell_editor_command = '/usr/local/Cellar/macvim/8.1-151/bin/vim'
-
-" Set always on vim hardtime plugin
-let g:hardtime_default_on = 1
-
-" Insert empty newline with short cut
-nnoremap <C-o> o<Esc>
-
-" Relative number toggle short cut <,ln>
-nnoremap <silent> <Leader>ln :set relativenumber!<CR>
-
-" Key maps for writing default templates to each specific languages
-autocmd BufNewFile,BufReadPost *.c
-    \ nnoremap <buffer> <Leader><C-t>
-    \ :-1read $HOME/.vim/template/c<CR>jddf<a
-autocmd BufNewFile,BufReadPost *.h
-    \ nnoremap <buffer> <Leader><C-t>
-    \ :-1read $HOME/.vim/template/h<CR>
-    \f_i<C-R>=toupper(expand("%:t:r"))<CR>
-    \<Esc>By$jp:$<CR>P:$Commentary<CR>:%s/<C-r>"/_<C-r>"_/<CR>:noh<CR>3ki
-autocmd BufNewFile,BufReadPost *.cpp,*.cc
-    \ nnoremap <buffer> <Leader><C-t>
-    \ :-1read $HOME/.vim/template/cpp<CR>jddf<a
-autocmd BufNewFile,BufReadPost *.html,*.htm
-    \ nnoremap <buffer> <Leader><C-t>
-    \ :-1read $HOME/.vim/template/html<CR>Gdd3kcit
-autocmd BufNewFile,BufReadPost *.js
-    \ nnoremap <buffer> <Leader><C-t>
-    \ :-1read $HOME/.vim/template/js<CR>ji
-autocmd BufNewFile,BufReadPost *.css
-    \ nnoremap <buffer> <Leader><C-t>
-    \ :-1read $HOME/.vim/template/css<CR>ji
-autocmd BufNewFile,BufReadPost *.sh
-    \ nnoremap <buffer> <Leader><C-t>
-    \ :-1read $HOME/.vim/template/sh<CR>jo
-
-" vim:ft=vim
+call s:SourceConfigFilesIn('private')

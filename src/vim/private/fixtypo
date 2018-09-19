@@ -1,0 +1,5 @@
+iabbrev funciton function
+iabbrev inlcude include
+iabbrev incldue include
+
+" vim:ft=vim

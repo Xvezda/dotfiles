@@ -1,0 +1,22 @@
+" Markdown underlines function
+" https://github.com/christoomey/your-first-vim-plugin
+
+function! UnderlineHeading(level)
+  if a:level == 1
+    normal! yypVr=
+  elseif a:level == 2
+    normal! yypVr-
+  else
+    silent exec "normal! I" . repeat("#", a:level) . " "
+  endif
+endfunction
+
+for level in range(1, 6)
+    silent execute 'nnoremap <leader>u' . level
+                \. ' :call UnderlineHeading(' . level . ')<CR>'
+endfor
+
+" Reload current vim configuration files
+nnoremap <Leader>rl :source ~/.vimrc.local<CR>
+
+" vim:ft=vim

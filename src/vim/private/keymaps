@@ -1,0 +1,9 @@
+" Insert empty newline with short cut
+nnoremap <silent> [<Space> :normal! O<CR>
+nnoremap <silent> ]<Space> :normal! o<CR>
+
+" Relative number toggle short cut <,ln>
+nnoremap <silent> <Leader>ln :set relativenumber!<CR>
+
+
+" vim:ft=vim
