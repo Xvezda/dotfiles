@@ -8,8 +8,8 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd $DIR
 
-dotfiles_setup () {
-    # Section: vim {{{1
+# Vim dotfiles setup
+vimconf_setup () {
     # Install vim configurations
 
     # Move configuration files to home directory
@@ -21,8 +21,10 @@ dotfiles_setup () {
 
     # Install vim plugins
     vim +PlugInstall +qall
-    # 1}}}
-    # Section: tmux {{{1
+}
+
+# Tmux dotfiles setup
+tmuxconf_setup () {
     # Install tmux configurations
 
     # Move tmux configuration files to home directory
@@ -31,8 +33,12 @@ dotfiles_setup () {
 
     # Reload tmux configuration
     tmux source-file ~/.tmux.conf
+}
 
-    # 1}}}
+# Full dotfiles setup
+dotfiles_setup () {
+    vimconf_setup
+    tmuxconf_setup
 }
 
 
