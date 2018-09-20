@@ -11,3 +11,5 @@ function! s:SourceConfigFilesIn(directory)
 endfunction
 
 call s:SourceConfigFilesIn('private')
+
+" vim:ft=vim
