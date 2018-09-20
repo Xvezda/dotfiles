@@ -34,7 +34,9 @@ dotfiles_setup () {
     # 1}}}
 }
 
-# show usage if no parameter
+
+# Show usage if no parameter
+
 USAGE_MSG="
 usage:\n
 \t$0 <command>\n
@@ -46,13 +48,11 @@ commands:\n
 THIS PROGRAM DOES NOT SUPPORT RESET\n
 BACKUP YOUR OWN CONFIGURATION FILES TO RESTORE\n
 "
-
 if [ "$#" -lt 1 ]
 then
     echo $USAGE_MSG
     exit
 fi
-
 
 OPTION="$1"
 case $OPTION in
