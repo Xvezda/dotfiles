@@ -5,6 +5,14 @@ My dev environment configuration files
 [Tmux](https://github.com/tmux/tmux) >= 1.9,
 [Vim](https://www.vim.org/) >= 7.4 && [Vim Bootstrap](https://www.vim-bootstrap.com/) Required.
 
+## Installation
+```
+git clone https://github.com/Xvezda/dotfiles.git
+cd dotfiles
+chmod +x install
+./install setup
+```
+
 ## Shortcuts
 commands | Actions
 --- | ---
