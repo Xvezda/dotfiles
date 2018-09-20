@@ -10,7 +10,7 @@ My dev environment configuration files
 git clone https://github.com/Xvezda/dotfiles.git
 cd dotfiles
 chmod +x install
-./install setup
+./install --setup "all"
 ```
 
 ## Shortcuts
@@ -27,5 +27,5 @@ Commands | Actions
 
 ## Etc
 * You can update/restore this project's configuration files by
-`./install fetch`
+`./install --fetch`
 * Check out [Vim Bootstrap Commands](https://github.com/avelino/vim-bootstrap#commands) for more command informations.
