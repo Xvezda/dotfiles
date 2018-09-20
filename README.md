@@ -14,8 +14,9 @@ chmod +x install
 ```
 
 ## Shortcuts
-commands | Actions
+Commands | Actions
 --- | ---
+<kbd>ctrl</kbd>+<kbd>a</kbd> | Tmux prefix
 <kbd>,</kbd><kbd>l</kbd><kbd>n</kbd> | Toggle relative line number.
 <kbd>,</kbd><kbd>r</kbd><kbd>l</kbd> | Reload Vim configuration
 <kbd>a,i</kbd><kbd>j,J</kbd> | For textobj-comment all or in.
