@@ -1,0 +1,72 @@
+#!/bin/sh
+# Copyright (c) 2018 Xvezda <https://xvezda.com>
+# author:   xvezda <xvezda@naver.com>
+# desc:     install dotfiles
+
+dotfiles_setup () {
+    # Get current absolute path
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+    # Section: vim {{{1
+    # Install vim configurations
+
+    # Move configuration files to home directory
+    VIMDOT_PATH="$DIR/src/vim"
+    mv $VIMDOT_PATH/private ~/.vim/private
+    mv $VIMDOT_PATH/template ~/.vim/template
+    mv $VIMDOT_PATH/vimrc.local ~/.vimrc.local
+    mv $VIMDOT_PATH/vimrc.local.bundles ~/.vimrc.local.bundles
+
+    # Install vim plugins
+    vim +PlugInstall +qall
+    # 1}}}
+
+    # Section: tmux {{{1
+    # Install tmux configurations
+
+    # Move tmux configuration files to home directory
+    TMUXDOT_PATH="$DIR/src/tmux"
+    mv $TMUXDOT_PATH/tmux.conf ~/.tmux.conf
+
+    # Reload tmux configuration
+    tmux source-file ~/.tmux.conf
+
+    # 1}}}
+}
+
+    # show usage if no parameter
+    USAGE_MSG="
+    usage:\n
+    \t$0 <command>\n
+    commands:\n
+    \tsetup\tinstall dotfiles\n
+\tfetch\tpull from origin master to restore files after setup
+\n\n
+*WARNING*\n
+THIS PROGRAM DOES NOT SUPPORT RESET\n
+BACKUP YOUR OWN CONFIGURATION FILES TO RESTORE\n
+"
+
+if [ "$#" -lt 1 ]
+then
+    echo $USAGE_MSG
+    exit
+fi
+
+
+OPTION="$1"
+case $OPTION in
+    setup)
+         dotfiles_setup
+        ;;
+    fetch)
+        git fetch
+        git reset --hard origin/master
+        ;;
+    *)
+        echo "invalid command."
+        ;;
+esac
+
+
+# vim:ft=sh
