@@ -34,12 +34,12 @@ dotfiles_setup () {
     # 1}}}
 }
 
-    # show usage if no parameter
-    USAGE_MSG="
-    usage:\n
-    \t$0 <command>\n
-    commands:\n
-    \tsetup\tinstall dotfiles\n
+# show usage if no parameter
+USAGE_MSG="
+usage:\n
+\t$0 <command>\n
+commands:\n
+\tsetup\tinstall dotfiles\n
 \tfetch\tpull from origin master to restore files after setup
 \n\n
 *WARNING*\n
