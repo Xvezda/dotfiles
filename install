@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -e
 # Copyright (c) 2018 Xvezda <https://xvezda.com>
 # author:   xvezda <xvezda@naver.com>
 # desc:     install dotfiles
@@ -14,10 +14,12 @@ vimconf_setup () {
 
     # Move configuration files to home directory
     VIMDOT_PATH="$DIR/src/vim"
-    mv $VIMDOT_PATH/private ~/.vim/private
-    mv $VIMDOT_PATH/template ~/.vim/template
-    mv $VIMDOT_PATH/vimrc.local ~/.vimrc.local
-    mv $VIMDOT_PATH/vimrc.local.bundles ~/.vimrc.local.bundles
+    mkdir -p ~/.vim/private
+    mkdir -p ~/.vim/template
+    cp -R $VIMDOT_PATH/private/* ~/.vim/private
+    cp -R $VIMDOT_PATH/template/* ~/.vim/template
+    cp $VIMDOT_PATH/vimrc.local ~/.vimrc.local
+    cp $VIMDOT_PATH/vimrc.local.bundles ~/.vimrc.local.bundles
 
     # Install vim plugins
     vim +PlugInstall +qall
@@ -29,7 +31,7 @@ tmuxconf_setup () {
 
     # Move tmux configuration files to home directory
     TMUXDOT_PATH="$DIR/src/tmux"
-    mv $TMUXDOT_PATH/tmux.conf ~/.tmux.conf
+    cp $TMUXDOT_PATH/tmux.conf ~/.tmux.conf
 
     # Reload tmux configuration
     tmux source-file ~/.tmux.conf
@@ -43,35 +45,61 @@ dotfiles_setup () {
 
 
 # Show usage if no parameter
-
 USAGE_MSG="
-usage:\n
-\t$0 <command>\n
-commands:\n
-\tsetup\tinstall dotfiles\n
-\tfetch\tpull from origin master to restore files after setup
-\n\n
-*WARNING*\n
-THIS PROGRAM DOES NOT SUPPORT RESET\n
-BACKUP YOUR OWN CONFIGURATION FILES TO RESTORE\n
+usage:
+    $0 <command>
+commands:
+    --setup 'all|vim|tmux'  install dotfiles
+    --fetch                 update dotfiles pull from origin master
+
+*WARNING*
+THIS PROGRAM DOES NOT SUPPORT RESET
+BACKUP YOUR OWN CONFIGURATION FILES TO RESTORE
 "
+
 if [ "$#" -lt 1 ]
 then
-    echo $USAGE_MSG
+    echo "${USAGE_MSG}"
     exit
 fi
 
-OPTION="$1"
-case $OPTION in
-    setup)
-         dotfiles_setup
+# https://gist.github.com/magnetikonline/22c1eb412daa350eeceee76c97519da8
+ARGUMENT_LIST=(
+    "setup"
+    "fetch"
+)
+
+# read arguments
+OPTS=$(getopt \
+        --longoptions "$(printf "%s:," "${ARGUMENT_LIST[@]}")" \
+        --name "$(basename "$0")" \
+        --options "" \
+        -- "$@"
+)
+
+TARGET=""
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        --setup) TARGET=$2; shift 2 ;;
+        --fetch)
+            git fetch && git reset --hard origin/master
+            shift;
+            exit 0;;
+        --) shift;;
+        *) echo "invalid command"; exit 1; break;;
+    esac
+done
+
+# Setup
+case $TARGET in
+    vim)
+        vimconf_setup;
         ;;
-    fetch)
-        git fetch
-        git reset --hard origin/master
+    tmux)
+        tmuxconf_setup;
         ;;
     *)
-        echo "invalid command."
+        dotfiles_setup;
         ;;
 esac
 
