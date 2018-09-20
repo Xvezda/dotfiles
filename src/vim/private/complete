@@ -1,3 +1,8 @@
+" Copyright & E-mail conversion
+exec "iabbrev ccopyright Copyright (c) " . strftime('%Y')
+            \. " Xvezda <https://xvezda.com>"
+iabbrev eemail xvezda@naver.com
+
 " Load default template for specific language
 function! LoadLangDefaultTemplate(lang)
     silent exec ":-1read ~/.vim/template/" . a:lang
@@ -15,16 +20,16 @@ augroup filetype_c
     autocmd!
     autocmd BufNewFile,BufReadPost *.c
                 \ nnoremap <buffer> <Leader><C-t>
-                \ :LoadLangDefaultTemplate("c")<CR>
+                \ :call LoadLangDefaultTemplate("c")<CR>
                 \jddf<a
     autocmd BufNewFile,BufReadPost *.h
                 \ nnoremap <buffer> <Leader><C-t>
-                \ :LoadLangDefaultTemplate("h")<CR>
+                \ :call LoadLangDefaultTemplate("h")<CR>
                 \f_i<C-R>=toupper(expand("%:t:r"))<CR>
                 \<Esc>By$jp:$<CR>P:$Commentary<CR>:%s/<C-r>"/_<C-r>"_/<CR>:noh<CR>3ki
     autocmd BufNewFile,BufReadPost *.cpp,*.cc
                 \ nnoremap <buffer> <Leader><C-t>
-                \ :LoadLangDefaultTemplate("cpp")<CR>
+                \ :call LoadLangDefaultTemplate("cpp")<CR>
                 \jddf<a
 augroup END
 " 2}}}
@@ -34,23 +39,32 @@ augroup filetype_html
     autocmd!
     autocmd BufNewFile,BufReadPost *.html,*.htm
                 \ nnoremap <buffer> <Leader><C-t>
-                \ :LoadLangDefaultTemplate("html")<CR>
+                \ :call LoadLangDefaultTemplate("html")<CR>
                 \Gdd3kcit
     autocmd BufNewFile,BufReadPost *.js
                 \ nnoremap <buffer> <Leader><C-t>
-                \ :LoadLangDefaultTemplate("js")<CR>
+                \ :call LoadLangDefaultTemplate("js")<CR>
                 \ji
     autocmd BufNewFile,BufReadPost *.css
                 \ nnoremap <buffer> <Leader><C-t>
-                \ :LoadLangDefaultTemplate("css")<CR>
+                \ :call LoadLangDefaultTemplate("css")<CR>
                 \ji
+augroup END
+" 2}}}
+" Section: python {{{2
+augroup filetype_python
+    autocmd!
+    autocmd BufNewFile,BufReadPost *.py
+                \ nnoremap <buffer> <Leader><C-t>
+                \ :call LoadLangDefaultTemplate("py")<CR>
+                \Gi
 augroup END
 " 2}}}
 " Section: misc {{{2
 " ==================
 autocmd BufNewFile,BufReadPost *.sh
     \ nnoremap <buffer> <Leader><C-t>
-    \ :LoadLangDefaultTemplate("sh")<CR>
+    \ :call LoadLangDefaultTemplate("sh")<CR>
     \jo
 " 2}}}
 " 1}}}
