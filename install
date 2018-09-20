@@ -3,10 +3,11 @@
 # author:   xvezda <xvezda@naver.com>
 # desc:     install dotfiles
 
-dotfiles_setup () {
-    # Get current absolute path
-    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
+# Get current absolute path
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+dotfiles_setup () {
     # Section: vim {{{1
     # Install vim configurations
 
@@ -20,7 +21,6 @@ dotfiles_setup () {
     # Install vim plugins
     vim +PlugInstall +qall
     # 1}}}
-
     # Section: tmux {{{1
     # Install tmux configurations
 
