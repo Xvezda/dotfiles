@@ -26,4 +26,6 @@ Commands | Actions
 <kbd>&uparrow;</kbd><kbd>&downarrow;</kbd><kbd>&leftarrow;</kbd><kbd>&rightarrow;</kbd> | ![NOP](https://i.imgur.com/CoWZ05t.gif)
 
 ## Etc
-Check out [Vim Bootstrap Commands](https://github.com/avelino/vim-bootstrap#commands) for more command informations.
+* You can update/restore this project's configuration files by
+`./install fetch`
+* Check out [Vim Bootstrap Commands](https://github.com/avelino/vim-bootstrap#commands) for more command informations.
