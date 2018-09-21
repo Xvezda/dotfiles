@@ -5,5 +5,8 @@ nnoremap <silent> ]<Space> :normal! o<CR>
 " Relative number toggle short cut <,ln>
 nnoremap <silent> <Leader>ln :set relativenumber!<CR>
 
+" Run current buffer's vim script if filetype is vim
+autocmd FileType vim    nnoremap <buffer> <Leader>rs :source %<CR>
+
 
 " vim:ft=vim
