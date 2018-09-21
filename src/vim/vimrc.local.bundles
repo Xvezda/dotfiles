@@ -1,6 +1,7 @@
 " Plugins
 Plug 'takac/vim-hardtime'
 Plug 'aserebryakov/vim-todo-lists'
+Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -26,5 +27,6 @@ Plug 'rhysd/vim-textobj-continuous-line'
 Plug 'bps/vim-textobj-python'
 Plug 'tek/vim-textobj-ruby'
 Plug 'nelstrom/vim-textobj-rubyblock'
+
 
 " vim:ft=vim

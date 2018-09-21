@@ -41,5 +41,12 @@ let g:vimshell_editor_command = '/usr/local/Cellar/macvim/8.1-151/bin/vim'
 " Set always on vim hardtime plugin
 let g:hardtime_default_on = 1
 
+" Persist the options of the session plug-in using the session plug-in...
+let g:session_persist_globals = ['&sessionoptions']
+call add(g:session_persist_globals, 'g:session_autoload')
+call add(g:session_persist_globals, 'g:session_autosave')
+call add(g:session_persist_globals, 'g:session_default_to_last')
+call add(g:session_persist_globals, 'g:session_persist_globals')
+
 
 " vim:ft=vim
