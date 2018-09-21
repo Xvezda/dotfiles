@@ -16,6 +16,7 @@ chmod +x install
 ## Shortcuts
 Commands | Actions
 --- | ---
+<kbd>shift</kbd>+<kbd>u</kbd> | Re-do undo.
 <kbd>ctrl</kbd>+<kbd>a</kbd> | Tmux prefix
 <kbd>alt</kbd>+<kbd>h,j,k,l</kbd> | Move around Tmux panes.
 <kbd>,</kbd><kbd>l</kbd><kbd>n</kbd> | Toggle relative line number.
