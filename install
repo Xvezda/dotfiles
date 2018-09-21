@@ -64,14 +64,9 @@ then
 fi
 
 # https://gist.github.com/magnetikonline/22c1eb412daa350eeceee76c97519da8
-ARGUMENT_LIST=(
-    "setup"
-    "fetch"
-)
-
 # read arguments
 OPTS=$(getopt \
-        --longoptions "$(printf "%s:," "${ARGUMENT_LIST[@]}")" \
+        --longoptions setup:,fetch \
         --name "$(basename "$0")" \
         --options "" \
         -- "$@"
@@ -85,7 +80,7 @@ while [ "$#" -gt 0 ]; do
             git fetch && git reset --hard origin/master
             shift;
             exit 0;;
-        --) shift;;
+        --) shift ;;
         *) echo "invalid command"; exit 1; break;;
     esac
 done
