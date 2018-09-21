@@ -1,3 +1,6 @@
+" Map Re-do to U
+nnoremap U <C-r>
+
 " Insert empty newline with short cut
 nnoremap <silent> [<Space> :normal! O<CR>
 nnoremap <silent> ]<Space> :normal! o<CR>
