@@ -8,7 +8,6 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-system-copy'
-Plug 'greymd/oscyank.vim'
 
 " Text objects
 Plug 'kana/vim-textobj-user'
