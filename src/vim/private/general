@@ -1,3 +1,8 @@
+" Set numbers
+set number
+set numberwidth=5
+set relativenumber
+
 " Set fold
 set foldmethod=marker
 set foldopen+=jump
