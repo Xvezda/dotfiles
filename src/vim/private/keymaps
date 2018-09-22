@@ -5,6 +5,9 @@ nnoremap U <C-r>
 nnoremap <silent> [<Space> :normal! O<CR>
 nnoremap <silent> ]<Space> :normal! o<CR>
 
+" Remove trailing whitespace
+nnoremap <silent> <Leader>rw :FixWhitespace<CR>
+
 " Relative number toggle short cut <,ln>
 nnoremap <silent> <Leader>ln :set relativenumber!<CR>
 

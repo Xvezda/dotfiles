@@ -20,6 +20,7 @@ Commands | Actions
 <kbd>ctrl</kbd>+<kbd>a</kbd> | Tmux prefix
 <kbd>alt</kbd>+<kbd>h,j,k,l</kbd> | Move around Tmux panes.
 <kbd>,</kbd><kbd>l</kbd><kbd>n</kbd> | Toggle relative line number.
+<kbd>,</kbd><kbd>r</kbd><kbd>w</kbd> | Remove trailing whitespaces.
 <kbd>,</kbd><kbd>r</kbd><kbd>l</kbd> | Reload Vim configuration.
 <kbd>a,i</kbd><kbd>j,J</kbd> | For textobj-comment all or in.
 <kbd>[,]</kbd>+<kbd>Space</kbd> | Insert empty line.
