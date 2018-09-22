@@ -24,7 +24,7 @@ hi Visual term=reverse cterm=reverse guibg=Grey
 for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O']
     execute 'nnoremap ' . s:c . ' :nohlsearch<CR>' . s:c
 endfor
-"
+
 " Disable and change shortcut for textobj-comment
 let g:textobj_comment_no_default_key_mappings = 1
 xmap aj <Plug>(textobj-comment-a)
