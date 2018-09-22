@@ -19,6 +19,12 @@ augroup END
 " Add more contrast to visual mode
 hi Visual term=reverse cterm=reverse guibg=Grey
 
+" Remove search highlight when entering inpsert mode
+" https://vi.stackexchange.com/a/10415
+for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O']
+    execute 'nnoremap ' . s:c . ' :nohlsearch<CR>' . s:c
+endfor
+"
 " Disable and change shortcut for textobj-comment
 let g:textobj_comment_no_default_key_mappings = 1
 xmap aj <Plug>(textobj-comment-a)
