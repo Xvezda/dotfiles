@@ -10,5 +10,9 @@ nnoremap <silent> <Leader>ln :set relativenumber!<CR>
 " Run current buffer's vim script if filetype is vim
 autocmd FileType vim    nnoremap <buffer> <Leader>rs :source %<CR>
 
+" Reload current vim configuration files
+nnoremap <buffer> <Leader>rll :source ~/.vimrc.local<CR>
+nnoremap <buffer> <Leader>rla :source ~/.vimrc<CR>
+
 
 " vim:ft=vim

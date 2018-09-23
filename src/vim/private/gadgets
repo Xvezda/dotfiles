@@ -16,7 +16,5 @@ for level in range(1, 6)
                 \. ' :call UnderlineHeading(' . level . ')<CR>'
 endfor
 
-" Reload current vim configuration files
-nnoremap <Leader>rl :source ~/.vimrc.local<CR>
 
 " vim:ft=vim
