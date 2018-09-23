@@ -24,6 +24,7 @@ Plug 'lucapette/vim-textobj-underscore'
 Plug 'sgur/vim-textobj-parameter'
 Plug 'beloglazov/vim-textobj-quotes'
 Plug 'rhysd/vim-textobj-continuous-line'
+Plug 'wellle/targets.vim'
 
 " Text objects for specific languages
 Plug 'bps/vim-textobj-python'
