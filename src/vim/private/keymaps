@@ -14,5 +14,31 @@ autocmd FileType vim    nnoremap <buffer> <Leader>rs :source %<CR>
 nnoremap <buffer> <Leader>rll :source ~/.vimrc.local<CR>
 nnoremap <buffer> <Leader>rla :source ~/.vimrc<CR>
 
+" Remove search highlight when entering inpsert mode
+" https://vi.stackexchange.com/a/10415
+for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O']
+    execute 'nnoremap ' . s:c . ' :nohlsearch<CR>' . s:c
+endfor
+
+" Disable and change shortcut for textobj-comment
+let g:textobj_comment_no_default_key_mappings = 1
+xmap aj <Plug>(textobj-comment-a)
+omap aj <Plug>(textobj-comment-a)
+xmap ij <Plug>(textobj-comment-i)
+omap ij <Plug>(textobj-comment-i)
+xmap aJ <Plug>(textobj-comment-big-a)
+omap aJ <Plug>(textobj-comment-big-a)
+
+" Disable and change shortcut for textobj-lastpat
+let g:textobj_lastpat_no_default_key_mappings = 1
+xmap ah <Plug>(textobj-lastpat-n)
+omap ah <Plug>(textobj-lastpat-n)
+xmap ih <Plug>(textobj-lastpat-n)
+omap ih <Plug>(textobj-lastpat-n)
+xmap aH <Plug>(textobj-lastpat-N)
+omap aH <Plug>(textobj-lastpat-N)
+xmap iH <Plug>(textobj-lastpat-N)
+omap iH <Plug>(textobj-lastpat-N)
+
 
 " vim:ft=vim
