@@ -57,7 +57,7 @@ augroup filetype_python
     autocmd BufNewFile,BufReadPost *.py
                 \ nnoremap <buffer> <Leader><C-t>
                 \ :call LoadLangDefaultTemplate("py")<CR>
-                \Gi
+                \Go
 augroup END
 " 2}}}
 " Section: misc {{{2
