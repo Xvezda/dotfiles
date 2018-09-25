@@ -20,14 +20,21 @@ for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O']
     execute 'nnoremap ' . s:c . ' :nohlsearch<CR>' . s:c
 endfor
 
+" Disable and change shortcut for textobj-line
+let g:textobj_line_no_default_key_mappings = 1
+xmap aj <Plug>(textobj-line-a)
+omap aj <Plug>(textobj-line-a)
+xmap ij <Plug>(textobj-line-i)
+omap ij <Plug>(textobj-line-i)
+
 " Disable and change shortcut for textobj-comment
 let g:textobj_comment_no_default_key_mappings = 1
-xmap aj <Plug>(textobj-comment-a)
-omap aj <Plug>(textobj-comment-a)
-xmap ij <Plug>(textobj-comment-i)
-omap ij <Plug>(textobj-comment-i)
-xmap aJ <Plug>(textobj-comment-big-a)
-omap aJ <Plug>(textobj-comment-big-a)
+xmap ak <Plug>(textobj-comment-a)
+omap ak <Plug>(textobj-comment-a)
+xmap ik <Plug>(textobj-comment-i)
+omap ik <Plug>(textobj-comment-i)
+xmap ak <Plug>(textobj-comment-big-a)
+omap ak <Plug>(textobj-comment-big-a)
 
 " Disable and change shortcut for textobj-lastpat
 let g:textobj_lastpat_no_default_key_mappings = 1
