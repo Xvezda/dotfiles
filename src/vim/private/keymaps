@@ -98,13 +98,6 @@ autocmd FileType python onoremap <buffer> ad :<C-u>cal PyDocstrTxtObj(0)<CR>
 autocmd FileType python onoremap <buffer> id :<C-u>cal PyDocstrTxtObj(1)<CR>
 autocmd FileType python vnoremap <buffer> ad :<C-u>cal PyDocstrTxtObj(0)<CR>
 autocmd FileType python vnoremap <buffer> id :<C-u>cal PyDocstrTxtObj(1)<CR>
-autocmd FileType python onoremap <buffer> ac <Plug>(PythonsenseOuterClassTextObject)
-autocmd FileType python onoremap <buffer> ic <Plug>(PythonsenseInnerClassTextObject)
-autocmd FileType python vnoremap <buffer> ac <Plug>(PythonsenseOuterClassTextObject)
-autocmd FileType python vnoremap <buffer> ic <Plug>(PythonsenseInnerClassTextObject)
-autocmd FileType python onoremap <buffer> af <Plug>(PythonsenseOuterFunctionTextObject)
-autocmd FileType python onoremap <buffer> if <Plug>(PythonsenseInnerFunctionTextObject)
-autocmd FileType python vnoremap <buffer> af <Plug>(PythonsenseOuterFunctionTextObject)
-autocmd FileType python vnoremap <buffer> if <Plug>(PythonsenseInnerFunctionTextObject)
+
 
 " vim:ft=vim

@@ -27,6 +27,7 @@ Plug 'wellle/targets.vim'
 
 " Text objects for specific languages
 Plug 'jeetsukumaran/vim-pythonsense'
+Plug 'bps/vim-textobj-python'
 Plug 'tek/vim-textobj-ruby'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
