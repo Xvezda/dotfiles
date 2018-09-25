@@ -12,7 +12,7 @@ set colorcolumn=72
 
 " Override vim-bootstrap default python colorcolumn value to 72
 " https://www.python.org/dev/peps/pep-0008/#maximum-line-length
-autocmd FileType python setlocal colorcolumn=72
+autocmd FileType python setlocal colorcolumn=72 tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " Highlight characters over 75
 " https://stackoverflow.com/a/10993757
@@ -23,21 +23,6 @@ augroup END
 
 " Add more contrast to visual mode
 hi Visual term=reverse cterm=reverse guibg=Grey
-
-" Remove search highlight when entering inpsert mode
-" https://vi.stackexchange.com/a/10415
-for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O']
-    execute 'nnoremap ' . s:c . ' :nohlsearch<CR>' . s:c
-endfor
-
-" Disable and change shortcut for textobj-comment
-let g:textobj_comment_no_default_key_mappings = 1
-xmap aj <Plug>(textobj-comment-a)
-omap aj <Plug>(textobj-comment-a)
-xmap ij <Plug>(textobj-comment-i)
-omap ij <Plug>(textobj-comment-i)
-xmap aJ <Plug>(textobj-comment-big-a)
-omap aJ <Plug>(textobj-comment-big-a)
 
 " Enable vim python3 annotation
 let g:syntastic_python_python_exec = 'python3'
