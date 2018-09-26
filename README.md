@@ -23,8 +23,9 @@ Commands | Actions
 <kbd>,</kbd><kbd>r</kbd><kbd>w</kbd> | Remove trailing whitespaces.
 <kbd>,</kbd><kbd>r</kbd><kbd>l</kbd><kbd>a</kbd> | Reload all Vim configuration.
 <kbd>,</kbd><kbd>r</kbd><kbd>l</kbd><kbd>l</kbd> | Reload local Vim configuration.
-<kbd>a,i</kbd><kbd>j,J</kbd> | For textobj-comment all or in.
-<kbd>a,i</kbd><kbd>h,H</kbd> | For textobj-lastpat all or in.
+<kbd>a,i</kbd><kbd>k,K</kbd> | For textobj-comment all or in.
+<kbd>a,i</kbd><kbd>j</kbd> | For textobj-line all or in.
+<kbd>a,i</kbd><kbd>h</kbd> | For textobj-lastpat all or in.
 <kbd>[,]</kbd>+<kbd>Space</kbd> | Insert empty line.
 <kbd>,</kbd><kbd>ctrl</kbd>+<kbd>t</kbd> | Create default template for specific language.
 <kbd>&uparrow;</kbd><kbd>&downarrow;</kbd><kbd>&leftarrow;</kbd><kbd>&rightarrow;</kbd> | ![NOP](https://i.imgur.com/CoWZ05t.gif)
@@ -32,4 +33,4 @@ Commands | Actions
 ## Etc
 * You can update/restore this project's configuration files by
 `./install --fetch`
-* Check out [Vim Bootstrap Commands](https://github.com/avelino/vim-bootstrap#commands), [Targets.vim](https://github.com/wellle/targets.vim) and [unimpaired.vim](https://github.com/tpope/vim-unimpaired) for more command informations.
+* Check out [Vim Bootstrap Commands](https://github.com/avelino/vim-bootstrap#commands), [Pythonsense](https://github.com/jeetsukumaran/vim-pythonsense), [Targets.vim](https://github.com/wellle/targets.vim) and [unimpaired.vim](https://github.com/tpope/vim-unimpaired) for more command informations.
