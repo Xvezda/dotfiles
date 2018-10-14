@@ -4,13 +4,15 @@ My dev environment configuration files
 ## Dependencies
 [Tmux](https://github.com/tmux/tmux) >= 1.9 && [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm),  
 [Vim](https://www.vim.org/) >= 7.4 && [Vim Bootstrap](https://www.vim-bootstrap.com/) Required.
+* Mac speicific.
+    * Brew bundle, reattach-to-user-namespace.
 
 ## Installation
 ```
 git clone https://github.com/Xvezda/dotfiles.git
 cd dotfiles
 chmod +x install
-./install --setup "all" # or "vim", "tmux" separately.
+./install --setup "all" # or "vim", "nvim", "tmux" separately.
 ```
 
 ## Shortcuts
@@ -19,6 +21,7 @@ Commands | Actions
 <kbd>shift</kbd>+<kbd>u</kbd> | Re-do undo.
 <kbd>ctrl</kbd>+<kbd>a</kbd> | Tmux prefix
 <kbd>alt</kbd>+<kbd>h,j,k,l</kbd> | Move around Tmux panes.
+<kbd>Prefix</kbd><kbd>ctrl</kbd>+<kbd>h,j,k,l</kbd> | Swap Tmux panes.
 <kbd>,</kbd><kbd>l</kbd><kbd>n</kbd> | Toggle relative line number.
 <kbd>,</kbd><kbd>r</kbd><kbd>w</kbd> | Remove trailing whitespaces.
 <kbd>,</kbd><kbd>r</kbd><kbd>l</kbd><kbd>a</kbd> | Reload all Vim configuration.
