@@ -20,5 +20,9 @@ cp $HOME/.tmux.conf src/tmux/tmux.conf
 /usr/local/bin/brew bundle dump
 mv $PWD/Brewfile src/brew
 
+# Backup zsh dotfiles
+cp $HOME/.zshrc src/zsh/zshrc
+cp $HOME/.zprofile src/zsh/zprofile
+
 
 # ft:vim=sh

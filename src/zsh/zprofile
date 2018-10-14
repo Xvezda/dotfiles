@@ -1,0 +1,23 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# rm to rm trash
+alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
+alias del="rmtrash"
+
+# Docker stuffs
+alias drl="docker rm $(/usr/local/bin/docker ps -a -q -l -f status=exited)"
+alias dsl="docker stop $(/usr/local/bin/docker ps -lqf status=running)"
+alias dre="docker rm -v $(/usr/local/bin/docker ps -a -q -f status=exited)"
+alias dim="docker images"
+alias drmi="docker rmi"
+alias drm="docker rm"
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+
+alias vim="nvim"
+alias vi="nvim"
+alias vimdiff="nvim -d"
+export EDITOR=/usr/local/bin/nvim
+export TERM=xterm-256color
