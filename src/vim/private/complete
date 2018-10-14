@@ -5,7 +5,8 @@ iabbrev eemail xvezda@naver.com
 
 " Load default template for specific language
 function! LoadLangDefaultTemplate(lang)
-    silent exec ":-1read ~/.vim/template/" . a:lang
+    silent exec ":-1read " . (has('nvim') ? $XDG_CONFIG_HOME . "/nvim/"
+                \:"~/.vim/") . "template/" . a:lang
 endfunction
 
 " Manage auto-complete by file extension

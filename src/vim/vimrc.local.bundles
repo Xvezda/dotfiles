@@ -10,6 +10,11 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-system-copy'
+Plug 'junegunn/vim-easy-align'
+
+" Theme
+Plug 'connorholyday/vim-snazzy'
+Plug 'itchyny/lightline.vim'
 
 " Text objects
 Plug 'kana/vim-textobj-user'

@@ -1,5 +1,12 @@
+" Set paste toggle to F5
+set pastetoggle=<F5>
+
 " Map Re-do to U
 nnoremap U <C-r>
+
+" Map single quote to comma, backslash to quote.
+nnoremap ' ,
+nnoremap \ '
 
 " Remove trailing whitespace
 nnoremap <silent> <Leader>rw :FixWhitespace<CR>
@@ -19,6 +26,12 @@ nnoremap <buffer> <Leader>rla :source ~/.vimrc<CR>
 for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O']
     execute 'nnoremap ' . s:c . ' :nohlsearch<CR>' . s:c
 endfor
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Disable and change shortcut for textobj-line
 let g:textobj_line_no_default_key_mappings = 1

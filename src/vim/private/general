@@ -7,28 +7,42 @@ set relativenumber
 set foldmethod=marker
 set foldopen+=jump
 
+" Theme
+let g:SnazzyTransparent = 1
+colorscheme snazzy
+let g:lightline = {
+\ 'colorscheme': 'snazzy',
+\ }
+
 " Limits string
 set colorcolumn=72
+highlight ColorColumn ctermbg=60 guibg=#2e3340
+
+" Java indent to 2 spaces.
+autocmd FileType java setlocal colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
 
 " Override vim-bootstrap default python colorcolumn value to 72
 " https://www.python.org/dev/peps/pep-0008/#maximum-line-length
 autocmd FileType python setlocal colorcolumn=72 tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
-" Highlight characters over 75
+" Highlight characters over 79
 " https://stackoverflow.com/a/10993757
 augroup vimrc_autocmds
-  highlight OverLength ctermbg=darkgrey guibg=#111111
-  call matchadd('OverLength', '\%75v.\+')
+  highlight OverLength ctermfg=white ctermbg=30 guifg=white guibg=DarkCyan guisp=DarkCyan
+  call matchadd('OverLength', '\%79v.\+')
 augroup END
 
 " Add more contrast to visual mode
-hi Visual term=reverse cterm=reverse guibg=Grey
+highlight Visual term=reverse cterm=reverse ctermfg=6 ctermbg=60 guibg=#92bbd0
 
 " Enable vim python3 annotation
 let g:syntastic_python_python_exec = 'python3'
 
+" Enable C++14 support
+let g:syntastic_cpp_compiler_options = '-std=c++14'
+
 " Set brew installed macvim path
-let g:vimshell_editor_command = '/usr/local/Cellar/macvim/8.1-151/bin/vim'
+" let g:vimshell_editor_command = '/usr/local/Cellar/macvim/8.1-151/bin/vim'
 
 " Set always on vim hardtime plugin
 let g:hardtime_default_on = 1

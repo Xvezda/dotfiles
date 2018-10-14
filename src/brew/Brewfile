@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 tap "homebrew/core"
 brew "asciinema"
+brew "exiftool"
 brew "fasd"
 brew "ffmpeg"
 brew "fzf"

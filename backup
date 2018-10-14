@@ -1,0 +1,24 @@
+#!/bin/bash
+# @Copyright (c) 2018 Xvezda <https://xvezda.com>
+# @Description: backup script for dotfiles
+
+# Get script's path
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+cd $DIR
+
+# Backup vim dotfiles
+cp -R $HOME/.vim/private src/vim/
+cp -R $HOME/.vim/template src/vim/
+cp $HOME/.vimrc src/vim/vimrc
+cp $HOME/.vimrc.local src/vim/vimrc.local
+cp $HOME/.vimrc.local.bundles src/vim/vimrc.local.bundles
+
+# Backup tmux dotfiles
+cp $HOME/.tmux.conf src/tmux/tmux.conf
+
+# Backup brew dotfiles
+/usr/local/bin/brew bundle dump
+mv $PWD/Brewfile src/brew
+
+
+# ft:vim=sh
