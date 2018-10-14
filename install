@@ -25,6 +25,23 @@ vimconf_setup () {
     vim +PlugInstall +qall
 }
 
+# NeoVim dotfiles setup
+nvimconf_setup () {
+    # Install nvim configurations
+
+    # Move configuration files to home directory
+    VIMDOT_PATH="$DIR/src/vim"
+    mkdir -p $XDG_CONFIG_HOME/nvim/private
+    mkdir -p $XDG_CONFIG_HOME/nvim/template
+    cp -R $VIMDOT_PATH/private/* $XDG_CONFIG_HOME/nvim/private
+    cp -R $VIMDOT_PATH/template/* $XDG_CONFIG_HOME/nvim/template
+    cp $VIMDOT_PATH/vimrc.local $XDG_CONFIG_HOME/nvim/local_init.vim
+    cp $VIMDOT_PATH/vimrc.local.bundles $XDG_CONFIG_HOME/nvim/local_bundles.vim
+
+    # Install vim plugins
+    nvim +PlugInstall +qall
+}
+
 # Tmux dotfiles setup
 tmuxconf_setup () {
     # Install tmux configurations
@@ -89,6 +106,9 @@ done
 case $TARGET in
     vim)
         vimconf_setup;
+        ;;
+    nvim)
+        nvimconf_setup;
         ;;
     tmux)
         tmuxconf_setup;
