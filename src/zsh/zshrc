@@ -101,15 +101,15 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias easy_install="easy_install --prefix=$HOME/.local"
+
 export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:\
 $HOME/.local/lib/python3.7/site-packages"
 
-export PATH="$PATH:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin:"
+export PATH="$PATH:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin"
 
 autoload -U promptinit; promptinit
 prompt pure
-
-alias easy_install="easy_install --prefix=$HOME/.local"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
