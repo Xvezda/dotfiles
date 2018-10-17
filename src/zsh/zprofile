@@ -7,9 +7,17 @@ alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
 alias del="rmtrash"
 
 # Docker stuffs
-alias drl="docker rm $(/usr/local/bin/docker ps -a -q -l -f status=exited)"
-alias dsl="docker stop $(/usr/local/bin/docker ps -lqf status=running)"
-alias dre="docker rm -v $(/usr/local/bin/docker ps -a -q -f status=exited)"
+drl() {
+    docker rm $(docker ps -a -q -l -f status=exited)
+}
+
+dsl() {
+    docker stop $(docker ps -lqf status=running)
+}
+
+dre() {
+    docker rm -v $(docker ps -a -q -f status=exited)
+}
 alias dim="docker images"
 alias drmi="docker rmi"
 alias drm="docker rm"

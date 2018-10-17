@@ -9,6 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+# ZSH_THEME="refined"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -104,12 +105,13 @@ export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:\
 $HOME/.local/lib/python3.7/site-packages"
 
 export PATH="$PATH:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin:\
-$(/usr/local/bin/brew --prefix openvpn)/sbin"
+$(brew --prefix openvpn)/sbin"
 
 autoload -U promptinit; promptinit
 prompt pure
 
 alias easy_install="easy_install --prefix=$HOME/.local"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

@@ -1,5 +1,6 @@
 iabbrev funciton function
 iabbrev inlcude include
 iabbrev incldue include
+iabbrev calss class
 
 " vim:ft=vim
