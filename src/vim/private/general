@@ -18,6 +18,9 @@ let g:lightline = {
 set colorcolumn=72
 highlight ColorColumn ctermbg=60 guibg=#2e3340
 
+" C++ indent to 2 spaces.
+autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab
+
 " Java indent to 2 spaces.
 autocmd FileType java setlocal colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
 
