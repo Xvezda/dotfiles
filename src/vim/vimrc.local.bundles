@@ -11,6 +11,7 @@ Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-system-copy'
 Plug 'junegunn/vim-easy-align'
+Plug 'zirrostig/vim-schlepp'
 
 " Theme
 Plug 'connorholyday/vim-snazzy'

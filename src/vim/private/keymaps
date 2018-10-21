@@ -27,6 +27,13 @@ for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O']
     execute 'nnoremap ' . s:c . ' :nohlsearch<CR>' . s:c
 endfor
 
+" vim-schelpp keymaps
+vmap <unique> <S-Up>    <Plug>SchleppUp
+vmap <unique> <S-Down>  <Plug>SchleppDown
+vmap <unique> <S-Left>  <Plug>SchleppLeft
+vmap <unique> <S-Right> <Plug>SchleppRight
+vmap <unique> D <Plug>SchleppDup
+
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
