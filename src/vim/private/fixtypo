@@ -1,6 +1,7 @@
 set spelllang=en_us
 
 iabbrev funciton function
+iabbrev fucntion function
 iabbrev inlcude include
 iabbrev incldue include
 iabbrev calss class
@@ -9,6 +10,7 @@ iabbrev ture true
 iabbrev vodi void
 iabbrev reutrn return
 iabbrev improt import
+
 
 
 " vim:ft=vim
