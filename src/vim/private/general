@@ -7,6 +7,10 @@ set relativenumber
 set foldmethod=marker
 set foldopen+=jump
 
+" Performance
+set lazyredraw
+set ttyfast
+
 " Theme
 let g:SnazzyTransparent = 1
 colorscheme snazzy

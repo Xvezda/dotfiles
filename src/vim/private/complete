@@ -3,6 +3,9 @@ exec "iabbrev ccopyright Copyright (c) " . strftime('%Y')
             \. " Xvezda <https://xvezda.com>"
 iabbrev eemail xvezda@naver.com
 
+" Vim autocomplete options
+set complete=.,w,b,u,U,t,i,d
+
 " Load default template for specific language
 function! LoadLangDefaultTemplate(lang)
     silent exec ":-1read " . (has('nvim') ? $XDG_CONFIG_HOME . "/nvim/"

@@ -3,6 +3,7 @@ set pastetoggle=<F5>
 
 " Map Re-do to U
 nnoremap U <C-r>
+nnoremap <C-r> U
 
 " Map single quote to comma, backslash to quote.
 nnoremap ' ,

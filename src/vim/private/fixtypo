@@ -1,3 +1,5 @@
+set spelllang=en_us
+
 iabbrev funciton function
 iabbrev inlcude include
 iabbrev incldue include

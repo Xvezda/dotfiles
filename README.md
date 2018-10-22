@@ -24,14 +24,18 @@ Commands | Actions
 <kbd>Prefix</kbd><kbd>ctrl</kbd>+<kbd>h,j,k,l</kbd> | Swap Tmux panes.
 <kbd>,</kbd><kbd>l</kbd><kbd>n</kbd> | Toggle relative line number.
 <kbd>,</kbd><kbd>r</kbd><kbd>w</kbd> | Remove trailing whitespaces.
+<kbd>,</kbd><kbd>r</kbd><kbd>s</kbd> | Run current vim script.
 <kbd>,</kbd><kbd>r</kbd><kbd>l</kbd><kbd>a</kbd> | Reload all Vim configuration.
 <kbd>,</kbd><kbd>r</kbd><kbd>l</kbd><kbd>l</kbd> | Reload local Vim configuration.
 <kbd>a,i</kbd><kbd>k,K</kbd> | For textobj-comment all or in.
 <kbd>a,i</kbd><kbd>j</kbd> | For textobj-line all or in.
 <kbd>a,i</kbd><kbd>h</kbd> | For textobj-lastpat all or in.
+<kbd>a,i</kbd><kbd>d</kbd> | Text object for docstring (Python specific).
 <kbd>[,]</kbd>+<kbd>Space</kbd> | Insert empty line.
+<kbd>,</kbd><kbd>u</kbd><kbd>1~6</kbd> | Markdown header.
+<kbd>Shift</kbd>+<kbd>&uparrow;</kbd><kbd>&downarrow;</kbd><kbd>&leftarrow;</kbd><kbd>&rightarrow;</kbd> | Drag text to move around (visual mode only).
 <kbd>,</kbd><kbd>ctrl</kbd>+<kbd>t</kbd> | Create default template for specific language.
-<kbd>&uparrow;</kbd><kbd>&downarrow;</kbd><kbd>&leftarrow;</kbd><kbd>&rightarrow;</kbd> | ![NOP](https://i.imgur.com/CoWZ05t.gif)
+<kbd>F5</kbd> | Toggle paste mode.
 
 ## Etc
 * You can update/restore this project's configuration files by
