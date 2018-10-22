@@ -4,5 +4,11 @@ iabbrev funciton function
 iabbrev inlcude include
 iabbrev incldue include
 iabbrev calss class
+iabbrev flase false
+iabbrev ture true
+iabbrev vodi void
+iabbrev reutrn return
+iabbrev improt import
+
 
 " vim:ft=vim
