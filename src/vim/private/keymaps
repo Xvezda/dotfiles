@@ -12,6 +12,9 @@ nnoremap \ '
 " Remove trailing whitespace
 nnoremap <silent> <Leader>rw :FixWhitespace<CR>
 
+" Remove Windows carrage return characters
+nnoremap <silent> <Leader>rr :%s/\r//g<CR>``
+
 " Relative number toggle short cut <,ln>
 nnoremap <silent> <Leader>ln :set relativenumber!<CR>
 
