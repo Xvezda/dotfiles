@@ -22,25 +22,28 @@ let g:lightline = {
 set colorcolumn=72
 highlight ColorColumn ctermbg=60 guibg=#2e3340
 
-" C++ indent to 2 spaces.
-autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab
-
-" Java indent to 2 spaces.
-autocmd FileType java setlocal colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
-
-" Override vim-bootstrap default python colorcolumn value to 72
-" https://www.python.org/dev/peps/pep-0008/#maximum-line-length
-autocmd FileType python setlocal colorcolumn=72 tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-
 " Highlight characters over 79
 " https://stackoverflow.com/a/10993757
 augroup vimrc_autocmds
-  highlight OverLength ctermfg=white ctermbg=30 guifg=white guibg=DarkCyan guisp=DarkCyan
-  call matchadd('OverLength', '\%79v.\+')
+  highlight OverLength ctermfg=white ctermbg=30
+              \ guifg=white guibg=DarkCyan guisp=DarkCyan
+  let b:match_overlength_id = matchadd('OverLength', '\%79v.\+')
 augroup END
 
 " Add more contrast to visual mode
 highlight Visual term=reverse cterm=reverse ctermfg=6 ctermbg=60 guibg=#92bbd0
+
+" C++ indent to 2 spaces.
+autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab
+
+" Java indent to 2 spaces.
+autocmd FileType java  setlocal colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
+            \ | call matchdelete(b:match_overlength_id)
+
+" Override vim-bootstrap default python colorcolumn value to 72
+" https://www.python.org/dev/peps/pep-0008/#maximum-line-length
+autocmd FileType python setlocal colorcolumn=72
+            \ tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " Enable vim python3 annotation
 let g:syntastic_python_python_exec = 'python3'
