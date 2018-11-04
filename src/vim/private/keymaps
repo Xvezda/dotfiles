@@ -1,6 +1,13 @@
 " Set paste toggle to F5
 set pastetoggle=<F5>
 
+" Up and down for visual line
+nnoremap j gj
+nnoremap k gk
+
+" Yand to the end of the line
+nnoremap Y y$
+
 " Map Re-do to U
 nnoremap U <C-r>
 nnoremap <C-r> U

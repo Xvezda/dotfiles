@@ -33,12 +33,22 @@ augroup END
 " Add more contrast to visual mode
 highlight Visual term=reverse cterm=reverse ctermfg=6 ctermbg=60 guibg=#92bbd0
 
+" C indent options
+autocmd FileType c setlocal cinoptions+=:0
+
 " C++ indent to 2 spaces.
-autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+            \ cinoptions+=g0
 
 " Java indent to 2 spaces.
-autocmd FileType java  setlocal colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
+autocmd FileType java setlocal colorcolumn=100
+            \ tabstop=2 shiftwidth=2 softtabstop=2 expandtab
             \ | call matchdelete(b:match_overlength_id)
+
+" Javascript indent to 2 spaces.
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType jst setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 " Override vim-bootstrap default python colorcolumn value to 72
 " https://www.python.org/dev/peps/pep-0008/#maximum-line-length

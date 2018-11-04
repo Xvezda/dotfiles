@@ -2,6 +2,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
+ctags() {
+    $(brew --prefix)/bin/ctags "$@"
+}
+
 openvpn() {
     $(brew --prefix openvpn)/sbin/openvpn "$@"
 }
@@ -9,6 +13,9 @@ openvpn() {
 # rm to rm trash
 alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
 alias del="rmtrash"
+
+# Additional git alias
+alias gs="git status"
 
 # Docker stuffs
 drl() {
