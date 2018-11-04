@@ -11,27 +11,30 @@ set foldopen+=jump
 set lazyredraw
 set ttyfast
 
-" Theme
-let g:SnazzyTransparent = 1
-colorscheme snazzy
+" Theme settings
+let g:jellybeans_overrides = {
+\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+\}
+let g:tmuxline_theme = 'jellybeans'
+let g:jellybeans_use_term_italics = 1
 let g:lightline = {
-\ 'colorscheme': 'snazzy',
+\ 'colorscheme': 'jellybeans',
 \ }
+colorscheme jellybeans
 
 " Limits string
 set colorcolumn=72
-highlight ColorColumn ctermbg=60 guibg=#2e3340
+highlight ColorColumn ctermbg=236 guibg=#333333
 
 " Highlight characters over 79
 " https://stackoverflow.com/a/10993757
 augroup vimrc_autocmds
-  highlight OverLength ctermfg=white ctermbg=30
-              \ guifg=white guibg=DarkCyan guisp=DarkCyan
+  highlight link OverLength Error
   let b:match_overlength_id = matchadd('OverLength', '\%79v.\+')
 augroup END
 
 " Add more contrast to visual mode
-highlight Visual term=reverse cterm=reverse ctermfg=6 ctermbg=60 guibg=#92bbd0
+"highlight Visual term=reverse cterm=reverse
 
 " C indent options
 autocmd FileType c setlocal cinoptions+=:0

@@ -13,7 +13,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'zirrostig/vim-schlepp'
 
 " Theme
-Plug 'connorholyday/vim-snazzy'
+Plug 'nanotech/jellybeans.vim'
+Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
 
 " Text objects
