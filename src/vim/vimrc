@@ -75,7 +75,7 @@ endif
 Plug 'honza/vim-snippets'
 
 "" Color
-Plug 'tomasr/molokai'
+" Plug 'tomasr/molokai'
 
 "*****************************************************************************
 "" Custom bundles
@@ -201,9 +201,9 @@ set ruler
 set number
 
 let no_buffers_menu=1
-if !exists('g:not_finish_vimplug')
-  colorscheme molokai
-endif
+" if !exists('g:not_finish_vimplug')
+"   colorscheme molokai
+" endif
 
 set mousemodel=popup
 set t_Co=256
@@ -353,8 +353,10 @@ set autoread
 "*****************************************************************************
 
 "" Split
-noremap <Leader>h :<C-u>split<CR>
-noremap <Leader>v :<C-u>vsplit<CR>
+" noremap <Leader>h :<C-u>split<CR>
+" noremap <Leader>v :<C-u>vsplit<CR>
+noremap <C-w>" :<C-u>split<CR>
+noremap <C-w>% :<C-u>vsplit<CR>
 
 "" Git
 noremap <Leader>ga :Gwrite<CR>
@@ -438,20 +440,23 @@ if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
 
-noremap YY "+y<CR>
+" noremap YY "+y<CR>
+" noremap <leader>p "+gP<CR>
+" noremap XX "+x<CR>
+noremap <leader>y "+y<CR>
 noremap <leader>p "+gP<CR>
-noremap XX "+x<CR>
+noremap <leader>x "+x<CR>
 
 if has('macunix')
   " pbcopy for OSX copy/paste
   vmap <C-x> :!pbcopy<CR>
-  vmap <C-c> :w !pbcopy<CR><CR>
+vmap <C-c> :w !pbcopy<CR><CR>
 endif
 
 "" Buffer nav
-noremap <leader>z :bp<CR>
+" noremap <leader>z :bp<CR>
 noremap <leader>q :bp<CR>
-noremap <leader>x :bn<CR>
+" noremap <leader>x :bn<CR>
 noremap <leader>w :bn<CR>
 
 "" Close buffer
