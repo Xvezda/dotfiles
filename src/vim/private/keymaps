@@ -1,5 +1,5 @@
-" Set paste toggle to F12
-set pastetoggle=<F12>
+" Set paste toggle to F10
+set pastetoggle=<F10>
 
 " Fold toggle with spacebar
 nnoremap <Space> za

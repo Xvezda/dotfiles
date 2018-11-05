@@ -10,6 +10,7 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-system-copy'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/vim-easy-align'
 Plug 'Konfekt/FastFold'
 Plug 'mbbill/undotree'
@@ -17,8 +18,8 @@ Plug 'zirrostig/vim-schlepp'
 
 " Theme
 Plug 'nanotech/jellybeans.vim'
-Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'edkolev/tmuxline.vim'
 
 " Text objects
 Plug 'kana/vim-textobj-user'
@@ -29,9 +30,6 @@ Plug 'kana/vim-textobj-lastpat'
 Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-line'
 Plug 'glts/vim-textobj-comment'
-Plug 'deathlyfrantic/vim-textobj-blanklines'
-Plug 'rhysd/vim-textobj-continuous-line'
-Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'wellle/targets.vim'
 
 " Text objects for specific languages

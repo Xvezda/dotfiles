@@ -7,6 +7,9 @@ set relativenumber
 set lazyredraw
 set ttyfast
 
+" Emmet plugin prefix to ctrl-z
+let g:user_emmet_leader_key='<C-z>'
+
 " Set fold
 set foldmethod=marker
 set foldopen+=jump
@@ -21,6 +24,9 @@ if has("persistent_undo")
     set undodir=~/.undodir/
     set undofile
 endif
+
+" Close NERDTree after open file
+let NERDTreeQuitOnOpen = 1
 
 " Theme settings
 let g:jellybeans_overrides = {
@@ -68,25 +74,13 @@ autocmd FileType jst setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType python setlocal colorcolumn=72
             \ tabstop=4 shiftwidth=4 softtabstop=4 expandtab
             \ foldnestmax=2 foldmethod=indent
+            \ completeopt-=preview
 
 " Enable vim python3 annotation
 let g:syntastic_python_python_exec = 'python3'
 
 " Enable C++14 support
 let g:syntastic_cpp_compiler_options = '-std=c++14'
-
-" Set brew installed macvim path
-" let g:vimshell_editor_command = '/usr/local/Cellar/macvim/8.1-151/bin/vim'
-
-" Set always on vim hardtime plugin
-let g:hardtime_default_on = 1
-
-" Persist the options of the session plug-in using the session plug-in...
-let g:session_persist_globals = ['&sessionoptions']
-call add(g:session_persist_globals, 'g:session_autoload')
-call add(g:session_persist_globals, 'g:session_autosave')
-call add(g:session_persist_globals, 'g:session_default_to_last')
-call add(g:session_persist_globals, 'g:session_persist_globals')
 
 
 " vim:ft=vim

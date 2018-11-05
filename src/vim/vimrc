@@ -60,8 +60,8 @@ endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
 "" Vim-Session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-session'
 
 if v:version >= 703
   Plug 'Shougo/vimshell.vim'
@@ -188,10 +188,10 @@ else
 endif
 
 " session management
-let g:session_directory = "~/.config/nvim/session"
-let g:session_autoload = "no"
-let g:session_autosave = "no"
-let g:session_command_aliases = 1
+" let g:session_directory = "~/.config/nvim/session"
+" let g:session_autoload = "no"
+" let g:session_autosave = "no"
+" let g:session_command_aliases = 1
 
 "*****************************************************************************
 "" Visual Settings
@@ -369,10 +369,10 @@ noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 
 " session management
-nnoremap <leader>so :OpenSession<Space>
-nnoremap <leader>ss :SaveSession<Space>
-nnoremap <leader>sd :DeleteSession<CR>
-nnoremap <leader>sc :CloseSession<CR>
+" nnoremap <leader>so :OpenSession<Space>
+" nnoremap <leader>ss :SaveSession<Space>
+" nnoremap <leader>sd :DeleteSession<CR>
+" nnoremap <leader>sc :CloseSession<CR>
 
 "" Tabs
 nnoremap <Tab> gt
