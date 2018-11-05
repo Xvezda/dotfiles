@@ -1,5 +1,9 @@
-" Set paste toggle to F5
-set pastetoggle=<F5>
+" Set paste toggle to F12
+set pastetoggle=<F12>
+
+" Fold toggle with spacebar
+nnoremap <Space> za
+nnoremap <C-Space> zA
 
 " Up and down for visual line
 nnoremap j gj
@@ -37,6 +41,16 @@ nnoremap <buffer> <Leader>rla :source ~/.vimrc<CR>
 for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O']
     execute 'nnoremap ' . s:c . ' :nohlsearch<CR>' . s:c
 endfor
+
+" Fix google search index plugin
+nmap <silent> n n<Plug>SearchIndex
+nmap <silent> N N<Plug>SearchIndex
+
+" Set Fastfold
+nmap zuz <Plug>(FastFoldUpdate)
+
+" Set undo-tree toggle to F5
+nnoremap <F5> :UndotreeToggle<cr>
 
 " vim-schelpp keymaps
 vmap <unique> <S-Up>    <Plug>SchleppUp

@@ -3,20 +3,30 @@ set number
 set numberwidth=5
 set relativenumber
 
+" Performance
+set lazyredraw
+set ttyfast
+
 " Set fold
 set foldmethod=marker
 set foldopen+=jump
 
-" Performance
-set lazyredraw
-set ttyfast
+" Setup Fastfold plugin
+let g:fastfold_savehook = 1
+let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+
+" Set persistaent undo file path
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+endif
 
 " Theme settings
 let g:jellybeans_overrides = {
 \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 \}
 let g:tmuxline_theme = 'jellybeans'
-let g:jellybeans_use_term_italics = 1
 let g:lightline = {
 \ 'colorscheme': 'jellybeans',
 \ }
@@ -57,6 +67,7 @@ autocmd FileType jst setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 " https://www.python.org/dev/peps/pep-0008/#maximum-line-length
 autocmd FileType python setlocal colorcolumn=72
             \ tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+            \ foldnestmax=2 foldmethod=indent
 
 " Enable vim python3 annotation
 let g:syntastic_python_python_exec = 'python3'

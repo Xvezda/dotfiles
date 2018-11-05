@@ -30,7 +30,8 @@ augroup filetype_c
                 \ nnoremap <buffer> <Leader><C-t>
                 \ :call LoadLangDefaultTemplate("h")<CR>
                 \f_i<C-R>=toupper(expand("%:t:r"))<CR>
-                \<Esc>By$jp:$<CR>P:$Commentary<CR>:%s/<C-r>"/_<C-r>"_/<CR>:noh<CR>3ki
+                \<Esc>By$jpG"_ddA<Space><Space>//<Space><C-r>"<Esc>
+                \:%s/<C-r>"/_<C-r>"_/<CR>:noh<CR>2ki
     autocmd BufNewFile,BufReadPost *.cpp,*.cc
                 \ nnoremap <buffer> <Leader><C-t>
                 \ :call LoadLangDefaultTemplate("cpp")<CR>
