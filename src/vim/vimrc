@@ -7,10 +7,10 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
 endif
 
-let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
+let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 
 let g:vim_bootstrap_langs = "c,go,html,javascript,perl,php,python,ruby"
-let g:vim_bootstrap_editor = "nvim"				" nvim or vim
+let g:vim_bootstrap_editor = "vim"				" nvim or vim
 
 if !filereadable(vimplug_exists)
   if !executable("curl")
@@ -19,14 +19,14 @@ if !filereadable(vimplug_exists)
   endif
   echo "Installing Vim-Plug..."
   echo ""
-  silent !\curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   let g:not_finish_vimplug = "yes"
 
   autocmd VimEnter * PlugInstall
 endif
 
 " Required:
-call plug#begin(expand('~/.config/nvim/plugged'))
+call plug#begin(expand('~/.vim/plugged'))
 
 "*****************************************************************************
 "" Plug install packages
@@ -35,8 +35,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
@@ -59,10 +57,6 @@ if exists('make')
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
-"" Vim-Session
-" Plug 'xolox/vim-misc'
-" Plug 'xolox/vim-session'
-
 if v:version >= 703
   Plug 'Shougo/vimshell.vim'
 endif
@@ -74,15 +68,11 @@ endif
 
 Plug 'honza/vim-snippets'
 
-"" Color
-" Plug 'tomasr/molokai'
-
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
 
 " c
-" Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
 
 
@@ -133,8 +123,8 @@ Plug 'ecomba/vim-ruby-refactoring'
 "*****************************************************************************
 
 "" Include user's extra bundle
-if filereadable(expand("~/.config/nvim/local_bundles.vim"))
-  source ~/.config/nvim/local_bundles.vim
+if filereadable(expand("~/.vimrc.local.bundles"))
+  source ~/.vimrc.local.bundles
 endif
 
 call plug#end()
@@ -187,12 +177,6 @@ else
     set shell=/bin/sh
 endif
 
-" session management
-" let g:session_directory = "~/.config/nvim/session"
-" let g:session_autoload = "no"
-" let g:session_autosave = "no"
-" let g:session_command_aliases = 1
-
 "*****************************************************************************
 "" Visual Settings
 "*****************************************************************************
@@ -201,9 +185,6 @@ set ruler
 set number
 
 let no_buffers_menu=1
-" if !exists('g:not_finish_vimplug')
-"   colorscheme molokai
-" endif
 
 set mousemodel=popup
 set t_Co=256
@@ -223,11 +204,7 @@ else
   let g:indentLine_concealcursor = 0
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
-
-  
 endif
-
-
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
@@ -353,8 +330,6 @@ set autoread
 "*****************************************************************************
 
 "" Split
-" noremap <Leader>h :<C-u>split<CR>
-" noremap <Leader>v :<C-u>vsplit<CR>
 noremap <C-w>" :<C-u>split<CR>
 noremap <C-w>% :<C-u>vsplit<CR>
 
@@ -367,12 +342,6 @@ noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
-
-" session management
-" nnoremap <leader>so :OpenSession<Space>
-" nnoremap <leader>ss :SaveSession<Space>
-" nnoremap <leader>sd :DeleteSession<CR>
-" nnoremap <leader>sc :CloseSession<CR>
 
 "" Tabs
 nnoremap <Tab> gt
@@ -440,9 +409,6 @@ if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
 
-" noremap YY "+y<CR>
-" noremap <leader>p "+gP<CR>
-" noremap XX "+x<CR>
 noremap <leader>y "+y<CR>
 noremap <leader>p "+gP<CR>
 noremap <leader>x "+x<CR>
@@ -454,9 +420,7 @@ vmap <C-c> :w !pbcopy<CR><CR>
 endif
 
 "" Buffer nav
-" noremap <leader>z :bp<CR>
 noremap <leader>q :bp<CR>
-" noremap <leader>x :bn<CR>
 noremap <leader>w :bn<CR>
 
 "" Close buffer
@@ -661,8 +625,8 @@ vnoremap <leader>rem  :RExtractMethod<cr>
 "*****************************************************************************
 
 "" Include user's local vim config
-if filereadable(expand("~/.config/nvim/local_init.vim"))
-  source ~/.config/nvim/local_init.vim
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
 endif
 
 "*****************************************************************************
