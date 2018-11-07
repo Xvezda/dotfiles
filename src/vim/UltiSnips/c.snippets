@@ -1,0 +1,17 @@
+# Copyright (c) 2018 Xvezda <https://xvezda.com>
+
+global !p
+HEADER_NAME = '_' + fn.split('.')[0].upper() + '_'
+endglobal
+
+snippet once "include header once"
+#ifndef $1`!p snip.rv = HEADER_NAME`
+#define $1`!p snip.rv = HEADER_NAME`
+
+${VISUAL}$0
+
+#endif  // $1`!p snip.rv = HEADER_NAME`
+endsnippet
+
+
+# vim:ft=snippets

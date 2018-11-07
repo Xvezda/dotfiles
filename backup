@@ -8,7 +8,7 @@ cd $DIR
 
 # Backup vim dotfiles
 cp -R $HOME/.vim/private src/vim/
-cp -R $HOME/.vim/template src/vim/
+cp -R $HOME/.vim/UltiSnips src/vim/
 cp $HOME/.vimrc src/vim/vimrc
 cp $HOME/.vimrc.local src/vim/vimrc.local
 cp $HOME/.vimrc.local.bundles src/vim/vimrc.local.bundles

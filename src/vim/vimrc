@@ -380,10 +380,11 @@ nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
 
 " snippets
+let g:UltiSnipsSnippetsDir=$HOME."/.vim/UltiSnips"
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="context"
 
 " syntastic
 let g:syntastic_always_populate_loc_list=1
