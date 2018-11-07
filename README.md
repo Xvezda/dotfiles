@@ -38,7 +38,6 @@ Commands | Actions
 <kbd>[,]</kbd>+<kbd>Space</kbd> | Insert empty line.
 <kbd>,</kbd><kbd>u</kbd><kbd>1~6</kbd> | Markdown header.
 <kbd>Shift</kbd>+<kbd>&uparrow;</kbd><kbd>&downarrow;</kbd><kbd>&leftarrow;</kbd><kbd>&rightarrow;</kbd> | Drag text to move around (visual mode only).
-<kbd>,</kbd><kbd>ctrl</kbd>+<kbd>t</kbd> | Create default template for specific language.
 <kbd>F10</kbd> | Toggle paste mode.
 <kbd>F12</kbd> | Toggle nested Tmux mode.
 
