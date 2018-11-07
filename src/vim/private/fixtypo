@@ -1,12 +1,14 @@
 set spelllang=en_us
 
 iabbrev calss class
+iabbrev firend friend
 iabbrev flase false
 iabbrev fucntion function
 iabbrev funciton function
 iabbrev improt import
 iabbrev incldue include
 iabbrev inlcude include
+iabbrev namepsace namespace
 iabbrev retrun return
 iabbrev reutrn return
 iabbrev ture true

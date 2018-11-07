@@ -36,7 +36,7 @@ autocmd FileType vim    nnoremap <buffer> <Leader>rs :source %<CR>
 nnoremap <buffer> <Leader>rll :source ~/.vimrc.local<CR>
 nnoremap <buffer> <Leader>rla :source ~/.vimrc<CR>
 
-" Remove search highlight when entering inpsert mode
+" Remove search highlight when entering insert mode
 " https://vi.stackexchange.com/a/10415
 for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O']
     execute 'nnoremap ' . s:c . ' :nohlsearch<CR>' . s:c
