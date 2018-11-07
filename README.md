@@ -19,9 +19,12 @@ chmod +x install
 Commands | Actions
 --- | ---
 <kbd>shift</kbd>+<kbd>u</kbd> | Re-do undo.
-<kbd>ctrl</kbd>+<kbd>a</kbd> | Tmux prefix
+<kbd>ctrl</kbd>+<kbd>a</kbd> | Tmux prefix.
 <kbd>alt</kbd>+<kbd>h,j,k,l</kbd> | Move around Tmux panes.
 <kbd>Prefix</kbd><kbd>ctrl</kbd>+<kbd>h,j,k,l</kbd> | Swap Tmux panes.
+<kbd>ctrl</kbd>+<kbd>w</kbd><kbd>%</kbd> | Vim split vertically.
+<kbd>ctrl</kbd>+<kbd>w</kbd><kbd>"</kbd> | Vim split horizontally.
+<kbd>Leader</kbd><kbd>y,x,p</kbd> | Vim system clipboard copy, cut, paste.
 <kbd>,</kbd><kbd>l</kbd><kbd>n</kbd> | Toggle relative line number.
 <kbd>,</kbd><kbd>r</kbd><kbd>w</kbd> | Remove trailing whitespaces.
 <kbd>,</kbd><kbd>r</kbd><kbd>s</kbd> | Run current vim script.
@@ -35,7 +38,7 @@ Commands | Actions
 <kbd>,</kbd><kbd>u</kbd><kbd>1~6</kbd> | Markdown header.
 <kbd>Shift</kbd>+<kbd>&uparrow;</kbd><kbd>&downarrow;</kbd><kbd>&leftarrow;</kbd><kbd>&rightarrow;</kbd> | Drag text to move around (visual mode only).
 <kbd>,</kbd><kbd>ctrl</kbd>+<kbd>t</kbd> | Create default template for specific language.
-<kbd>F5</kbd> | Toggle paste mode.
+<kbd>F10</kbd> | Toggle paste mode.
 
 ## Etc
 * You can update/restore this project's configuration files by
