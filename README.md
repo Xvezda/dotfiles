@@ -27,6 +27,7 @@ Commands | Actions
 <kbd>Leader</kbd><kbd>y,x,p</kbd> | Vim system clipboard copy, cut, paste.
 <kbd>,</kbd><kbd>l</kbd><kbd>n</kbd> | Toggle relative line number.
 <kbd>,</kbd><kbd>r</kbd><kbd>w</kbd> | Remove trailing whitespaces.
+<kbd>,</kbd><kbd>r</kbd><kbd>r</kbd> | Remove carrage return characters.
 <kbd>,</kbd><kbd>r</kbd><kbd>s</kbd> | Run current vim script.
 <kbd>,</kbd><kbd>r</kbd><kbd>l</kbd><kbd>a</kbd> | Reload all Vim configuration.
 <kbd>,</kbd><kbd>r</kbd><kbd>l</kbd><kbd>l</kbd> | Reload local Vim configuration.
