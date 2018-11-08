@@ -148,8 +148,6 @@ set gfn=Monospace\ 10
 
 " Gui cursor makes your nvim input mode laggy(or slow), which sucks :/
 set guicursor=
-" Workaround some broken plugins which set guicursor indiscriminately.
-autocmd OptionSet guicursor noautocmd set guicursor=
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
