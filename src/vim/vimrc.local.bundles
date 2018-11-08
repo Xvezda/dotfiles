@@ -1,3 +1,8 @@
+" Theme
+Plug 'nanotech/jellybeans.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'edkolev/tmuxline.vim'
+
 " Plugins
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
@@ -15,13 +20,38 @@ Plug 'junegunn/vim-easy-align'
 Plug 'Konfekt/FastFold'
 Plug 'mbbill/undotree'
 Plug 'zirrostig/vim-schlepp'
+" Plugins for specific languages {{{1
+" Go {{{2
+Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+"2}}}
+" HTML {{{2
+Plug 'hail2u/vim-css3-syntax'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'tpope/vim-haml'
+"2}}}
+" Javascript {{{2
+Plug 'jelera/vim-javascript-syntax'
+"2}}}
+" Perl {{{2
+Plug 'vim-perl/vim-perl'
+Plug 'c9s/perlomni.vim'
+"2}}}
+" PHP {{{2
+Plug 'arnaud-lb/vim-php-namespace'
+"2}}}
+" Python {{{2
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+"2}}}
+" Ruby{{{2
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-projectionist'
+Plug 'thoughtbot/vim-rspec'
+Plug 'ecomba/vim-ruby-refactoring'
+"2}}}
+"1}}}
+" Text objects {{{
 
-" Theme
-Plug 'nanotech/jellybeans.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'edkolev/tmuxline.vim'
-
-" Text objects
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-entire'
@@ -37,6 +67,6 @@ Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'bps/vim-textobj-python'
 Plug 'tek/vim-textobj-ruby'
 Plug 'nelstrom/vim-textobj-rubyblock'
-
+"}}}
 
 " vim:ft=vim

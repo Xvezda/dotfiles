@@ -1,6 +1,7 @@
+" XXX: Configurations on here will overwrite main vimrc settings
 " Set numbers
 set number
-set numberwidth=5
+set numberwidth=4
 set relativenumber
 
 " Vim autocomplete options
@@ -15,29 +16,11 @@ set ttyfast
 set foldmethod=marker
 set foldopen+=jump
 
-" Setup Fastfold plugin
-let g:fastfold_savehook = 1
-let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
-let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
-
 " Set persistaent undo file path
 if has("persistent_undo")
     set undodir=~/.undodir/
     set undofile
 endif
-
-" Close NERDTree after open file
-let NERDTreeQuitOnOpen = 1
-
-" Theme settings
-let g:jellybeans_overrides = {
-\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-\}
-let g:tmuxline_theme = 'jellybeans'
-let g:lightline = {
-\ 'colorscheme': 'jellybeans',
-\ }
-colorscheme jellybeans
 
 " Limits string
 set colorcolumn=72
@@ -76,14 +59,6 @@ autocmd FileType python setlocal colorcolumn=72
             \ tabstop=2 shiftwidth=2 softtabstop=2 expandtab
             \ foldnestmax=2 foldmethod=indent
             \ completeopt-=preview
-
-" Enable vim python3 annotation
-let g:syntastic_python_python_exec = 'python3'
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = '--rcfile=/tmp/pylintrc'
-
-" Enable C++14 support
-let g:syntastic_cpp_compiler_options = '-std=c++14'
 
 
 " vim:ft=vim

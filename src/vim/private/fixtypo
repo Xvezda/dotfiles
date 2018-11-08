@@ -1,5 +1,19 @@
+" Set spellcheck language
 set spelllang=en_us
 
+" Set command abbreviations
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+
+" Set keyword abbreviations
 iabbrev calss class
 iabbrev firend friend
 iabbrev flase false

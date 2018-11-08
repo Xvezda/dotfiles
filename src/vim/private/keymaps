@@ -8,6 +8,8 @@ nnoremap <C-Space> zA
 " Up and down for visual line
 nnoremap j gj
 nnoremap k gk
+nnoremap 0 g0
+nnoremap $ g$
 
 " Yand to the end of the line
 nnoremap Y y$
