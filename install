@@ -19,6 +19,7 @@ vimconf_setup () {
     mkdir -p ~/.vim/UltiSnips
     cp -R $VIMDOT_PATH/private/* ~/.vim/private
     cp -R $VIMDOT_PATH/UltiSnips/* ~/.vim/UltiSnips
+    cp $VIMDOT_PATH/vimrc ~/.vimrc
     cp $VIMDOT_PATH/vimrc.local ~/.vimrc.local
     cp $VIMDOT_PATH/vimrc.local.bundles ~/.vimrc.local.bundles
 
@@ -36,6 +37,7 @@ nvimconf_setup () {
     mkdir -p $XDG_CONFIG_HOME/nvim/template
     cp -R $VIMDOT_PATH/private/* $XDG_CONFIG_HOME/nvim/private
     cp -R $VIMDOT_PATH/UltiSnips/* $XDG_CONFIG_HOME/nvim/UltiSnips
+    cp $VIMDOT_PATH/vimrc $XDG_CONFIG_HOME/nvim/init.vim
     cp $VIMDOT_PATH/vimrc.local $XDG_CONFIG_HOME/nvim/local_init.vim
     cp $VIMDOT_PATH/vimrc.local.bundles $XDG_CONFIG_HOME/nvim/local_bundles.vim
 
