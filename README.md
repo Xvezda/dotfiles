@@ -43,5 +43,5 @@ Commands | Actions
 ## Etc
 * You can update/restore this project's configuration files by
 `./install --fetch`
-* Credits to [@samoshkin](https://github.com/samoshkin/tmux-config/). Thank you for sharing cool settings.
+* Credits to [@samoshkin](https://github.com/samoshkin/tmux-config/), [@christoomey](https://github.com/christoomey/dotfiles). Thank you for sharing cool settings.
 * Check out [Vim Bootstrap Commands](https://github.com/avelino/vim-bootstrap#commands), [Pythonsense](https://github.com/jeetsukumaran/vim-pythonsense), [Targets.vim](https://github.com/wellle/targets.vim) and [unimpaired.vim](https://github.com/tpope/vim-unimpaired) for more command informations.
