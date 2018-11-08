@@ -15,6 +15,7 @@ cp $HOME/.vimrc.local.bundles src/vim/vimrc.local.bundles
 
 # Backup tmux dotfiles
 cp $HOME/.tmux.conf src/tmux/tmux.conf
+cp $HOME/.tmux/tmux.local.conf src/tmux/tmux.local.conf
 
 # Backup brew dotfiles
 /usr/local/bin/brew bundle dump

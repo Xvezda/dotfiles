@@ -3,12 +3,13 @@ set number
 set numberwidth=5
 set relativenumber
 
+" Vim autocomplete options
+set complete=.,w,b,u,U,t,i,d
+set completeopt-=preview
+
 " Performance
 set lazyredraw
 set ttyfast
-
-" Emmet plugin prefix to ctrl-z
-let g:user_emmet_leader_key='<C-z>'
 
 " Set fold
 set foldmethod=marker

@@ -1,0 +1,15 @@
+let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+augroup vimrc-local-ftopt
+    autocmd!
+    autocmd FileType * if exists("+omnifunc") && &omnifunc == ""
+                \ | setlocal omnifunc=syntaxcomplete#Complete | endif
+    autocmd FileType * if exists("+completefunc") && &completefunc == ""
+                \ | setlocal completefunc=syntaxcomplete#Complete | endif
+    autocmd FileType *
+                \ if &omnifunc != '' |
+                \     call SuperTabChain(&omnifunc, "<c-p>") |
+                \ endif
+augroup END
+
+
+" vim:ft=vim
