@@ -39,7 +39,6 @@ alias vim="nvim"
 alias vi="nvim"
 alias vimdiff="nvim -d"
 export EDITOR=/usr/local/bin/nvim
-export TERM=xterm-256color
 
 # SSH with remote clipboard alias
 ssh-clip() {

@@ -21,6 +21,10 @@ Plug 'Konfekt/FastFold'
 Plug 'mbbill/undotree'
 Plug 'zirrostig/vim-schlepp'
 " Plugins for specific languages {{{1
+
+" Install plugin when only local machine
+if !exists("$SSH_CLIENT")
+
 " Go {{{2
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 "2}}}
@@ -49,6 +53,9 @@ Plug 'tpope/vim-projectionist'
 Plug 'thoughtbot/vim-rspec'
 Plug 'ecomba/vim-ruby-refactoring'
 "2}}}
+
+endif " $SSH_CLIENT
+
 "1}}}
 " Text objects {{{
 

@@ -140,10 +140,16 @@ set number
 
 let no_buffers_menu=1
 
+set mouse=a
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
+
+" Gui cursor makes your nvim input mode laggy(or slow), which sucks :/
+set guicursor=
+" Workaround some broken plugins which set guicursor indiscriminately.
+autocmd OptionSet guicursor noautocmd set guicursor=
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
@@ -447,11 +453,8 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 " For ruby refactory
-if has('nvim')
-  runtime! macros/matchit.vim
-else
-  packadd! matchit
-endif
+runtime! macros/matchit.vim
+
 
 " Ruby refactory
 nnoremap <leader>rap  :RAddParameter<cr>
