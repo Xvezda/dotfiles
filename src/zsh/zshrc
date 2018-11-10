@@ -106,6 +106,7 @@ export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:\
 $HOME/.local/lib/python3.7/site-packages"
 
 export PATH="$PATH:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin"
+export PATH="$PATH:/Library/TeX/Root/bin/x86_64-darwin"
 
 autoload -U promptinit; promptinit
 prompt pure
