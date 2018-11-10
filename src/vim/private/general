@@ -41,7 +41,7 @@ autocmd FileType c setlocal cinoptions+=:0
 
 " C++ indent to 2 spaces.
 autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-            \ cinoptions+=g0
+            \ cinoptions+=g0,N-s
 
 " Java indent to 2 spaces.
 autocmd FileType java setlocal colorcolumn=100
