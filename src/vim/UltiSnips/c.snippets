@@ -4,7 +4,7 @@ global !p
 HEADER_NAME = '_' + fn.split('.')[0].upper() + '_'
 endglobal
 
-snippet once "include header once"
+snippet once "include header once" b
 #ifndef $1`!p snip.rv = HEADER_NAME`
 #define $1`!p snip.rv = HEADER_NAME`
 
@@ -13,7 +13,7 @@ ${VISUAL}$0
 #endif  // $1`!p snip.rv = HEADER_NAME`
 endsnippet
 
-snippet main "main function"
+snippet main "main function" b
 int main(int argc, char **argv) {
 	$0
 
