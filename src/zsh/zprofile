@@ -51,3 +51,20 @@ ssh-clip() {
     ssh -R 1337:localhost:7331 "$@"
     ( eval "sleep 3 && ${DIRECT_SIG}" & ) > /dev/null 2>&1
 }
+
+# Encrypt/Decrypt functions
+encf() {
+    openssl aes-256-cbc -salt -in $1 -out $1.enc
+}
+
+encs() {
+    echo "$1" | openssl aes-256-cbc -a -salt
+}
+
+decf() {
+    openssl aes-256-cbc -d -salt -in $1 -out ${1%.enc}.new
+}
+
+decs() {
+    echo "$1" | openssl aes-256-cbc -d -a -salt
+}
