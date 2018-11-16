@@ -68,3 +68,11 @@ decf() {
 decs() {
     echo "$1" | openssl aes-256-cbc -d -a -salt
 }
+
+# Reverse of split; which abbreviation of combine (Just for convenience)
+comb() {
+    cat $1.* > $1
+}
+
+# Exclude when zip from command line
+alias zip='zip -x "*.DS_Store"'
