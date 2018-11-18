@@ -8,5 +8,19 @@ $0
 }  // namespace $1
 endsnippet
 
+snippet class "class declaration" b
+class $1 {
+${2:public}:
+	$3
+};
+endsnippet
+
+snippet dclass "derived class" b
+class $1 : public $2 {
+${3:public}:
+	$4
+};
+endsnippet
+
 
 # vim:ft=snippets:
