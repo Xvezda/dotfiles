@@ -15,6 +15,7 @@ cnoreabbrev Qall qall
 
 " Set keyword abbreviations
 iabbrev calss class
+iabbrev cosnt const
 iabbrev firend friend
 iabbrev flase false
 iabbrev fucntion function
