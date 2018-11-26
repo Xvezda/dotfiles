@@ -1,6 +1,6 @@
 # Copyright (C) 2018 Xvezda <https://xvezda.com/>
 
-snippet namespace "namespace declaration" b
+snippet nam "namespace declaration" b
 namespace $1 {
 
 $0
@@ -8,18 +8,33 @@ $0
 }  // namespace $1
 endsnippet
 
-snippet class "class declaration" b
+snippet cla "class declaration" b
 class $1 {
 ${2:public}:
 	$3
 };
 endsnippet
 
-snippet dclass "derived class" b
+snippet dcla "derived class" b
 class $1 : public $2 {
 ${3:public}:
 	$4
 };
+endsnippet
+
+snippet tem "template class"
+template <class ${1:T}>
+class $2 {
+${3:public}:
+	$4
+};
+endsnippet
+
+snippet temf "template function"
+template <class ${1:T}>
+${2:int} ${3}($4) {
+	$5
+}
 endsnippet
 
 
