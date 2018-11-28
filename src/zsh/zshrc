@@ -63,11 +63,21 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  zsh-syntax-highlighting
-  zsh-autosuggestions
+  brew
+  docker
+  docker-compose
   fasd
+  git
+  man
+  node
+  npm
+  pip
+  python
+  tig
   tmux
+  virtualenv
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -108,6 +118,7 @@ $HOME/.local/lib/python3.7/site-packages"
 export PATH="$PATH:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin"
 export PATH="$PATH:/usr/local/opt/qt/bin"
 export PATH="$PATH:/Library/TeX/Root/bin/x86_64-darwin"
+export PATH="$PATH:/usr/local/opt/openssl/bin"
 
 autoload -U promptinit; promptinit
 prompt pure
