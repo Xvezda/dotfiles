@@ -16,12 +16,6 @@ set ttyfast
 set foldmethod=marker
 set foldopen+=jump
 
-" Set persistaent undo file path
-if has("persistent_undo")
-    set undodir=~/.undodir/
-    set undofile
-endif
-
 " Limits string
 set colorcolumn=72
 highlight ColorColumn ctermbg=236 guibg=#333333
