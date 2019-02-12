@@ -76,3 +76,10 @@ comb() {
 
 # Exclude when zip from command line
 alias zip='zip -x "*.DS_Store"'
+
+# Activate python virtualenv
+alias activate='source env/bin/activate'
+
+# Create default virtualenv
+alias mkenv='virtualenv env'
+alias mkenv3='virtualenv -p python3 env'

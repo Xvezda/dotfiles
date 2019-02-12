@@ -112,6 +112,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias easy_install="easy_install --prefix=$HOME/.local"
 
+export VIRTUAL_ENV_DISABLE_PROMPT=
+
 export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:\
 $HOME/.local/lib/python3.7/site-packages"
 
