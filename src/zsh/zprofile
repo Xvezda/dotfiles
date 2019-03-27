@@ -7,7 +7,7 @@ ctags() {
 }
 
 openvpn() {
-    $(brew --prefix openvpn)/sbin/openvpn "$@"
+    sudo $(brew --prefix openvpn)/sbin/openvpn "$@"
 }
 
 # rm to rm trash
