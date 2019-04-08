@@ -24,6 +24,16 @@ if !filereadable(vimplug_exists)
   autocmd VimEnter * PlugInstall
 endif
 
+" Fix virtualenv issue
+" https://github.com/neovim/neovim/issues/1887#issuecomment-280653872
+if exists("$VIRTUAL_ENV")
+  let g:python_host_prog=substitute(system("which -a python | head -n2 | tail -n1"), '\n', '', 'g')
+  let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), '\n', '', 'g')
+else
+  let g:python_host_prog=substitute(system("which python"), '\n', '', 'g')
+  let g:python3_host_prog=substitute(system("which python3"), '\n', '', 'g')
+endif
+
 " Required:
 call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
