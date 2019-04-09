@@ -6,6 +6,13 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd $DIR
 
+# Create path
+BACKUP_DIRS=("vim" "tmux" "brew" "zsh" "tidy")
+for p in "${BACKUP_DIRS[@]}"
+do
+    mkdir -p src/$p
+done
+
 # Backup vim dotfiles
 cp -R $HOME/.vim/private src/vim/
 cp -R $HOME/.vim/UltiSnips src/vim/
@@ -24,6 +31,9 @@ mv $PWD/Brewfile src/brew
 # Backup zsh dotfiles
 cp $HOME/.zshrc src/zsh/zshrc
 cp $HOME/.zprofile src/zsh/zprofile
+
+# Backup tidy configuration
+cp $HOME/.tidyrc src/tidy/tidyrc
 
 
 # ft:vim=sh
