@@ -15,6 +15,9 @@ alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
 alias del="rmtrash"
 
 # Additional git alias
+gpoc() {
+    git push -u origin $(git branch | head -n 1 | awk '{ print $2 }')
+}
 alias gs="git status"
 
 # Docker stuffs
