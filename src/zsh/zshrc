@@ -122,6 +122,9 @@ export PATH="$PATH:/usr/local/opt/qt/bin"
 export PATH="$PATH:/Library/TeX/Root/bin/x86_64-darwin"
 export PATH="$PATH:/usr/local/opt/openssl/bin"
 
+export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
+export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
+
 autoload -U promptinit; promptinit
 prompt pure
 
