@@ -32,7 +32,7 @@ brew "nmap"
 brew "node"
 brew "python@2", link: false
 brew "tbb"
-brew "opencv", link: false
+brew "opencv"
 brew "openvpn"
 brew "pandoc"
 brew "qt"
