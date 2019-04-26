@@ -15,6 +15,7 @@ done
 
 # Backup vim dotfiles
 cp -R $HOME/.vim/private src/vim/
+cp -R $HOME/.vim/syntax src/vim/
 cp -R $HOME/.vim/UltiSnips src/vim/
 cp $HOME/.vimrc src/vim/vimrc
 cp $HOME/.vimrc.local src/vim/vimrc.local
