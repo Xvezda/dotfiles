@@ -51,6 +51,9 @@ alias vi="nvim"
 alias vimdiff="nvim -d"
 export EDITOR=/usr/local/bin/nvim
 
+# Fix telnet tmux issue
+alias telnet='TERM=xterm telnet'
+
 # SSH with remote clipboard alias
 ssh-clip() {
     # Send signal directly to netcat when exit to break while loop
