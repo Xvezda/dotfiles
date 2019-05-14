@@ -118,6 +118,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 export PATH="$PATH:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin"
+export PATH="$PATH:$HOME/development/flutter/bin"
 export PATH="$PATH:/usr/local/opt/qt/bin"
 export PATH="$PATH:/Library/TeX/Root/bin/x86_64-darwin"
 export PATH="$PATH:/usr/local/opt/openssl/bin"
