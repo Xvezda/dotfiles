@@ -2,9 +2,7 @@
 
 " Detect XE html template by its contents
 augroup htmlxe_filetype_detect
-  " Limit search range
-  let s:line = 100
-  au! BufRead,BufNewFile,BufWritePost *.html
+  autocmd FileType html
         \ let pattern = '\C\(' .
         \    '<load\s\+\(cond=".\+"\s*\|target="\(\w\|\.\|\-\|/\)\+"\s*\)/\?>' .
         \    '\|<!\-\-@\(if\|for\(each\)\?\|while\)\s*(.*)\?\-\->' .
@@ -12,7 +10,7 @@ augroup htmlxe_filetype_detect
         \    '\|<block\s\+cond=".\+">\_.*</block>' .
         \ '\)'
         \ | if match(getline(1), pattern) != -1 ||
-        \      search(pattern, 'n', s:line)
+        \      search(pattern, 'n', 100)
         \ |   set ft=htmlxe
         \ | endif
         \ | unlet pattern
