@@ -33,16 +33,16 @@ augroup END
 " C indent options
 autocmd FileType c setlocal cinoptions+=:0
 
-" C++ indent to 2 spaces.
+" C++ indent to 2 spaces
 autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
             \ cinoptions+=g0,N-s
 
-" Java indent to 2 spaces.
+" Java indent to 2 spaces
 autocmd FileType java setlocal colorcolumn=100
             \ tabstop=2 shiftwidth=2 softtabstop=2 expandtab
             \ | call matchdelete(b:match_overlength_id)
 
-" Javascript indent to 2 spaces.
+" Javascript indent to 2 spaces
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType jst setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
@@ -53,6 +53,9 @@ autocmd FileType python setlocal colorcolumn=72
             \ tabstop=2 shiftwidth=2 softtabstop=2 expandtab
             \ foldnestmax=2 foldmethod=indent
             \ completeopt-=preview
+
+" Vim script indent options
+autocmd FileType vim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 
 " vim:ft=vim
