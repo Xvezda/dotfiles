@@ -1,0 +1,22 @@
+" Copyright (C) 2019 Xvezda <https://xvezda.com/>
+
+" Detect XE html template by its contents
+augroup htmlxe_filetype_detect
+  " Limit search range
+  let s:line = 100
+  au! BufRead,BufNewFile,BufWritePost *.html
+        \ let pattern = '\C\(' .
+        \    '<load\s\+\(cond=".\+"\s*\|target="\(\w\|\.\|\-\|/\)\+"\s*\)/\?>' .
+        \    '\|<!\-\-@\(if\|for\(each\)\?\|while\)\s*(.*)\?\-\->' .
+        \    '\|{@\?\(\s\|\_.\)*\(\$\w\|Context::\w(\_.\+)\)\(\s\|\_.\)*}' .
+        \    '\|<block\s\+cond=".\+">\_.*</block>' .
+        \ '\)'
+        \ | if match(getline(1), pattern) != -1 ||
+        \      search(pattern, 'n', s:line)
+        \ |   set ft=htmlxe
+        \ | endif
+        \ | unlet pattern
+augroup END
+
+
+" vim:ft=vim
