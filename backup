@@ -36,5 +36,9 @@ cp $HOME/.zprofile src/zsh/zprofile
 # Backup tidy configuration
 cp $HOME/.tidyrc src/tidy/tidyrc
 
+# Backup pip requirements
+pip freeze > src/pip/requirements.txt
+pip3 freeze > src/pip/py3-requirements.txt
+
 
 # ft:vim=sh
