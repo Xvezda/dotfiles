@@ -118,6 +118,8 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 export PATH="$HOME/private/bin:$PATH"
+test -e "$HOME/private/tokens/overthewire.zsh" && \
+    source "$HOME/private/tokens/overthewire.zsh"
 
 export PATH="$PATH:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin"
 export PATH="$PATH:$HOME/development/flutter/bin"
@@ -134,5 +136,7 @@ prompt pure
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^ ' autosuggest-accept
 source /usr/local/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && \
+    source "${HOME}/.iterm2_shell_integration.zsh"
