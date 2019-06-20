@@ -48,6 +48,7 @@ py==1.8.0
 py2app==0.7.3
 pycodestyle==2.3.1
 pycparser==2.19
+pycrypto==2.6.1
 pyelftools==0.25
 pyflakes==1.6.0
 Pygments==2.4.2
@@ -103,10 +104,12 @@ scipy==0.13.0b1
 singledispatch==3.4.0.3
 six==1.12.0
 sortedcontainers==1.5.10
+spark-parser==1.8.7
 toml==0.10.0
 tornado==5.1.1
 tox==3.12.1
 trollius==2.2
+uncompyle6==3.3.4
 unicorn==1.0.1
 urllib3==1.25.3
 vboxapi==1.0
@@ -114,4 +117,5 @@ virtualenv==16.0.0
 Werkzeug==0.14.1
 wrapt==1.10.11
 xattr==0.6.4
+xdis==4.0.2
 zipp==0.5.1
