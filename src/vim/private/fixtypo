@@ -28,6 +28,8 @@ iabbrev improt import
 iabbrev incldue include
 iabbrev inlcude include
 iabbrev namepsace namespace
+iabbrev paylaod payload
+iabbrev pyaload payload
 iabbrev retrun return
 iabbrev reutrn return
 iabbrev ture true
