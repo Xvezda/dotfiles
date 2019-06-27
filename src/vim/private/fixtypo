@@ -14,12 +14,16 @@ cnoreabbrev Q q
 cnoreabbrev Qall qall
 
 " Set keyword abbreviations
+iabbrev Flase False
+iabbrev Ture True
+iabbrev amin main
 iabbrev calss class
 iabbrev cosnt const
 iabbrev firend friend
 iabbrev flase false
 iabbrev fucntion function
 iabbrev funciton function
+iabbrev imoprt import
 iabbrev improt import
 iabbrev incldue include
 iabbrev inlcude include
