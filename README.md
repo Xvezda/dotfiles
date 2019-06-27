@@ -3,7 +3,7 @@ My dev environment configuration files
 
 ## Dependencies
 [Tmux](https://github.com/tmux/tmux) >= 1.9 && [Vim](https://www.vim.org/) >= 7.4
-* Mac speicific.
+* Mac specific.
     * Brew bundle, reattach-to-user-namespace.
 
 ## Installation
