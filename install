@@ -49,9 +49,15 @@ nvimconf_setup () {
 tmuxconf_setup () {
     # Install tmux configurations
 
+    # Create tmux local settings directory
+    mkdir -p ~/.tmux
+
     # Move tmux configuration files to home directory
     TMUXDOT_PATH="$DIR/src/tmux"
     cp $TMUXDOT_PATH/tmux.conf ~/.tmux.conf
+
+    cp $TMUXDOT_PATH/jellybeans.conf ~/.tmux/jellybeans.conf
+    cp $TMUXDOT_PATH/tmux.local.conf ~/.tmux/tmux.local.conf
 
     # Reload tmux configuration
     tmux source-file ~/.tmux.conf
