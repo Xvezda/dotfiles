@@ -63,6 +63,11 @@ tmuxconf_setup () {
     tmux source-file ~/.tmux.conf
 }
 
+# Zsh dotfiles setup
+zshconf_setup () {
+    ZSHDOT_PATH="$DIR/src/zsh"
+}
+
 # Full dotfiles setup
 dotfiles_setup () {
     vimconf_setup
