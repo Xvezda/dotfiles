@@ -17,6 +17,7 @@ cnoreabbrev Qall qall
 iabbrev Flase False
 iabbrev Ture True
 iabbrev amin main
+iabbrev breka break
 iabbrev calss class
 iabbrev cosnt const
 iabbrev firend friend
