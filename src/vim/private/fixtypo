@@ -36,6 +36,7 @@ iabbrev reutrn return
 iabbrev rnage range
 iabbrev ture true
 iabbrev vodi void
+iabbrev whiel while
 
 
 " vim:ft=vim
