@@ -24,7 +24,7 @@ vimconf_setup () {
     cp $VIMDOT_PATH/vimrc.local.bundles ~/.vimrc.local.bundles
 
     # Install vim plugins
-    vim +PlugInstall +qall
+    vi +PlugInstall +qall
 }
 
 # NeoVim dotfiles setup
