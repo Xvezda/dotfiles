@@ -15,9 +15,10 @@ vimconf_setup () {
     # Move configuration files to home directory
     VIMDOT_PATH="$DIR/src/vim"
     mkdir -p ~/.vim/private
-    mkdir -p ~/.vim/template
+    mkdir -p ~/.vim/syntax
     mkdir -p ~/.vim/UltiSnips
     cp -R $VIMDOT_PATH/private/* ~/.vim/private
+    cp -R $VIMDOT_PATH/syntax/* ~/.vim/syntax
     cp -R $VIMDOT_PATH/UltiSnips/* ~/.vim/UltiSnips
     cp $VIMDOT_PATH/vimrc ~/.vimrc
     cp $VIMDOT_PATH/vimrc.local ~/.vimrc.local
@@ -80,8 +81,8 @@ USAGE_MSG="
 usage:
     $0 <command>
 commands:
-    --setup 'all|vim|tmux'  install dotfiles
-    --fetch                 update dotfiles pull from origin master
+    --setup 'all|vim|tmux|etc'  install dotfiles
+    --fetch                     update dotfiles pull from origin master
 
 *WARNING*
 THIS PROGRAM DOES NOT SUPPORT RESET

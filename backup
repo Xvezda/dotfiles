@@ -22,22 +22,24 @@ cp $HOME/.vimrc.local src/vim/vimrc.local
 cp $HOME/.vimrc.local.bundles src/vim/vimrc.local.bundles
 
 # Backup tmux dotfiles
-cp $HOME/.tmux.conf src/tmux/tmux.conf
-cp $(ls $HOME/.tmux/*.conf) src/tmux/
+which tmux    && cp $HOME/.tmux.conf src/tmux/tmux.conf
+test $? -eq 0 && cp $(ls $HOME/.tmux/*.conf) src/tmux/
 
 # Backup brew dotfiles
 which brew && brew bundle dump && mv $PWD/Brewfile src/brew
 
 # Backup zsh dotfiles
-cp $HOME/.zshrc src/zsh/zshrc
-cp $HOME/.zprofile src/zsh/zprofile
+which zsh     && cp $HOME/.zshrc src/zsh/zshrc
+test $? -eq 0 && cp $HOME/.zprofile src/zsh/zprofile
 
-# Backup tidy configuration
-cp $HOME/.tidyrc src/tidy/tidyrc
+# Backup tidy configurationich
+which tidy && cp $HOME/.tidyrc src/tidy/tidyrc
 
 # Backup pip requirements
-which pip && pip freeze > src/pip/requirements.txt
+which pip  && pip freeze > src/pip/requirements.txt
 which pip3 && pip3 freeze > src/pip/py3-requirements.txt
+
+echo "[*] Success backup!"
 
 
 # ft:vim=sh
