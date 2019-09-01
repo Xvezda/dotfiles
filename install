@@ -67,6 +67,12 @@ tmuxconf_setup () {
 # Zsh dotfiles setup
 zshconf_setup () {
     ZSHDOT_PATH="$DIR/src/zsh"
+
+    cp $ZSHDOT_PATH/zprofile ~/.zprofile
+    cp $ZSHDOT_PATH/zshrc ~/.zshrc
+
+    source ~/.zprofile
+    source ~/.zshrc
 }
 
 # Full dotfiles setup
