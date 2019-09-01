@@ -79,6 +79,16 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+export XVZD_OSTYPE="`TMP__=$(uname | tr 'A-Z' 'a-z'); echo -n ${TMP__%%-*}`"
+case $XVZD_OSTYPE in
+    linux)
+        if [ -f /etc/os-release ]
+        then
+            export XVZD_OSNAME=`head -n 1 /etc/os-release |
+                sed -E 's/NAME="(.*)"/\1/' | tr 'A-Z' 'a-z'`
+        fi
+        ;;
+esac
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -110,8 +120,8 @@ alias easy_install="easy_install --prefix=$HOME/.local"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=
 
-export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:\
-$HOME/.local/lib/python3.7/site-packages"
+# export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:\
+# $HOME/.local/lib/python3.7/site-packages"
 
 # Brew path
 export PATH="/usr/local/bin:$PATH"
@@ -131,12 +141,13 @@ export PATH="$PATH:/usr/local/opt/john-jumbo/share/john"
 export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
 export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 
+fpath+=('/usr/local/lib/node_modules/pure-prompt/functions')
 autoload -U promptinit; promptinit
 prompt pure
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
-source /usr/local/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && \
     source "${HOME}/.iterm2_shell_integration.zsh"

@@ -1,18 +1,32 @@
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
+test -z $XDG_CONFIG_HOME && export XDG_CONFIG_HOME="$HOME/.config"
+test -z $XDG_CACHE_HOME && export XDG_CACHE_HOME="$HOME/.cache"
+test -z $XDG_DATA_HOME && export XDG_DATA_HOME="$HOME/.local/share"
 
-ctags() {
-    $(brew --prefix)/bin/ctags "$@"
-}
+# ctags() {
+#     $(brew --prefix)/bin/ctags "$@"
+# }
 
 openvpn() {
     sudo $(brew --prefix openvpn)/sbin/openvpn "$@"
 }
 
 # rm to rm trash
-alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
-alias del="rmtrash"
+alias rm="echo Use 'del', or the full path e.g.'/bin/rm'"
+del() {
+    RM_TRASH__=""
+    case $XVZD_OSTYPE in
+        darwin)
+            which rmtrash && RM_TRASH__="rmtrash"
+            ;;
+        linux)
+            if [ $XVZD_OSNAME = 'ubuntu' ]
+            then
+                RM_TRASH__="gvfs-trash"
+            fi
+            ;;
+    esac
+    $RM_TRASH__ "$@"
+}
 
 # Additional git alias
 gcod() {
@@ -29,6 +43,8 @@ gpoc() {
 alias gs="git status"
 
 # Docker stuffs
+alias docker='sudo docker'
+alias docker-compose='sudo docker-compose'
 drl() {
     docker rm $(docker ps -a -q -l -f status=exited)
 }
@@ -46,10 +62,6 @@ alias drm="docker rm"
 alias dps="docker ps"
 alias dpsa="docker ps -a"
 
-alias vim="nvim"
-alias vi="nvim"
-alias vimdiff="nvim -d"
-export EDITOR=/usr/local/bin/nvim
 
 # Fix telnet tmux issue
 alias telnet='TERM=xterm telnet'
