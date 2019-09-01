@@ -3,7 +3,8 @@ test -z $XDG_CACHE_HOME && export XDG_CACHE_HOME="$HOME/.cache"
 test -z $XDG_DATA_HOME && export XDG_DATA_HOME="$HOME/.local/share"
 
 # Linux specific commands
-if [ $XVZD_OSTYPE = "linux" ]; then
+if [ "$XVZD_OSTYPE" = "linux" ]
+then
     pbcopy() {
         xclip -selection clipboard
     }
@@ -17,7 +18,8 @@ if [ $XVZD_OSTYPE = "linux" ]; then
 fi
 
 # Mac specific commands
-if [ $XVZD_OSTYPE = "darwin" ]; then
+if [ "$XVZD_OSTYPE" = "darwin" ]
+then
     ctags() {
         $(brew --prefix)/bin/ctags "$@"
     }

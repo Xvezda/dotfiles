@@ -120,16 +120,19 @@ alias easy_install="easy_install --prefix=$HOME/.local"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=
 
-# export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:\
-# $HOME/.local/lib/python3.7/site-packages"
+if [ "$XVZD_OSTYPE" = "darwin" ]
+then
+    export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:\
+    $HOME/.local/lib/python3.7/site-packages"
+fi
 
 # Brew path
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-export PATH="$HOME/private/bin:$PATH"
-test -e "$HOME/private/tokens/overthewire.zsh" && \
-    source "$HOME/private/tokens/overthewire.zsh"
+export PATH="$HOME/vroot/usr/bin:$PATH"
+test -e "$HOME/vroot/usr/tokens/overthewire.zsh" && \
+    source "$HOME/vroot/usr/tokens/overthewire.zsh"
 
 export PATH="$PATH:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin"
 export PATH="$PATH:$HOME/development/flutter/bin"
@@ -146,10 +149,16 @@ autoload -U promptinit; promptinit
 prompt pure
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+test -e /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh && \
+    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+test -e /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh && \
+    source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+test -e /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+test -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && \
     source "${HOME}/.iterm2_shell_integration.zsh"
 
-[[ -s "/home/noname/.gvm/scripts/gvm" ]] && source "/home/noname/.gvm/scripts/gvm"
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
