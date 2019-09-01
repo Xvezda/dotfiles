@@ -11,7 +11,8 @@ My dev environment configuration files
 git clone https://github.com/Xvezda/dotfiles.git
 cd dotfiles
 chmod +x install
-./install --setup "all" # or "vim", "nvim", "tmux" separately.
+
+./install # Check out usage instruction please
 ```
 
 ## Shortcuts

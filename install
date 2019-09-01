@@ -85,8 +85,12 @@ USAGE_MSG="
 usage:
     $0 <command>
 commands:
-    --setup 'all|vim|tmux|etc'  install dotfiles
-    --fetch                     update dotfiles pull from origin master
+    --setup <target>  install dotfiles
+            all
+            zsh
+            vim
+            tmux
+    --fetch           update dotfiles pull from origin master
 
 *WARNING*
 THIS PROGRAM DOES NOT SUPPORT RESET
