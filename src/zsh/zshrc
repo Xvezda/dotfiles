@@ -90,6 +90,10 @@ case $XVZD_OSTYPE in
         ;;
 esac
 
+fpath+=('/usr/local/lib/node_modules/pure-prompt/functions')
+autoload -U promptinit; promptinit
+prompt pure
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -143,10 +147,6 @@ export PATH="$PATH:/usr/local/opt/john-jumbo/share/john"
 
 export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
 export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
-
-fpath+=('/usr/local/lib/node_modules/pure-prompt/functions')
-autoload -U promptinit; promptinit
-prompt pure
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 test -e /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh && \

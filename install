@@ -70,9 +70,6 @@ zshconf_setup () {
 
     cp $ZSHDOT_PATH/zprofile ~/.zprofile
     cp $ZSHDOT_PATH/zshrc ~/.zshrc
-
-    source ~/.zprofile
-    source ~/.zshrc
 }
 
 # Full dotfiles setup
