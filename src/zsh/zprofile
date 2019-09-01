@@ -15,6 +15,8 @@ then
 
     alias docker='sudo docker'
     alias docker-compose='sudo docker-compose'
+
+    alias pip='python -m pip'
 fi
 
 # Mac specific commands
