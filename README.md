@@ -1,6 +1,11 @@
 # dotfiles
 My dev environment configuration files
 
+## Works on
+- Linux (Confirmed on Ubuntu 16.04)
+- Mac OS X (Confirmed on MacOS Mojave 10.14.5)
+- Msys2
+
 ## Dependencies
 [Tmux](https://github.com/tmux/tmux) >= 1.9 && [Vim](https://www.vim.org/) >= 7.4
 * Mac specific.
