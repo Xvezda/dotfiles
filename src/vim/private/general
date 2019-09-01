@@ -20,6 +20,9 @@ set foldopen+=jump
 set colorcolumn=72
 highlight ColorColumn ctermbg=236 guibg=#333333
 
+" Surpress warning
+let g:go_version_warning = 0
+
 " Highlight characters over 79
 " https://stackoverflow.com/a/10993757
 augroup vimrc_autocmds
@@ -46,6 +49,9 @@ autocmd FileType java setlocal colorcolumn=100
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType jst setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
+" HTML indent to 2 spaces
+autocmd FileType html,htmldjango setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 " Override vim-bootstrap default python colorcolumn value to 72
 " https://www.python.org/dev/peps/pep-0008/#maximum-line-length

@@ -36,8 +36,7 @@ test $? -eq 0 && cp $HOME/.zprofile src/zsh/zprofile
 which tidy && cp $HOME/.tidyrc src/tidy/tidyrc
 
 # Backup pip requirements
-which pip  && pip freeze > src/pip/requirements.txt
-which pip3 && pip3 freeze > src/pip/py3-requirements.txt
+which pip  && pip freeze > src/pip/requirements-${XVZD_OSTYPE}.txt
 
 echo "[*] Success backup!"
 

@@ -151,3 +151,5 @@ bindkey '^ ' autosuggest-accept
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && \
     source "${HOME}/.iterm2_shell_integration.zsh"
+
+[[ -s "/home/noname/.gvm/scripts/gvm" ]] && source "/home/noname/.gvm/scripts/gvm"

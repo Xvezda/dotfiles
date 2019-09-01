@@ -2,13 +2,30 @@ test -z $XDG_CONFIG_HOME && export XDG_CONFIG_HOME="$HOME/.config"
 test -z $XDG_CACHE_HOME && export XDG_CACHE_HOME="$HOME/.cache"
 test -z $XDG_DATA_HOME && export XDG_DATA_HOME="$HOME/.local/share"
 
-# ctags() {
-#     $(brew --prefix)/bin/ctags "$@"
-# }
+# Linux specific commands
+if [ $XVZD_OSTYPE = "linux" ]; then
+    pbcopy() {
+        xclip -selection clipboard
+    }
 
-openvpn() {
-    sudo $(brew --prefix openvpn)/sbin/openvpn "$@"
-}
+    pbpaste() {
+        xclip -selection clipboard -o
+    }
+
+    alias docker='sudo docker'
+    alias docker-compose='sudo docker-compose'
+fi
+
+# Mac specific commands
+if [ $XVZD_OSTYPE = "darwin" ]; then
+    ctags() {
+        $(brew --prefix)/bin/ctags "$@"
+    }
+
+    openvpn() {
+        sudo $(brew --prefix openvpn)/sbin/openvpn "$@"
+    }
+fi
 
 # rm to rm trash
 alias rm="echo Use 'del', or the full path e.g.'/bin/rm'"
@@ -43,8 +60,6 @@ gpoc() {
 alias gs="git status"
 
 # Docker stuffs
-alias docker='sudo docker'
-alias docker-compose='sudo docker-compose'
 drl() {
     docker rm $(docker ps -a -q -l -f status=exited)
 }

@@ -16,6 +16,7 @@ cnoreabbrev Qall qall
 " Set keyword abbreviations
 iabbrev Flase False
 iabbrev Ture True
+iabbrev abrot abort
 iabbrev amin main
 iabbrev breka break
 iabbrev calss class
