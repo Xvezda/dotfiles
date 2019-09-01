@@ -10,6 +10,8 @@ My dev environment configuration files
 [Tmux](https://github.com/tmux/tmux) >= 1.9 && [Vim](https://www.vim.org/) >= 7.4
 * Mac specific.
     * Brew bundle, reattach-to-user-namespace.
+* Linux
+    * `sudo apt-get install xclip`
 
 ## Installation
 ```
