@@ -33,7 +33,7 @@ brew "jq"
 brew "kotlin"
 brew "lua"
 brew "luarocks"
-brew "python@2", link: false
+brew "python@2"
 brew "mercurial"
 brew "neofetch"
 brew "neovim"
