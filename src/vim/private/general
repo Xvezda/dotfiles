@@ -53,6 +53,9 @@ autocmd FileType jst setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 " HTML indent to 2 spaces
 autocmd FileType html,htmldjango setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
+" Vue indent to 2 spaces
+autocmd FileType vue setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
 " Override vim-bootstrap default python colorcolumn value to 72
 " https://www.python.org/dev/peps/pep-0008/#maximum-line-length
 autocmd FileType python setlocal colorcolumn=72
