@@ -33,6 +33,9 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 "2}}}
+" Vue {{{2
+Plug 'posva/vim-vue'
+"2}}}
 " Javascript {{{2
 Plug 'jelera/vim-javascript-syntax'
 "2}}}
