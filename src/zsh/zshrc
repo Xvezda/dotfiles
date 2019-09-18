@@ -150,6 +150,12 @@ export PATH="$PATH:/usr/local/opt/john-jumbo/share/john"
 export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
 export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 
+export NVM_DIR="$HOME/.config"
+# This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 test -e /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh && \
     source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
