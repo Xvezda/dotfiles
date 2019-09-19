@@ -150,12 +150,6 @@ export PATH="$PATH:/usr/local/opt/john-jumbo/share/john"
 export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
 export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 
-export NVM_DIR="$HOME/.config"
-# This loads nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-# This loads nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 test -e /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh && \
     source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -169,4 +163,21 @@ test -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && \
     source "${HOME}/.iterm2_shell_integration.zsh"
 
+# Load gvm
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+export NVM_DIR="$HOME/.config"
+# This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# Load rvm
+if [[ -s $HOME/.rvm/scripts/rvm ]]; then
+  source $HOME/.rvm/scripts/rvm;
+fi
+
+
