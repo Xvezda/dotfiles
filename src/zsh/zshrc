@@ -53,9 +53,19 @@ ZSH_THEME="robbyrussell"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
+export HISTSIZE=5000
+export SAVEHIST=1000
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+#
+# https://github.com/clvv/fasd/issues/18#issuecomment-422921618
+eval "$(fasd --init posix-alias)" # Anything you want enabled BUT zsh-hook
+_fasd_preexec() {
+    { eval "fasd --proc \$(fasd --sanitize \$2)"; } &|
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec _fasd_preexec
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -64,7 +74,6 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   brew
-  fasd
   git
   man
   node
@@ -94,6 +103,7 @@ fpath+=('/usr/local/lib/node_modules/pure-prompt/functions')
 autoload -U promptinit; promptinit
 prompt pure
 
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -120,8 +130,6 @@ prompt pure
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export HISTSIZE=5000
-export SAVEHIST=1000
 
 alias easy_install="easy_install --prefix=$HOME/.local"
 
