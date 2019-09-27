@@ -120,6 +120,9 @@ prompt pure
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+export HISTSIZE=5000
+export SAVEHIST=1000
+
 alias easy_install="easy_install --prefix=$HOME/.local"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=
