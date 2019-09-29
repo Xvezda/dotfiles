@@ -32,8 +32,11 @@ which brew && brew bundle dump && mv $PWD/Brewfile src/brew
 which zsh     && cp $HOME/.zshrc src/zsh/zshrc
 test $? -eq 0 && cp $HOME/.zprofile src/zsh/zprofile
 
-# Backup tidy configurationich
+# Backup tidy configuration
 which tidy && cp $HOME/.tidyrc src/tidy/tidyrc
+
+# Backup jshint configuration
+which jshint && cp $HOME/.jshintrc src/jshint/jshintrc
 
 # Backup pip requirements
 # Prefer python3 if exists
