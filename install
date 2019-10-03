@@ -59,6 +59,12 @@ tmuxconf_setup () {
 
     cp $TMUXDOT_PATH/jellybeans.conf ~/.tmux/jellybeans.conf
     cp $TMUXDOT_PATH/tmux.local.conf ~/.tmux/tmux.local.conf
+    cp $TMUXDOT_PATH/key.conf ~/.tmux/key.conf
+
+    # Backward compatibility
+    cp $TMUXDOT_PATH/jellybeans.old.conf ~/.tmux/jellybeans.old.conf
+    cp $TMUXDOT_PATH/tmux.local.old.conf ~/.tmux/tmux.local.old.conf
+    cp $TMUXDOT_PATH/key.old.conf ~/.tmux/key.old.conf
 
     # Reload tmux configuration
     tmux source-file ~/.tmux.conf
