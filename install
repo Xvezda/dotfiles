@@ -82,11 +82,27 @@ zshconf_setup () {
     cp $ZSHDOT_PATH/zshrc ~/.zshrc
 }
 
+tidyconf_setup () {
+    which tidy > /dev/null 2>&1 || return
+    TIDYDOT_PATH="$DIR/src/tidy"
+
+    cp $TIDYDOT_PATH/tidyrc ~/.tidyrc
+}
+
+jshintconf_setup () {
+    which jshint > /dev/null 2>&1 || return
+    JSHINTDOT_PATH="$DIR/src/jshint"
+
+    cp $JSHINTDOT_PATH/jshintrc ~/.jshintrc
+}
+
 # Full dotfiles setup
 dotfiles_setup () {
     zshconf_setup
     vimconf_setup
     tmuxconf_setup
+    tidyconf_setup
+    jshintconf_setup
 }
 
 
