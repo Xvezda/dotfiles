@@ -93,13 +93,13 @@ case $XVZD_OSTYPE in
     linux)
         if [ -f /etc/os-release ]
         then
-            export XVZD_OSNAME=`head -n 1 /etc/os-release |
-                sed -E 's/NAME="(.*)"/\1/' | tr 'A-Z' 'a-z'`
+            export XVZD_OSNAME=`cat /etc/os-release | grep -E '^NAME="(.*)"' |
+                sed -E 's/^NAME="(.*)"/\1/' | tr 'A-Z' 'a-z'`
         fi
         ;;
 esac
 
-fpath+=('/usr/local/lib/node_modules/pure-prompt/functions')
+fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
 prompt pure
 
