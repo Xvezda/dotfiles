@@ -7,14 +7,15 @@ My dev environment configuration files
 - Msys2 (May have some compatibility issue)
 
 ## Dependencies
-- [Tmux](https://github.com/tmux/tmux) >= 1.9 && [Vim](https://www.vim.org/) >= 7.4
+- [tmux](https://github.com/tmux/tmux) >= 1.9 && [Vim](https://www.vim.org/) >= 7.4
 - zsh && [oh_my_zsh](https://ohmyz.sh/)
-- [TMUX Plugin Manager](https://github.com/tmux-plugins/tpm#tmux-plugin-manager)
+- [tpm](https://github.com/tmux-plugins/tpm#tmux-plugin-manager)
 - [fasd](https://github.com/clvv/fasd#install)
-- [Pure prompt](https://github.com/sindresorhus/pure#manually)
+- [pure](https://github.com/sindresorhus/pure#manually)
 
 * Mac
-    * Brew bundle, reattach-to-user-namespace.
+    * reattach-to-user-namespace
+    * Brew bundle (optional)
 * Linux
     * `sudo apt-get install xclip`
 
