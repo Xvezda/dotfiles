@@ -37,7 +37,8 @@ nvimconf_setup () {
     # Move configuration files to home directory
     VIMDOT_PATH="$DIR/src/vim"
     mkdir -p $XDG_CONFIG_HOME/nvim/private
-    mkdir -p $XDG_CONFIG_HOME/nvim/template
+    mkdir -p $XDG_CONFIG_HOME/nvim/syntax
+    mkdir -p $XDG_CONFIG_HOME/nvim/UltiSnips
     cp -R $VIMDOT_PATH/private/* $XDG_CONFIG_HOME/nvim/private
     cp -R $VIMDOT_PATH/UltiSnips/* $XDG_CONFIG_HOME/nvim/UltiSnips
     cp $VIMDOT_PATH/vimrc $XDG_CONFIG_HOME/nvim/init.vim
