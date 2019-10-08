@@ -45,6 +45,9 @@ nvimconf_setup () {
     cp $VIMDOT_PATH/vimrc.local $XDG_CONFIG_HOME/nvim/local_init.vim
     cp $VIMDOT_PATH/vimrc.local.bundles $XDG_CONFIG_HOME/nvim/local_bundles.vim
 
+    test -d ~/.vim || ln -s $XDG_CONFIG_HOME/nvim ~/.vim
+    test -f ~/.vimrc || ln -s $XDG_CONFIG_HOME/nvim/init.vim ~/.vimrc
+
     # Install vim plugins
     nvim +PlugInstall +qall
 }
