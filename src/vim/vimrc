@@ -526,19 +526,20 @@ if has('macunix')
   noremap <leader>y "+y<CR>
   noremap <leader>p "+gP<CR>
   noremap <leader>x "+x<CR>
-elseif has('win32') || has('win32unix')
+elseif has('win32') || has('win32unix') || executable('clip.exe')
   " If windows (Cygwin)
-  vmap <silent> <C-x> :!clip<CR>
-  vmap <silent> <C-c> :w !clip<CR><CR>
-  noremap <leader>y "+y<CR>
-  noremap <leader>p "+gP<CR>
-  noremap <leader>x "+x<CR>
+  augroup WSLYank
+    autocmd!
+    autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | clip.exe')
+  augroup END
+  vmap <silent> <C-x> :!clip.exe<CR>
+  vmap <silent> <C-c> :w !clip.exe<CR><CR>
 else  " If Linux
   if executable('xclip')
     vmap <silent> <C-x> :!xclip -selection clipboard<CR>
     vmap <silent> <C-c> :w !xclip -selection clipboard<CR><CR>
     vmap <silent> <leader>y y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
-    nmap <silent> <leader>p :call setreg("\"",system("xclip -o -selection clipboard"))<CR>gP
+    nmap <silent> <leader>p :call setreg("\"", system("xclip -o -selection clipboard"))<CR>gP
   endif
 endif
 
