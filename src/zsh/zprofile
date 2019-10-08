@@ -33,7 +33,6 @@ then
     alias vim="nvim"
     alias vi="nvim"
     alias vimdiff="nvim -d"
-    export EDITOR=/usr/local/bin/nvim
 fi
 
 # rm to rm trash
