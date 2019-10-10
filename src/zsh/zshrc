@@ -130,6 +130,7 @@ prompt pure
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 TMP__=`which nvim` && export EDITOR="$TMP__" || export EDITOR=`which vi`
 
 alias easy_install="easy_install --prefix=$HOME/.local"
