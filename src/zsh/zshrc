@@ -88,7 +88,13 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export XVZD_OSTYPE="`TMP__=$(uname | tr 'A-Z' 'a-z'); echo -n ${TMP__%%-*}`"
+if [[ `uname -a` == *"Microsoft"* ]]
+then
+    export XVZD_OSTYPE="windows"
+else
+    export XVZD_OSTYPE="`TMP__=$(uname | tr 'A-Z' 'a-z'); echo -n ${TMP__%%-*}`"
+fi
+
 case $XVZD_OSTYPE in
     linux)
         if [ -f /etc/os-release ]
