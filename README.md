@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/Xvezda/xvezda.github.io.svg?branch=master)](https://travis-ci.com/Xvezda/xvezda.github.io)
 # dotfiles
 My dev environment configuration files
 
