@@ -19,7 +19,7 @@ elif [ "${TRAVIS_OS_NAME}" == osx ]; then
 fi
 
 # Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+yes | sudo sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # Install tpm
 mkdir -p $HOME/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
