@@ -12,18 +12,23 @@ if [ "${TRAVIS_OS_NAME}" == linux ]; then
 
     sudo apt-get install -yq zsh tmux vim fasd nodejs
     sudo apt-get install -yq xclip
+
+    # Install oh-my-zsh
+    yes | sudo sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    sudo chown travis:travis $HOME/.zshrc
 elif [ "${TRAVIS_OS_NAME}" == osx ]; then
     brew update
     brew install zsh tmux neovim fasd
     brew upgrade node
     brew install reattach-to-user-namespace
+
+    yes | sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-# Install oh-my-zsh
-yes | sudo sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # Install tpm
 mkdir -p $HOME/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 # Install pure
 mkdir -p "$HOME/.zsh"
 git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+
