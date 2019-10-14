@@ -44,7 +44,7 @@ which python3 && PYTHON_BIN=python3 || PYTHON_BIN=python
 $PYTHON_BIN -m pip --version && \
     $PYTHON_BIN -m pip freeze > src/pip/requirements-${XVZD_OSTYPE}.txt
 
-echo "[*] Success backup!"
+echo "[+] Success backup!"
 
 
 # ft:vim=sh
