@@ -5,12 +5,15 @@ set -e
 if [ "${TRAVIS_OS_NAME}" == linux ]; then
     sudo apt-get -qq update
     sudo apt-get install -yq build-essential
-    sudo apt-get install -yq git curl
+
+    sudo add-apt-repository -yq ppa:aacebedo/fasd
+    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    sudo apt-get -qq update
+
     sudo apt-get install -yq zsh tmux vim fasd nodejs npm xclip
     sudo apt-get install -yq xclip
 elif [ "${TRAVIS_OS_NAME}" == osx ]; then
     brew update
-    brew install git curl
     brew install zsh tmux neovim fasd node
     brew install reattach-to-user-namespace
 fi
