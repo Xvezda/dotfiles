@@ -142,7 +142,7 @@ let g:tmuxline_theme = 'jellybeans'
 let g:lightline = {
 \ 'colorscheme': 'jellybeans',
 \ }
-colorscheme jellybeans
+silent! colorscheme jellybeans
 
 syntax on
 set ruler
