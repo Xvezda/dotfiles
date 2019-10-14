@@ -10,7 +10,7 @@ if [ "${TRAVIS_OS_NAME}" == linux ]; then
     curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
     sudo apt-get -qq update
 
-    sudo apt-get install -yq zsh tmux vim fasd nodejs npm xclip
+    sudo apt-get install -yq zsh tmux vim fasd nodejs
     sudo apt-get install -yq xclip
 elif [ "${TRAVIS_OS_NAME}" == osx ]; then
     brew update
