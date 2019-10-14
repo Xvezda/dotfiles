@@ -26,7 +26,7 @@ vimconf_setup () {
     cp $VIMDOT_PATH/vimrc.local.bundles ~/.vimrc.local.bundles
 
     # Install vim plugins
-    vim +'silent! PlugInstall' +qall
+    vim -es +'silent! PlugInstall' +qall
 }
 
 # NeoVim dotfiles setup
@@ -51,7 +51,7 @@ nvimconf_setup () {
     test -f ~/.vimrc.local.bundles || ln -s $XDG_CONFIG_HOME/nvim/local_bundles.vim ~/.vimrc.local.bundles
 
     # Install vim plugins
-    nvim +'silent! PlugInstall' +qall
+    nvim -es +'silent! PlugInstall' +qall
 }
 
 # Tmux dotfiles setup
