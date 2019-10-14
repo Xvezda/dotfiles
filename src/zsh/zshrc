@@ -170,14 +170,10 @@ export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
 export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-test -e /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
-    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-test -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-test -e /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh && \
-    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-test -e /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh && \
-    source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+test -e ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
+    source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+test -e ~/.zsh/zsh-autosuggestions.zsh && \
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 test -e "${HOME}/.iterm2_shell_integration.zsh" && \
     source "${HOME}/.iterm2_shell_integration.zsh"

@@ -86,6 +86,20 @@ zshconf_setup () {
 
     cp $ZSHDOT_PATH/zprofile ~/.zprofile
     cp $ZSHDOT_PATH/zshrc ~/.zshrc
+
+    local apt_install_path="/usr/share"
+    local brew_install_path="/usr/local/share"
+    local syntax_highlighting_pkg="zsh-syntax-highlighting"
+    local autosuggestions_pkg="zsh-autosuggestions"
+
+    mkdir -p ~/.zsh
+    for install_path in "$apt_install_path" "$brew_install_path"
+    do
+        test -e $install_path/$syntax_highlighting_pkg && \
+            ln -s $install_path/$syntax_highlighting_pkg ~/.zsh/$syntax_highlighting_pkg
+        test -e $install_path/$autosuggestions_pkg && \
+            ln -s $install_path/$autosuggestions_pkg ~/.zsh/$autosuggestions_pkg
+    done
 }
 
 tidyconf_setup () {
