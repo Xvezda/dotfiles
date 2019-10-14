@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/Xvezda/dotfiles.svg?branch=master)](https://travis-ci.com/Xvezda/dotfiles)
 
-My develop environment configuration files with auto install
+My develop environment configuration files with auto install script.
 
 ## Platforms
 - Linux (Confirmed on Ubuntu 16.04)
