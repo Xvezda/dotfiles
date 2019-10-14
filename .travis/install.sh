@@ -6,7 +6,7 @@ if [ "${TRAVIS_OS_NAME}" == linux ]; then
     sudo apt-get -qq update
     sudo apt-get install -yq build-essential
 
-    sudo add-apt-repository -yq ppa:aacebedo/fasd
+    sudo add-apt-repository ppa:aacebedo/fasd
     curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
     sudo apt-get -qq update
 
