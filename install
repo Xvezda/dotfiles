@@ -76,7 +76,12 @@ tmuxconf_setup () {
     cp $TMUXDOT_PATH/key.old.conf ~/.tmux/key.old.conf
 
     # Reload tmux configuration
-    tmux source-file ~/.tmux.conf
+    if [ -n "$TMUX" ]
+    then
+        tmux source-file ~/.tmux.conf
+    else
+        tmux start-server \; source-file ~/.tmux.conf
+    fi
 }
 
 # Zsh dotfiles setup
