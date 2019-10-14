@@ -14,7 +14,8 @@ if [ "${TRAVIS_OS_NAME}" == linux ]; then
     sudo apt-get install -yq xclip
 elif [ "${TRAVIS_OS_NAME}" == osx ]; then
     brew update
-    brew install zsh tmux neovim fasd node
+    brew install zsh tmux neovim fasd
+    brew upgrade node
     brew install reattach-to-user-namespace
 fi
 
