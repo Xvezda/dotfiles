@@ -1,6 +1,8 @@
-[![Build Status](https://travis-ci.com/Xvezda/dotfiles.svg?branch=master)](https://travis-ci.com/Xvezda/dotfiles)
 # dotfiles
-My dev environment configuration files
+
+[![Build Status](https://travis-ci.com/Xvezda/dotfiles.svg?branch=master)](https://travis-ci.com/Xvezda/dotfiles)
+
+My develop environment configuration files with auto install
 
 ## Platforms
 - Linux (Confirmed on Ubuntu 16.04)
