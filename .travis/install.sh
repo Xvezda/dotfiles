@@ -3,9 +3,16 @@ set -x
 set -e
 
 if [ "${TRAVIS_OS_NAME}" == linux ]; then
-    sudo apt-get install -yq git curl zsh tmux vim fasd nodejs npm xclip
+    sudo apt-get -qq update
+    sudo apt-get install -yq build-essential
+    sudo apt-get install -yq git curl
+    sudo apt-get install -yq zsh tmux vim fasd nodejs npm xclip
+    sudo apt-get install -yq xclip
 elif [ "${TRAVIS_OS_NAME}" == osx ]; then
-    brew install git curl zsh tmux neovim fasd node reattach-to-user-namespace
+    brew update
+    brew install git curl
+    brew install zsh tmux neovim fasd node
+    brew install reattach-to-user-namespace
 fi
 
 # Install oh-my-zsh
