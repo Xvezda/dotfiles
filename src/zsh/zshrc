@@ -172,7 +172,7 @@ export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 test -e ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
     source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-test -e ~/.zsh/zsh-autosuggestions.zsh && \
+test -e ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh && \
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 test -e "${HOME}/.iterm2_shell_integration.zsh" && \
