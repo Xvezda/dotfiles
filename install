@@ -11,7 +11,7 @@ cd $DIR
 # Vim dotfiles setup
 vimconf_setup () {
     # Install vim configurations
-    which vim > /dev/null 2>&1 || return
+    which vim > /dev/null 2>&1 || return 0
 
     # Move configuration files to home directory
     VIMDOT_PATH="$DIR/src/vim"
@@ -32,7 +32,7 @@ vimconf_setup () {
 # NeoVim dotfiles setup
 nvimconf_setup () {
     # Install nvim configurations
-    which nvim > /dev/null 2>&1 || return
+    which nvim > /dev/null 2>&1 || return 0
 
     # Move configuration files to home directory
     VIMDOT_PATH="$DIR/src/vim"
@@ -57,7 +57,7 @@ nvimconf_setup () {
 # Tmux dotfiles setup
 tmuxconf_setup () {
     # Install tmux configurations
-    which tmux > /dev/null 2>&1 || return
+    which tmux > /dev/null 2>&1 || return 0
 
     # Create tmux local settings directory
     mkdir -p ~/.tmux
@@ -86,7 +86,7 @@ tmuxconf_setup () {
 
 # Zsh dotfiles setup
 zshconf_setup () {
-    which zsh > /dev/null 2>&1 || return
+    which zsh > /dev/null 2>&1 || return 0
     ZSHDOT_PATH="$DIR/src/zsh"
 
     cp $ZSHDOT_PATH/zprofile ~/.zprofile
@@ -108,14 +108,14 @@ zshconf_setup () {
 }
 
 tidyconf_setup () {
-    which tidy > /dev/null 2>&1 || return
+    which tidy > /dev/null 2>&1 || return 0
     TIDYDOT_PATH="$DIR/src/tidy"
 
     cp $TIDYDOT_PATH/tidyrc ~/.tidyrc
 }
 
 jshintconf_setup () {
-    which jshint > /dev/null 2>&1 || return
+    which jshint > /dev/null 2>&1 || return 0
     JSHINTDOT_PATH="$DIR/src/jshint"
 
     cp $JSHINTDOT_PATH/jshintrc ~/.jshintrc
