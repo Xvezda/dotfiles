@@ -7,11 +7,14 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd $DIR
 
 # Create path
-BACKUP_DIRS=("vim" "tmux" "brew" "zsh" "tidy")
+BACKUP_DIRS=("git" "vim" "tmux" "brew" "zsh" "tidy")
 for p in "${BACKUP_DIRS[@]}"
 do
     mkdir -p src/$p
 done
+
+# Backup git dotfiles
+which git && test -f $HOME/.gitignore && cp $HOME/.gitignore src/git/gitignore
 
 # Backup vim dotfiles
 cp -R $HOME/.vim/private src/vim/
