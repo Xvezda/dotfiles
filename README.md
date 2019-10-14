@@ -1,7 +1,7 @@
 # dotfiles
 My dev environment configuration files
 
-## Works on
+## Platforms
 - Linux (Confirmed on Ubuntu 16.04)
 - Mac OS X (Confirmed on MacOS Mojave 10.14.5)
 - Windows (Confirmed on Insider Preview Build 18995)
