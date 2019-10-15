@@ -38,12 +38,12 @@ autocmd FileType c setlocal cinoptions+=:0
 
 " C++ indent to 2 spaces
 autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-            \ cinoptions+=g0,N-s
+      \ cinoptions+=g0,N-s
 
 " Java indent to 2 spaces
 autocmd FileType java setlocal colorcolumn=100
-            \ tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-            \ | call matchdelete(b:match_overlength_id)
+      \ tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+      \ | call matchdelete(b:match_overlength_id)
 
 " Javascript indent to 2 spaces
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
@@ -62,9 +62,9 @@ autocmd FileType vue setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 " Override vim-bootstrap default python colorcolumn value to 72
 " https://www.python.org/dev/peps/pep-0008/#maximum-line-length
 autocmd FileType python setlocal colorcolumn=72
-            \ tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-            \ foldnestmax=2 foldmethod=indent
-            \ completeopt-=preview
+      \ tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+      \ foldnestmax=2 foldmethod=indent
+      \ completeopt-=preview
 
 " Vim script indent options
 autocmd FileType vim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab

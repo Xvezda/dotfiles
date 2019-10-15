@@ -12,8 +12,8 @@ function! UnderlineHeading(level)
 endfunction
 
 for level in range(1, 6)
-    silent execute 'nnoremap <leader>u' . level
-                \. ' :call UnderlineHeading(' . level . ')<CR>'
+  silent execute 'nnoremap <leader>u' . level
+        \. ' :call UnderlineHeading(' . level . ')<CR>'
 endfor
 
 
