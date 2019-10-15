@@ -21,8 +21,8 @@ jobs:
         run: export TRAVIS_OS_NAME=windows
 
       - name: Install
-        run: bash --noprofile --norc -eo pipefail ./.travis/install.sh
+        run: bash .travis/install.sh
 
       - name: Script
-        run: bash --noprofile --norc -eo pipefail ./.travis/script.sh
+        run: bash .travis/script.sh
 
