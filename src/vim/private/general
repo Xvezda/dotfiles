@@ -49,6 +49,9 @@ autocmd FileType java setlocal colorcolumn=100
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType jst setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType typescript setlocal colorcolumn=100
+      \ tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+      \ | call matchdelete(b:match_overlength_id)
 
 " HTML indent to 2 spaces
 autocmd FileType html,htmldjango setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
