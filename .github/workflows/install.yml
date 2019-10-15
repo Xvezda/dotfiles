@@ -10,15 +10,23 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
+      - name: Clone repository
+        uses: actions/checkout@master
+
       - name: Set linux environment variable
         if: matrix.os == 'ubuntu-latest'
         run: export TRAVIS_OS_NAME=linux
+        shell: bash
+
       - name: Set macOS environment variable
         if: matrix.os == 'macOS-latest'
         run: export TRAVIS_OS_NAME=osx
+        shell: bash
+
       - name: Set windows environment variable
         if: matrix.os == 'windows-latest'
         run: export TRAVIS_OS_NAME=windows
+        shell: bash
 
       - name: Install
         run: bash .travis/install.sh
