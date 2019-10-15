@@ -28,6 +28,7 @@ let g:go_version_warning = 0
 augroup vimrc_autocmds
   highlight link OverLength Error
   let b:match_overlength_id = matchadd('OverLength', '\%79v.\+')
+  unlet b:match_overlength_id
 augroup END
 
 " Add more contrast to visual mode
@@ -43,7 +44,7 @@ autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 " Java indent to 2 spaces
 autocmd FileType java setlocal colorcolumn=100
       \ tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-      \ | call matchdelete(b:match_overlength_id)
+      \ | call clearmatches()
 
 " Javascript indent to 2 spaces
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
@@ -51,7 +52,7 @@ autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType jst setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType typescript setlocal colorcolumn=100
       \ tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-      \ | call matchdelete(b:match_overlength_id)
+      \ | call clearmatches()
 
 " HTML indent to 2 spaces
 autocmd FileType html,htmldjango setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
