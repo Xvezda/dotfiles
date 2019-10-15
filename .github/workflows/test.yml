@@ -29,8 +29,10 @@ jobs:
         shell: bash
 
       - name: Install dependencies
-        run: bash tools/ci/install.sh
+        run: ./tools/ci/install.sh
+        shell: bash
 
       - name: Run install script
-        run: bash tools/ci/script.sh
+        run: ./tools/ci/script.sh
+        shell: bash
 

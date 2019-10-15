@@ -2,7 +2,8 @@
 set -x
 set -e
 
-if [ "${ACTIONS_OS_NAME}" == linux || "${ACTIONS_OS_NAME}" == windows ]; then
+if  [ "${ACTIONS_OS_NAME}" == linux ] || \
+    [ "${ACTIONS_OS_NAME}" == windows ]; then
     sudo apt-get -qq update
     sudo apt-get install -yq build-essential
 
