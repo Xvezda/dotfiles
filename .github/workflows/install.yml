@@ -9,12 +9,20 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
-    
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+      - name: Set linux environment variable
+        if: matrix.os == 'ubuntu-latest'
+        run: export TRAVIS_OS_NAME=linux
+      - name: Set macOS environment variable
+        if: matrix.os == 'macOS-latest'
+        run: export TRAVIS_OS_NAME=osx
+      - name: Set windows environment variable
+        if: matrix.os == 'windows-latest'
+        run: export TRAVIS_OS_NAME=windows
+
+      - name: Install
+        run: ./.travis/install.sh
+
+      - name: Script
+        run: ./.travis/script.sh
+
