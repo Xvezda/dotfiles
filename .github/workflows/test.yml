@@ -1,4 +1,4 @@
-name: CI
+name: Test
 
 on: [push]
 
@@ -28,9 +28,9 @@ jobs:
         run: export ACTIONS_OS_NAME=windows
         shell: bash
 
-      - name: Install
-        run: tools/ci/install.sh
+      - name: Install dependencies
+        run: bash tools/ci/install.sh
 
-      - name: Script
-        run: tools/ci/script.sh
+      - name: Run install script
+        run: bash tools/ci/script.sh
 
