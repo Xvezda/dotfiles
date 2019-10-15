@@ -1,6 +1,4 @@
-# dotfiles
-
-[![Build Status](https://travis-ci.com/Xvezda/dotfiles.svg?branch=master)](https://travis-ci.com/Xvezda/dotfiles)
+# dotfiles [![Actions Status](https://github.com/Xvezda/dotfiles/workflows/Test%20CI/badge.svg)](https://github.com/Xvezda/dotfiles/actions)
 ![GitHub](https://img.shields.io/github/license/Xvezda/dotfiles)
 
 My develop environment configuration files with auto install script.
