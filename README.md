@@ -1,5 +1,6 @@
-# dotfiles [![Actions Status](https://github.com/Xvezda/dotfiles/workflows/Test%20CI/badge.svg)](https://github.com/Xvezda/dotfiles/actions)
+# dotfiles
 ![GitHub](https://img.shields.io/github/license/Xvezda/dotfiles)
+[![Actions Status](https://github.com/Xvezda/dotfiles/workflows/Test%20CI/badge.svg)](https://github.com/Xvezda/dotfiles/actions)
 
 My develop environment configuration files with auto install script.
 
