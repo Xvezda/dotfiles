@@ -38,9 +38,6 @@ test $? -eq 0 && cp $HOME/.zprofile src/zsh/zprofile
 # Backup tidy configuration
 which tidy && cp $HOME/.tidyrc src/tidy/tidyrc
 
-# Backup jshint configuration
-which jshint && cp $HOME/.jshintrc src/jshint/jshintrc
-
 # Backup pip requirements
 # Prefer python3 if exists
 which python3 && PYTHON_BIN=python3 || PYTHON_BIN=python
