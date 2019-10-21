@@ -1,7 +1,6 @@
 " Theme
 Plug 'nanotech/jellybeans.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'edkolev/tmuxline.vim'
 
 " Plugins
 Plug 'tpope/vim-sensible'
@@ -26,7 +25,9 @@ Plug 'zirrostig/vim-schlepp'
 if !exists("$SSH_CLIENT")
 
 " Go {{{2
+if executable('go')
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+endif
 "2}}}
 " HTML {{{2
 Plug 'hail2u/vim-css3-syntax'
@@ -43,21 +44,27 @@ Plug 'posva/vim-vue'
 Plug 'jelera/vim-javascript-syntax'
 "2}}}
 " Perl {{{2
+if executable('perl')
 Plug 'vim-perl/vim-perl'
 Plug 'c9s/perlomni.vim'
+endif
 "2}}}
 " PHP {{{2
 Plug 'arnaud-lb/vim-php-namespace'
 "2}}}
 " Python {{{2
+if executable('python') || executable('python3')
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+endif
 "2}}}
 " Ruby{{{2
+if executable('ruby')
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-projectionist'
 Plug 'thoughtbot/vim-rspec'
 Plug 'ecomba/vim-ruby-refactoring'
+endif
 "2}}}
 
 endif " $SSH_CLIENT
@@ -76,10 +83,14 @@ Plug 'glts/vim-textobj-comment'
 Plug 'wellle/targets.vim'
 
 " Text objects for specific languages
+if executable('python') || executable('python3')
 Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'bps/vim-textobj-python'
+endif
+if executable('ruby')
 Plug 'tek/vim-textobj-ruby'
 Plug 'nelstrom/vim-textobj-rubyblock'
+endif
 "}}}
 
 " vim:ft=vim
