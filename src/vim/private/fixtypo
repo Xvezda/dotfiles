@@ -21,6 +21,8 @@ iabbrev amin main
 iabbrev breka break
 iabbrev calss class
 iabbrev cosnt const
+iabbrev exprot export
+iabbrev exprots exports
 iabbrev firend friend
 iabbrev flase false
 iabbrev fucntion function
@@ -38,6 +40,7 @@ iabbrev rnage range
 iabbrev ture true
 iabbrev vodi void
 iabbrev whiel while
+iabbrev yeild yield
 
 
 " vim:ft=vim
