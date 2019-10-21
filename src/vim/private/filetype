@@ -23,6 +23,7 @@ augroup reactjs_filetype_detect
         \    'import\(\s\(\[\s\w{}\],\)\+\)\?\(\sReact\)' .
         \    '\|\s\+render()\s\*{\?' .
         \    '\|\s\+ReactDOM' .
+        \    '\|\s\+return\s\+(\s\*<' .
         \ '\)'
         \ | if match(getline(1), pattern) != -1 ||
         \      search(pattern, 'n', 100)
