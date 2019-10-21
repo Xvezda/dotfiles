@@ -1,3 +1,6 @@
+" Copyright (C) 2019 Xvezda <https://xvezda.com/>
+
+
 " Set paste toggle to F10
 set pastetoggle=<F10>
 
