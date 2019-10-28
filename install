@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Copyright (c) 2018 Xvezda <https://xvezda.com>
 # author:   xvezda <xvezda@naver.com>
 # desc:     install dotfiles
