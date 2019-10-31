@@ -32,6 +32,8 @@ iabbrev imporve improve
 iabbrev improt import
 iabbrev incldue include
 iabbrev inlcude include
+iabbrev itme item
+iabbrev itmes items
 iabbrev namepsace namespace
 iabbrev paylaod payload
 iabbrev priavte private
