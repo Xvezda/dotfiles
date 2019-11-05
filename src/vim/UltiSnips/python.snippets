@@ -1,5 +1,15 @@
 # Copyright (c) 2018 Xvezda <https://xvezda.com>
 
+snippet env "env path" b
+#!/usr/bin/env ${1:python}
+$0
+endsnippet
+
+snippet coding "encoding" b
+# -*- coding: ${1:utf-8} -*-
+$0
+endsnippet
+
 snippet #! "shebang header" b
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -16,6 +26,12 @@ endsnippet
 
 snippet docs "make doc string tripple quotes"
 """$0"""
+endsnippet
+
+snippet main "generate skeleton main function" b
+def main($2):
+	${1:pass}
+$0
 endsnippet
 
 
