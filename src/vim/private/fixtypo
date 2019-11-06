@@ -42,6 +42,7 @@ iabbrev pyaload payload
 iabbrev retrun return
 iabbrev reutrn return
 iabbrev rnage range
+iabbrev slef self
 iabbrev ture true
 iabbrev vodi void
 iabbrev whiel while
