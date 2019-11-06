@@ -41,6 +41,7 @@ iabbrev priavte private
 iabbrev pyaload payload
 iabbrev retrun return
 iabbrev reutrn return
+iabbrev riase raise
 iabbrev rnage range
 iabbrev slef self
 iabbrev ture true
