@@ -41,6 +41,7 @@ iabbrev pakcage package
 iabbrev paylaod payload
 iabbrev priavte private
 iabbrev pyaload payload
+iabbrev requrie require
 iabbrev retrun return
 iabbrev reutrn return
 iabbrev riase raise
