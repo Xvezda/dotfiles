@@ -101,9 +101,9 @@ function zshconf_setup() {
     for install_path in "$apt_install_path" "$brew_install_path"
     do
         test -e $install_path/$syntax_highlighting_pkg && \
-            ln -s $install_path/$syntax_highlighting_pkg ~/.zsh/$syntax_highlighting_pkg
+            ln -sf $install_path/$syntax_highlighting_pkg ~/.zsh/$syntax_highlighting_pkg
         test -e $install_path/$autosuggestions_pkg && \
-            ln -s $install_path/$autosuggestions_pkg ~/.zsh/$autosuggestions_pkg
+            ln -sf $install_path/$autosuggestions_pkg ~/.zsh/$autosuggestions_pkg
     done
 }
 
