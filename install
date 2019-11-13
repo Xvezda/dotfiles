@@ -9,7 +9,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd $DIR
 
 # Vim dotfiles setup
-vimconf_setup () {
+function vimconf_setup() {
     # Install vim configurations
     which vim > /dev/null 2>&1 || return 0
 
@@ -30,7 +30,7 @@ vimconf_setup () {
 }
 
 # NeoVim dotfiles setup
-nvimconf_setup () {
+function nvimconf_setup() {
     # Install nvim configurations
     which nvim > /dev/null 2>&1 || return 0
 
@@ -55,7 +55,7 @@ nvimconf_setup () {
 }
 
 # Tmux dotfiles setup
-tmuxconf_setup () {
+function tmuxconf_setup() {
     # Install tmux configurations
     which tmux > /dev/null 2>&1 || return 0
 
@@ -85,7 +85,7 @@ tmuxconf_setup () {
 }
 
 # Zsh dotfiles setup
-zshconf_setup () {
+function zshconf_setup() {
     which zsh > /dev/null 2>&1 || return 0
     ZSHDOT_PATH="$DIR/src/zsh"
 
@@ -107,7 +107,7 @@ zshconf_setup () {
     done
 }
 
-tidyconf_setup () {
+function tidyconf_setup() {
     which tidy > /dev/null 2>&1 || return 0
     TIDYDOT_PATH="$DIR/src/tidy"
 
@@ -115,7 +115,7 @@ tidyconf_setup () {
 }
 
 # Full dotfiles setup
-dotfiles_setup () {
+function dotfiles_setup() {
     zshconf_setup
     vimconf_setup
     tmuxconf_setup
