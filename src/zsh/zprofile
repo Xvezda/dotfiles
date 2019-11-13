@@ -14,6 +14,10 @@ then
     export DOCKER_CERT_PATH="$(wslpath $USERPROFILE)/.docker/machine/machines/default"
     export DOCKER_MACHINE_NAME="default"
     export COMPOSE_CONVERT_WINDOWS_PATHS="true"
+
+    open () {
+        explorer.exe $(wslpath -w "$1")
+    }
 fi
 
 # Linux specific commands
