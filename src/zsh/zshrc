@@ -61,7 +61,7 @@ export SAVEHIST=1000
 #
 # https://github.com/clvv/fasd/issues/18#issuecomment-422921618
 eval "$(fasd --init posix-alias)" # Anything you want enabled BUT zsh-hook
-_fasd_preexec() {
+function _fasd_preexec() {
     { eval "fasd --proc \$(fasd --sanitize \$2)"; } &|
 }
 autoload -Uz add-zsh-hook

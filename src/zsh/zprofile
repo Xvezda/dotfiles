@@ -15,7 +15,7 @@ then
     export DOCKER_MACHINE_NAME="default"
     export COMPOSE_CONVERT_WINDOWS_PATHS="true"
 
-    open () {
+    function open() {
         explorer.exe $(wslpath -w "$1")
     }
 fi
@@ -23,11 +23,11 @@ fi
 # Linux specific commands
 if [ "$XVZD_OSTYPE" = "linux" ]
 then
-    pbcopy() {
+    function pbcopy() {
         xclip -selection clipboard
     }
 
-    pbpaste() {
+    function pbpaste() {
         xclip -selection clipboard -o
     }
 
@@ -40,18 +40,18 @@ fi
 # Mac specific commands
 if [ "$XVZD_OSTYPE" = "darwin" ]
 then
-    ctags() {
+    function ctags() {
         $(brew --prefix)/bin/ctags "$@"
     }
 
-    openvpn() {
+    function openvpn() {
         sudo $(brew --prefix openvpn)/sbin/openvpn "$@"
     }
 fi
 
 # rm to rm trash
 alias rm="echo Use 'del', or the full path e.g.'/bin/rm'"
-del() {
+function del() {
     RM_TRASH__=""
     case $XVZD_OSTYPE in
         darwin)
@@ -68,29 +68,29 @@ del() {
 }
 
 # Additional git alias
-gcod() {
+function gcod() {
     git checkout develop
 }
 
-gcom() {
+function gcom() {
     git checkout master
 }
 
-gpoc() {
+function gpoc() {
     git push -u origin $(git branch | head -n 1 | awk '{ print $2 }')
 }
 alias gs="git status"
 
 # Docker stuffs
-drl() {
+function drl() {
     docker rm $(docker ps -a -q -l -f status=exited)
 }
 
-dsl() {
+function dsl() {
     docker stop $(docker ps -lqf status=running)
 }
 
-dre() {
+function dre() {
     docker rm -v $(docker ps -a -q -f status=exited)
 }
 alias dim="docker images"
@@ -104,7 +104,7 @@ alias dpsa="docker ps -a"
 alias telnet='TERM=xterm telnet'
 
 # SSH with remote clipboard alias
-ssh-clip() {
+function ssh-clip() {
     # Send signal directly to netcat when exit to break while loop
     DIRECT_SIG="pbpaste | base64 | nc localhost 7331"
     trap 'eval "${DIRECT_SIG}"' INT TERM EXIT
@@ -116,24 +116,24 @@ ssh-clip() {
 }
 
 # Encrypt/Decrypt functions
-encf() {
+function encf() {
     openssl aes-256-cbc -salt -in $1 -out $1.enc
 }
 
-encs() {
+function encs() {
     echo "$1" | openssl aes-256-cbc -a -salt
 }
 
-decf() {
+function decf() {
     openssl aes-256-cbc -d -salt -in $1 -out ${1%.enc}.new
 }
 
-decs() {
+function decs() {
     echo "$1" | openssl aes-256-cbc -d -a -salt
 }
 
 # Reverse of split; which abbreviation of combine (Just for convenience)
-comb() {
+function comb() {
     cat $1.* > $1
 }
 
