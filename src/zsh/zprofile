@@ -18,6 +18,9 @@ then
     function open() {
         explorer.exe $(wslpath -w "$1")
     }
+
+    alias adb="adb.exe"
+    alias clip="clip.exe"
 fi
 
 # Linux specific commands
