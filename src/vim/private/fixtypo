@@ -9,6 +9,7 @@ cnoreabbrev Wq wq
 cnoreabbrev Wa wa
 cnoreabbrev wQ wq
 cnoreabbrev WQ wq
+cnoreabbrev qw wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall

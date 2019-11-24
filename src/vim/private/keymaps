@@ -21,6 +21,10 @@ nnoremap Y y$
 nnoremap U <C-r>
 nnoremap <C-r> U
 
+" Disable visual lowercase mapping
+vnoremap L u
+vnoremap u <Nop>
+
 " Map single quote to comma, backslash to quote.
 nnoremap ' ,
 nnoremap \ '

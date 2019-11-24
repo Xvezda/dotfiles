@@ -1,7 +1,10 @@
+" Copyright (C) 2019 Xvezda <https://xvezda.com/>
+
+
 " Markdown underlines function
 " https://github.com/christoomey/your-first-vim-plugin
 
-function! UnderlineHeading(level)
+function! UnderlineHeading(level) abort
   if a:level == 1
     normal! yypVr=
   elseif a:level == 2

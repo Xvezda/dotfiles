@@ -4,6 +4,7 @@ Plug 'itchyny/lightline.vim'
 
 " Plugins
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
