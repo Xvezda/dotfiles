@@ -61,11 +61,18 @@ endfun
 
 
 " Handle adding doxygen to other languages (C, C++, C#, IDL, java, php, Python DataScript)
-au Syntax c,cpp,cs,idl,java,php,python,datascript
+au Syntax c,cpp,cs,idl,java,php,datascript
 	\ if (exists('b:load_doxygen_syntax') && b:load_doxygen_syntax)
 	\	|| (exists('g:load_doxygen_syntax') && g:load_doxygen_syntax)
 	\   | runtime! syntax/doxygen.vim
 	\ | endif
+
+au Syntax python
+	\ if (exists('b:load_doxygen_syntax') && b:load_doxygen_syntax)
+	\	|| (exists('g:load_doxygen_syntax') && g:load_doxygen_syntax)
+	\   | runtime! syntax/doxygenpython.vim
+	\ | endif
+
 
 
 " Source the user-specified syntax highlighting file
