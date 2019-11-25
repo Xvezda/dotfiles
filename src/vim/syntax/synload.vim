@@ -60,8 +60,8 @@ fun! s:SynSet()
 endfun
 
 
-" Handle adding doxygen to other languages (C, C++, C#, IDL, java, php, DataScript)
-au Syntax c,cpp,cs,idl,java,php,datascript
+" Handle adding doxygen to other languages (C, C++, C#, IDL, java, php, Python DataScript)
+au Syntax c,cpp,cs,idl,java,php,python,datascript
 	\ if (exists('b:load_doxygen_syntax') && b:load_doxygen_syntax)
 	\	|| (exists('g:load_doxygen_syntax') && g:load_doxygen_syntax)
 	\   | runtime! syntax/doxygen.vim
