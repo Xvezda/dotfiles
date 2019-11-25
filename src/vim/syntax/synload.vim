@@ -1,6 +1,7 @@
 " Vim syntax support file
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last Change:	2016 Nov 04
+" Maintainer:          Xvezda <xvezda@naver.com>
+" Previous Maintainer: Bram Moolenaar <Bram@vim.org>
+" Last Change:         2019 Nov 26
 
 " This file sets up for syntax highlighting.
 " It is loaded from "syntax.vim" and "manual.vim".
