@@ -15,15 +15,15 @@ function vimconf_setup() {
 
     # Move configuration files to home directory
     VIMDOT_PATH="$DIR/src/vim"
-    mkdir -p ~/.vim/private
-    mkdir -p ~/.vim/syntax
-    mkdir -p ~/.vim/UltiSnips
-    cp -R $VIMDOT_PATH/private/* ~/.vim/private
-    cp -R $VIMDOT_PATH/syntax/* ~/.vim/syntax
-    cp -R $VIMDOT_PATH/UltiSnips/* ~/.vim/UltiSnips
-    cp $VIMDOT_PATH/vimrc ~/.vimrc
-    cp $VIMDOT_PATH/vimrc.local ~/.vimrc.local
-    cp $VIMDOT_PATH/vimrc.local.bundles ~/.vimrc.local.bundles
+    mkdir -p $HOME/.vim/private
+    mkdir -p $HOME/.vim/syntax
+    mkdir -p $HOME/.vim/UltiSnips
+    cp -R $VIMDOT_PATH/private/* $HOME/.vim/private
+    cp -R $VIMDOT_PATH/syntax/* $HOME/.vim/syntax
+    cp -R $VIMDOT_PATH/UltiSnips/* $HOME/.vim/UltiSnips
+    cp $VIMDOT_PATH/vimrc $HOME/.vimrc
+    cp $VIMDOT_PATH/vimrc.local $HOME/.vimrc.local
+    cp $VIMDOT_PATH/vimrc.local.bundles $HOME/.vimrc.local.bundles
 
     # Install vim plugins
     vim -es +'silent! PlugInstall' +qall
@@ -45,10 +45,10 @@ function nvimconf_setup() {
     cp $VIMDOT_PATH/vimrc.local $XDG_CONFIG_HOME/nvim/local_init.vim
     cp $VIMDOT_PATH/vimrc.local.bundles $XDG_CONFIG_HOME/nvim/local_bundles.vim
 
-    test -d ~/.vim || ln -s $XDG_CONFIG_HOME/nvim ~/.vim
-    test -f ~/.vimrc || ln -s $XDG_CONFIG_HOME/nvim/init.vim ~/.vimrc
-    test -f ~/.vimrc.local || ln -s $XDG_CONFIG_HOME/nvim/local_init.vim ~/.vimrc.local
-    test -f ~/.vimrc.local.bundles || ln -s $XDG_CONFIG_HOME/nvim/local_bundles.vim ~/.vimrc.local.bundles
+    test -d $HOME/.vim || ln -s $XDG_CONFIG_HOME/nvim $HOME/.vim
+    test -f $HOME/.vimrc || ln -s $XDG_CONFIG_HOME/nvim/init.vim $HOME/.vimrc
+    test -f $HOME/.vimrc.local || ln -s $XDG_CONFIG_HOME/nvim/local_init.vim $HOME/.vimrc.local
+    test -f $HOME/.vimrc.local.bundles || ln -s $XDG_CONFIG_HOME/nvim/local_bundles.vim $HOME/.vimrc.local.bundles
 
     # Install vim plugins
     nvim -es +'silent! PlugInstall' +qall
@@ -60,27 +60,27 @@ function tmuxconf_setup() {
     which tmux > /dev/null 2>&1 || return 0
 
     # Create tmux local settings directory
-    mkdir -p ~/.tmux
+    mkdir -p $HOME/.tmux
 
     # Move tmux configuration files to home directory
     TMUXDOT_PATH="$DIR/src/tmux"
-    cp $TMUXDOT_PATH/tmux.conf ~/.tmux.conf
+    cp $TMUXDOT_PATH/tmux.conf $HOME/.tmux.conf
 
-    cp $TMUXDOT_PATH/jellybeans.conf ~/.tmux/jellybeans.conf
-    cp $TMUXDOT_PATH/tmux.local.conf ~/.tmux/tmux.local.conf
-    cp $TMUXDOT_PATH/key.conf ~/.tmux/key.conf
+    cp $TMUXDOT_PATH/jellybeans.conf $HOME/.tmux/jellybeans.conf
+    cp $TMUXDOT_PATH/tmux.local.conf $HOME/.tmux/tmux.local.conf
+    cp $TMUXDOT_PATH/key.conf $HOME/.tmux/key.conf
 
     # Backward compatibility
-    cp $TMUXDOT_PATH/jellybeans.old.conf ~/.tmux/jellybeans.old.conf
-    cp $TMUXDOT_PATH/tmux.local.old.conf ~/.tmux/tmux.local.old.conf
-    cp $TMUXDOT_PATH/key.old.conf ~/.tmux/key.old.conf
+    cp $TMUXDOT_PATH/jellybeans.old.conf $HOME/.tmux/jellybeans.old.conf
+    cp $TMUXDOT_PATH/tmux.local.old.conf $HOME/.tmux/tmux.local.old.conf
+    cp $TMUXDOT_PATH/key.old.conf $HOME/.tmux/key.old.conf
 
     # Reload tmux configuration
     if [ -n "$TMUX" ]
     then
-        tmux source-file ~/.tmux.conf > /dev/null
+        tmux source-file $HOME/.tmux.conf > /dev/null
     else
-        tmux start-server \; source-file ~/.tmux.conf > /dev/null
+        tmux start-server \; source-file $HOME/.tmux.conf > /dev/null
     fi
 }
 
@@ -89,21 +89,23 @@ function zshconf_setup() {
     which zsh > /dev/null 2>&1 || return 0
     ZSHDOT_PATH="$DIR/src/zsh"
 
-    cp $ZSHDOT_PATH/zprofile ~/.zprofile
-    cp $ZSHDOT_PATH/zshrc ~/.zshrc
+    cp $ZSHDOT_PATH/zprofile $HOME/.zprofile
+    cp $ZSHDOT_PATH/zshrc $HOME/.zshrc
+
+    test -e $HOME/.oh-my-zsh/custom && cp -R $ZSHDOT_PATH/custom/* $HOME/.oh-my-zsh/custom
 
     local apt_install_path="/usr/share"
     local brew_install_path="/usr/local/share"
     local syntax_highlighting_pkg="zsh-syntax-highlighting"
     local autosuggestions_pkg="zsh-autosuggestions"
 
-    mkdir -p ~/.zsh
+    mkdir -p $HOME/.zsh
     for install_path in "$apt_install_path" "$brew_install_path"
     do
         test -e $install_path/$syntax_highlighting_pkg && \
-            ln -sf $install_path/$syntax_highlighting_pkg ~/.zsh/$syntax_highlighting_pkg > /dev/null 2>&1
+            ln -sf $install_path/$syntax_highlighting_pkg $HOME/.zsh/$syntax_highlighting_pkg > /dev/null 2>&1
         test -e $install_path/$autosuggestions_pkg && \
-            ln -sf $install_path/$autosuggestions_pkg ~/.zsh/$autosuggestions_pkg > /dev/null 2>&1
+            ln -sf $install_path/$autosuggestions_pkg $HOME/.zsh/$autosuggestions_pkg > /dev/null 2>&1
     done
 }
 
@@ -111,7 +113,7 @@ function tidyconf_setup() {
     which tidy > /dev/null 2>&1 || return 0
     TIDYDOT_PATH="$DIR/src/tidy"
 
-    cp $TIDYDOT_PATH/tidyrc ~/.tidyrc
+    cp $TIDYDOT_PATH/tidyrc $HOME/.tidyrc
 }
 
 # Full dotfiles setup
