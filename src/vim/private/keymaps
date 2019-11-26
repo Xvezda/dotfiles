@@ -29,6 +29,9 @@ vnoremap u <Nop>
 nnoremap ' ,
 nnoremap \ '
 
+" Map current keyword search
+nnoremap <Leader>/ *
+
 " Remove trailing whitespace
 nnoremap <silent> <Leader>rw :FixWhitespace<CR>
 
