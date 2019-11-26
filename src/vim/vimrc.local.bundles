@@ -9,7 +9,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'aserebryakov/vim-todo-lists'
 Plug 'ervandew/supertab'
 Plug 'google/vim-searchindex'
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -27,44 +26,44 @@ if !exists("$SSH_CLIENT")
 
 " Go {{{2
 if executable('go')
-Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 endif
 "2}}}
 " HTML {{{2
-Plug 'hail2u/vim-css3-syntax'
-Plug 'gorodinskiy/vim-coloresque'
-Plug 'tpope/vim-haml'
+Plug 'hail2u/vim-css3-syntax', { 'for': 'html' }
+Plug 'gorodinskiy/vim-coloresque', { 'for': 'html' }
+Plug 'tpope/vim-haml', { 'for': 'html' }
 "2}}}
 " Liquid {{{2
-Plug 'tpope/vim-liquid'
+Plug 'tpope/vim-liquid', { 'for': 'liquid' }
 "2}}}
 " Vue {{{2
-Plug 'posva/vim-vue'
+Plug 'posva/vim-vue', { 'for': 'vue' }
 "2}}}
 " Javascript {{{2
-Plug 'jelera/vim-javascript-syntax'
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 "2}}}
 " Perl {{{2
 if executable('perl')
-Plug 'vim-perl/vim-perl'
-Plug 'c9s/perlomni.vim'
+Plug 'vim-perl/vim-perl', { 'for': 'perl' }
+Plug 'c9s/perlomni.vim', { 'for': 'perl' }
 endif
 "2}}}
 " PHP {{{2
-Plug 'arnaud-lb/vim-php-namespace'
+Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
 "2}}}
 " Python {{{2
 if executable('python') || executable('python3')
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
 endif
 "2}}}
 " Ruby{{{2
 if executable('ruby')
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-projectionist'
-Plug 'thoughtbot/vim-rspec'
-Plug 'ecomba/vim-ruby-refactoring'
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'tpope/vim-rake', { 'for': 'ruby' }
+Plug 'tpope/vim-projectionist', { 'for': 'ruby' }
+Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
+Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
 endif
 "2}}}
 
@@ -85,12 +84,12 @@ Plug 'wellle/targets.vim'
 
 " Text objects for specific languages
 if executable('python') || executable('python3')
-Plug 'jeetsukumaran/vim-pythonsense'
-Plug 'bps/vim-textobj-python'
+Plug 'jeetsukumaran/vim-pythonsense', { 'for': 'python' }
+Plug 'bps/vim-textobj-python', { 'for': 'python' }
 endif
 if executable('ruby')
-Plug 'tek/vim-textobj-ruby'
-Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'tek/vim-textobj-ruby', { 'for': 'ruby' }
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 endif
 "}}}
 
