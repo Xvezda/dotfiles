@@ -12,6 +12,7 @@ set completeopt-=preview
 set lazyredraw
 set ttyfast
 set shada='20,<50,s10
+set timeoutlen=1000 ttimeoutlen=0
 
 " Set fold
 set foldmethod=marker
