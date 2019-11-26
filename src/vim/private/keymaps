@@ -50,7 +50,7 @@ nnoremap <buffer> <Leader>rla :source ~/.vimrc<CR>
 
 " Remove search highlight when entering insert mode
 " https://vi.stackexchange.com/a/10415
-for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O']
+for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O', 's']
     execute 'nnoremap ' . s:c . ' :nohlsearch<CR>' . s:c
 endfor
 
