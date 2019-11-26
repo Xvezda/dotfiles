@@ -18,7 +18,6 @@ My development environment configuration files with utility scripts.
 - zsh && [oh_my_zsh](https://ohmyz.sh/)
 - [tpm](https://github.com/tmux-plugins/tpm#tmux-plugin-manager)
 - [fasd](https://github.com/clvv/fasd#install)
-- [pure](https://github.com/sindresorhus/pure#manually)
 + Mac
     - reattach-to-user-namespace
     - Brew bundle (optional)
