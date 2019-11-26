@@ -78,9 +78,9 @@ function tmuxconf_setup() {
     # Reload tmux configuration
     if [ -n "$TMUX" ]
     then
-        tmux source-file ~/.tmux.conf
+        tmux source-file ~/.tmux.conf > /dev/null
     else
-        tmux start-server \; source-file ~/.tmux.conf
+        tmux start-server \; source-file ~/.tmux.conf > /dev/null
     fi
 }
 
@@ -101,9 +101,9 @@ function zshconf_setup() {
     for install_path in "$apt_install_path" "$brew_install_path"
     do
         test -e $install_path/$syntax_highlighting_pkg && \
-            ln -sf $install_path/$syntax_highlighting_pkg ~/.zsh/$syntax_highlighting_pkg
+            ln -sf $install_path/$syntax_highlighting_pkg ~/.zsh/$syntax_highlighting_pkg > /dev/null 2>&1
         test -e $install_path/$autosuggestions_pkg && \
-            ln -sf $install_path/$autosuggestions_pkg ~/.zsh/$autosuggestions_pkg
+            ln -sf $install_path/$autosuggestions_pkg ~/.zsh/$autosuggestions_pkg > /dev/null 2>&1
     done
 }
 
