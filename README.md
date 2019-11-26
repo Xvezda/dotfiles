@@ -4,7 +4,7 @@
 ![Platform](https://img.shields.io/badge/platform-macos%20%7C%20linux%20%7C%20windows-lightgrey)
 
 
-My develop environment configuration files with auto install script.
+My development environment configuration files with utility scripts.
 
 ## Platforms
 - Linux (Confirmed on Ubuntu 16.04)
@@ -19,6 +19,9 @@ My develop environment configuration files with auto install script.
 - [tpm](https://github.com/tmux-plugins/tpm#tmux-plugin-manager)
 - [fasd](https://github.com/clvv/fasd#install)
 - [pure](https://github.com/sindresorhus/pure#manually)
+
+Recommended.
+Partially support when above requirements not satisfied.
 
 * Mac
     * reattach-to-user-namespace
