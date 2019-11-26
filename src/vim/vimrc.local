@@ -2,10 +2,10 @@
 " https://github.com/christoomey/dotfiles
 
 function! s:SourceConfigFilesIn(directory)
-  let directory_splat = (has('nvim') ?
-              \$XDG_CONFIG_HOME . "/nvim/" :
-              \'~/.vim/')
-              \. a:directory . '/*'
+  let directory_splat = (has('nvim')  ?
+        \ $XDG_CONFIG_HOME . "/nvim/" :
+        \ $HOME . "/.vim/")
+        \ . a:directory . '/*'
   for config_file in split(glob(directory_splat), '\n')
     if filereadable(config_file)
       execute 'source' config_file
