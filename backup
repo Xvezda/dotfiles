@@ -32,8 +32,12 @@ test $? -eq 0 && cp $(ls $HOME/.tmux/*.conf) src/tmux/
 which brew && brew bundle dump && mv $PWD/Brewfile src/brew
 
 # Backup zsh dotfiles
-which zsh     && cp $HOME/.zshrc src/zsh/zshrc
-test $? -eq 0 && cp $HOME/.zprofile src/zsh/zprofile
+if [ $(which zsh) ]
+then
+    cp $HOME/.zshrc src/zsh/zshrc
+    cp $HOME/.zprofile src/zsh/zprofile
+    cp -R $HOME/.oh-my-zsh/custom src/zsh/custom
+fi
 
 # Backup tidy configuration
 which tidy && cp $HOME/.tidyrc src/tidy/tidyrc
