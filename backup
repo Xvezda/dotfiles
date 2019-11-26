@@ -36,7 +36,9 @@ if [ $(which zsh) ]
 then
     cp $HOME/.zshrc src/zsh/zshrc
     cp $HOME/.zprofile src/zsh/zprofile
-    cp -R $HOME/.oh-my-zsh/custom src/zsh/custom
+
+    mkdir -p src/zsh/custom
+    cp -R $HOME/.oh-my-zsh/custom src/zsh/
 fi
 
 # Backup tidy configuration
