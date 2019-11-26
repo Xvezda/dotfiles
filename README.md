@@ -35,6 +35,9 @@ chmod +x install
 ./install # Check out usage instruction please
 ```
 
+If there is problem while installing, check CI build settings to resolve issue. Or, just [register new issue](https://github.com/Xvezda/dotfiles/issues/new).
+Feel free to ask :)
+
 ## Shortcuts
 | Commands                                                                                                 | Actions                                      |
 | ---                                                                                                      | ---                                          |
