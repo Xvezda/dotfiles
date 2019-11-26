@@ -11,6 +11,7 @@ set completeopt-=preview
 " Performance
 set lazyredraw
 set ttyfast
+set shada='20,<50,s10
 
 " Set fold
 set foldmethod=marker
