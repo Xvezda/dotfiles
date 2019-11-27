@@ -5,8 +5,8 @@
 set pastetoggle=<F10>
 
 " Escape to jk
-inoremap jk <Esc>
-inoremap <Esc> <Nop>
+" inoremap jk <Esc>
+" inoremap <Esc> <Nop>
 
 " Fold toggle with spacebar
 nnoremap <Space> za
