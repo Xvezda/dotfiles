@@ -9,6 +9,8 @@ alias vimdiff="$EDITOR -d"
 # Windows specific commands
 if [ "$XVZD_OSTYPE" = "windows" ]
 then
+    export PATH="${PATH}:$(wslpath $USERPROFILE)/bin"
+
     export DOCKER_TLS_VERIFY="1"
     export DOCKER_HOST="tcp://192.168.99.100:2376"
     export DOCKER_CERT_PATH="$(wslpath $USERPROFILE)/.docker/machine/machines/default"
@@ -65,6 +67,10 @@ function del() {
             then
                 RM_TRASH__="gvfs-trash"
             fi
+            ;;
+        windows)
+            # http://www.maddogsw.com/cmdutils/
+            RM_TRASH__="Recycle.exe"
             ;;
     esac
     $RM_TRASH__ "$@"
