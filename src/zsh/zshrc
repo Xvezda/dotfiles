@@ -62,7 +62,7 @@ KEYTIMEOUT=1
 # ZSH_CUSTOM=/path/to/new-custom-folder
 #
 # https://github.com/clvv/fasd/issues/18#issuecomment-422921618
-if [ $(which fasd) ]; then
+if which fasd > /dev/null 2>&1; then
   eval "$(fasd --init posix-alias)" # Anything you want enabled BUT zsh-hook
   function _fasd_preexec() {
     { eval "fasd --proc \$(fasd --sanitize \$2)"; } &|
