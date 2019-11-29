@@ -62,49 +62,48 @@ KEYTIMEOUT=1
 # ZSH_CUSTOM=/path/to/new-custom-folder
 #
 # https://github.com/clvv/fasd/issues/18#issuecomment-422921618
-eval "$(fasd --init posix-alias)" # Anything you want enabled BUT zsh-hook
-function _fasd_preexec() {
+if [ $(which fasd) ]; then
+  eval "$(fasd --init posix-alias)" # Anything you want enabled BUT zsh-hook
+  function _fasd_preexec() {
     { eval "fasd --proc \$(fasd --sanitize \$2)"; } &|
-}
-autoload -Uz add-zsh-hook
-add-zsh-hook preexec _fasd_preexec
+    }
+  autoload -Uz add-zsh-hook
+  add-zsh-hook preexec _fasd_preexec
+fi
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  brew
-  git
-  man
-  node
-  npm
-  pip
-  python
-  tig
-  tmux
-  virtualenv
-)
+#
+#plugins=(
+#  brew
+#  git
+#  man
+#  python
+#  virtualenv
+#)
+plugins=()
 
-source $ZSH/oh-my-zsh.sh
+[ -s "$ZSH/oh-my-zsh.sh" ] && source $ZSH/oh-my-zsh.sh
 
 # User configuration
-if [[ `uname -a` == *"Microsoft"* ]]
+if [[ "$(uname -a)" == *"Microsoft"* ]]
 then
-    export XVZD_OSTYPE="windows"
+  export XVZD_OSTYPE="windows"
 else
-    export XVZD_OSTYPE="`TMP__=$(uname | tr 'A-Z' 'a-z'); echo -n ${TMP__%%-*}`"
+  export XVZD_OSTYPE="$(TMP__=$(uname | tr 'A-Z' 'a-z'); echo -n ${TMP__%%-*})"
 fi
 
 case $XVZD_OSTYPE in
-    linux)
-        if [ -f /etc/os-release ]
-        then
-            export XVZD_OSNAME=`cat /etc/os-release | grep -E '^NAME="(.*)"' |
-                sed -E 's/^NAME="(.*)"/\1/' | tr 'A-Z' 'a-z'`
-        fi
-        ;;
+  linux)
+    if [ -f /etc/os-release ]
+    then
+      export XVZD_OSNAME="$(cat /etc/os-release | grep -E '^NAME="(.*)"' |
+        sed -E 's/^NAME="(.*)"/\1/' | tr 'A-Z' 'a-z')"
+    fi
+    ;;
 esac
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -134,7 +133,7 @@ esac
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-TMP__=`which nvim` && export EDITOR="$TMP__" || export EDITOR=`which vi`
+TMP__="$(which nvim)" && export EDITOR="$TMP__" || export EDITOR="$(which vi)"
 
 alias easy_install="easy_install --prefix=$HOME/.local"
 
@@ -142,10 +141,10 @@ export VIRTUAL_ENV_DISABLE_PROMPT=
 
 if [ "$XVZD_OSTYPE" = "darwin" ]
 then
-    export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:\
+  export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:\
     $HOME/.local/lib/python3.7/site-packages"
-    export PATH="${PATH}:$HOME/Library/Android/sdk/tools"
-    export PATH="${PATH}:$HOME/Library/Android/sdk/platform-tools"
+  export PATH="${PATH}:$HOME/Library/Android/sdk/tools"
+  export PATH="${PATH}:$HOME/Library/Android/sdk/platform-tools"
 fi
 
 # Brew path
@@ -154,7 +153,7 @@ export PATH="/usr/local/sbin:$PATH"
 
 export PATH="$HOME/vroot/usr/bin:$PATH"
 test -e "$HOME/vroot/usr/tokens/overthewire.zsh" && \
-    source "$HOME/vroot/usr/tokens/overthewire.zsh"
+  source "$HOME/vroot/usr/tokens/overthewire.zsh"
 
 export PATH="$PATH:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin"
 export PATH="$PATH:$HOME/development/flutter/bin"
@@ -167,16 +166,26 @@ export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
 export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 
 test -e $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
-    source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Load gvm
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+if [ -s "$HOME/.gvm/scripts/gvm" ] && [ ! "$(whence -w __init_gvm)" = function ]; then
+  declare -a __go_commands=('gvm' 'go')
+  function __init_gvm() {
+    for i in "${__go_commands[@]}"; do unalias $i; done
+    source "$HOME/.gvm/scripts/gvm"
+    unset __go_commands
+    unset -f __init_gvm
+  }
+for i in "${__go_commands[@]}"; do alias $i='__init_gvm && '$i; done
+fi
 
-export NVM_DIR="$HOME/.config"
 # https://github.com/robbyrussell/oh-my-zsh/issues/5327#issuecomment-386480914
 # Defer initialization of nvm until nvm, node or a node-dependent command is
 # run. Ensure this block is only run once if .bashrc gets sourced multiple times
 # by checking whether __init_nvm is a function.
+export NVM_DIR="$HOME/.config"
+
 if [ -s "$NVM_DIR/nvm.sh" ] && [ ! "$(whence -w __init_nvm)" = function ]; then
   [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
   declare -a __node_commands=('nvm' 'node' 'npm' 'npx' 'yarn' 'gulp' 'grunt' 'webpack')
@@ -186,15 +195,22 @@ if [ -s "$NVM_DIR/nvm.sh" ] && [ ! "$(whence -w __init_nvm)" = function ]; then
     unset __node_commands
     unset -f __init_nvm
   }
-  for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
+for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
 fi
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 # Load rvm
-if [[ -s $HOME/.rvm/scripts/rvm ]]; then
-  source $HOME/.rvm/scripts/rvm;
-fi
+if [ -s "$HOME/.rvm/scripts/rvm" ] && [ ! "$(whence -w __init_rvm)" = function ]; then
+  declare -a __ruby_commands=('rvm' 'ruby' 'bundle')
+  function __init_rvm() {
+    # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+    export PATH="$PATH:$HOME/.rvm/bin"
 
+    for i in "${__ruby_commands[@]}"; do unalias $i; done
+    source "$HOME/.rvm/scripts/rvm"
+    unset __ruby_commands
+    unset -f __init_rvm
+  }
+for i in "${__ruby_commands[@]}"; do alias $i='__init_rvm && '$i; done
+fi
 
