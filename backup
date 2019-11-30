@@ -32,7 +32,7 @@ test $? -eq 0 && cp $(ls $HOME/.tmux/*.conf) src/tmux/
 which brew && brew bundle dump && mv $PWD/Brewfile src/brew
 
 # Backup zsh dotfiles
-if [ $(which zsh) ]
+if which zsh > /dev/null 2>&1
 then
     cp $HOME/.zshrc src/zsh/zshrc
     cp $HOME/.zprofile src/zsh/zprofile
@@ -49,6 +49,15 @@ which tidy && cp $HOME/.tidyrc src/tidy/tidyrc
 which python3 && PYTHON_BIN=python3 || PYTHON_BIN=python
 $PYTHON_BIN -m pip --version && \
     $PYTHON_BIN -m pip freeze > src/pip/requirements-${XVZD_OSTYPE}.txt
+
+# On windows
+if [ "$XVZD_OSTYPE" = "windows" ]
+then
+    mkdir -p src/wt
+    PROFILES_PATH=$(wslpath $USERPROFILE)/AppData/Local/Packages/Microsoft.WindowsTerminal_*/LocalState/profiles.json
+    test -e ${PROFILES_PATH[0]} && mv ${PROFILES_PATH[0]} src/wt/profiles.json
+    unset PROFILES_PATH
+fi
 
 echo "[+] Success backup!"
 
