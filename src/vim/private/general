@@ -11,7 +11,9 @@ set completeopt-=preview
 " Performance
 set lazyredraw
 set ttyfast
-set shada='20,<50,s10
+if has('nvim')
+  set shada='20,<50,s10
+endif
 set timeoutlen=1000 ttimeoutlen=0
 
 " Set fold
