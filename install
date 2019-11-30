@@ -142,9 +142,13 @@ THIS PROGRAM DOES NOT SUPPORT RESET
 BACKUP YOUR OWN CONFIGURATION FILES TO RESTORE
 "
 
+function show_usage() {
+    echo "${USAGE_MSG}"
+}
+
 if [ "$#" -lt 1 ]
 then
-    echo "${USAGE_MSG}"
+    show_usage
     exit
 fi
 
@@ -184,8 +188,12 @@ case $TARGET in
     zsh)
         zshconf_setup;
         ;;
-    *)
+    all)
         dotfiles_setup;
+        ;;
+    *)
+        show_usage
+        exit 1
         ;;
 esac
 
