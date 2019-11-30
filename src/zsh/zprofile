@@ -2,9 +2,12 @@ test -z $XDG_CONFIG_HOME && export XDG_CONFIG_HOME="$HOME/.config"
 test -z $XDG_CACHE_HOME && export XDG_CACHE_HOME="$HOME/.cache"
 test -z $XDG_DATA_HOME && export XDG_DATA_HOME="$HOME/.local/share"
 
-alias vi="$EDITOR"
-alias vim="$EDITOR"
-alias vimdiff="$EDITOR -d"
+if [ "$(basename $EDITOR)" = "nvim" ]
+then
+    alias vi="$EDITOR"
+    alias vim="$EDITOR"
+    alias vimdiff="$EDITOR -d"
+fi
 
 # Windows specific commands
 if [ "$XVZD_OSTYPE" = "windows" ]
