@@ -65,6 +65,7 @@ Feel free to ask :)
 | <kbd>Shift</kbd>+<kbd>&uparrow;</kbd><kbd>&downarrow;</kbd><kbd>&leftarrow;</kbd><kbd>&rightarrow;</kbd> | Drag text to move around (visual mode only). |
 | <kbd>F10</kbd>                                                                                           | Toggle paste mode.                           |
 | <kbd>F12</kbd>                                                                                           | Toggle nested Tmux mode.                     |
+| <kbd>Leader</kbd>+<kbd>/</kbd>                                                                           | Search keyword under cursor.                 |
 
 ## Etc
 * You can update/restore this project's configuration files by
