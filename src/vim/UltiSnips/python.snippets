@@ -38,5 +38,21 @@ def main($2):
 $0
 endsnippet
 
+snippet ifmain "generate skeleton main function" b
+if __name__ == '__main__':
+	${1:main($2)}
+$0
+endsnippet
+
+snippet mb "generate main boilerplate" b
+def main($2):
+	${1:pass}
+
+
+if __name__ == '__main__':
+	${3:main($4)}
+$0
+endsnippet
+
 
 # vim:ft=snippets:
