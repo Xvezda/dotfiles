@@ -46,9 +46,9 @@ which tidy && cp $HOME/.tidyrc src/tidy/tidyrc
 
 # Backup pip requirements
 # Prefer python3 if exists
-which python3 && PYTHON_BIN=python3 || PYTHON_BIN=python
-$PYTHON_BIN -m pip --version && \
-    $PYTHON_BIN -m pip freeze > src/pip/requirements-${XVZD_OSTYPE}.txt
+# which python3 && PYTHON_BIN=python3 || PYTHON_BIN=python
+# $PYTHON_BIN -m pip --version && \
+#     $PYTHON_BIN -m pip freeze > src/pip/requirements-${XVZD_OSTYPE}.txt
 
 # On windows
 if [ "$XVZD_OSTYPE" = "windows" ]
