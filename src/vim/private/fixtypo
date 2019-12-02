@@ -50,6 +50,7 @@ iabbrev riase raise
 iabbrev rnage range
 iabbrev slef self
 iabbrev ture true
+iabbrev virutal virtual
 iabbrev vodi void
 iabbrev whiel while
 iabbrev yeild yield
