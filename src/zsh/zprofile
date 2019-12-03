@@ -20,6 +20,8 @@ then
     export DOCKER_MACHINE_NAME="default"
     export COMPOSE_CONVERT_WINDOWS_PATHS="true"
 
+    alias docker-machine="docker-machine.exe"
+
     function open() {
         explorer.exe $(wslpath -w "$1")
     }
