@@ -30,9 +30,11 @@ let g:go_version_warning = 0
 " Highlight characters over 79
 " https://stackoverflow.com/a/10993757
 augroup vimrc_autocmds
-  highlight link OverLength Error
-  let b:match_overlength_id = matchadd('OverLength', '\%79v.\+')
-  unlet b:match_overlength_id
+  if !empty(&ft)
+    highlight link OverLength Error
+    let b:match_overlength_id = matchadd('OverLength', '\%79v.\+')
+    unlet b:match_overlength_id
+  endif
 augroup END
 
 " Add more contrast to visual mode
