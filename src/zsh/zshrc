@@ -139,13 +139,25 @@ alias easy_install="easy_install --prefix=$HOME/.local"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=
 
-if [ "$XVZD_OSTYPE" = "darwin" ]
-then
-  export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:\
-    $HOME/.local/lib/python3.7/site-packages"
-  export PATH="${PATH}:$HOME/Library/Android/sdk/tools"
-  export PATH="${PATH}:$HOME/Library/Android/sdk/platform-tools"
-fi
+case $XVZD_OSTYPE in
+  darwin)
+    export PYTHONPATH="${PYTHONPATH}:\
+      $HOME/.local/lib/python2.7/site-packages:\
+      $HOME/.local/lib/python3.7/site-packages"
+    export PATH="${PATH}:$HOME/Library/Android/sdk/tools"
+    export PATH="${PATH}:$HOME/Library/Android/sdk/platform-tools"
+    ;;
+  windows)
+    # If wsl exists
+    if which wsl.exe > /dev/null 2>&1
+    then
+      # Fix wsl zprofile sourcing issue
+      # By manually sourcing profile
+      source $HOME/.zprofile
+    fi
+    ;;
+esac
+
 
 # Brew path
 export PATH="/usr/local/bin:$PATH"

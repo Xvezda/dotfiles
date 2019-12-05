@@ -55,7 +55,7 @@ if [ "$XVZD_OSTYPE" = "windows" ]
 then
     mkdir -p src/wt
     PROFILES_PATH=$(wslpath $USERPROFILE)/AppData/Local/Packages/Microsoft.WindowsTerminal_*/LocalState/profiles.json
-    test -e ${PROFILES_PATH[0]} && mv ${PROFILES_PATH[0]} src/wt/profiles.json
+    test -e ${PROFILES_PATH[0]} && cp ${PROFILES_PATH[0]} src/wt/profiles.json
     unset PROFILES_PATH
 fi
 
