@@ -4,13 +4,12 @@
 " Set paste toggle to F10
 set pastetoggle=<F10>
 
-" Escape to jk
-" inoremap jk <Esc>
-" inoremap <Esc> <Nop>
+" Ignore supertab \w shift
+inoremap <S-Tab> <Tab>
 
 " Fold toggle with spacebar
 nnoremap <Space> za
-nnoremap <C-Space> zA
+nnoremap <S-Space> zA
 
 " Up and down for visual line
 nnoremap j gj
@@ -55,7 +54,7 @@ nnoremap <buffer> <Leader>rla :source ~/.vimrc<CR>
 " Remove search highlight when entering insert mode
 " https://vi.stackexchange.com/a/10415
 for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O', 's']
-    execute 'nnoremap ' . s:c . ' :nohlsearch<CR>' . s:c
+  execute 'nnoremap ' . s:c . ' :nohlsearch<CR>' . s:c
 endfor
 
 " Fix google search index plugin
