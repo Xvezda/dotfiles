@@ -14,10 +14,10 @@ ${VISUAL}$0
 endsnippet
 
 snippet main "main function" b
-int main(int argc, char **argv) {
-	$0
+${3:int} main(${2:int argc, char **argv}) {
+	$1
 
-	return 0;
+	return ${4:0};
 }
 endsnippet
 
