@@ -42,6 +42,7 @@ augroup END
 
 " C indent options
 autocmd FileType c setlocal cinoptions+=:0
+autocmd BufNewFile,BufRead *.c setlocal noexpandtab
 
 " C++ indent to 2 spaces
 autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2 expandtab
