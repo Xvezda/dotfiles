@@ -13,6 +13,20 @@ ${VISUAL}$0
 #endif  // $1`!p snip.rv = HEADER_NAME`
 endsnippet
 
+snippet ifdebug "preprocessor debug flag" tsm
+#ifdef DEBUG
+${VISUAL}
+#endif
+$0
+endsnippet
+
+snippet if0 "preprocessor always false" tsm
+#if 0
+${VISUAL}
+#endif
+$0
+endsnippet
+
 snippet main "main function" b
 ${3:int} main(${2:int argc, char **argv})
 {
