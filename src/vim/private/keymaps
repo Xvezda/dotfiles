@@ -6,6 +6,8 @@ set pastetoggle=<F10>
 
 " Ignore supertab \w shift
 inoremap <S-Tab> <Tab>
+" Map to ctrl+l as well
+inoremap <C-l> <Tab>
 
 " Fold toggle with spacebar
 nnoremap <Space> za
