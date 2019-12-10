@@ -2,13 +2,13 @@
 
 # Compiled source #
 ###################
-*.com
+# *.com
 *.class
 *.dll
 *.exe
-*.o
+# *.o
 a.out
-*.so
+# *.so
 
 # Packages #
 ############
@@ -47,9 +47,9 @@ Session.vim
 .idea/
 
 # Node
-node_modules/
-npm-debug.log
+# node_modules/
+# npm-debug.log
 
 # Python
-*.pyc
+# *.pyc
 
