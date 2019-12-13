@@ -69,7 +69,7 @@ autocmd FileType vue setlocal shiftwidth=2 softtabstop=2 expandtab
 " Override vim-bootstrap default python colorcolumn value to 72
 " https://www.python.org/dev/peps/pep-0008/#maximum-line-length
 autocmd FileType python setlocal colorcolumn=72
-      \ shiftwidth=2 softtabstop=2 expandtab
+      \ shiftwidth=4 softtabstop=4 expandtab
       \ foldnestmax=2 foldmethod=indent
       \ completeopt-=preview
       " \ | runtime! private/_google_python_style.vim
