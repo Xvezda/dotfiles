@@ -22,6 +22,7 @@ iabbrev amin main
 iabbrev breka break
 iabbrev calss class
 iabbrev cosnt const
+iabbrev ednl endl
 iabbrev exprot export
 iabbrev exprots exports
 iabbrev firend friend
