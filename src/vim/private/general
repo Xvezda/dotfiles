@@ -30,6 +30,7 @@ let g:go_version_warning = 0
 " Highlight characters over 79
 " https://stackoverflow.com/a/10993757
 augroup vimrc_autocmds
+  autocmd!
   if !empty(&ft)
     highlight link OverLength Error
     let b:match_overlength_id = matchadd('OverLength', '\%79v.\+')

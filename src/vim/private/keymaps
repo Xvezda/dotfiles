@@ -37,21 +37,24 @@ nnoremap \ '
 " Map current keyword search
 nnoremap <Leader>/ *
 
+" JSON formatting
+autocmd FileType json nnoremap <Leader>jf :%!python -m json.tool<CR>
+
 " Remove trailing whitespace
-nnoremap <silent> <Leader>rw :FixWhitespace<CR>
+nnoremap <Silent> <Leader>rw :FixWhitespace<CR>
 
 " Remove Windows carrage return characters
-nnoremap <silent> <Leader>rr :%s/\r//g<CR>``
+nnoremap <Silent> <Leader>rr :%s/\r//g<CR>``
 
 " Relative number toggle short cut <,ln>
-nnoremap <silent> <Leader>ln :set relativenumber!<CR>
+nnoremap <Silent> <Leader>ln :set relativenumber!<CR>
 
 " Run current buffer's vim script if filetype is vim
 autocmd FileType vim    nnoremap <buffer> <Leader>rs :source %<CR>
 
 " Reload current vim configuration files
-nnoremap <buffer> <Leader>rll :source ~/.vimrc.local<CR>
-nnoremap <buffer> <Leader>rla :source ~/.vimrc<CR>
+nnoremap <Buffer> <Leader>rll :source ~/.vimrc.local<CR>
+nnoremap <Buffer> <Leader>rla :source ~/.vimrc<CR>
 
 " Remove search highlight when entering insert mode
 " https://vi.stackexchange.com/a/10415
@@ -60,8 +63,8 @@ for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O', 's']
 endfor
 
 " Fix google search index plugin
-nmap <silent> n n<Plug>SearchIndex
-nmap <silent> N N<Plug>SearchIndex
+nmap <Silent> n n<Plug>SearchIndex
+nmap <Silent> N N<Plug>SearchIndex
 
 " Set Fastfold
 nmap zuz <Plug>(FastFoldUpdate)
@@ -70,11 +73,11 @@ nmap zuz <Plug>(FastFoldUpdate)
 nnoremap <F5> :UndotreeToggle<cr>
 
 " vim-schelpp keymaps
-vmap <unique> <S-Up>    <Plug>SchleppUp
-vmap <unique> <S-Down>  <Plug>SchleppDown
-vmap <unique> <S-Left>  <Plug>SchleppLeft
-vmap <unique> <S-Right> <Plug>SchleppRight
-vmap <unique> D <Plug>SchleppDup
+vmap <Unique> <S-Up>    <Plug>SchleppUp
+vmap <Unique> <S-Down>  <Plug>SchleppDown
+vmap <Unique> <S-Left>  <Plug>SchleppLeft
+vmap <Unique> <S-Right> <Plug>SchleppRight
+vmap <Unique> D <Plug>SchleppDup
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -163,10 +166,13 @@ endfunction
 
 " Remap in/around python docstring text objects
 let g:is_pythonsense_suppress_object_keymaps = 1
-autocmd FileType python onoremap <buffer> ad :<C-u>cal PyDocstrTxtObj(0)<CR>
-autocmd FileType python onoremap <buffer> id :<C-u>cal PyDocstrTxtObj(1)<CR>
-autocmd FileType python vnoremap <buffer> ad :<C-u>cal PyDocstrTxtObj(0)<CR>
-autocmd FileType python vnoremap <buffer> id :<C-u>cal PyDocstrTxtObj(1)<CR>
+augroup python_docstring_map
+  autocmd!
+  autocmd FileType python onoremap <Buffer> ad :<C-u>cal PyDocstrTxtObj(0)<CR>
+  autocmd FileType python onoremap <Buffer> id :<C-u>cal PyDocstrTxtObj(1)<CR>
+  autocmd FileType python vnoremap <Buffer> ad :<C-u>cal PyDocstrTxtObj(0)<CR>
+  autocmd FileType python vnoremap <Buffer> id :<C-u>cal PyDocstrTxtObj(1)<CR>
+augroup END
 
 
 " vim:ft=vim
