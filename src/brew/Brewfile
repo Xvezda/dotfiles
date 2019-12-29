@@ -32,6 +32,7 @@ brew "git-lfs"
 brew "glfw"
 brew "gptfdisk"
 brew "graphicsmagick"
+brew "gtest", args: ["HEAD"]
 brew "hashcat"
 brew "haskell-stack"
 brew "libimobiledevice", args: ["HEAD"]
