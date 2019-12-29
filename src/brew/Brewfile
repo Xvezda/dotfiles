@@ -30,6 +30,7 @@ brew "fzf"
 brew "git"
 brew "git-lfs"
 brew "glfw"
+brew "google-benchmark"
 brew "gptfdisk"
 brew "graphicsmagick"
 brew "gtest", args: ["HEAD"]
