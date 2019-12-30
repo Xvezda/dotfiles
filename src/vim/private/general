@@ -24,7 +24,7 @@ set foldopen+=jump
 set colorcolumn=72
 highlight ColorColumn ctermbg=236 guibg=#333333
 
-" Surpress warning
+" Suppress warning
 let g:go_version_warning = 0
 
 " Highlight characters over 79
