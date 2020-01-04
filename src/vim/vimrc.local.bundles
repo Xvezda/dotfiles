@@ -19,6 +19,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'Konfekt/FastFold'
 Plug 'mbbill/undotree'
 Plug 'zirrostig/vim-schlepp'
+Plug 'Xvezda/vim-nobin'
 " Plugins for specific languages {{{1
 
 " Install plugin when only local machine
