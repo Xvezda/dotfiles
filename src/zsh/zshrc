@@ -133,11 +133,13 @@ esac
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export VIRTUAL_ENV_DISABLE_PROMPT=
+export PROMPT_EOL_MARK=''
+
+
 TMP__="$(which nvim)" && export EDITOR="$TMP__" || export EDITOR="$(which vi)"
 
 alias easy_install="easy_install --prefix=$HOME/.local"
-
-export VIRTUAL_ENV_DISABLE_PROMPT=
 
 case $XVZD_OSTYPE in
   darwin)
