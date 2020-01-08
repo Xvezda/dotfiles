@@ -77,7 +77,6 @@ brew "yarn"
 brew "youtube-dl", link: false
 brew "zlib"
 brew "zsh"
-brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 brew "heroku/brew/heroku"
