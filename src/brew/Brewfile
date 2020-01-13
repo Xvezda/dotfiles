@@ -46,6 +46,7 @@ brew "john-jumbo"
 brew "jq"
 brew "kotlin"
 brew "libksba"
+brew "libpcap"
 brew "libusbmuxd", args: ["HEAD"]
 brew "libyaml"
 brew "llvm"
