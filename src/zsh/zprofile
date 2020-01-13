@@ -26,8 +26,10 @@ then
         explorer.exe $(wslpath -w "$1")
     }
 
+    export XVZD_CLIPBOARD="clip.exe"
+
     alias adb="adb.exe"
-    alias clip="clip.exe"
+    alias clip="$XVZD_CLIPBOARD"
 fi
 
 # Linux specific commands
@@ -40,6 +42,8 @@ then
     function pbpaste() {
         xclip -selection clipboard -o
     }
+
+    export XVZD_CLIPBOARD="xclip"
 
     alias docker='sudo docker'
     alias docker-compose='sudo docker-compose'
@@ -57,6 +61,8 @@ then
     function openvpn() {
         sudo $(brew --prefix openvpn)/sbin/openvpn "$@"
     }
+
+    export XVZD_CLIPBOARD="pbcopy"
 fi
 
 # rm to rm trash
