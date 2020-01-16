@@ -36,6 +36,9 @@ Plug 'hail2u/vim-css3-syntax', { 'for': 'html' }
 Plug 'gorodinskiy/vim-coloresque', { 'for': 'html' }
 Plug 'tpope/vim-haml', { 'for': 'html' }
 "2}}}
+" Markdown {{{2
+Plug 'junegunn/vim-xmark', { 'for': 'markdown', 'do': 'make' }
+" 2}}}
 " Liquid {{{2
 Plug 'tpope/vim-liquid', { 'for': 'liquid' }
 "2}}}
