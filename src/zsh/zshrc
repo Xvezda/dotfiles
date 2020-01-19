@@ -71,6 +71,10 @@ if which fasd > /dev/null 2>&1; then
   add-zsh-hook preexec _fasd_preexec
 fi
 
+if which fuck > /dev/null 2>&1; then
+  eval $(thefuck --alias)
+fi
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -227,4 +231,5 @@ if [ -s "$HOME/.rvm/scripts/rvm" ] && [ ! "$(whence -w __init_rvm)" = function ]
   }
 for i in "${__ruby_commands[@]}"; do alias $i='__init_rvm && '$i; done
 fi
+
 
