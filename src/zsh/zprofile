@@ -49,6 +49,7 @@ then
     alias docker-compose='sudo docker-compose'
 
     alias pip='python -m pip'
+    alias pip3='python3 -m pip'
 fi
 
 # Mac specific commands
