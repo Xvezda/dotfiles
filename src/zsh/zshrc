@@ -62,7 +62,7 @@ KEYTIMEOUT=1
 # ZSH_CUSTOM=/path/to/new-custom-folder
 #
 # https://github.com/clvv/fasd/issues/18#issuecomment-422921618
-if which fasd > /dev/null 2>&1; then
+if type fasd > /dev/null 2>&1; then
   eval "$(fasd --init posix-alias)" # Anything you want enabled BUT zsh-hook
   function _fasd_preexec() {
     { eval "fasd --proc \$(fasd --sanitize \$2)"; } &|
@@ -71,7 +71,7 @@ if which fasd > /dev/null 2>&1; then
   add-zsh-hook preexec _fasd_preexec
 fi
 
-if which fuck > /dev/null 2>&1; then
+if type fuck > /dev/null 2>&1; then
   eval $(thefuck --alias)
 fi
 
@@ -153,7 +153,7 @@ case $XVZD_OSTYPE in
     ;;
   windows)
     # If wsl exists
-    if which wsl.exe > /dev/null 2>&1
+    if type wsl.exe > /dev/null 2>&1
     then
       # Fix wsl zprofile sourcing issue
       # By manually sourcing profile

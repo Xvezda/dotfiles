@@ -68,7 +68,7 @@ function del() {
     RM_TRASH__=""
     case $XVZD_OSTYPE in
         darwin)
-            which rmtrash && RM_TRASH__="rmtrash"
+            type rmtrash > /dev/null 2>&1 && RM_TRASH__="rmtrash"
             ;;
         linux)
             if [ $XVZD_OSNAME = 'ubuntu' ]
