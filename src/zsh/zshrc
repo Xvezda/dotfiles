@@ -93,8 +93,7 @@ plugins=()
 [ -s "$ZSH/oh-my-zsh.sh" ] && source $ZSH/oh-my-zsh.sh
 
 # User configuration
-if [[ "$(uname -a)" == *"Microsoft"* ]]
-then
+if [[ "$(uname -a)" == *"Microsoft"* ]]; then
   export XVZD_OSTYPE="windows"
 else
   export XVZD_OSTYPE="$(TMP__=$(uname | tr 'A-Z' 'a-z'); echo -n ${TMP__%%-*})"
@@ -102,8 +101,7 @@ fi
 
 case $XVZD_OSTYPE in
   linux)
-    if [ -f /etc/os-release ]
-    then
+    if [ -f /etc/os-release ]; then
       export XVZD_OSNAME="$(cat /etc/os-release | grep -E '^NAME="(.*)"' |
         sed -E 's/^NAME="(.*)"/\1/' | tr 'A-Z' 'a-z')"
     fi

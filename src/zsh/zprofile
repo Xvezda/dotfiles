@@ -2,16 +2,14 @@ test -z $XDG_CONFIG_HOME && export XDG_CONFIG_HOME="$HOME/.config"
 test -z $XDG_CACHE_HOME && export XDG_CACHE_HOME="$HOME/.cache"
 test -z $XDG_DATA_HOME && export XDG_DATA_HOME="$HOME/.local/share"
 
-if [ "$EDITOR" != "" ] && [ "$(basename $EDITOR)" = "nvim" ]
-then
+if [ "$EDITOR" != "" ] && [ "$(basename $EDITOR)" = "nvim" ]; then
     alias vi="$EDITOR"
     alias vim="$EDITOR"
     alias vimdiff="$EDITOR -d"
 fi
 
 # Windows specific commands
-if [ "$XVZD_OSTYPE" = "windows" ]
-then
+if [ "$XVZD_OSTYPE" = "windows" ]; then
     export PATH="${PATH}:$(wslpath $USERPROFILE)/bin"
 
     export DOCKER_TLS_VERIFY="1"
@@ -33,8 +31,7 @@ then
 fi
 
 # Linux specific commands
-if [ "$XVZD_OSTYPE" = "linux" ]
-then
+if [ "$XVZD_OSTYPE" = "linux" ]; then
     function pbcopy() {
         xclip -selection clipboard
     }
@@ -53,8 +50,7 @@ then
 fi
 
 # Mac specific commands
-if [ "$XVZD_OSTYPE" = "darwin" ]
-then
+if [ "$XVZD_OSTYPE" = "darwin" ]; then
     function ctags() {
         $(brew --prefix)/bin/ctags "$@"
     }
