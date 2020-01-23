@@ -154,6 +154,12 @@ function comb() {
     cat $1.* > $1
 }
 
+# Bring help to zsh
+function help() {
+    bash -c "command help $@"
+}
+# alias help="bash -c 'builtin help $@'"
+
 # Exclude when zip from command line
 alias zip='zip -x "*.DS_Store"'
 
