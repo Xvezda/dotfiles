@@ -184,6 +184,22 @@ export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 test -e $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
   source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+
+XVZD_DEFER_CMD=('make')
+
+for cmd in "${XVZD_DEFER_CMD[@]}"; do
+  alias $cmd='__xvzd_defer_init && '$cmd
+done
+
+function __xvzd_defer_init() {
+  for cmd in "${XVZD_DEFER_CMD[@]}"; do unalias $cmd; done
+  funcs=( $(declare -f | grep '^__init_.*()' | cut -d' ' -f1) )
+  for func in "${funcs[@]}"; do
+    eval "$func" 2>/dev/null
+  done
+}
+
+
 # Load gvm
 if [ -s "$HOME/.gvm/scripts/gvm" ] && [ ! "$(whence -w __init_gvm)" = function ]; then
   declare -a __go_commands=('gvm' 'go')
