@@ -165,16 +165,6 @@ then
     exit
 fi
 
-# https://gist.github.com/magnetikonline/22c1eb412daa350eeceee76c97519da8
-# read arguments
-opts=$(getopt \
-       --longoptions setup:,fetch \
-       --name "$(basename "$0")" \
-       --options "" \
-       -- "$@"
-)
-eval set --$opts
-
 TARGET=""
 while [ "$#" -gt 0 ]; do
     case "$1" in
