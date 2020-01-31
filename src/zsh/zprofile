@@ -63,7 +63,7 @@ if [ "$XVZD_OSTYPE" = "darwin" ]; then
 fi
 
 # rm to rm trash
-alias rm="echo Use 'del', or the full path e.g.'/bin/rm'"
+alias rm="rm -i"
 function del() {
     RM_TRASH__=""
     case $XVZD_OSTYPE in
@@ -83,38 +83,6 @@ function del() {
     esac
     $RM_TRASH__ "$@"
 }
-
-# Additional git alias
-function gcod() {
-    git checkout develop
-}
-
-function gcom() {
-    git checkout master
-}
-
-function gpoc() {
-    git push -u origin $(git branch | head -n 1 | awk '{ print $2 }')
-}
-alias gs="git status"
-
-# Docker stuffs
-function drl() {
-    docker rm $(docker ps -a -q -l -f status=exited)
-}
-
-function dsl() {
-    docker stop $(docker ps -lqf status=running)
-}
-
-function dre() {
-    docker rm -v $(docker ps -a -q -f status=exited)
-}
-alias dim="docker images"
-alias drmi="docker rmi"
-alias drm="docker rm"
-alias dps="docker ps"
-alias dpsa="docker ps -a"
 
 
 # Fix telnet tmux issue
@@ -158,7 +126,9 @@ function comb() {
 function help() {
     bash -c "command help $@"
 }
-# alias help="bash -c 'builtin help $@'"
+
+# Aliases
+alias proxychains="proxychains4"
 
 # Exclude when zip from command line
 alias zip='zip -x "*.DS_Store"'
@@ -166,13 +136,8 @@ alias zip='zip -x "*.DS_Store"'
 # Activate python virtualenv
 alias activate='source env/bin/activate'
 
-# Python alias
-alias py3='python3'
-alias py2='python2'
-
 # Create default virtualenv
 alias mkenv='virtualenv env'
-alias mkenv3='virtualenv -p python3 env'
 
 # Create pip requirements
-alias mkreq='pip freeze > requirements.txt'
+alias mkreq='python -m pip freeze > requirements.txt'
