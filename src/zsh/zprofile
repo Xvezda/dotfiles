@@ -89,7 +89,7 @@ function del() {
 alias telnet='TERM=xterm telnet'
 
 # SSH with remote clipboard alias
-function ssh-clip() {
+function sshclip() {
     # Send signal directly to netcat when exit to break while loop
     DIRECT_SIG="pbpaste | base64 | nc localhost 7331"
     trap 'eval "${DIRECT_SIG}"' INT TERM EXIT
@@ -99,6 +99,7 @@ function ssh-clip() {
     ssh -R 1337:localhost:7331 "$@"
     ( eval "sleep 3 && ${DIRECT_SIG}" & ) > /dev/null 2>&1
 }
+alias sshprox="ssh -o ProxyCommand='nc -x localhost:9050 %h %p'"
 
 # Encrypt/Decrypt functions
 function encf() {
