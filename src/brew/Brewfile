@@ -79,7 +79,7 @@ brew "thefuck"
 brew "tidy-html5"
 brew "tig"
 brew "tmux"
-brew "tor", restart_service: true
+brew "tor"
 brew "torsocks"
 brew "tree"
 brew "upx"

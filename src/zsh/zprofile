@@ -28,6 +28,8 @@ if [ "$XVZD_OSTYPE" = "windows" ]; then
 
     alias adb="adb.exe"
     alias clip="$XVZD_CLIPBOARD"
+
+    export ORPORT=9150
 fi
 
 # Linux specific commands
@@ -99,7 +101,10 @@ function sshclip() {
     ssh -R 1337:localhost:7331 "$@"
     ( eval "sleep 3 && ${DIRECT_SIG}" & ) > /dev/null 2>&1
 }
-alias sshprox="ssh -o ProxyCommand='nc -x localhost:9050 %h %p'"
+if [ -z "$ORPORT" ]; then
+    export ORPORT=9050
+fi
+alias sshprox="ssh -o ProxyCommand='nc -x localhost:$ORPORT %h %p'"
 
 # Encrypt/Decrypt functions
 function encf() {
