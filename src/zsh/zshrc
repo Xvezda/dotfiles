@@ -162,14 +162,19 @@ case $XVZD_OSTYPE in
     ;;
 esac
 
+export XVZD_VROOT_PATH="$HOME/vroot"
+if [ -e "$XVZD_VROOT_PATH/usr/tokens" ]; then
+  for tokens in $(ls -1 $XVZD_VROOT_PATH/usr/tokens/*.sh); do
+    source $tokens
+  done
+fi
+
 
 # Brew path
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 export PATH="$HOME/vroot/usr/bin:$PATH"
-test -e "$HOME/vroot/usr/tokens/overthewire.zsh" && \
-  source "$HOME/vroot/usr/tokens/overthewire.zsh"
 
 export PATH="$PATH:$HOME/Library/Python/2.7/bin:$HOME/Library/Python/3.7/bin"
 export PATH="$PATH:$HOME/development/flutter/bin"
