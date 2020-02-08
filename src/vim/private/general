@@ -38,9 +38,6 @@ augroup vimrc_autocmds
   endif
 augroup END
 
-" Add more contrast to visual mode
-"highlight Visual term=reverse cterm=reverse
-
 " C indent options
 autocmd FileType c setlocal cinoptions+=:0
 
@@ -73,7 +70,6 @@ autocmd FileType python setlocal colorcolumn=72
       \ shiftwidth=4 softtabstop=4 expandtab
       \ foldnestmax=2 foldmethod=indent
       \ completeopt-=preview
-      " \ | runtime! private/_google_python_style.vim
 
 " Vim script indent options
 autocmd FileType vim setlocal shiftwidth=2 softtabstop=2 expandtab

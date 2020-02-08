@@ -22,6 +22,7 @@ Plug 'zirrostig/vim-schlepp'
 Plug 'Xvezda/vim-nobin'
 " Plugins for specific languages {{{1
 
+" Use native support
 if (!has('nvim') && v:version < 801) || !has('nvim-0.4')
   Plug 'google/vim-searchindex'
 endif
