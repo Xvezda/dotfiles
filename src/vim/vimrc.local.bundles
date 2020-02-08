@@ -10,7 +10,6 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
-Plug 'google/vim-searchindex'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-sort-motion'
@@ -22,6 +21,11 @@ Plug 'mbbill/undotree'
 Plug 'zirrostig/vim-schlepp'
 Plug 'Xvezda/vim-nobin'
 " Plugins for specific languages {{{1
+
+if (!has('nvim') && v:version < 801) || !has('nvim-0.4')
+  Plug 'google/vim-searchindex'
+endif
+
 
 " Install plugin when only local machine
 if !exists("$SSH_CLIENT")

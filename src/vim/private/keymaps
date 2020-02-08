@@ -63,8 +63,10 @@ for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O', 's']
 endfor
 
 " Fix google search index plugin
-nmap <Silent> n n<Plug>SearchIndex
-nmap <Silent> N N<Plug>SearchIndex
+if (!has('nvim') && v:version < 801) || !has('nvim-0.4')
+  nnoremap <Silent> n n<Plug>SearchIndex
+  nnoremap <Silent> N N<Plug>SearchIndex
+endif
 
 " Set Fastfold
 nmap zuz <Plug>(FastFoldUpdate)
