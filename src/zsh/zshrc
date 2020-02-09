@@ -145,9 +145,7 @@ alias easy_install="easy_install --prefix=$HOME/.local"
 
 case $XVZD_OSTYPE in
   darwin)
-    export PYTHONPATH="${PYTHONPATH}:\
-      $HOME/.local/lib/python2.7/site-packages:\
-      $HOME/.local/lib/python3.7/site-packages"
+    export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:$HOME/.local/lib/python3.7/site-packages"
     export PATH="${PATH}:$HOME/Library/Android/sdk/tools"
     export PATH="${PATH}:$HOME/Library/Android/sdk/platform-tools"
     ;;
