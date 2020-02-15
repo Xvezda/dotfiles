@@ -1,1 +1,6 @@
 mute: TRIM_EMPTY_ELEMENT
+quiet: yes
+show-errors: 0
+show-warnings: false
+
+
