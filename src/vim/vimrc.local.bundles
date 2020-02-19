@@ -19,6 +19,7 @@ Plug 'junegunn/vader.vim'
 Plug 'Konfekt/FastFold'
 Plug 'mbbill/undotree'
 Plug 'zirrostig/vim-schlepp'
+Plug 'wakatime/vim-wakatime'
 Plug 'Xvezda/vim-nobin'
 " Plugins for specific languages {{{1
 
