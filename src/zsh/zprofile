@@ -106,6 +106,15 @@ if [ -z "$ORPORT" ]; then
 fi
 alias sshprox="ssh -o ProxyCommand='nc -x localhost:$ORPORT %h %p'"
 
+# Get pid by port
+function pidofport() {
+    case $XVZD_OSTYPE in
+        darwin)
+            lsof -nP -i:$1 | grep LISTEN | awk '{ print $2 }'
+            ;;
+    esac
+}
+
 # Encrypt/Decrypt functions
 function encf() {
     openssl aes-256-cbc -salt -in $1 -out $1.enc
