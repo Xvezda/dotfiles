@@ -92,7 +92,7 @@ brew "upx"
 brew "watch"
 brew "wget"
 brew "yarn"
-brew "youtube-dl"
+brew "youtube-dl", link: false
 brew "zlib"
 brew "zsh"
 brew "zsh-completions"

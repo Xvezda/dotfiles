@@ -154,7 +154,7 @@ alias proxychains="proxychains4"
 alias zip='zip -x "*.DS_Store"'
 
 # Activate python virtualenv
-alias activate='source env/bin/activate'
+alias activate='source venv/bin/activate'
 
 # Create default virtualenv
 alias mkenv='virtualenv env'
