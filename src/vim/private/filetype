@@ -5,6 +5,7 @@ let g:load_doxygen_syntax = 1
 
 " Detect XE html template by its contents
 augroup htmlxe_filetype_detect
+  autocmd!
   autocmd FileType html
         \ let pattern = '\C\(' .
         \    '<load\s\+\(cond=".\+"\s*\|target="\(\w\|\.\|\-\|/\)\+"\s*\)/\?>' .
@@ -21,6 +22,7 @@ augroup END
 
 " Detect React.js template by its contents
 augroup reactjs_filetype_detect
+  autocmd!
   autocmd FileType javascript
         \ let pattern = '\C^\(' .
         \    'import\(\s\(\[\s\w{}\],\)\+\)\?\(\sReact\)' .
@@ -33,6 +35,18 @@ augroup reactjs_filetype_detect
         \ |   set ft=javascriptreact
         \ | endif
         \ | unlet pattern
+augroup END
+
+augroup tsconfig_json_filetype_detect
+  autocmd!
+  autocmd FileType json
+        \ if expand("%") ==# 'tsconfig.json'
+        \ | let g:vim_json_warnings = 0
+        \ | syntax clear jsonStringSQError
+        \ | syntax region jsonComment start=+/\*+ end=+\*/+
+        \ | syntax match jsonComment "//.*"
+        \ | hi def link jsonComment Comment
+        \ | endif
 augroup END
 
 
