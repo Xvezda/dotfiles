@@ -190,7 +190,7 @@ test -e $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
   source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
-XVZD_DEFER_CMD=('make')
+XVZD_DEFER_CMD=('make' 'git')
 
 for cmd in "${XVZD_DEFER_CMD[@]}"; do
   alias $cmd='__xvzd_defer_init && '$cmd
