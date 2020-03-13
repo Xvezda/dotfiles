@@ -37,6 +37,15 @@ augroup reactjs_filetype_detect
         \ | unlet pattern
 augroup END
 
+" Cutsom highlighting for C, C++
+augroup c_filetype_detect
+  autocmd!
+  autocmd FileType c,cpp
+        \ syntax match customType /\<[_[:alpha:]][[:alnum:]]*_t\>/
+        \ | hi def link customType Type
+augroup END
+
+" Accept comment on tsconfig file
 augroup tsconfig_json_filetype_detect
   autocmd!
   autocmd FileType json
