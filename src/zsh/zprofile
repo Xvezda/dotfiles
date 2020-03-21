@@ -151,7 +151,7 @@ function gpg_() {
     export GPG_TTY=$(tty)
     command gpg $@
 }
-alias gpg="gpg_"
+alias gpg="eval gpg_"
 
 # Aliases
 alias proxychains="proxychains4"
