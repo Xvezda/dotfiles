@@ -40,6 +40,7 @@ iabbrev itmes items
 iabbrev namepsace namespace
 iabbrev paht path
 iabbrev pakcage package
+iabbrev pakcages packages
 iabbrev paylaod payload
 iabbrev priavte private
 iabbrev pyaload payload
