@@ -62,4 +62,13 @@ augroup tsconfig_json_filetype_detect
 augroup END
 
 
+" Custom highlighting for python
+augroup python_filetype_detect
+  autocmd!
+  autocmd FileType python
+        \ syntax match pythonConstant /\<[_[:upper:]]\+\>/
+        \ | hi def link pythonConstant Constant
+augroup END
+
+
 " vim:ft=vim
