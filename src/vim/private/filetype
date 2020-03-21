@@ -3,6 +3,9 @@
 " Enable doxygen syntax load
 let g:load_doxygen_syntax = 1
 
+" Set syntastic checker as passive
+let g:syntastic_mode_map = {'mode':'passive'}
+
 " Detect XE html template by its contents
 augroup htmlxe_filetype_detect
   autocmd!
