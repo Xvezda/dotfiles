@@ -147,6 +147,12 @@ function wopen() {
     python -m webbrowser -t "$1"
 }
 
+function gpg_() {
+    export GPG_TTY=$(tty)
+    command gpg $@
+}
+alias gpg="gpg_"
+
 # Aliases
 alias proxychains="proxychains4"
 

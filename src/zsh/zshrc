@@ -186,9 +186,6 @@ export PATH="$PATH:/usr/local/opt/john-jumbo/share/john"
 export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
 export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 
-# Fix gpg issue
-export GPG_TTY=$(tty)
-
 test -e $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
   source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
