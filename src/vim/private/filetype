@@ -68,6 +68,7 @@ augroup python_filetype_detect
   autocmd FileType python
         \ syntax match pythonConstant /\<[_[:upper:]]\+\>/
         \ | hi def link pythonConstant Constant
+        \ | let g:sleuth_automatic = 0
 augroup END
 
 
