@@ -203,6 +203,7 @@ function __xvzd_defer_init() {
     eval "$func" 2>/dev/null
   done
 }
+alias vminit="__xvzd_defer_init"
 
 
 # Load gvm
