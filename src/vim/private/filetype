@@ -48,11 +48,12 @@ augroup c_filetype_detect
         \ | hi def link customType Type
 augroup END
 
-" Accept comment on tsconfig file
-augroup tsconfig_json_filetype_detect
+" Accept comment on tsconfig and windows terminal profile file
+augroup config_json_filetype_detect
   autocmd!
   autocmd FileType json
-        \ if expand("%") ==# 'tsconfig.json'
+        \ if expand("%:p") =~# '\C\([\\\/]tsconfig\.json' .
+        \ '\|[\\\/]LocalState[\\\/]profiles\.json\)$'
         \ | let g:vim_json_warnings = 0
         \ | syntax clear jsonStringSQError
         \ | syntax region jsonComment start=+/\*+ end=+\*/+
