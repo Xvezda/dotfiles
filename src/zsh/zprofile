@@ -115,6 +115,11 @@ function pidofport() {
     esac
 }
 
+# Get process name by pid
+function pnameofpid() {
+    [ ! -z "$1" ] && ps -p $1 -o comm=
+}
+
 # Encrypt/Decrypt functions
 function encf() {
     openssl aes-256-cbc -salt -in $1 -out $1.enc

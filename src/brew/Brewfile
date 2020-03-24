@@ -41,7 +41,7 @@ brew "git"
 brew "git-lfs"
 brew "glfw"
 brew "libksba"
-brew "gnupg"
+brew "gnupg", link: false
 brew "google-benchmark"
 brew "gptfdisk"
 brew "graphicsmagick"
