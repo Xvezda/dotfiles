@@ -16,8 +16,7 @@ augroup htmlxe_filetype_detect
         \    '\|{@\?\(\s\|\_.\)*\(\$\w\|Context::\w(\_.\+)\)\(\s\|\_.\)*}' .
         \    '\|<block\s\+cond=".\+">\_.*</block>' .
         \ '\)'
-        \ | if match(getline(1), pattern) != -1 ||
-        \      search(pattern, 'n', 100)
+        \ | if getline(1).getline(2).getline(3).getline(4).getline(5) =~# pattern
         \ |   set ft=htmlxe
         \ | endif
         \ | unlet pattern
@@ -33,8 +32,7 @@ augroup reactjs_filetype_detect
         \    '\|\s\+ReactDOM' .
         \    '\|\s\+return\s\+(\s\*<' .
         \ '\)'
-        \ | if match(getline(1), pattern) != -1 ||
-        \      search(pattern, 'n', 100)
+        \ | if getline(1).getline(2).getline(3).getline(4).getline(5) =~# pattern
         \ |   set ft=javascriptreact
         \ | endif
         \ | unlet pattern
