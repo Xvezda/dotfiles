@@ -21,6 +21,7 @@ Plug 'mbbill/undotree'
 Plug 'zirrostig/vim-schlepp'
 Plug 'wakatime/vim-wakatime'
 Plug 'Xvezda/vim-nobin'
+Plug 'Xvezda/vim-readonly'
 " Plugins for specific languages {{{1
 
 " Use native support
