@@ -61,6 +61,8 @@ if [ "$XVZD_OSTYPE" = "darwin" ]; then
         sudo $(brew --prefix openvpn)/sbin/openvpn "$@"
     }
 
+    alias ghidra="ghidraRun"
+
     export XVZD_CLIPBOARD="pbcopy"
 fi
 
