@@ -156,7 +156,7 @@ function wopen() {
 
 function gpg_() {
     export GPG_TTY=$(tty)
-    command gpg $@
+    command gpg2 $@
 }
 alias gpg="eval gpg_"
 
