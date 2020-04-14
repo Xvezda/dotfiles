@@ -34,9 +34,6 @@ fi
 
 # Linux specific commands
 if [ "$XVZD_OSTYPE" = "linux" ]; then
-    export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
-    export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
-
     function pbcopy() {
         xclip -selection clipboard
     }
@@ -56,6 +53,9 @@ fi
 
 # Mac specific commands
 if [ "$XVZD_OSTYPE" = "darwin" ]; then
+    export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
+    export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
+
     function ctags() {
         $(brew --prefix)/bin/ctags "$@"
     }
