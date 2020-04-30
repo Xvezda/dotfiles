@@ -150,6 +150,7 @@ case $XVZD_OSTYPE in
     export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:$HOME/.local/lib/python3.7/site-packages"
     export PATH="${PATH}:$HOME/Library/Android/sdk/tools"
     export PATH="${PATH}:$HOME/Library/Android/sdk/platform-tools"
+    export PATH="/usr/local/opt/curl/bin:${PATH}"
     ;;
   windows)
     # If wsl exists
