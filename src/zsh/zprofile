@@ -109,7 +109,6 @@ function sshclip() {
 if [ -z "$ORPORT" ]; then
     export ORPORT=9050
 fi
-alias sshprox="ssh -o ProxyCommand='nc -x localhost:$ORPORT %h %p'"
 
 # Get pid by port
 function pidofport() {
