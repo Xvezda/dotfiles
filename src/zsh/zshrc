@@ -203,6 +203,9 @@ function __xvzd_defer_init() {
 }
 alias vminit="__xvzd_defer_init"
 
+# Define n prefix
+export N_PREFIX="$HOME/.nvm"
+
 # Load rvm
 [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
 
