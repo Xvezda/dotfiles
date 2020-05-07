@@ -224,32 +224,9 @@ fi
 
 
 # Load rvm
-# if [ -s "$HOME/.rvm/scripts/rvm" ] && [ ! "$(whence -w __init_rvm)" = function ]; then
-#   declare -a __ruby_commands=('rvm' 'ruby' 'bundle')
-#   function __init_rvm() {
-#     # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-#     export PATH="$PATH:$HOME/.rvm/bin"
-
-#     for i in "${__ruby_commands[@]}"; do unalias $i; done
-#     source "$HOME/.rvm/scripts/rvm"
-#     unset __ruby_commands
-#     unset -f __init_rvm
-#   }
-# for i in "${__ruby_commands[@]}"; do alias $i='__init_rvm && '$i; done
-# fi
 [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
 
 # Load gvm
-# if [ -s "$HOME/.gvm/scripts/gvm" ] && [ ! "$(whence -w __init_gvm)" = function ]; then
-#   declare -a __go_commands=('gvm' 'go')
-#   function __init_gvm() {
-#     for i in "${__go_commands[@]}"; do unalias $i; done
-#     source "$HOME/.gvm/scripts/gvm"
-#     unset __go_commands
-#     unset -f __init_gvm
-#   }
-# for i in "${__go_commands[@]}"; do alias $i='__init_gvm && '$i; done
-# fi
 [ -s "$HOME/.gvm/scripts/gvm" ] && source "$HOME/.gvm/scripts/gvm"
 
 
