@@ -151,6 +151,18 @@ function help() {
     bash -c "command help $@"
 }
 
+# https://unix.stackexchange.com/a/391230
+function freeze_history () {
+    fc -A
+    fc -p $HISTFILE
+    unset HISTFILE
+}
+
+function unfreeze_history () {
+    fc -P
+}
+
+
 # Open URL with web browser
 function wopen() {
     python -m webbrowser -t "$1"
