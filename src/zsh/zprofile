@@ -72,7 +72,7 @@ fi
 # rm to rm trash
 alias rm="rm -i"
 function del() {
-    RM_TRASH__=""
+    RM_TRASH__="rm -i"
     case $XVZD_OSTYPE in
         darwin)
             type rmtrash > /dev/null 2>&1 && RM_TRASH__="rmtrash"
