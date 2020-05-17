@@ -75,7 +75,12 @@ function del() {
     RM_TRASH__="rm -i"
     case $XVZD_OSTYPE in
         darwin)
-            type rmtrash > /dev/null 2>&1 && RM_TRASH__="rmtrash"
+            if type rmtrash > /dev/null 2>&1; then
+                local fxpath
+                fxpath='/System/Library/Components/CoreAudio.component/Contents/SharedSupport/SystemSounds/finder/move to trash.aif'
+                rmtrash "$@" && (afplay "$fxpath" &)
+                return
+            fi
             ;;
         linux)
             if [ $XVZD_OSNAME = 'ubuntu' ]
