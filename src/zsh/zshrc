@@ -190,6 +190,7 @@ test -e $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
 
 # Define n prefix
 export N_PREFIX="$HOME/.nvm"
+export PATH="$PATH:$N_PREFIX/bin"
 
 # Load rvm
 [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
