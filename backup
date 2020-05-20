@@ -41,12 +41,12 @@ then
     if [ -e "$HOME/.oh-my-zsh" ]; then
         mkdir -p src/zsh/custom
         cp -R $HOME/.oh-my-zsh/custom/themes src/zsh/custom/
-        find $HOME/.oh-my-zsh/custom/plugins -type d -depth 1 \
+        find $HOME/.oh-my-zsh/custom/plugins -mindepth 1 -maxdepth 1 -type d \
             | while read fp; do \
-            if [ -e $fp/.git ]; then \
-                git submodule add $(cd $fp && git remote get-url origin) \
+            if [ -d "$fp/.git" ]; then \
+                git submodule add $(cd "$fp" && git remote get-url origin) \
                     src/zsh/custom/plugins/$(basename $fp) \
-            else cp -R $fp src/zsh/custom/plugins/; fi; done
+            else cp -R "$fp" src/zsh/custom/plugins/; fi; done
     fi
 fi
 
