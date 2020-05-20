@@ -96,21 +96,17 @@ function zshconf_setup() {
     cp $ZSHDOT_PATH/zprofile $HOME/.zprofile
     cp $ZSHDOT_PATH/zshrc $HOME/.zshrc
 
-    test -e $HOME/.oh-my-zsh/custom && cp -R $ZSHDOT_PATH/custom/* $HOME/.oh-my-zsh/custom
+    if [ -e $HOME/.oh-my-zsh ]; then
+        git submodule init $ZSHDOT_PATH && git submodule update
+        cp -R $ZSHDOT_PATH/custom/* $HOME/.oh-my-zsh/custom
 
-    local apt_install_path="/usr/share"
-    local brew_install_path="/usr/local/share"
-    local syntax_highlighting_pkg="zsh-syntax-highlighting"
-    local autosuggestions_pkg="zsh-autosuggestions"
+        if [ ! -e $HOME/.zsh ]; then
+            mkdir -p $HOME/.zsh
+            git clone --depth=1 \
+                https://github.com/romkatv/gitstatus.git $HOME/.zsh/gitstatus
 
-    mkdir -p $HOME/.zsh
-    for install_path in "$apt_install_path" "$brew_install_path"
-    do
-        test -e $install_path/$syntax_highlighting_pkg && \
-            ln -sf $install_path/$syntax_highlighting_pkg $HOME/.zsh/$syntax_highlighting_pkg > /dev/null 2>&1
-        test -e $install_path/$autosuggestions_pkg && \
-            ln -sf $install_path/$autosuggestions_pkg $HOME/.zsh/$autosuggestions_pkg > /dev/null 2>&1
-    done
+        fi
+    fi
 }
 
 
