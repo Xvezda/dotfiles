@@ -98,7 +98,7 @@ function zshconf_setup() {
 
     if [ -e $HOME/.oh-my-zsh ]; then
         git submodule init $ZSHDOT_PATH && git submodule update
-        cp -R $ZSHDOT_PATH/custom/* $HOME/.oh-my-zsh/custom
+        cp -R $ZSHDOT_PATH/custom/* $HOME/.oh-my-zsh/custom >/dev/null 2>&1
 
         if [ ! -e $HOME/.zsh ]; then
             mkdir -p $HOME/.zsh
