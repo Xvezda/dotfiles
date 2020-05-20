@@ -37,8 +37,17 @@ then
     cp $HOME/.zshrc src/zsh/zshrc
     cp $HOME/.zprofile src/zsh/zprofile
 
-    mkdir -p src/zsh/custom
-    cp -R $HOME/.oh-my-zsh/custom src/zsh/
+    # Backup oh my zsh files
+    if [ -e "$HOME/.oh-my-zsh" ]; then
+        mkdir -p src/zsh/custom
+        cp -R $HOME/.oh-my-zsh/custom/themes src/zsh/custom/
+        find $HOME/.oh-my-zsh/custom/plugins -type d -depth 1 \
+            | while read fp; do \
+            if [ -e $fp/.git ]; then \
+                git submodule add $(cd $fp && git remote get-url origin) \
+                    src/zsh/custom/plugins/$(basename $fp) \
+            else cp -R $fp src/zsh/custom/plugins/; fi; done
+    fi
 fi
 
 # Backup tidy configuration

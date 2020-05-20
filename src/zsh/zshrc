@@ -95,7 +95,9 @@ fi
 #  python
 #  virtualenv
 #)
-plugins=()
+plugins=(
+  fast-syntax-highlighting
+)
 
 [ -s "$ZSH/oh-my-zsh.sh" ] && source $ZSH/oh-my-zsh.sh
 
@@ -188,10 +190,6 @@ export PATH="$PATH:/usr/local/opt/qt/bin"
 export PATH="$PATH:/Library/TeX/Root/bin/x86_64-darwin"
 export PATH="$PATH:/usr/local/opt/openssl/bin"
 export PATH="$PATH:/usr/local/opt/john-jumbo/share/john"
-
-test -e $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && \
-  source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 
 # Define n prefix
 export N_PREFIX="$HOME/.nvm"
