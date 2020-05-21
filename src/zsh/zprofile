@@ -135,7 +135,7 @@ function encf() {
 }
 
 function encs() {
-    echo "$1" | openssl aes-256-cbc -a -salt
+    echo "$@" | openssl aes-256-cbc -a -salt
 }
 
 function decf() {
@@ -143,7 +143,7 @@ function decf() {
 }
 
 function decs() {
-    echo "$1" | openssl aes-256-cbc -d -a -salt
+    echo "$@" | openssl aes-256-cbc -d -a -salt
 }
 
 # Reverse of split; which abbreviation of combine (Just for convenience)
