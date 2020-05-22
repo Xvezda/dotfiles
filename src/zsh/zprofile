@@ -8,6 +8,24 @@ if [ "$EDITOR" != "" ] && [ "$(basename $EDITOR)" = "nvim" ]; then
     alias vimdiff="$EDITOR -d"
 fi
 
+# Prepend paths
+declare -a XVZD_PATHS=(
+    "$HOME/Library/Python/2.7/bin"
+    "$HOME/Library/Python/3.7/bin"
+    "$HOME/development/flutter/bin"
+    "/usr/local/opt/qt/bin"
+    "/Library/TeX/Root/bin/x86_64-darwin"
+    "/usr/local/opt/openssl/bin"
+    "/usr/local/opt/john-jumbo/share/john"
+)
+
+for p in "${XVZD_PATHS[@]}"; do
+    if [ -e "$p" ]; then
+        export PATH="$p:$PATH"
+    fi
+done
+
+
 # Windows specific commands
 if [ "$XVZD_OSTYPE" = "windows" ]; then
     export PATH="${PATH}:$(wslpath $USERPROFILE)/bin"
@@ -57,11 +75,17 @@ if [ "$XVZD_OSTYPE" = "darwin" ]; then
     export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 
     function ctags() {
-        $(brew --prefix)/bin/ctags "$@"
+        local binpath
+        binpath=$(brew --prefix)/bin/ctags
+        $binpath "$@"
+        alias ctags=$binpath
     }
 
     function openvpn() {
-        sudo $(brew --prefix openvpn)/sbin/openvpn "$@"
+        local binpath
+        binpath=$(brew --prefix openvpn)/sbin/openvpn
+        sudo $binpath "$@"
+        alias openvpn="sudo $binpath"
     }
 
     alias ghidra="ghidraRun"
