@@ -44,7 +44,8 @@ then
         find $HOME/.oh-my-zsh/custom/plugins -mindepth 1 -maxdepth 1 -type d \
             | while read fp; do \
             if [ -d "$fp/.git" ]; then \
-                git submodule add $(cd "$fp" && git remote get-url origin) \
+                git submodule --quiet add --force \
+                    $(cd "$fp" && git remote get-url origin) \
                     src/zsh/custom/plugins/$(basename $fp) \
             else cp -R "$fp" src/zsh/custom/plugins/; fi; done
     fi
