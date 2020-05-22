@@ -85,7 +85,7 @@ if type fasd > /dev/null 2>&1; then
     add-zsh-hook preexec _fasd_preexec
 fi
 
-if type fuck > /dev/null 2>&1; then
+if type thefuck > /dev/null 2>&1; then
     eval $(thefuck --alias)
 fi
 
