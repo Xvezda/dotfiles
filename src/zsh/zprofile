@@ -4,13 +4,22 @@
 # license that can be found in the LICENSE file or at
 # https://opensource.org/licenses/MIT.
 
+# Import tokens
+export XVZD_VROOT_PATH="$HOME/vroot"
+if [ -e "$XVZD_VROOT_PATH/usr/tokens" ]; then
+    for tokens in $(ls -1 $XVZD_VROOT_PATH/usr/tokens/*.sh); do
+        source $tokens
+    done
+fi
 
 # Declare prepending paths
 declare -a XVZD_PRE_PATHS=(
-    "$HOME/vroot/usr/bin"
+    "$XVZD_VROOT_PATH/usr/bin"
 )
+
 # Declare appending paths
 declare -a XVZD_POST_PATHS
+
 
 function xvzd_common_init() {
     # Define n prefix
@@ -38,6 +47,8 @@ function xvzd_common_init() {
 
     # rm to rm trash
     alias rm="rm -i"
+
+    alias easy_install="easy_install --prefix=$HOME/.local"
 }
 
 # Mac specific commands
@@ -155,17 +166,23 @@ fi
 
 # Prepend paths
 for p in "${XVZD_PRE_PATHS[@]}"; do
-    if [ -e "$p" ]; then
-        export PATH="$p:$PATH"
+    if [ -z "$XVZD_PRE_PATH" ]; then
+        export XVZD_PRE_PATH="$p"
+    else
+        export XVZD_PRE_PATH="${XVZD_PRE_PATH}:$p"
     fi
 done
+[ ! -z "$XVZD_PRE_PATH" ] && export PATH="$XVZD_PRE_PATH:$PATH"
 
 # Append paths
 for p in "${XVZD_POST_PATHS[@]}"; do
-    if [ -e "$p" ]; then
-        export PATH="$PATH:$p"
+    if [ -z "$XVZD_POST_PATH" ]; then
+        export XVZD_POST_PATH="$p"
+    else
+        export XVZD_POST_PATH="${XVZD_POST_PATH}:$p"
     fi
 done
+[ ! -z "$XVZD_POST_PATH" ] && export PATH="$PATH:$XVZD_POST_PATH"
 
 
 # Fix telnet tmux issue
