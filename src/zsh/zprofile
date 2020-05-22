@@ -5,23 +5,60 @@ declare -a XVZD_PRE_PATHS=(
 # Declare appending paths
 declare -a XVZD_POST_PATHS
 
-test -z $XDG_CONFIG_HOME && export XDG_CONFIG_HOME="$HOME/.config"
-test -z $XDG_CACHE_HOME && export XDG_CACHE_HOME="$HOME/.cache"
-test -z $XDG_DATA_HOME && export XDG_DATA_HOME="$HOME/.local/share"
-
-if [ "$EDITOR" != "" ] && [ "$(basename $EDITOR)" = "nvim" ]; then
-    alias vi="$EDITOR"
-    alias vim="$EDITOR"
-    alias vimdiff="$EDITOR -d"
-fi
-
 function xvzd_common_init() {
+    # Define n prefix
+    export N_PREFIX="$HOME/.nvm"
+
+    XVZD_PRE_PATHS+=(
+        "$N_PREFIX/bin"
+    )
+
+    # Load rvm
+    [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
+
+    # Load gvm
+    [ -s "$HOME/.gvm/scripts/gvm" ] && source "$HOME/.gvm/scripts/gvm"
+
+    test -z $XDG_CONFIG_HOME && export XDG_CONFIG_HOME="$HOME/.config"
+    test -z $XDG_CACHE_HOME && export XDG_CACHE_HOME="$HOME/.cache"
+    test -z $XDG_DATA_HOME && export XDG_DATA_HOME="$HOME/.local/share"
+
+    if [ "$EDITOR" != "" ] && [ "$(basename $EDITOR)" = "nvim" ]; then
+        alias vi="$EDITOR"
+        alias vim="$EDITOR"
+        alias vimdiff="$EDITOR -d"
+    fi
+
     # rm to rm trash
     alias rm="rm -i"
 }
 
 # Mac specific commands
 function xvzd_darwin_init() {
+    # Mac specific paths
+    XVZD_PRE_PATHS+=(
+        # Brew path
+        "/usr/local/bin"
+        "/usr/local/sbin"
+
+        # Libraries path
+        "$HOME/Library/Python/2.7/bin"
+        "$HOME/Library/Python/3.7/bin"
+        "$HOME/development/flutter/bin"
+        "/usr/local/opt/qt/bin"
+        "/Library/TeX/Root/bin/x86_64-darwin"
+        "/usr/local/opt/openssl/bin"
+        "/usr/local/opt/john-jumbo/share/john"
+        "/usr/local/opt/curl/bin"
+    )
+
+    XVZD_POST_PATHS+=(
+        "$HOME/Library/Android/sdk/tools"
+        "$HOME/Library/Android/sdk/platform-tools"
+    )
+
+    export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:$HOME/.local/lib/python3.7/site-packages"
+
     export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
     export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 
@@ -51,22 +88,6 @@ function xvzd_darwin_init() {
             return
         }
     fi
-
-    # Mac specific paths
-    XVZD_PRE_PATHS+=(
-        # Brew path
-        "/usr/local/bin"
-        "/usr/local/sbin"
-
-        # Libraries path
-        "$HOME/Library/Python/2.7/bin"
-        "$HOME/Library/Python/3.7/bin"
-        "$HOME/development/flutter/bin"
-        "/usr/local/opt/qt/bin"
-        "/Library/TeX/Root/bin/x86_64-darwin"
-        "/usr/local/opt/openssl/bin"
-        "/usr/local/opt/john-jumbo/share/john"
-    )
 }
 
 # Linux specific commands
