@@ -178,12 +178,6 @@ if [ -e "$XVZD_VROOT_PATH/usr/tokens" ]; then
 fi
 
 
-# Brew path
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-
-export PATH="$HOME/vroot/usr/bin:$PATH"
-
 # Define n prefix
 export N_PREFIX="$HOME/.nvm"
 export PATH="$PATH:$N_PREFIX/bin"

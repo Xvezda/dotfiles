@@ -1,13 +1,9 @@
-# Declare prepend paths
-declare -a XVZD_PATHS=(
-    "$HOME/Library/Python/2.7/bin"
-    "$HOME/Library/Python/3.7/bin"
-    "$HOME/development/flutter/bin"
-    "/usr/local/opt/qt/bin"
-    "/Library/TeX/Root/bin/x86_64-darwin"
-    "/usr/local/opt/openssl/bin"
-    "/usr/local/opt/john-jumbo/share/john"
+# Declare prepending paths
+declare -a XVZD_PRE_PATHS=(
+    "$HOME/vroot/usr/bin"
 )
+# Declare appending paths
+declare -a XVZD_POST_PATHS
 
 test -z $XDG_CONFIG_HOME && export XDG_CONFIG_HOME="$HOME/.config"
 test -z $XDG_CACHE_HOME && export XDG_CACHE_HOME="$HOME/.cache"
@@ -55,6 +51,22 @@ function xvzd_darwin_init() {
             return
         }
     fi
+
+    # Mac specific paths
+    XVZD_PRE_PATHS+=(
+        # Brew path
+        "/usr/local/bin"
+        "/usr/local/sbin"
+
+        # Libraries path
+        "$HOME/Library/Python/2.7/bin"
+        "$HOME/Library/Python/3.7/bin"
+        "$HOME/development/flutter/bin"
+        "/usr/local/opt/qt/bin"
+        "/Library/TeX/Root/bin/x86_64-darwin"
+        "/usr/local/opt/openssl/bin"
+        "/usr/local/opt/john-jumbo/share/john"
+    )
 }
 
 # Linux specific commands
@@ -114,9 +126,16 @@ if type xvzd_${XVZD_OSTYPE}_init &>/dev/null; then
 fi
 
 # Prepend paths
-for p in "${XVZD_PATHS[@]}"; do
+for p in "${XVZD_PRE_PATHS[@]}"; do
     if [ -e "$p" ]; then
         export PATH="$p:$PATH"
+    fi
+done
+
+# Append paths
+for p in "${XVZD_POST_PATHS[@]}"; do
+    if [ -e "$p" ]; then
+        export PATH="$PATH:$p"
     fi
 done
 
