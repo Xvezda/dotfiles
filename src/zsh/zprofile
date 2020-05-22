@@ -154,12 +154,14 @@ function pnameofpid() {
 }
 
 # Encrypt/Decrypt functions
+export ENCITER=20000
+
 function encf() {
     openssl aes-256-cbc -salt -in $1 -out $1.enc
 }
 
 function encs() {
-    echo "$@" | openssl enc -aes-256-cbc -a -salt -pbkdf2 -iter 20000
+    echo "$@" | openssl enc -aes-256-cbc -a -salt -pbkdf2 -iter $ENCITER
 }
 
 function decf() {
@@ -167,7 +169,7 @@ function decf() {
 }
 
 function decs() {
-    echo "$@" | openssl enc -aes-256-cbc -d -a -pbkdf2 -iter 20000 -salt
+    echo "$@" | openssl enc -aes-256-cbc -d -a -pbkdf2 -iter $ENCITER -salt
 }
 
 # Reverse of split; which abbreviation of combine (Just for convenience)
