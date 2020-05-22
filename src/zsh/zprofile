@@ -1,14 +1,4 @@
-test -z $XDG_CONFIG_HOME && export XDG_CONFIG_HOME="$HOME/.config"
-test -z $XDG_CACHE_HOME && export XDG_CACHE_HOME="$HOME/.cache"
-test -z $XDG_DATA_HOME && export XDG_DATA_HOME="$HOME/.local/share"
-
-if [ "$EDITOR" != "" ] && [ "$(basename $EDITOR)" = "nvim" ]; then
-    alias vi="$EDITOR"
-    alias vim="$EDITOR"
-    alias vimdiff="$EDITOR -d"
-fi
-
-# Prepend paths
+# Declare prepend paths
 declare -a XVZD_PATHS=(
     "$HOME/Library/Python/2.7/bin"
     "$HOME/Library/Python/3.7/bin"
@@ -19,58 +9,23 @@ declare -a XVZD_PATHS=(
     "/usr/local/opt/john-jumbo/share/john"
 )
 
-for p in "${XVZD_PATHS[@]}"; do
-    if [ -e "$p" ]; then
-        export PATH="$p:$PATH"
-    fi
-done
+test -z $XDG_CONFIG_HOME && export XDG_CONFIG_HOME="$HOME/.config"
+test -z $XDG_CACHE_HOME && export XDG_CACHE_HOME="$HOME/.cache"
+test -z $XDG_DATA_HOME && export XDG_DATA_HOME="$HOME/.local/share"
 
-
-# Windows specific commands
-if [ "$XVZD_OSTYPE" = "windows" ]; then
-    export PATH="${PATH}:$(wslpath $USERPROFILE)/bin"
-
-    export DOCKER_TLS_VERIFY="1"
-    export DOCKER_HOST="tcp://192.168.99.100:2376"
-    export DOCKER_CERT_PATH="$(wslpath $USERPROFILE)/.docker/machine/machines/default"
-    export DOCKER_MACHINE_NAME="default"
-    export COMPOSE_CONVERT_WINDOWS_PATHS="true"
-
-    alias docker-machine="docker-machine.exe"
-
-    function open() {
-        explorer.exe $(wslpath -w "$1")
-    }
-
-    export XVZD_CLIPBOARD="clip.exe"
-
-    alias adb="adb.exe"
-    alias clip="$XVZD_CLIPBOARD"
-
-    export ORPORT=9150
+if [ "$EDITOR" != "" ] && [ "$(basename $EDITOR)" = "nvim" ]; then
+    alias vi="$EDITOR"
+    alias vim="$EDITOR"
+    alias vimdiff="$EDITOR -d"
 fi
 
-# Linux specific commands
-if [ "$XVZD_OSTYPE" = "linux" ]; then
-    function pbcopy() {
-        xclip -selection clipboard
-    }
-
-    function pbpaste() {
-        xclip -selection clipboard -o
-    }
-
-    export XVZD_CLIPBOARD="xclip"
-
-    alias docker='sudo docker'
-    alias docker-compose='sudo docker-compose'
-
-    alias pip='python -m pip'
-    alias pip3='python3 -m pip'
-fi
+function xvzd_common_init() {
+    # rm to rm trash
+    alias rm="rm -i"
+}
 
 # Mac specific commands
-if [ "$XVZD_OSTYPE" = "darwin" ]; then
+function xvzd_darwin_init() {
     export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
     export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 
@@ -91,34 +46,79 @@ if [ "$XVZD_OSTYPE" = "darwin" ]; then
     alias ghidra="ghidraRun"
 
     export XVZD_CLIPBOARD="pbcopy"
+
+    if type rmtrash > /dev/null 2>&1; then
+        function del() {
+            local fxpath
+            fxpath='/System/Library/Components/CoreAudio.component/Contents/SharedSupport/SystemSounds/finder/move to trash.aif'
+            rmtrash "$@" && (afplay "$fxpath" &)
+            return
+        }
+    fi
+}
+
+# Linux specific commands
+function xvzd_linux_init() {
+    function pbcopy() {
+        xclip -selection clipboard
+    }
+
+    function pbpaste() {
+        xclip -selection clipboard -o
+    }
+
+    export XVZD_CLIPBOARD="xclip"
+
+    alias docker='sudo docker'
+    alias docker-compose='sudo docker-compose'
+
+    alias pip='python -m pip'
+    alias pip3='python3 -m pip'
+
+    if [ $XVZD_OSNAME = 'ubuntu' ]; then
+        alias del="gvfs-trash"
+    fi
+}
+
+# Windows specific commands
+function xvzd_windows_init() {
+    export PATH="${PATH}:$(wslpath $USERPROFILE)/bin"
+
+    export DOCKER_TLS_VERIFY="1"
+    export DOCKER_HOST="tcp://192.168.99.100:2376"
+    export DOCKER_CERT_PATH="$(wslpath $USERPROFILE)/.docker/machine/machines/default"
+    export DOCKER_MACHINE_NAME="default"
+    export COMPOSE_CONVERT_WINDOWS_PATHS="true"
+
+    alias docker-machine="docker-machine.exe"
+
+    function open() {
+        explorer.exe $(wslpath -w "$1")
+    }
+
+    export XVZD_CLIPBOARD="clip.exe"
+
+    alias adb="adb.exe"
+    alias clip="$XVZD_CLIPBOARD"
+
+    export ORPORT=9150
+
+    # http://www.maddogsw.com/cmdutils/
+    alias del="Recycle.exe"
+}
+
+# Initialize commands
+xvzd_common_init
+if type xvzd_${XVZD_OSTYPE}_init &>/dev/null; then
+    xvzd_${XVZD_OSTYPE}_init
 fi
 
-# rm to rm trash
-alias rm="rm -i"
-function del() {
-    RM_TRASH__="rm -i"
-    case $XVZD_OSTYPE in
-        darwin)
-            if type rmtrash > /dev/null 2>&1; then
-                local fxpath
-                fxpath='/System/Library/Components/CoreAudio.component/Contents/SharedSupport/SystemSounds/finder/move to trash.aif'
-                rmtrash "$@" && (afplay "$fxpath" &)
-                return
-            fi
-            ;;
-        linux)
-            if [ $XVZD_OSNAME = 'ubuntu' ]
-            then
-                RM_TRASH__="gvfs-trash"
-            fi
-            ;;
-        windows)
-            # http://www.maddogsw.com/cmdutils/
-            RM_TRASH__="Recycle.exe"
-            ;;
-    esac
-    $RM_TRASH__ "$@"
-}
+# Prepend paths
+for p in "${XVZD_PATHS[@]}"; do
+    if [ -e "$p" ]; then
+        export PATH="$p:$PATH"
+    fi
+done
 
 
 # Fix telnet tmux issue
