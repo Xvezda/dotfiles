@@ -218,7 +218,7 @@ alias zip='zip -x "*.DS_Store"'
 alias activate='source venv/bin/activate'
 
 # Create default virtualenv
-alias mkenv='virtualenv env'
+alias mkenv='virtualenv venv'
 
 # Create pip requirements
 alias mkreq='python -m pip freeze > requirements.txt'
