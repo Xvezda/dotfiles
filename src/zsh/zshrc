@@ -116,6 +116,31 @@ else
 fi
 
 case $XVZD_OSTYPE in
+    windows)
+        ;;
+    darwin)
+        export XVZD_OSVERS="$(sw_vers -productVersion)"
+        case $XVZD_OSVERS in
+            10.9*)
+                export XVZD_OSNAME="mavericks"
+                ;;
+            10.10*)
+                export XVZD_OSNAME="yosemite"
+                ;;
+            10.11*)
+                export XVZD_OSNAME="el capitan"
+                ;;
+            10.12*)
+                export XVZD_OSNAME="sierra"
+                ;;
+            10.13*)
+                export XVZD_OSNAME="high sierra"
+                ;;
+            10.14*)
+                export XVZD_OSNAME="mojave"
+                ;;
+        esac
+        ;;
     linux)
         if [ -f /etc/os-release ]; then
             export XVZD_OSNAME="$(cat /etc/os-release | grep -E '^NAME="(.*)"' |
