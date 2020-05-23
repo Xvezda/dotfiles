@@ -112,7 +112,7 @@ plugins=(
 if [[ "$(uname -a)" == *"Microsoft"* ]]; then
     export XVZD_OSTYPE="windows"
 else
-    export XVZD_OSTYPE="$(TMP__=$(uname | tr 'A-Z' 'a-z'); echo -n ${TMP__%%-*})"
+    export XVZD_OSTYPE="$(XVZD_TMP=$(uname | tr 'A-Z' 'a-z'); echo -n ${XVZD_TMP%%-*})"
 fi
 
 case $XVZD_OSTYPE in
@@ -155,7 +155,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=
 # export PROMPT_EOL_MARK=''
 
 
-TMP__="$(which nvim)" && export EDITOR="$TMP__" || export EDITOR="$(which vi)"
+XVZD_TMP="$(which nvim)" && export EDITOR="$XVZD_TMP" || export EDITOR="$(which vi)"
 
 case $XVZD_OSTYPE in
     windows)
