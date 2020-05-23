@@ -80,13 +80,6 @@ function xvzd_darwin_init() {
     export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
     export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 
-    function ctags() {
-        local binpath
-        binpath=$(brew --prefix)/bin/ctags
-        $binpath "$@"
-        alias ctags=$binpath
-    }
-
     function openvpn() {
         local binpath
         binpath=$(brew --prefix openvpn)/sbin/openvpn
