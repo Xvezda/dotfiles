@@ -110,12 +110,16 @@ function xvzd_darwin_init() {
 
     function del() {
         if [ -z "$1" ]; then
-            echo 'usage: del file ...'
+            >&2 echo 'usage: del file ...'
             return 1
         fi
         local fparg
         fparg=""
         for fp in "$@"; do
+            if [ ! -e "$fp" ]; then
+                >&2 echo "del: $fp: No such file or directory"
+                return 1
+            fi
             if [ "${fp:0:1}" != "/" ]; then
                 fp="$PWD/$fp"
             fi
