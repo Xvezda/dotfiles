@@ -20,6 +20,23 @@ declare -a XVZD_PRE_PATHS=(
 # Declare appending paths
 declare -a XVZD_POST_PATHS
 
+alias reload="exec zsh -l"
+
+function abspath() {
+    # https://stackoverflow.com/a/51264222/11621603
+    # Takes a path argument and returns it as an absolute path.
+    # No-op if the path is already absolute.
+
+    local target="$1"
+
+    if [ "$target" = "." ]; then
+        echo "$(pwd)"
+    elif [ "$target" = ".." ]; then
+        echo "$(dirname "$(pwd)")"
+    else
+        echo "$(cd "$(dirname "$1")"; pwd)/$(basename "$1")"
+    fi
+}
 
 function xvzd_common_init() {
     # Define n prefix
@@ -91,14 +108,23 @@ function xvzd_darwin_init() {
 
     export XVZD_CLIPBOARD="pbcopy"
 
-    if type rmtrash > /dev/null 2>&1; then
-        function del() {
-            local fxpath
-            fxpath='/System/Library/Components/CoreAudio.component/Contents/SharedSupport/SystemSounds/finder/move to trash.aif'
-            rmtrash "$@" && (afplay "$fxpath" &)
-            return
-        }
-    fi
+    function del() {
+        if [ -z "$1" ]; then
+            echo 'usage: del file ...'
+            return 1
+        fi
+        local fparg
+        fparg=""
+        for fp in "$@"; do
+            if [ "${fp:0:1}" != "/" ]; then
+                fp="$PWD/$fp"
+            fi
+            fparg+="${fparg:+,}(POSIX file \"$fp\")"
+        done
+        osascript -e \
+            "tell application \"Finder\" to delete every item of {$fparg}" \
+            >/dev/null
+    }
 }
 
 # Linux specific commands
