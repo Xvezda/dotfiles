@@ -1,15 +1,11 @@
 # Copyright (C) 2018 Xvezda <https://xvezda.com/>
 
 snippet author "author"
-${1:Xvezda}
-endsnippet
-
-snippet site "site"
-${1:<https://xvezda.com/>}
+${1:`git config --get 'user.name' || echo $USER`}
 endsnippet
 
 snippet email "email"
-${1:<xvezda@naver.com>}
+${1:`git config --get 'user.email'`}
 endsnippet
 
 snippet copyright "copyright"
