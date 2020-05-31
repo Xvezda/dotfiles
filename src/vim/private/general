@@ -27,6 +27,7 @@ highlight ColorColumn ctermbg=236 guibg=#333333
 " Suppress warning
 let g:go_version_warning = 0
 
+
 " Highlight characters over 79
 " https://stackoverflow.com/a/10993757
 augroup vimrc_autocmds
@@ -37,6 +38,10 @@ augroup vimrc_autocmds
     unlet b:match_overlength_id
   endif
 augroup END
+
+" Autoread on focus
+" https://vi.stackexchange.com/a/13092
+autocmd FocusGained,BufEnter * :checktime
 
 " C indent options
 autocmd FileType c setlocal cinoptions+=:0
