@@ -27,6 +27,9 @@ highlight ColorColumn ctermbg=236 guibg=#333333
 " Suppress warning
 let g:go_version_warning = 0
 
+" Show dotfiles in NERDTree
+let NERDTreeShowHidden = 1
+
 
 " Highlight characters over 79
 " https://stackoverflow.com/a/10993757
