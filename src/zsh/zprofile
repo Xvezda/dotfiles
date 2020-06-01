@@ -39,6 +39,7 @@ function abspath() {
 }
 
 function xvzd_common_init() {
+
     # Define n prefix
     export N_PREFIX="$HOME/.nvm"
 
@@ -66,6 +67,22 @@ function xvzd_common_init() {
     alias rm="rm -i"
 
     alias easy_install="easy_install --prefix=$HOME/.local"
+
+    # https://github.com/clvv/fasd/issues/18#issuecomment-422921618
+    if type fasd >/dev/null 2>&1; then
+        eval "$(fasd --init posix-alias)" # Anything you want enabled BUT zsh-hook
+        function _fasd_preexec() {
+            { eval "fasd --proc '\$(fasd --sanitize '\$2')'"; } &|
+        }
+        autoload -Uz add-zsh-hook
+        add-zsh-hook preexec _fasd_preexec
+
+        alias v="f -e $EDITOR"
+    fi
+
+    if type thefuck >/dev/null 2>&1; then
+        eval "$(thefuck --alias)"
+    fi
 }
 
 # Mac specific commands

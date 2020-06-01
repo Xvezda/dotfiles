@@ -75,20 +75,6 @@ KEYTIMEOUT=1
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# https://github.com/clvv/fasd/issues/18#issuecomment-422921618
-if type fasd >/dev/null 2>&1; then
-    eval "$(fasd --init posix-alias)" # Anything you want enabled BUT zsh-hook
-    function _fasd_preexec() {
-        { eval "fasd --proc '\$(fasd --sanitize '\$2')'"; } &|
-    }
-    autoload -Uz add-zsh-hook
-    add-zsh-hook preexec _fasd_preexec
-fi
-
-if type thefuck >/dev/null 2>&1; then
-    eval "$(thefuck --alias)"
-fi
-
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
