@@ -257,6 +257,49 @@ function pnameofpid() {
     [ ! -z "$1" ] && ps -p $1 -o comm=
 }
 
+function gpgenc() {
+    if [ -z "$1" ]; then
+        >&2 echo "usage: $0 [files ...]"
+        return 1
+    fi
+    local gpg_prog
+    gpg_prog="$(type gpg2 &>/dev/null && echo gpg2 || echo gpg)"
+
+    local userid
+    local passphrase
+
+    echo -n 'Enter User ID: '
+    read userid
+
+    echo -n 'Enter passphrase: '
+    read -s passphrase
+
+    echo
+
+    # Check inputs are valid
+    "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
+        --dry-run --symmetric --encrypt "$1"
+    if [ $? -ne 0 ]; then
+        >&2 echo "$0: Inputs are invalid. Try again."
+        return 1
+    fi
+
+    for arg in "$@"; do
+        if [ ! -e $arg ]; then
+            return 1
+        fi
+        "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
+            --symmetric --encrypt "$arg" &
+        if [ $? -ne 0 ]; then
+            >&2 echo "$0: Something goes wrong. Please check out error messages."
+            return 1
+        fi
+    done
+    >&2 echo "$0: Encrypting $# files..."
+    wait
+    >&2 echo "$0: Done!"
+}
+
 # Encrypt/Decrypt functions
 export ENCITER=20000
 
