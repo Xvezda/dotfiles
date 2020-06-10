@@ -22,6 +22,11 @@ declare -a XVZD_POST_PATHS
 
 alias reload="exec zsh -l"
 
+function joinby() {
+    # https://stackoverflow.com/a/17841619/11621603
+    local IFS="$1"; shift; echo "$*";
+}
+
 function abspath() {
     # https://stackoverflow.com/a/51264222/11621603
     # Takes a path argument and returns it as an absolute path.
@@ -277,27 +282,75 @@ function gpgenc() {
     echo
 
     # Check inputs are valid
+    local tmpfile
+    tmpfile="$(mktemp)"
+    echo test >"$tmpfile"
+
     "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
-        --dry-run --symmetric --encrypt "$1"
+        --dry-run --symmetric --encrypt "$tmpfile"
+    command rm "$tmpfile"
     if [ $? -ne 0 ]; then
         >&2 echo "$0: Inputs are invalid. Try again."
         return 1
     fi
 
+    >&2 echo "$0: Encrypting $# files..."
+
+    local -a pidarr
     for arg in "$@"; do
         if [ ! -e $arg ]; then
             return 1
         fi
-        "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
-            --symmetric --encrypt "$arg" &
+        (
+            trap "command rm \"${arg}.gpg\"; return 1" HUP INT QUIT TERM
+
+            # Encrypt file with gpg
+            >&2 echo "$0: Encrypting file: $arg"
+            "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
+                --symmetric --encrypt "$arg" &&
+            # Integrity check
+            local tmpfile
+            tmpfile="$(mktemp)"
+            command rm "$tmpfile"
+
+            trap "
+                command rm '${arg}.gpg'
+                command rm '$tmpfile'
+                return 1
+                " HUP INT QUIT TERM
+
+            >&2 echo "$0: Integrity check: $tmpfile"
+            "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
+                 --output "$tmpfile" --decrypt "${arg}.gpg"
+            if [ "$(sha1sum "$arg" | cut -d' ' -f1)" \
+                    != "$(sha1sum "$tmpfile" | cut -d' ' -f1)" ]; then
+                >&2 echo "$0: Integrity check failed: ${arg}.gpg"
+                command rm "${arg}.gpg"
+            fi
+
+            # Reset trap before exit
+            command rm "$tmpfile"
+            trap - HUP INT QUIT TERM
+        ) &
+        pidarr+=($!)
         if [ $? -ne 0 ]; then
             >&2 echo "$0: Something goes wrong. Please check out error messages."
             return 1
         fi
     done
-    >&2 echo "$0: Encrypting $# files..."
+
+    trap "exit_handler; return 1" HUP INT QUIT TERM
+    function exit_handler() {
+        trap - HUP INT QUIT TERM
+
+        >&2 echo "Terminating processes..."
+        pkill -P "$(joinby ',' "${pidarr[@]}")"
+        pkill -P $$
+    }
+
     wait
     >&2 echo "$0: Done!"
+    trap - HUP INT QUIT TERM
 }
 
 # Encrypt/Decrypt functions
