@@ -50,6 +50,7 @@ iabbrev retrun return
 iabbrev reutrn return
 iabbrev riase raise
 iabbrev rnage range
+iabbrev sefl self
 iabbrev slef self
 iabbrev ture true
 iabbrev virutal virtual
