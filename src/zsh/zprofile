@@ -276,23 +276,30 @@ function gpgenc() {
     echo -n 'Enter User ID: '
     read userid
 
-    echo -n 'Enter passphrase: '
-    read -s passphrase
-
-    echo
-
-    # Check inputs are valid
     local tmpfile
-    tmpfile="$(mktemp)"
-    echo test >"$tmpfile"
+    while true; do
+        tmpfile="$(mktemp)"
+        trap "command rm \"$tmpfile\"
+              trap - HUP INT QUIT TERM
+              return 1" HUP INT QUIT TERM
+        echo -n 0 >"$tmpfile"
 
-    "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
-        --dry-run --symmetric --encrypt "$tmpfile"
-    command rm "$tmpfile"
-    if [ $? -ne 0 ]; then
-        >&2 echo "$0: Inputs are invalid. Try again."
-        return 1
-    fi
+        echo -n 'Enter passphrase: '
+        read -s passphrase
+
+        echo
+
+        # Check inputs are valid
+        "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
+            --dry-run --symmetric --encrypt "$tmpfile"
+        if [ $? -ne 0 ]; then
+            >&2 echo "$0: Inputs are invalid. Try again."
+        else
+            break
+        fi
+        command rm "$tmpfile"
+    done
+    trap - HUP INT QUIT TERM
 
     >&2 echo "$0: Encrypting $# files..."
 
@@ -332,11 +339,11 @@ function gpgenc() {
             command rm "$tmpfile"
             trap - HUP INT QUIT TERM
         ) &
-        pidarr+=($!)
         if [ $? -ne 0 ]; then
             >&2 echo "$0: Something goes wrong. Please check out error messages."
             return 1
         fi
+        pidarr+=($!)
     done
 
     trap "exit_handler; return 1" HUP INT QUIT TERM
