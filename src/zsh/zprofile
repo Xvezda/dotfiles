@@ -150,8 +150,9 @@ function xvzd_darwin_init() {
                     ;;
             esac
             pyenv "$@"
+        else
+            pyenv
         fi
-        pyenv
     }
     alias pyenv="pyenv_"
 
