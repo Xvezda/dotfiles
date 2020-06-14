@@ -132,17 +132,26 @@ function xvzd_darwin_init() {
 
     function pyenv_() {
         unalias pyenv
-        if [ ! -z "$1" ] && [ "$1" = "install" ]; then
-            CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl@1.1)" \
-                CFLAGS="-I$(brew --prefix openssl@1.1)/include
-                        -I$(brew --prefix readline)/include
-                        -I$(xcrun --show-sdk-path)/usr/include" \
-                LDFLAGS="-L$(brew --prefix openssl@1.1)/lib
-                        -L$(brew --prefix readline)/lib" \
-                pyenv "$@"
-        else
+        eval "$(pyenv init -)"
+        if [ ! -z "$1" ]; then
+            case "$1" in
+                install)
+                    CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl@1.1)" \
+                        CFLAGS="-I$(brew --prefix openssl@1.1)/include
+                                -I$(brew --prefix readline)/include
+                                -I$(xcrun --show-sdk-path)/usr/include" \
+                        LDFLAGS="-L$(brew --prefix openssl@1.1)/lib
+                                -L$(brew --prefix readline)/lib" \
+                        pyenv "$@"
+                    return
+                    ;;
+                virtualenv)
+                    eval "$(pyenv virtualenv-init -)"
+                    ;;
+            esac
             pyenv "$@"
         fi
+        pyenv
     }
     alias pyenv="pyenv_"
 
