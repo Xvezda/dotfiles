@@ -116,8 +116,12 @@ function xvzd_darwin_init() {
 
     export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:$HOME/.local/lib/python3.7/site-packages"
 
+    # Libraries
     export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
     export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
+
+    export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+    export MACOSX_DEPLOYMENT_TARGET=${XVZD_OSVERS%.*}
 
     function openvpn() {
         local binpath
@@ -125,6 +129,22 @@ function xvzd_darwin_init() {
         sudo $binpath "$@"
         alias openvpn="sudo $binpath"
     }
+
+    function pyenv_() {
+        unalias pyenv
+        if [ ! -z "$1" ] && [ "$1" = "install" ]; then
+            CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl@1.1)" \
+                CFLAGS="-I$(brew --prefix openssl@1.1)/include
+                        -I$(brew --prefix readline)/include
+                        -I$(xcrun --show-sdk-path)/usr/include" \
+                LDFLAGS="-L$(brew --prefix openssl@1.1)/lib
+                        -L$(brew --prefix readline)/lib" \
+                pyenv "$@"
+        else
+            pyenv "$@"
+        fi
+    }
+    alias pyenv="pyenv_"
 
     alias ghidra="ghidraRun"
 
