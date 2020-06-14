@@ -359,8 +359,13 @@ function gpgenc() {
             >&2 echo "$0: Integrity check: $tmpfile"
             "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
                  --output "$tmpfile" --decrypt "${arg}.gpg"
-            if [ "$(sha1sum "$arg" | cut -d' ' -f1)" \
-                    != "$(sha1sum "$tmpfile" | cut -d' ' -f1)" ]; then
+
+            local hash_a="$(sha1sum "$arg" | cut -d' ' -f1)"
+            echo "$arg hash: $hash_a"
+            local hash_b="$(sha1sum "$tmpfile" | cut -d' ' -f1)"
+            echo "$tmpfile hash: $hash_b"
+
+            if [ "$hash_a" != "$hash_b" ]; then
                 >&2 echo "$0: Integrity check failed: ${arg}.gpg"
                 command rm "${arg}.gpg"
             fi
