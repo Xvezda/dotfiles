@@ -325,6 +325,7 @@ function gpgenc() {
         if [ $? -ne 0 ]; then
             >&2 echo "$0: Inputs are invalid. Try again."
         else
+            command rm "$tmpfile"
             break
         fi
         command rm "$tmpfile"
