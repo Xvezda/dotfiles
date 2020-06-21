@@ -114,7 +114,8 @@ function xvzd_darwin_init() {
         "$HOME/Library/Android/sdk/platform-tools"
     )
 
-    export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages:$HOME/.local/lib/python3.7/site-packages"
+    export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python3.7/site-packages"
+    export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages"
 
     # Libraries
     export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
