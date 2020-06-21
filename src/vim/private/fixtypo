@@ -29,6 +29,7 @@ iabbrev firend friend
 iabbrev flase false
 iabbrev fucntion function
 iabbrev funciton function
+iabbrev futrue future
 iabbrev imoprt import
 iabbrev imporve improve
 iabbrev improt import
