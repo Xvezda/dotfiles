@@ -54,5 +54,33 @@ if __name__ == '__main__':
 $0
 endsnippet
 
+snippet setup "setup file boilerplate" b
+from setuptools import setup, find_packages
+
+
+with open('$1/__version__.py') as f:
+    exec(f.read())
+
+
+def readme():
+    with open('${2:README.md}') as f:
+        return f.read()
+
+
+setup(name='$1',
+      author='$3',
+      author_email='$4',
+      license='$5',
+      url='$6',
+      keywords=[$7],
+      version=__version__,
+      packages=find_packages(),
+      description='$8',
+      long_description_content_type='$9',
+      long_description=readme(),
+      classifiers=[$10],
+      zip_safe=False)
+endsnippet
+
 
 # vim:ft=snippets:
