@@ -30,6 +30,9 @@ nnoremap <C-r> U
 vnoremap L u
 vnoremap u <Nop>
 
+" Disable EX mode
+nnoremap Q <Nop>
+
 " Map single quote to comma, backslash to quote.
 nnoremap ' ,
 nnoremap \ '
