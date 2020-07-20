@@ -421,6 +421,36 @@ function comb() {
     cat $1.* > $1
 }
 
+# Concat mp4 files
+function mp4cat() {
+    local bundle_file='bundle.mp4'
+    if [ -z "$1" ]; then
+        >&2 echo "usage: $0 [files ...]"
+        return 1
+    fi
+    if [ $# -lt 2 ]; then
+        >&2 echo "$0: at least 2 files needed"
+        return 1
+    fi
+    if ! type ffmpeg &>/dev/null; then
+        >&2 echo "$0: cannot find ffmpeg"
+        return 1
+    fi
+    if [ -e "$bundle_file" ]; then
+        while test -e "$bundle_file"; do
+            >&2 echo -n "file '$bundle_file' exists: "
+            read bundle_file
+        done
+    fi
+    for file in "$@"; do
+        if [ "$(echo "${file##*.}" | tr '[:upper:]' '[:lower:]')" != 'mp4' ]; then
+            >&2 echo "$0: file '$file' is not mp4 format"
+            return 1
+        fi
+        echo "file '$file'"
+    done | ffmpeg -protocol_whitelist file,pipe -f concat -i - -c copy "$bundle_file"
+}
+
 # Bring help to zsh
 function help() {
     bash -c "command help $@"
