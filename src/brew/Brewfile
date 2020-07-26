@@ -57,6 +57,7 @@ brew "gnupg", link: false
 brew "google-benchmark"
 brew "gptfdisk"
 brew "graphicsmagick"
+brew "graphviz"
 brew "gtest", args: ["HEAD"]
 brew "hashcat"
 brew "haskell-stack"
