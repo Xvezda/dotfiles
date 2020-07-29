@@ -2,12 +2,17 @@
 
 snippet module "javascript module" b
 var ${1:name} = (function() {
-	function $1() {}
-	$0
+	function $1() {}$0
 	return $1;
 })();
 
 module.exports = $1;
+endsnippet
+
+snippet ctor "javascript ES6 class constructor"
+constructor($3) {
+	${1:super($2)}$0
+}
 endsnippet
 
 
