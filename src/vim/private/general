@@ -30,8 +30,17 @@ let g:nobin_accept_trailing_dot = 1
 " Suppress warning
 let g:go_version_warning = 0
 
+" NERDTree options {{{1
+
 " Show dotfiles in NERDTree
 let NERDTreeShowHidden = 1
+" Ignore some files
+let NERDTreeIgnore = [
+      \   '\.o$',
+      \   '\~$'
+      \ ]
+
+"1}}} End of NERDTree options
 
 
 " Highlight characters over 79
