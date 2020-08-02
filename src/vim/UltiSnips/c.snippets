@@ -28,12 +28,19 @@ $0
 endsnippet
 
 snippet main "main function" b
-${3:int} main(${2:int argc, char **argv})
-{
+${3:int} main(${2:int argc, char **argv}) {
 	$1$0
 
 	return ${4:0};
 }
+endsnippet
+
+snippet sfree "define safe free" b
+#define ${1:SAFE_FREE}(ptr) do { free(ptr); (ptr) = NULL; } while (0)
+endsnippet
+
+snippet gattr "define get attr" b
+#define ${1:GET_ATTR}(ptr, attr, def) ((ptr) ? (ptr)->attr : (def))
 endsnippet
 
 
