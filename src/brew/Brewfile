@@ -99,6 +99,7 @@ brew "pyenv-virtualenv"
 brew "pypy"
 brew "pypy3"
 brew "python@2", link: false
+brew "qrencode"
 brew "rclone"
 brew "reattach-to-user-namespace"
 brew "rust"
