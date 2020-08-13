@@ -18,6 +18,7 @@ cnoreabbrev Qall qall
 iabbrev Flase False
 iabbrev Ture True
 iabbrev abrot abort
+iabbrev acutal actual
 iabbrev amin main
 iabbrev breka break
 iabbrev calss class
