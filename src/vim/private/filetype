@@ -42,8 +42,8 @@ augroup END
 augroup c_filetype_detect
   autocmd!
   autocmd FileType c,cpp
-        \ syntax match customType /\<[_[:alpha:]][_[:alnum:]]*_t\>/
-        \ | hi def link customType Type
+        \ syntax match cCustomType /\<[_[:alpha:]][_[:alnum:]]*_t\>/
+        \ | hi def link cCustomType Type
 augroup END
 
 " Accept comment on tsconfig and windows terminal profile file
