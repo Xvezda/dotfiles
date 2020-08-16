@@ -293,6 +293,37 @@ function pnameofpid() {
     [ ! -z "$1" ] && ps -p $1 -o comm=
 }
 
+function autopass() {
+    if [ -z "$1" ]; then
+        >&2 echo "usage: $0 [arg ...]"
+        return 1
+    fi
+    local password
+
+    echo -n 'Enter password: '
+    read -s password
+    echo
+
+    export USERPW="$password"
+    cat <<'EOF' | expect -b - $@
+#!/usr/bin/env expect --
+set password $env(USERPW)
+
+set cmd [join $argv]
+spawn bash -c "$cmd"
+while {true} {
+    expect {
+        "Password:" {
+            send "$password\r"
+        } eof {
+            break
+        }
+    }
+}
+EOF
+    unset USERPW
+}
+
 function gpgenc() {
     if [ -z "$1" ]; then
         >&2 echo "usage: $0 [files ...]"
