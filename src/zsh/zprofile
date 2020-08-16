@@ -305,7 +305,7 @@ function autopass() {
     echo
 
     export USERPW="$password"
-    cat <<'EOF' | expect -b - $@
+    cat <<'EOF' | expect -b - -- $@
 #!/usr/bin/env expect --
 set password $env(USERPW)
 
