@@ -501,6 +501,25 @@ function unfreeze_history () {
 }
 
 
+function flatten() {
+    if [ -z "$1" -o ! -e "$1" ]; then
+        >&2 echo "usage: $0 <directory>"
+        return 1
+    fi
+    local output
+    local paths=()
+    local target="$(dirname "$1")"
+    find "$1" -depth 1 \
+        | while read -r line; do
+            paths+=("$line")
+        done
+    for file in "${paths[@]}"; do
+        mv -i "$file" "$target" || return 1
+    done
+    rmdir "$1"
+}
+
+
 # Open URL with web browser
 function wopen() {
     python -m webbrowser -t "$1"
