@@ -4,6 +4,7 @@ set spelllang=en_us
 " Set command abbreviations
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
+cnoreabbrev Q1 q!
 cnoreabbrev Qall! qall!
 cnoreabbrev Wq wq
 cnoreabbrev Wa wa
