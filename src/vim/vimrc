@@ -68,7 +68,7 @@ if v:version >= 703
   Plug 'Shougo/vimshell.vim'
 endif
 
-if v:version >= 704
+if v:version >= 704 && has("python3")
   " Snippets
   Plug 'SirVer/ultisnips'
 endif
