@@ -7,7 +7,7 @@
 *.dll
 *.exe
 # *.o
-a.out
+# a.out
 # *.so
 
 # Packages #
