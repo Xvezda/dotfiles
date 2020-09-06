@@ -121,8 +121,8 @@ function xvzd_darwin_init() {
     export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
     export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
 
-    export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
-    export MACOSX_DEPLOYMENT_TARGET=${XVZD_OSVERS%.*}
+    # export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+    # export MACOSX_DEPLOYMENT_TARGET=${XVZD_OSVERS%.*}
 
     function openvpn() {
         local binpath
@@ -140,9 +140,11 @@ function xvzd_darwin_init() {
                     CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl@1.1)" \
                         CFLAGS="-I$(brew --prefix openssl@1.1)/include
                                 -I$(brew --prefix readline)/include
-                                -I$(xcrun --show-sdk-path)/usr/include" \
+                                -I$(xcrun --show-sdk-path)/usr/include
+                                $CFLAGS" \
                         LDFLAGS="-L$(brew --prefix openssl@1.1)/lib
-                                -L$(brew --prefix readline)/lib" \
+                                -L$(brew --prefix readline)/lib
+                                $LDFLAGS" \
                         pyenv "$@"
                     return
                     ;;
@@ -236,9 +238,7 @@ function xvzd_windows_init() {
 
 # Initialize commands
 xvzd_common_init
-if type xvzd_${XVZD_OSTYPE}_init &>/dev/null; then
-    xvzd_${XVZD_OSTYPE}_init
-fi
+xvzd_${XVZD_OSTYPE}_init &>/dev/null
 
 # Prepend paths
 for p in "${XVZD_PRE_PATHS[@]}"; do
