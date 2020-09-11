@@ -34,6 +34,11 @@ else
   let g:python3_host_prog=substitute(system("which python3"), '\n', '', 'g')
 endif
 
+" Syntax highlight
+" Default highlight is better than polyglot
+let g:polyglot_disabled = ['python']
+let python_highlight_all = 1
+
 " Required:
 call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
@@ -435,10 +440,6 @@ augroup vimrc-python
 augroup END
 
 
-" Syntax highlight
-" Default highlight is better than polyglot
-let g:polyglot_disabled = ['python']
-let python_highlight_all = 1
 "2}}}
 " ruby {{{2
 let g:rubycomplete_buffer_loading = 1
