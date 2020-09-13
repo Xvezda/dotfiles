@@ -79,6 +79,7 @@ brew "http-server"
 brew "libimobiledevice", args: ["HEAD"]
 brew "ideviceinstaller"
 brew "ios-deploy"
+brew "iproute2mac"
 brew "irssi"
 brew "john-jumbo"
 brew "jq"
