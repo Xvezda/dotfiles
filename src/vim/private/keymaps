@@ -67,6 +67,11 @@ if (!has('nvim') && v:version < 801) || !has('nvim-0.4')
   nnoremap <silent> N N<Plug>SearchIndex
 endif
 
+" Restore special case behavior of vim
+" https://github.com/chaoren/vim-wordmotion#caveats
+nmap dw de
+nmap cw ce
+
 " Set Fastfold
 nmap zuz <Plug>(FastFoldUpdate)
 
