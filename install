@@ -88,6 +88,15 @@ function tmuxconf_setup() {
 }
 
 
+# Bash dotfiles setup
+function bashconf_setup() {
+    which bash > /dev/null 2>&1 || return 0
+    BASHDOT_PATH="$DIR/src/bash"
+
+    cp $BASHDOT_PATH/bashrc $HOME/.bashrc
+    cp $BASHDOT_PATH/bash_profile $HOME/.bash_profile
+}
+
 # Zsh dotfiles setup
 function zshconf_setup() {
     which zsh > /dev/null 2>&1 || return 0
@@ -141,6 +150,7 @@ usage:
 commands:
     --setup <target>  install dotfiles
             all
+            bash
             zsh
             vim
             tmux
@@ -184,6 +194,9 @@ case $TARGET in
         ;;
     tmux)
         tmuxconf_setup;
+        ;;
+    bash)
+        bashconf_setup;
         ;;
     zsh)
         zshconf_setup;

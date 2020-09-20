@@ -7,33 +7,49 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd $DIR
 
 # Create path
-BACKUP_DIRS=("git" "vim" "tmux" "brew" "zsh" "tidy")
+BACKUP_DIRS=("git" "vim" "tmux" "brew" "zsh" "bash" "tidy")
 for p in "${BACKUP_DIRS[@]}"
 do
     mkdir -p src/$p
 done
 
-# Backup git dotfiles
-which git && test -f $HOME/.gitignore && cp $HOME/.gitignore src/git/gitignore
+if type git &>/dev/null; then
+    echo "[*] Backup git dotfiles"
+    test -f $HOME/.gitignore && cp $HOME/.gitignore src/git/gitignore
+fi
 
-# Backup vim dotfiles
-cp -R $HOME/.vim/private src/vim/
-cp -R $HOME/.vim/syntax src/vim/
-cp -R $HOME/.vim/UltiSnips src/vim/
-cp $HOME/.vimrc src/vim/vimrc
-cp $HOME/.vimrc.local src/vim/vimrc.local
-cp $HOME/.vimrc.local.bundles src/vim/vimrc.local.bundles
+if type vim &>/dev/null; then
+    echo "[*] Backup vim dotfiles"
+    cp -R $HOME/.vim/private src/vim/
+    cp -R $HOME/.vim/syntax src/vim/
+    cp -R $HOME/.vim/UltiSnips src/vim/
+    cp $HOME/.vimrc src/vim/vimrc
+    cp $HOME/.vimrc.local src/vim/vimrc.local
+    cp $HOME/.vimrc.local.bundles src/vim/vimrc.local.bundles
+fi
 
-# Backup tmux dotfiles
-which tmux    && cp $HOME/.tmux.conf src/tmux/tmux.conf
-test $? -eq 0 && cp $(ls $HOME/.tmux/*.conf) src/tmux/
+if type tmux &>/dev/null; then
+    echo "[*] Backup tmux dotfiles"
+    cp $HOME/.tmux.conf src/tmux/tmux.conf
+    cp $(ls $HOME/.tmux/*.conf) src/tmux/
+fi
 
-# Backup brew dotfiles
-which brew && brew bundle dump && mv $PWD/Brewfile src/brew
+if type brew &>/dev/null; then
+    echo "[*] Backup brew dotfiles"
+    brew bundle dump && mv $PWD/Brewfile src/brew
+fi
 
-# Backup zsh dotfiles
-if which zsh > /dev/null 2>&1
-then
+if type bash > /dev/null 2>&1; then
+    echo "[*] Backup bash dotfiles"
+    for file in ".bashrc" ".bash_profile"; do
+        if [ -f "$HOME/$file" ]; then
+            cp "$HOME/$file" "src/bash/${file#.}"
+        fi
+    done
+fi
+
+if type zsh &>/dev/null 2>&1; then
+    echo "[*] Backup zsh dotfiles"
     cp $HOME/.zshrc src/zsh/zshrc
     cp $HOME/.zprofile src/zsh/zprofile
 
@@ -51,18 +67,15 @@ then
     fi
 fi
 
-# Backup tidy configuration
-which tidy && cp $HOME/.tidyrc src/tidy/tidyrc
-
-# Backup pip requirements
-# Prefer python3 if exists
-# which python3 && PYTHON_BIN=python3 || PYTHON_BIN=python
-# $PYTHON_BIN -m pip --version && \
-#     $PYTHON_BIN -m pip freeze > src/pip/requirements-${XVZD_OSTYPE}.txt
+if type tidy &>/dev/null; then
+    echo "[*] Backup tidy dotfiles"
+    cp $HOME/.tidyrc src/tidy/tidyrc
+fi
 
 # On windows
 if [ "$XVZD_OSTYPE" = "windows" ]
 then
+    echo "[*] Backup windows terminal profiles"
     mkdir -p src/wt
     PROFILES_PATH=$(wslpath $USERPROFILE)/AppData/Local/Packages/Microsoft.WindowsTerminal_*/LocalState/profiles.json
     test -e ${PROFILES_PATH[0]} && cp ${PROFILES_PATH[0]} src/wt/profiles.json
