@@ -15,7 +15,7 @@ My development environment configuration files with utility scripts.
 
 ## Dependencies
 - [tmux](https://github.com/tmux/tmux) >= 1.9 && [Vim](https://www.vim.org/) >= 7.4
-- zsh && [oh_my_zsh](https://ohmyz.sh/)
+- bash or zsh and [oh_my_zsh](https://ohmyz.sh/)
 - [tpm](https://github.com/tmux-plugins/tpm#tmux-plugin-manager)
 - [fasd](https://github.com/clvv/fasd#install)
 + Mac
