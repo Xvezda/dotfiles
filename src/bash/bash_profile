@@ -26,7 +26,7 @@ declare -a XVZD_PRE_PATHS=(
 # Declare appending paths
 declare -a XVZD_POST_PATHS
 
-alias reload="exec zsh -l"
+alias reload="exec bash --login"
 
 function joinby() {
     # https://stackoverflow.com/a/17841619/11621603
@@ -528,11 +528,6 @@ function mp4cat() {
         fi
         echo "file '$file'"
     done | ffmpeg -protocol_whitelist file,pipe -f concat -i - -c copy "$bundle_file"
-}
-
-# Bring help to zsh
-function help() {
-    bash -c "command help $@"
 }
 
 # https://unix.stackexchange.com/a/391230
