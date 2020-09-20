@@ -42,10 +42,11 @@ Feel free to ask :)
 
 
 ## TMUX Shortcuts
-| Commands | Actions |
-| <kbd>ctrl</kbd>+<kbd>a</kbd>                                                                             | Prefix.                                 |
-| <kbd>alt</kbd>+<kbd>h,j,k,l</kbd>                                                                        | Move around panes.                      |
-| <kbd>Prefix</kbd><kbd>ctrl</kbd>+<kbd>h,j,k,l</kbd>                                                      | Swap panes.                             |
+| Commands                                            | Actions            |
+| ---                                                 | ---                |
+| <kbd>ctrl</kbd>+<kbd>a</kbd>                        | Prefix.            |
+| <kbd>alt</kbd>+<kbd>h,j,k,l</kbd>                   | Move around panes. |
+| <kbd>Prefix</kbd><kbd>ctrl</kbd>+<kbd>h,j,k,l</kbd> | Swap panes.        |
 
 ## VIM Shortcuts
 | Commands                                                                                                 | Actions                                      |
