@@ -135,6 +135,7 @@ function gitconf_setup() {
 
 # Full dotfiles setup
 function dotfiles_setup() {
+    bashconf_setup
     zshconf_setup
     vimconf_setup
     tmuxconf_setup
