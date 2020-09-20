@@ -73,20 +73,27 @@ function xvzd_common_init() {
 
     alias easy_install="easy_install --prefix=$HOME/.local"
 
-    # https://github.com/clvv/fasd/issues/18#issuecomment-422921618
     if type fasd >/dev/null 2>&1; then
-        eval "$(fasd --init posix-alias)" # Anything you want enabled BUT zsh-hook
-        function _fasd_preexec() {
-            { eval "fasd --proc '\$(fasd --sanitize '\$2')'"; } &|
+        alias a='fasd -a'
+        alias s='fasd -si'
+        alias sd='fasd -sid'
+        alias sf='fasd -sif'
+        alias d='fasd -d'
+        alias f='fasd -f'
+        # function to execute built-in cd
+        fasd_cd() {
+          if [ $# -le 1 ]; then
+            fasd "$@"
+          else
+            local _fasd_ret="$(fasd -e 'printf %s' "$@")"
+            [ -z "$_fasd_ret" ] && return
+            [ -d "$_fasd_ret" ] && cd "$_fasd_ret" || printf %s\n "$_fasd_ret"
+          fi
         }
-        autoload -Uz add-zsh-hook
-        add-zsh-hook preexec _fasd_preexec
+        alias z='fasd_cd -d'
+        alias zz='fasd_cd -d -i'
 
         alias v="f -e $EDITOR"
-    fi
-
-    if type thefuck >/dev/null 2>&1; then
-        eval "$(thefuck --alias)"
     fi
 
     # Colorize man output

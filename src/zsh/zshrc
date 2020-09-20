@@ -4,6 +4,8 @@
 # license that can be found in the LICENSE file or at
 # https://opensource.org/licenses/MIT.
 
+# zmodload zsh/zprof
+
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -11,8 +13,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+
 # Check gitstatus exists
-if [ -e "$HOME/.zsh/gitstatus/gitstatus.prompt.zsh" ]; then
+if [ -f "$HOME/.zsh/gitstatus/gitstatus.prompt.zsh" ]; then
     source "$HOME/.zsh/gitstatus/gitstatus.prompt.zsh"
 fi
 
@@ -71,6 +74,7 @@ fi
 HISTSIZE=5000
 SAVEHIST=1000
 KEYTIMEOUT=1
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -92,7 +96,7 @@ plugins=(
     fast-syntax-highlighting
 )
 
-[ -s "$ZSH/oh-my-zsh.sh" ] && source $ZSH/oh-my-zsh.sh
+# [ -s "$ZSH/oh-my-zsh.sh" ] && source $ZSH/oh-my-zsh.sh
 
 # User configuration
 if [[ "$(uname -a)" == *"Microsoft"* ]]; then
@@ -168,15 +172,8 @@ export VIRTUAL_ENV_DISABLE_PROMPT=
 
 XVZD_TMP="$(which nvim)" && export EDITOR="$XVZD_TMP" || export EDITOR="$(which vi)"
 
-case $XVZD_OSTYPE in
-    windows)
-        # If wsl exists
-        if type wsl.exe > /dev/null 2>&1; then
-            # Fix wsl zprofile sourcing issue
-            # By manually sourcing profile
-            source $HOME/.zprofile
-        fi
-        ;;
-esac
+if [ -f "$HOME/.zprofile" ]; then
+    source "$HOME/.zprofile"
+fi
 
-
+# zprof
