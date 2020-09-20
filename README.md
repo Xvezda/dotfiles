@@ -40,16 +40,20 @@ chmod +x install
 If there is problem while installing, check CI build settings to resolve issue. Or, just [register new issue](https://github.com/Xvezda/dotfiles/issues/new).
 Feel free to ask :)
 
-## Shortcuts
+
+## TMUX Shortcuts
+| Commands | Actions |
+| <kbd>ctrl</kbd>+<kbd>a</kbd>                                                                             | Prefix.                                 |
+| <kbd>alt</kbd>+<kbd>h,j,k,l</kbd>                                                                        | Move around panes.                      |
+| <kbd>Prefix</kbd><kbd>ctrl</kbd>+<kbd>h,j,k,l</kbd>                                                      | Swap panes.                             |
+
+## VIM Shortcuts
 | Commands                                                                                                 | Actions                                      |
 | ---                                                                                                      | ---                                          |
 | <kbd>shift</kbd>+<kbd>u</kbd>                                                                            | Re-do undo.                                  |
-| <kbd>ctrl</kbd>+<kbd>a</kbd>                                                                             | Tmux prefix.                                 |
-| <kbd>alt</kbd>+<kbd>h,j,k,l</kbd>                                                                        | Move around Tmux panes.                      |
-| <kbd>Prefix</kbd><kbd>ctrl</kbd>+<kbd>h,j,k,l</kbd>                                                      | Swap Tmux panes.                             |
-| <kbd>ctrl</kbd>+<kbd>w</kbd><kbd>%</kbd>                                                                 | Vim split vertically.                        |
-| <kbd>ctrl</kbd>+<kbd>w</kbd><kbd>"</kbd>                                                                 | Vim split horizontally.                      |
-| <kbd>Leader</kbd><kbd>y,x,p</kbd>                                                                        | Vim system clipboard copy, cut, paste.       |
+| <kbd>ctrl</kbd>+<kbd>w</kbd><kbd>%</kbd>                                                                 | Split buffer vertically.                        |
+| <kbd>ctrl</kbd>+<kbd>w</kbd><kbd>"</kbd>                                                                 | Split buffer horizontally.                      |
+| <kbd>Leader</kbd><kbd>y,x,p</kbd>                                                                        | system clipboard copy, cut, paste.       |
 | <kbd>,</kbd><kbd>l</kbd><kbd>n</kbd>                                                                     | Toggle relative line number.                 |
 | <kbd>,</kbd><kbd>r</kbd><kbd>w</kbd>                                                                     | Remove trailing whitespaces.                 |
 | <kbd>,</kbd><kbd>r</kbd><kbd>r</kbd>                                                                     | Remove carrage return characters.            |
