@@ -1,0 +1,594 @@
+# Copyright (c) 2020 Xvezda <xvezda@naver.com>
+#
+# Use of this source code is governed by an MIT-style
+# license that can be found in the LICENSE file or at
+# https://opensource.org/licenses/MIT.
+
+
+# include .bashrc if it exists
+if [ -f "$HOME/.bashrc" ]; then
+    source "$HOME/.bashrc"
+fi
+
+# Import tokens
+export XVZD_VROOT_PATH="$HOME/vroot"
+if [ -e "$XVZD_VROOT_PATH/usr/tokens" ]; then
+    for tokens in $(ls -1 $XVZD_VROOT_PATH/usr/tokens/*.sh); do
+        source $tokens
+    done
+fi
+
+# Declare prepending paths
+declare -a XVZD_PRE_PATHS=(
+    "$XVZD_VROOT_PATH/usr/bin"
+)
+
+# Declare appending paths
+declare -a XVZD_POST_PATHS
+
+alias reload="exec zsh -l"
+
+function joinby() {
+    # https://stackoverflow.com/a/17841619/11621603
+    local IFS="$1"; shift; echo "$*";
+}
+
+function abspath() {
+    # https://stackoverflow.com/a/51264222/11621603
+    # Takes a path argument and returns it as an absolute path.
+    # No-op if the path is already absolute.
+
+    local target="$1"
+
+    if [ "$target" = "." ]; then
+        echo "$(pwd)"
+    elif [ "$target" = ".." ]; then
+        echo "$(dirname "$(pwd)")"
+    else
+        echo "$(cd "$(dirname "$1")"; pwd)/$(basename "$1")"
+    fi
+}
+
+function xvzd_common_init() {
+
+    # Define n prefix
+    export N_PREFIX="$HOME/.nvm"
+
+    XVZD_PRE_PATHS+=(
+        "$N_PREFIX/bin"
+    )
+
+    # Load rvm
+    [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
+
+    # Load gvm
+    [ -s "$HOME/.gvm/scripts/gvm" ] && source "$HOME/.gvm/scripts/gvm"
+
+    test -z $XDG_CONFIG_HOME && export XDG_CONFIG_HOME="$HOME/.config"
+    test -z $XDG_CACHE_HOME && export XDG_CACHE_HOME="$HOME/.cache"
+    test -z $XDG_DATA_HOME && export XDG_DATA_HOME="$HOME/.local/share"
+
+    if [ ! -z "$EDITOR" ] && [ "$(basename $EDITOR)" = "nvim" ]; then
+        alias vi="$EDITOR"
+        alias vim="$EDITOR"
+        alias vimdiff="$EDITOR -d"
+    fi
+
+    alias ls="ls -G"
+
+    # rm to rm trash
+    alias rm="rm -i"
+
+    alias easy_install="easy_install --prefix=$HOME/.local"
+
+    if type fasd >/dev/null 2>&1; then
+        alias a='fasd -a'
+        alias s='fasd -si'
+        alias sd='fasd -sid'
+        alias sf='fasd -sif'
+        alias d='fasd -d'
+        alias f='fasd -f'
+        # function to execute built-in cd
+        fasd_cd() {
+          if [ $# -le 1 ]; then
+            fasd "$@"
+          else
+            local _fasd_ret="$(fasd -e 'printf %s' "$@")"
+            [ -z "$_fasd_ret" ] && return
+            [ -d "$_fasd_ret" ] && cd "$_fasd_ret" || printf %s\n "$_fasd_ret"
+          fi
+        }
+        alias z='fasd_cd -d'
+        alias zz='fasd_cd -d -i'
+
+        alias v="f -e $EDITOR"
+    fi
+
+    # Colorize man output
+    if type tput >/dev/null 2>&1 && type less >/dev/null 2>&1; then
+        # https://github.com/jeaye/stdman#if-your-output-is-not-colorized
+        # Colors
+        default=$(tput sgr0)
+        red=$(tput setaf 1)
+        green=$(tput setaf 2)
+        purple=$(tput setaf 5)
+        orange=$(tput setaf 9)
+
+        # Less colors for man pages
+        export PAGER=less
+        # Begin blinking
+        export LESS_TERMCAP_mb=$red
+        # Begin bold
+        export LESS_TERMCAP_md=$orange
+        # End mode
+        export LESS_TERMCAP_me=$default
+        # End standout-mode
+        export LESS_TERMCAP_se=$default
+        # Begin standout-mode - info box
+        export LESS_TERMCAP_so=$purple
+        # End underline
+        export LESS_TERMCAP_ue=$default
+        # Begin underline
+        export LESS_TERMCAP_us=$green
+    fi
+}
+
+# Mac specific commands
+function xvzd_darwin_init() {
+    # Mac specific paths
+    XVZD_PRE_PATHS+=(
+        # Brew path
+        "/usr/local/bin"
+        "/usr/local/sbin"
+
+        # Libraries path
+        "$HOME/Library/Python/2.7/bin"
+        "$HOME/Library/Python/3.7/bin"
+        "$HOME/development/flutter/bin"
+        "/usr/local/opt/qt/bin"
+        "/Library/TeX/Root/bin/x86_64-darwin"
+        "/usr/local/opt/openssl/bin"
+        "/usr/local/opt/john-jumbo/share/john"
+        "/usr/local/opt/curl/bin"
+    )
+
+    XVZD_POST_PATHS+=(
+        "$HOME/Library/Android/sdk/tools"
+        "$HOME/Library/Android/sdk/platform-tools"
+    )
+
+    export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python3.7/site-packages"
+    export PYTHONPATH="${PYTHONPATH}:$HOME/.local/lib/python2.7/site-packages"
+
+    # Libraries
+    export OPENSSL_INCLUDE_DIR="/usr/local/opt/openssl/include"
+    export OPENSSL_LIB_DIR="/usr/local/opt/openssl/lib"
+
+    # export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+    # export MACOSX_DEPLOYMENT_TARGET=${XVZD_OSVERS%.*}
+
+    function openvpn() {
+        local binpath
+        binpath=$(brew --prefix openvpn)/sbin/openvpn
+        sudo $binpath "$@"
+        alias openvpn="sudo $binpath"
+    }
+
+    function pyenv_() {
+        unalias pyenv
+        eval "$(pyenv init -)"
+        if [ ! -z "$1" ]; then
+            case "$1" in
+                install)
+                    CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl@1.1)" \
+                        CFLAGS="-I$(brew --prefix openssl@1.1)/include
+                                -I$(brew --prefix readline)/include
+                                -I$(xcrun --show-sdk-path)/usr/include
+                                $CFLAGS" \
+                        LDFLAGS="-L$(brew --prefix openssl@1.1)/lib
+                                -L$(brew --prefix readline)/lib
+                                $LDFLAGS" \
+                        pyenv "$@"
+                    return
+                    ;;
+                virtualenv)
+                    eval "$(pyenv virtualenv-init -)"
+                    ;;
+            esac
+            pyenv "$@"
+        else
+            pyenv
+        fi
+    }
+    alias pyenv="pyenv_"
+
+    # Exclude when zip from command line
+    alias zip='zip -x "*.DS_Store"'
+
+    alias ghidra="ghidraRun"
+
+    export XVZD_CLIPBOARD="pbcopy"
+
+    function del() {
+        if [ -z "$1" ]; then
+            >&2 echo 'usage: del file ...'
+            return 1
+        fi
+        local fparg
+        fparg=""
+        for fp in "$@"; do
+            if [ ! -e "$fp" ]; then
+                >&2 echo "del: $fp: No such file or directory"
+                return 1
+            fi
+            if [ "${fp:0:1}" != "/" ]; then
+                fp="$PWD/$fp"
+            fi
+            fparg+="${fparg:+,}(POSIX file \"$fp\")"
+        done
+        osascript -e \
+            "tell application \"Finder\" to delete every item of {$fparg}" \
+            >/dev/null
+    }
+}
+
+# Linux specific commands
+function xvzd_linux_init() {
+    function pbcopy() {
+        xclip -selection clipboard
+    }
+
+    function pbpaste() {
+        xclip -selection clipboard -o
+    }
+
+    export XVZD_CLIPBOARD="xclip"
+
+    alias docker='sudo docker'
+    alias docker-compose='sudo docker-compose'
+
+    alias pip='python -m pip'
+    alias pip3='python3 -m pip'
+
+    if [ $XVZD_OSNAME = 'ubuntu' ]; then
+        alias del="gvfs-trash"
+    fi
+}
+
+# Windows specific commands
+function xvzd_windows_init() {
+    export PATH="${PATH}:$(wslpath $USERPROFILE)/bin"
+
+    export DOCKER_TLS_VERIFY="1"
+    export DOCKER_HOST="tcp://192.168.99.100:2376"
+    export DOCKER_CERT_PATH="$(wslpath $USERPROFILE)/.docker/machine/machines/default"
+    export DOCKER_MACHINE_NAME="default"
+    export COMPOSE_CONVERT_WINDOWS_PATHS="true"
+
+    alias docker-machine="docker-machine.exe"
+
+    function open() {
+        explorer.exe $(wslpath -w "$1")
+    }
+
+    export XVZD_CLIPBOARD="clip.exe"
+
+    alias adb="adb.exe"
+    alias clip="$XVZD_CLIPBOARD"
+
+    export ORPORT=9150
+
+    # http://www.maddogsw.com/cmdutils/
+    alias del="Recycle.exe"
+}
+
+# Initialize commands
+xvzd_common_init
+xvzd_${XVZD_OSTYPE}_init
+
+# Prepend paths
+for p in "${XVZD_PRE_PATHS[@]}"; do
+    if [ -z "$XVZD_PRE_PATH" ]; then
+        export XVZD_PRE_PATH="$p"
+    else
+        export XVZD_PRE_PATH="${XVZD_PRE_PATH}:$p"
+    fi
+done
+[ ! -z "$XVZD_PRE_PATH" ] && export PATH="$XVZD_PRE_PATH:$PATH"
+
+# Append paths
+for p in "${XVZD_POST_PATHS[@]}"; do
+    if [ -z "$XVZD_POST_PATH" ]; then
+        export XVZD_POST_PATH="$p"
+    else
+        export XVZD_POST_PATH="${XVZD_POST_PATH}:$p"
+    fi
+done
+[ ! -z "$XVZD_POST_PATH" ] && export PATH="$PATH:$XVZD_POST_PATH"
+
+
+# Fix telnet tmux issue
+alias telnet='TERM=xterm telnet'
+
+# SSH with remote clipboard alias
+function sshclip() {
+    # Send signal directly to netcat when exit to break while loop
+    DIRECT_SIG="pbpaste | base64 | nc localhost 7331"
+    trap 'eval "${DIRECT_SIG}"' INT TERM EXIT
+
+    REMOTE_SCRIPT="/bin/bash $HOME/.ssh/remote.sh"
+    ( eval "$REMOTE_SCRIPT" & ) > /dev/null 2>&1
+    ssh -R 1337:localhost:7331 "$@"
+    ( eval "sleep 3 && ${DIRECT_SIG}" & ) > /dev/null 2>&1
+}
+if [ -z "$ORPORT" ]; then
+    export ORPORT=9050
+fi
+
+# Get pid by port
+function pidofport() {
+    case $XVZD_OSTYPE in
+        darwin)
+            lsof -nP -i:$1 | grep LISTEN | awk '{ print $2 }'
+            ;;
+    esac
+}
+
+# Get process name by pid
+function pnameofpid() {
+    [ ! -z "$1" ] && ps -p $1 -o comm=
+}
+
+function autopass() {
+    if [ -z "$1" ]; then
+        >&2 echo "usage: $0 [arg ...]"
+        return 1
+    fi
+    local password
+
+    echo -n 'Enter password: '
+    read -s password
+    echo
+
+    export USERPW="$password"
+    (
+        cat <<'EOF'
+#!/usr/bin/env expect --
+set password $env(USERPW)
+
+set cmd [join $argv]
+spawn bash -c "$cmd"
+while {true} {
+    expect {
+        "Password:" {
+            send "$password\r"
+        } eof {
+            break
+        }
+    }
+}
+EOF
+    ) | expect -b - -- $@
+    unset USERPW
+}
+
+function gpgenc() {
+    if [ -z "$1" ]; then
+        >&2 echo "usage: $0 [files ...]"
+        return 1
+    fi
+    local gpg_prog
+    gpg_prog="$(type gpg2 &>/dev/null && echo gpg2 || echo gpg)"
+
+    local userid
+    local passphrase
+
+    echo -n 'Enter User ID: '
+    read userid
+
+    local tmpfile
+    while true; do
+        tmpfile="$(mktemp)"
+        trap "command rm \"$tmpfile\"
+              trap - HUP INT QUIT TERM
+              return 1" HUP INT QUIT TERM
+        echo -n 0 >"$tmpfile"
+
+        echo -n 'Enter passphrase: '
+        read -s passphrase
+
+        echo
+
+        # Check inputs are valid
+        "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
+            --dry-run --symmetric --encrypt "$tmpfile"
+        if [ $? -ne 0 ]; then
+            >&2 echo "$0: Inputs are invalid. Try again."
+        else
+            command rm "$tmpfile"
+            break
+        fi
+        command rm "$tmpfile"
+    done
+    trap - HUP INT QUIT TERM
+
+    >&2 echo "$0: Encrypting $# files..."
+
+    local -a pidarr
+    for arg in "$@"; do
+        if [ ! -e $arg ]; then
+            return 1
+        fi
+        (
+            trap "command rm \"${arg}.gpg\"; return 1" HUP INT QUIT TERM
+
+            # Encrypt file with gpg
+            >&2 echo "$0: Encrypting file: $arg"
+            "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
+                --symmetric --encrypt "$arg" &&
+            # Integrity check
+            local tmpfile
+            tmpfile="$(mktemp)"
+            command rm "$tmpfile"
+
+            trap "
+                command rm '${arg}.gpg'
+                command rm '$tmpfile'
+                return 1
+                " HUP INT QUIT TERM
+
+            >&2 echo "$0: Integrity check: $tmpfile"
+            "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
+                 --output "$tmpfile" --decrypt "${arg}.gpg"
+
+            local hash_a="$(sha1sum "$arg" | cut -d' ' -f1)"
+            echo "$arg hash: $hash_a"
+            local hash_b="$(sha1sum "$tmpfile" | cut -d' ' -f1)"
+            echo "$tmpfile hash: $hash_b"
+
+            if [ "$hash_a" != "$hash_b" ]; then
+                >&2 echo "$0: Integrity check failed: ${arg}.gpg"
+                command rm "${arg}.gpg"
+            fi
+
+            # Reset trap before exit
+            command rm "$tmpfile"
+            trap - HUP INT QUIT TERM
+        ) &
+        if [ $? -ne 0 ]; then
+            >&2 echo "$0: Something goes wrong. Please check out error messages."
+            return 1
+        fi
+        pidarr+=($!)
+    done
+
+    trap "exit_handler; return 1" HUP INT QUIT TERM
+    function exit_handler() {
+        trap - HUP INT QUIT TERM
+
+        >&2 echo "Terminating processes..."
+        pkill -P "$(joinby ',' "${pidarr[@]}")"
+        pkill -P $$
+    }
+
+    wait
+    >&2 echo "$0: Done!"
+    trap - HUP INT QUIT TERM
+}
+
+# Encrypt/Decrypt functions
+export ENCITER=20000
+
+function encf() {
+    openssl aes-256-cbc -salt -in $1 -out $1.enc
+}
+
+function encs() {
+    echo "$@" | openssl enc -aes-256-cbc -a -salt -pbkdf2 -iter $ENCITER
+}
+
+function decf() {
+    openssl aes-256-cbc -d -salt -in $1 -out ${1%.enc}.new
+}
+
+function decs() {
+    echo "$@" | openssl enc -aes-256-cbc -d -a -pbkdf2 -iter $ENCITER -salt
+}
+
+# Reverse of split; which abbreviation of combine (Just for convenience)
+function comb() {
+    cat $1.* > $1
+}
+
+# Concat mp4 files
+function mp4cat() {
+    local bundle_file='bundle.mp4'
+    if [ -z "$1" ]; then
+        >&2 echo "usage: $0 [files ...]"
+        return 1
+    fi
+    if [ $# -lt 2 ]; then
+        >&2 echo "$0: at least 2 files needed"
+        return 1
+    fi
+    if ! type ffmpeg &>/dev/null; then
+        >&2 echo "$0: cannot find ffmpeg"
+        return 1
+    fi
+    if [ -e "$bundle_file" ]; then
+        while test -e "$bundle_file"; do
+            >&2 echo -n "file '$bundle_file' exists: "
+            read bundle_file
+        done
+    fi
+    for file in "$@"; do
+        if [ "$(echo "${file##*.}" | tr '[:upper:]' '[:lower:]')" != 'mp4' ]; then
+            >&2 echo "$0: file '$file' is not mp4 format"
+            return 1
+        fi
+        echo "file '$file'"
+    done | ffmpeg -protocol_whitelist file,pipe -f concat -i - -c copy "$bundle_file"
+}
+
+# Bring help to zsh
+function help() {
+    bash -c "command help $@"
+}
+
+# https://unix.stackexchange.com/a/391230
+function freeze_history () {
+    fc -A
+    fc -p $HISTFILE
+    unset HISTFILE
+}
+
+function unfreeze_history () {
+    fc -P
+}
+
+
+function flatten() {
+    if [ -z "$1" -o ! -e "$1" ]; then
+        >&2 echo "usage: $0 <directory>"
+        return 1
+    fi
+    local output
+    local paths=()
+    local target="$(dirname "$1")"
+    find "$1" -depth 1 \
+        | while read -r line; do
+            paths+=("$line")
+        done
+    for file in "${paths[@]}"; do
+        mv -i "$file" "$target" || return 1
+    done
+    rmdir "$1"
+}
+
+
+# Open URL with web browser
+function wopen() {
+    python -m webbrowser -t "$1"
+}
+
+function gpg_() {
+    export GPG_TTY=$(tty)
+    command gpg2 $@
+}
+alias gpg="eval gpg_"
+
+# Aliases
+alias proxychains="proxychains4"
+
+# Never overwrite by mv
+alias mv='mv -n'
+
+# Activate python virtualenv
+alias activate='source venv/bin/activate'
+
+# Create default virtualenv
+alias mkenv='virtualenv venv'
+
+# Create pip requirements
+alias mkreq='python -m pip freeze > requirements.txt'
+

@@ -1,0 +1,57 @@
+# Copyright (c) 2020 Xvezda <xvezda@naver.com>
+#
+# Use of this source code is governed by an MIT-style
+# license that can be found in the LICENSE file or at
+# https://opensource.org/licenses/MIT.
+
+
+if [ "$BASH_VERSINFO" -ge 4 -a -f "$HOME/.gitstatus/gitstatus.prompt.sh" ]; then
+    source "$HOME/.gitstatus/gitstatus.prompt.sh"
+fi
+# https://tldp.org/HOWTO/Bash-Prompt-HOWTO/bash-prompt-escape-sequences.html
+PS1='\[\e[36;1m\]\w\[\e[0m\] ${GITSTATUS_PROMPT}\n\[\e[31;1m\]λ\[\e[0m\] '
+
+# User configuration
+if [[ "$(uname -a)" == *"Microsoft"* ]]; then
+    export XVZD_OSTYPE="windows"
+else
+    export XVZD_OSTYPE="$(XVZD_TMP=$(uname | tr 'A-Z' 'a-z'); echo -n ${XVZD_TMP%%-*})"
+fi
+
+case $XVZD_OSTYPE in
+    windows)
+        ;;
+    darwin)
+        export XVZD_OSVERS="$(sw_vers -productVersion)"
+        case $XVZD_OSVERS in
+            10.9*)
+                export XVZD_OSNAME="mavericks"
+                ;;
+            10.10*)
+                export XVZD_OSNAME="yosemite"
+                ;;
+            10.11*)
+                export XVZD_OSNAME="el capitan"
+                ;;
+            10.12*)
+                export XVZD_OSNAME="sierra"
+                ;;
+            10.13*)
+                export XVZD_OSNAME="high sierra"
+                ;;
+            10.14*)
+                export XVZD_OSNAME="mojave"
+                ;;
+        esac
+        ;;
+    linux)
+        if [ -f /etc/os-release ]; then
+            export XVZD_OSNAME="$(cat /etc/os-release | grep -E '^NAME="(.*)"' |
+                sed -E 's/^NAME="(.*)"/\1/' | tr 'A-Z' 'a-z')"
+        fi
+        ;;
+esac
+
+# export VIRTUAL_ENV_DISABLE_PROMPT=
+XVZD_TMP="$(which nvim)" && export EDITOR="$XVZD_TMP" || export EDITOR="$(which vi)"
+
