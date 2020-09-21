@@ -415,6 +415,7 @@ function gpgenc() {
     >&2 echo "$0: Encrypting $# files..."
 
     local -a pidarr
+    set +m
     for arg in "$@"; do
         if [ ! -e $arg ]; then
             return 1
@@ -465,6 +466,7 @@ function gpgenc() {
     trap "exit_handler; return 1" HUP INT QUIT TERM
     function exit_handler() {
         trap - HUP INT QUIT TERM
+        set -m
 
         >&2 echo "Terminating processes..."
         pkill -P "$(joinby ',' "${pidarr[@]}")"
@@ -474,6 +476,7 @@ function gpgenc() {
     wait
     >&2 echo "$0: Done!"
     trap - HUP INT QUIT TERM
+    set -m
 }
 
 # Encrypt/Decrypt functions
