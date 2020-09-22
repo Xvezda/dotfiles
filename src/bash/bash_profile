@@ -438,7 +438,7 @@ function gpgenc() {
                 return 1
                 " HUP INT QUIT TERM
 
-            >&2 echo "$0: Integrity check: $tmpfile"
+            >&2 echo "$0: Integrity check: $arg -> $tmpfile"
             "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
                  --output "$tmpfile" --decrypt "${arg}.gpg"
 
