@@ -12,7 +12,7 @@ cd $DIR
 # Vim dotfiles setup
 function vimconf_setup() {
     # Install vim configurations
-    which vim > /dev/null 2>&1 || return 0
+    type vim > /dev/null 2>&1 || return 0
 
     # Move configuration files to home directory
     VIMDOT_PATH="$DIR/src/vim"
@@ -34,7 +34,7 @@ function vimconf_setup() {
 # NeoVim dotfiles setup
 function nvimconf_setup() {
     # Install nvim configurations
-    which nvim > /dev/null 2>&1 || return 0
+    type nvim > /dev/null 2>&1 || return 0
 
     # Move configuration files to home directory
     VIMDOT_PATH="$DIR/src/vim"
@@ -60,7 +60,7 @@ function nvimconf_setup() {
 # Tmux dotfiles setup
 function tmuxconf_setup() {
     # Install tmux configurations
-    which tmux > /dev/null 2>&1 || return 0
+    type tmux > /dev/null 2>&1 || return 0
 
     # Create tmux local settings directory
     mkdir -p $HOME/.tmux
@@ -90,7 +90,7 @@ function tmuxconf_setup() {
 
 # Bash dotfiles setup
 function bashconf_setup() {
-    which bash > /dev/null 2>&1 || return 0
+    type bash > /dev/null 2>&1 || return 0
     BASHDOT_PATH="$DIR/src/bash"
 
     cp $BASHDOT_PATH/bashrc $HOME/.bashrc
@@ -99,7 +99,7 @@ function bashconf_setup() {
 
 # Zsh dotfiles setup
 function zshconf_setup() {
-    which zsh > /dev/null 2>&1 || return 0
+    type zsh > /dev/null 2>&1 || return 0
     ZSHDOT_PATH="$DIR/src/zsh"
 
     cp $ZSHDOT_PATH/zprofile $HOME/.zprofile
@@ -120,7 +120,7 @@ function zshconf_setup() {
 
 
 function tidyconf_setup() {
-    which tidy > /dev/null 2>&1 || return 0
+    type tidy > /dev/null 2>&1 || return 0
     TIDYDOT_PATH="$DIR/src/tidy"
 
     cp $TIDYDOT_PATH/tidyrc $HOME/.tidyrc
@@ -135,8 +135,11 @@ function gitconf_setup() {
 
 # Full dotfiles setup
 function dotfiles_setup() {
-    bashconf_setup
-    zshconf_setup
+    if type zsh > /dev/null 2>&1; then
+        zshconf_setup
+    else
+        bashconf_setup
+    fi
     vimconf_setup
     tmuxconf_setup
     tidyconf_setup
