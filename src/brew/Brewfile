@@ -75,7 +75,6 @@ brew "graphviz"
 brew "gtest", args: ["HEAD"]
 brew "hashcat"
 brew "haskell-stack"
-brew "howdoi"
 brew "http-server"
 brew "libimobiledevice", args: ["HEAD"]
 brew "ideviceinstaller"
