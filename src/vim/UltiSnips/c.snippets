@@ -43,5 +43,9 @@ snippet gattr "define get attr" b
 #define ${1:GET_ATTR}(ptr, attr, def) ((ptr) ? (ptr)->attr : (def))
 endsnippet
 
+snippet posixc "define posix feature test macro" b
+#define  _POSIX_C_SOURCE ${1:200809L}
+endsnippet
+
 
 # vim:ft=snippets
