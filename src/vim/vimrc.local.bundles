@@ -33,6 +33,11 @@ endif
 " Install plugin when only local machine
 if !exists("$SSH_CLIENT")
 
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
 " Go {{{2
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 "2}}}
