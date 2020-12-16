@@ -82,6 +82,13 @@ function xvzd_common_init() {
     alias easy_install="easy_install --prefix=$HOME/.local"
 
     if type fasd >/dev/null 2>&1; then
+        fasd_cache="$HOME/.fasd-init-bash"
+        if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+          fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+        fi
+        source "$fasd_cache"
+        unset fasd_cache
+
         alias a='fasd -a'
         alias s='fasd -si'
         alias sd='fasd -sid'

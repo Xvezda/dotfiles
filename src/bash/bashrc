@@ -54,4 +54,3 @@ esac
 
 # export VIRTUAL_ENV_DISABLE_PROMPT=
 XVZD_TMP="$(which nvim)" && export EDITOR="$XVZD_TMP" || export EDITOR="$(which vi)"
-
