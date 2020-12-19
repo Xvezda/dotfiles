@@ -185,7 +185,7 @@ function! s:insertAppleScriptContinuationCharacter()
   let cc = '¬'
   " Check if cursor at the end of line - https://superuser.com/a/723715
   if col(".") >= col("$") - 1
-        \ && strcharpart(getline('.')[col('.') - 1:], 0, 1) !~# '/\s'
+        \ && strcharpart(getline('.')[col('.') - 1:], 0, 1) !~# '/\s'  " https://stackoverflow.com/a/43582469
     let cc = ' ' . cc
   endif
   execute 'normal! a' . cc
