@@ -180,5 +180,23 @@ augroup python_docstring_map
   autocmd FileType python vnoremap <buffer> id :<C-u>call PyDocstrTxtObj(1)<CR>
 augroup END
 
+" AppleScript key mappings
+function! s:insertAppleScriptContinuationCharacter()
+  let cc = '¬'
+  " Check if cursor at the end of line - https://superuser.com/a/723715
+  if col(".") >= col("$") - 1
+        \ && strcharpart(getline('.')[col('.') - 1:], 0, 1) !~# '/\s'
+    let cc = ' ' . cc
+  endif
+  execute 'normal! a' . cc
+endfunction
+
+augroup applescript_map
+  autocmd!
+  " Insert continuation character on applescript
+  autocmd FileType applescript
+        \ nnoremap <Leader><CR> :call <SID>insertAppleScriptContinuationCharacter()<CR>
+augroup END
+
 
 " vim:ft=vim
