@@ -195,7 +195,7 @@ augroup applescript_map
   autocmd!
   " Insert continuation character on applescript
   autocmd FileType applescript
-        \ nnoremap <Leader><CR> :call <SID>insertAppleScriptContinuationCharacter()<CR>
+        \ nnoremap <script><silent> <Leader><CR> :call <SID>insertAppleScriptContinuationCharacter()<CR>
 augroup END
 
 
