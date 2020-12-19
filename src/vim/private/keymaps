@@ -195,6 +195,10 @@ augroup applescript_map
   " Insert continuation character on applescript
   autocmd FileType applescript
         \ nnoremap <script><silent> <Leader><CR> :call <SID>insertAppleScriptContinuationCharacter()<CR>
+  autocmd FileType applescript nnoremap <Leader>< a≤<ESC>
+  autocmd FileType applescript nnoremap <Leader>> a≥<ESC>
+  autocmd FileType applescript nnoremap <Leader>= a≠<ESC>
+  autocmd FileType applescript nnoremap <Leader>/ a÷<ESC>
 augroup END
 
 
