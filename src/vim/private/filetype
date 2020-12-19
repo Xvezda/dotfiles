@@ -6,6 +6,10 @@ augroup commentaries
   autocmd FileType applescript setlocal commentstring=--\ %s
 augroup END
 
+" Set applescript global configuration
+let g:applescript_config = {}
+let g:applescript_config.indent = {'continuation_multiplier': 1}
+
 " Enable doxygen syntax load
 let g:load_doxygen_syntax = 1
 

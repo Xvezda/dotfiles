@@ -38,6 +38,9 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
+" AppleScript {{{2
+Plug 'Xvezda/vim-applescript', { 'for': 'applescript' }
+" 2}}}
 " Go {{{2
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 "2}}}
