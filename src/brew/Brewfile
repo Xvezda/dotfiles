@@ -64,6 +64,7 @@ brew "git"
 brew "git-lfs"
 brew "gitmoji"
 brew "glfw"
+brew "gnu-sed"
 brew "libksba"
 brew "gnupg", link: false
 brew "lua"
