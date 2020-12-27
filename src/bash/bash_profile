@@ -184,6 +184,9 @@ function xvzd_darwin_init() {
     # Exclude when zip from command line
     alias zip='zip -x "*.DS_Store"'
 
+    # Fix linker error
+    alias ld="ld -lSystem -macosx_version_min ${XVZD_OSVERS%.*}"
+
     alias ghidra="ghidraRun"
 
     export XVZD_CLIPBOARD="pbcopy"
