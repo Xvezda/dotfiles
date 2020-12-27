@@ -8,7 +8,7 @@ My development environment configuration files with utility scripts.
 
 ## Platforms
 - Linux (Confirmed on Ubuntu 16.04)
-- Mac OS X (Confirmed on MacOS Mojave 10.14.5)
+- Mac OS X, macOS 10 (Confirmed on MacOS Mojave 10.14.5)
 - Windows (Confirmed on Insider Preview Build 18995)
     - WSL 2
     - Msys2 (May have some compatibility issue)
