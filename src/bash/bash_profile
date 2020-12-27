@@ -185,7 +185,8 @@ function xvzd_darwin_init() {
     alias zip='zip -x "*.DS_Store"'
 
     # Fix linker error
-    alias ld="ld -lSystem -macosx_version_min ${XVZD_OSVERS%.*}"
+    local osmajor_version="${XVZD_OSVERS%.*}"
+    alias ld="ld -lSystem -macosx_version_min ${osmajor_version:-10.12}"
 
     alias ghidra="ghidraRun"
 
