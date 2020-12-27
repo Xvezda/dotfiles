@@ -42,6 +42,9 @@ case $XVZD_OSTYPE in
             10.14*)
                 export XVZD_OSNAME="mojave"
                 ;;
+            10.15*)
+                export XVZD_OSNAME="catalina"
+                ;;
         esac
         ;;
     linux)
