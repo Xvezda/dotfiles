@@ -20,4 +20,28 @@ for level in range(1, 6)
 endfor
 
 
+" Prevent writing typo file
+function! s:check_filename_valid(name)
+  " If filename is too short and only with non-word characters
+  if !empty(a:name) && strlen(a:name) < 2 && a:name =~# '\W'
+    return 0
+  endif
+  return 1
+endfunction
+
+augroup abort_short_filename
+  autocmd!
+  " expand('<afile>') -> new name
+  " expand('%') -> original name
+  autocmd BufWritePre *
+        \ if !s:check_filename_valid(expand('<afile>')) |
+        \   if !filereadable(expand('%'))
+        \       && !s:check_filename_valid(expand('%')) |
+        \     silent execute '0f' |
+        \   endif |
+        \   throw 'filename is too short' |
+        \ endif
+augroup END
+
+
 " vim:ft=vim
