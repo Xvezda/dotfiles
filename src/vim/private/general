@@ -62,7 +62,7 @@ autocmd FocusGained,BufEnter * :checktime
 " autocmd FileType c setlocal cinoptions+=:0
 
 " C++ indent to 2 spaces
-autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
       \ cinoptions+=g0,N-s
 
 " Java indent to 2 spaces
