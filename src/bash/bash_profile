@@ -120,6 +120,10 @@ function xvzd_darwin_init() {
         "/usr/local/bin"
         "/usr/local/sbin"
 
+        # Fix clang issue
+        # https://stackoverflow.com/a/55778432
+        "/usr/local/opt/llvm/bin"
+
         # Libraries path
         "$HOME/Library/Python/2.7/bin"
         "$HOME/Library/Python/3.7/bin"
