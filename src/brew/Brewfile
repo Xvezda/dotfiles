@@ -141,6 +141,7 @@ brew "tmux"
 brew "tor", restart_service: true
 brew "torsocks"
 brew "tree"
+brew "uchardet"
 brew "upx"
 brew "wakeonlan"
 brew "watch"
