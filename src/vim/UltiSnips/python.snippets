@@ -82,5 +82,10 @@ setup(name='$1',
       zip_safe=False)
 endsnippet
 
+snippet msuper "enforce multiple initializer call of multiple inherited class"
+for ${1:base} in getattr(self.__class__, '__bases__'):
+	$1.__init__(self)
+endsnippet
+
 
 # vim:ft=snippets:
