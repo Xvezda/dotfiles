@@ -87,5 +87,10 @@ for ${1:base} in getattr(self.__class__, '__bases__'):
 	$1.__init__(self)
 endsnippet
 
+snippet init "class initializer"
+def __init__(self, ${1:*args, **kwargs}):
+	${2:pass}
+endsnippet
+
 
 # vim:ft=snippets:
