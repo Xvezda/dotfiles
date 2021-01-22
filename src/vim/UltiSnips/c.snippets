@@ -4,7 +4,11 @@ global !p
 HEADER_NAME = fn.split('.')[0].upper() + '_H_'
 endglobal
 
-snippet once "include header once" b
+snippet once "define pragma once" b
+#pragma once
+endsnippet
+
+snippet guard "define include guard" b
 #ifndef $1`!p snip.rv = HEADER_NAME`
 #define $1`!p snip.rv = HEADER_NAME`
 
