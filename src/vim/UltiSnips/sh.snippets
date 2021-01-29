@@ -5,4 +5,10 @@ snippet trap
 trap ${1:-} ${2:HUP INT QUIT TERM}
 endsnippet
 
+snippet ifmain "python if main statement equivalent in bash" b
+if [[ "\$0" == "\$BASH_SOURCE" ]]; then
+	$1
+fi
+endsnippet
+
 # vim:ft=snippets
