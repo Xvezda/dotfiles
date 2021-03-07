@@ -3,7 +3,6 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'itchyny/lightline.vim'
 
 " Plugins
-Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
