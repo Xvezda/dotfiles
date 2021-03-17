@@ -21,5 +21,20 @@ try {
 } catch (${3:e}) {$2}
 endsnippet
 
+snippet celm "define custom element"
+class ${1:CustomElement} extends HTMLElement {
+	constructor() {
+		super()
+	}$2
+}
+endsnippet
+
+snippet celmcb "define custom element callbacks"
+connectedCallback() {$1}
+disconnectedCallback() {$2}
+adoptedCallback() {$3}
+attributeChangedCallback(name, oldValue, newValue) {$4}
+endsnippet
+
 
 # vim:ft=snippets
