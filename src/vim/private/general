@@ -24,9 +24,6 @@ set foldopen+=jump
 set colorcolumn=72
 highlight ColorColumn ctermbg=236 guibg=#333333
 
-" Nobin optino
-let g:nobin_accept_trailing_dot = 1
-
 " Suppress warning
 let g:go_version_warning = 0
 
