@@ -6,7 +6,7 @@ def create_prefix_placeholders(snip):
 	visual_placeholder = snip.buffer[snip.line]
 	snip.buffer[snip.line] = ''
 
-	matched = re.match('^(\s*)', visual_placeholder)
+	matched = re.match(r'^(\s*)', visual_placeholder)
 	if matched:
 		indent = matched.group(1)
 	else:
@@ -22,7 +22,7 @@ def create_prefix_placeholders(snip):
 endglobal
 
 post_jump "create_prefix_placeholders(snip)"
-snippet prefix "add vendor prefixes to selected properties"
+snippet vprefix "add vendor prefixes to selected properties"
 ${VISUAL}
 endsnippet
 
