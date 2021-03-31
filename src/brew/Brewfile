@@ -81,6 +81,7 @@ brew "graphicsmagick"
 brew "graphviz"
 brew "gtest", args: ["HEAD"]
 brew "gtk+"
+brew "gtk+3"
 brew "hashcat"
 brew "haskell-stack"
 brew "http-server"
