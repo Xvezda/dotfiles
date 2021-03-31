@@ -1,0 +1,30 @@
+# Copyright (C) 2021 Xvezda <xvezda@naver.com>
+
+
+global !p
+def create_prefix_placeholders(snip):
+	visual_placeholder = snip.buffer[snip.line]
+	snip.buffer[snip.line] = ''
+
+	matched = re.match('^(\s*)', visual_placeholder)
+	if matched:
+		indent = matched.group(1)
+	else:
+		indent = ''
+
+	anon_snip_body = '\n'.join([
+		indent + '${%d:%s}' % (i+1, p + x.strip())
+		for x in visual_placeholder.split('\n')
+		for i, p in enumerate(['-webkit-', '-moz-', '-ms-', '-o-'])
+		if x.strip() != ''
+	])
+	snip.expand_anon(anon_snip_body)
+endglobal
+
+post_jump "create_prefix_placeholders(snip)"
+snippet prefix "add vendor prefixes to selected properties"
+${VISUAL}
+endsnippet
+
+# vim:ft=snippets
+
