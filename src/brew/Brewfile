@@ -80,6 +80,7 @@ brew "gptfdisk"
 brew "graphicsmagick"
 brew "graphviz"
 brew "gtest", args: ["HEAD"]
+brew "gtk+"
 brew "hashcat"
 brew "haskell-stack"
 brew "http-server"
