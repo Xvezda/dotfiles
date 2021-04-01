@@ -23,6 +23,7 @@ iabbrev acutal actual
 iabbrev amin main
 iabbrev breka break
 iabbrev calss class
+iabbrev cavnas canvas
 iabbrev cosnt const
 iabbrev ednl endl
 iabbrev exprot export
