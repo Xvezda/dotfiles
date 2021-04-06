@@ -77,7 +77,12 @@ autocmd FileType typescript,typescriptreact setlocal colorcolumn=100
       \ | call clearmatches()
 
 " HTML indent to 2 spaces
-autocmd FileType html,htmldjango setlocal shiftwidth=2 softtabstop=2 expandtab
+" Also, Fix weird behavior of indentation
+" See :help html-indenting for more details
+autocmd FileType html,htmldjango
+      \ setlocal shiftwidth=2 softtabstop=2 expandtab
+      \ | let g:html_indent_script1 = "auto"
+      \ | let g:html_indent_style1 = "auto"
 
 " Vue indent to 2 spaces
 autocmd FileType vue setlocal shiftwidth=2 softtabstop=2 expandtab
