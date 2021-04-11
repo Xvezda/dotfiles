@@ -33,6 +33,7 @@ iabbrev flase false
 iabbrev fucntion function
 iabbrev funciton function
 iabbrev futrue future
+iabbrev heigth height
 iabbrev imoprt import
 iabbrev imporve improve
 iabbrev improt import
@@ -59,7 +60,9 @@ iabbrev slef self
 iabbrev ture true
 iabbrev virutal virtual
 iabbrev vodi void
+iabbrev wdith width
 iabbrev whiel while
+iabbrev widht width
 iabbrev yeild yield
 
 
