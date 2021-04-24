@@ -562,6 +562,20 @@ function gpg_() {
 }
 alias gpg="eval gpg_"
 
+
+# https://github.com/styfle/packagephobia/blob/main/API.md
+function pkgcost() {
+    if [ -z "$1" ]; then
+        >&2 echo "usage: ${FUNCNAME[0]} <pkgname>"
+        return 1
+    fi
+    local formatter="cat"
+    if type jq >/dev/null 2>&1; then
+        formatter="jq"
+    fi
+    curl -s "https://packagephobia.com/v2/api.json?p=$1" | "$formatter"
+}
+
 # Aliases
 alias proxychains="proxychains4"
 
