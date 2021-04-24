@@ -328,7 +328,7 @@ function pnameofpid() {
 
 function autopass() {
     if [ -z "$1" ]; then
-        >&2 echo "usage: $0 [arg ...]"
+        >&2 echo "usage: ${FUNCNAME[0]} [arg ...]"
         return 1
     fi
     local password
@@ -361,7 +361,7 @@ EOF
 
 function gpgenc() {
     if [ -z "$1" ]; then
-        >&2 echo "usage: $0 [files ...]"
+        >&2 echo "usage: ${FUNCNAME[0]} [files ...]"
         return 1
     fi
     local gpg_prog
@@ -390,7 +390,7 @@ function gpgenc() {
         "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
             --dry-run --symmetric --encrypt "$tmpfile"
         if [ $? -ne 0 ]; then
-            >&2 echo "$0: Inputs are invalid. Try again."
+            >&2 echo "${FUNCNAME[0]}: Inputs are invalid. Try again."
         else
             command rm "$tmpfile"
             break
@@ -399,7 +399,7 @@ function gpgenc() {
     done
     trap - HUP INT QUIT TERM
 
-    >&2 echo "$0: Encrypting $# files..."
+    >&2 echo "${FUNCNAME[0]}: Encrypting $# files..."
 
     local -a pidarr
     set +m
@@ -411,7 +411,7 @@ function gpgenc() {
             trap "command rm \"${arg}.gpg\"; return 1" HUP INT QUIT TERM
 
             # Encrypt file with gpg
-            >&2 echo "$0: Encrypting file: $arg"
+            >&2 echo "${FUNCNAME[0]}: Encrypting file: $arg"
             "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
                 --symmetric --encrypt "$arg" &&
             # Integrity check
@@ -425,7 +425,7 @@ function gpgenc() {
                 return 1
                 " HUP INT QUIT TERM
 
-            >&2 echo "$0: Integrity check: $arg -> $tmpfile"
+            >&2 echo "${FUNCNAME[0]}: Integrity check: $arg -> $tmpfile"
             "$gpg_prog" -r "$userid" --passphrase "$passphrase" \
                  --output "$tmpfile" --decrypt "${arg}.gpg"
 
@@ -435,7 +435,7 @@ function gpgenc() {
             echo "$tmpfile hash: $hash_b"
 
             if [ "$hash_a" != "$hash_b" ]; then
-                >&2 echo "$0: Integrity check failed: ${arg}.gpg"
+                >&2 echo "${FUNCNAME[0]}: Integrity check failed: ${arg}.gpg"
                 command rm "${arg}.gpg"
             fi
 
@@ -444,7 +444,7 @@ function gpgenc() {
             trap - HUP INT QUIT TERM
         ) &
         if [ $? -ne 0 ]; then
-            >&2 echo "$0: Something goes wrong. Please check out error messages."
+            >&2 echo "${FUNCNAME[0]}: Something goes wrong. Please check out error messages."
             return 1
         fi
         pidarr+=($!)
@@ -461,7 +461,7 @@ function gpgenc() {
     }
 
     wait
-    >&2 echo "$0: Done!"
+    >&2 echo "${FUNCNAME[0]}: Done!"
     trap - HUP INT QUIT TERM
     set -m
 }
@@ -494,15 +494,15 @@ function comb() {
 function mp4cat() {
     local bundle_file='bundle.mp4'
     if [ -z "$1" ]; then
-        >&2 echo "usage: $0 [files ...]"
+        >&2 echo "usage: ${FUNCNAME[0]} [files ...]"
         return 1
     fi
     if [ $# -lt 2 ]; then
-        >&2 echo "$0: at least 2 files needed"
+        >&2 echo "${FUNCNAME[0]}: at least 2 files needed"
         return 1
     fi
     if ! type ffmpeg &>/dev/null; then
-        >&2 echo "$0: cannot find ffmpeg"
+        >&2 echo "${FUNCNAME[0]}: cannot find ffmpeg"
         return 1
     fi
     if [ -e "$bundle_file" ]; then
@@ -513,7 +513,7 @@ function mp4cat() {
     fi
     for file in "$@"; do
         if [ "$(echo "${file##*.}" | tr '[:upper:]' '[:lower:]')" != 'mp4' ]; then
-            >&2 echo "$0: file '$file' is not mp4 format"
+            >&2 echo "${FUNCNAME[0]}: file '$file' is not mp4 format"
             return 1
         fi
         echo "file '$file'"
@@ -534,7 +534,7 @@ function unfreeze_history () {
 
 function flatten() {
     if [ -z "$1" -o ! -e "$1" ]; then
-        >&2 echo "usage: $0 <directory>"
+        >&2 echo "usage: ${FUNCNAME[0]} <directory>"
         return 1
     fi
     local output
