@@ -576,6 +576,27 @@ function pkgcost() {
     curl -s "https://packagephobia.com/v2/api.json?p=$1" | "$formatter"
 }
 
+
+function gitanon() {
+    if [ -z "$1" ]; then
+        >&2 echo "usage: ${FUNCNAME[0]} <command>"
+        return 1
+    fi
+    case "$1" in
+        init)
+            # https://stackoverflow.com/a/48458633
+            git config user.name 'Anonymous'
+            git config user.email '<>'
+            ;;
+        reset|clear)
+            git config --unset user.name
+            git config --unset user.email
+            ;;
+    esac
+    # TODO: https://gist.github.com/pozorvlak/8784840
+}
+
+
 # Aliases
 alias proxychains="proxychains4"
 
