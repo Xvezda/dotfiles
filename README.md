@@ -61,13 +61,8 @@ Feel free to ask :)
 | <kbd>,</kbd><kbd>r</kbd><kbd>s</kbd>                                                                     | Run current vim script.                      |
 | <kbd>,</kbd><kbd>r</kbd><kbd>l</kbd><kbd>a</kbd>                                                         | Reload all Vim configuration.                |
 | <kbd>,</kbd><kbd>r</kbd><kbd>l</kbd><kbd>l</kbd>                                                         | Reload local Vim configuration.              |
-| <kbd>a,i</kbd><kbd>k,K</kbd>                                                                             | For textobj-comment all or in.               |
-| <kbd>a,i</kbd><kbd>j</kbd>                                                                               | For textobj-line all or in.                  |
-| <kbd>a,i</kbd><kbd>h</kbd>                                                                               | For textobj-lastpat all or in.               |
-| <kbd>a,i</kbd><kbd>d</kbd>                                                                               | Text object for docstring (Python specific). |
 | <kbd>[,]</kbd>+<kbd>Space</kbd>                                                                          | Insert empty line.                           |
 | <kbd>,</kbd><kbd>u</kbd><kbd>1~6</kbd>                                                                   | Markdown header.                             |
-| <kbd>Shift</kbd>+<kbd>&uparrow;</kbd><kbd>&downarrow;</kbd><kbd>&leftarrow;</kbd><kbd>&rightarrow;</kbd> | Drag text to move around (visual mode only). |
 | <kbd>F10</kbd>                                                                                           | Toggle paste mode.                           |
 | <kbd>F12</kbd>                                                                                           | Toggle nested Tmux mode.                     |
 | <kbd>Leader</kbd>+<kbd>/</kbd>                                                                           | Search keyword under cursor.                 |

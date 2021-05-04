@@ -78,8 +78,6 @@ if v:version >= 704 && has("python3")
   Plug 'SirVer/ultisnips'
 endif
 
-" Plug 'honza/vim-snippets'
-
 "2}}}
 "*****************************************************************************
 " Include user's extra bundle

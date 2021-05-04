@@ -67,113 +67,14 @@ if (!has('nvim') && v:version < 801) || !has('nvim-0.4')
   nnoremap <silent> N N<Plug>SearchIndex
 endif
 
-" Set Fastfold
-nmap zuz <Plug>(FastFoldUpdate)
-
 " Set undo-tree toggle to F5
 nnoremap <F5> :UndotreeToggle<cr>
-
-" vim-schelpp keymaps
-vmap <unique> <S-Up>    <Plug>SchleppUp
-vmap <unique> <S-Down>  <Plug>SchleppDown
-vmap <unique> <S-Left>  <Plug>SchleppLeft
-vmap <unique> <S-Right> <Plug>SchleppRight
-vmap <unique> D <Plug>SchleppDup
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" Disable and change shortcut for textobj-line
-let g:textobj_line_no_default_key_mappings = 1
-xmap aj <Plug>(textobj-line-a)
-omap aj <Plug>(textobj-line-a)
-xmap ij <Plug>(textobj-line-i)
-omap ij <Plug>(textobj-line-i)
-
-" Disable and change shortcut for textobj-comment
-let g:textobj_comment_no_default_key_mappings = 1
-xmap ak <Plug>(textobj-comment-a)
-omap ak <Plug>(textobj-comment-a)
-xmap ik <Plug>(textobj-comment-i)
-omap ik <Plug>(textobj-comment-i)
-xmap ak <Plug>(textobj-comment-big-a)
-omap ak <Plug>(textobj-comment-big-a)
-
-" Disable and change shortcut for textobj-lastpat
-let g:textobj_lastpat_no_default_key_mappings = 1
-xmap ah <Plug>(textobj-lastpat-n)
-omap ah <Plug>(textobj-lastpat-n)
-xmap ih <Plug>(textobj-lastpat-n)
-omap ih <Plug>(textobj-lastpat-n)
-xmap aH <Plug>(textobj-lastpat-N)
-omap aH <Plug>(textobj-lastpat-N)
-xmap iH <Plug>(textobj-lastpat-N)
-omap iH <Plug>(textobj-lastpat-N)
-
-" Disable pythonsense plugin and follow PEP8
-" https://www.python.org/dev/peps/pep-0008/#string-quotes
-" https://pastebin.com/REEAPvZy
-function! PyDocstrTxtObj (inner)
-  " get current line number
-  let s = line('.')
-  " climb up to first def/class line, or first line of buffer
-  while s > 0 && getline(s) !~# '^\s*\(def\|class\)'
-    let s = s - 1
-  endwhile
-  " set search start to just after def/class line, or on first buffer line
-  let s = s + 1
-  " descend lines obj_end_line end of buffer or def/class line
-  while s < line('$') && getline(s) !~# '^\s*\(def\|class\)'
-    if getline(s) =~ '^\s*""".*"""\s*$'
-      execute 'norm ' . s . 'gg2lvi"'
-      return
-    endif
-    " if line begins with optional whitespace followed by '''
-    if getline(s) =~ '^\s*"""'
-      let close_pattern = '"""\s*$'
-      " set search end to just after found start line
-      let e = s + 1
-      " descend lines obj_end_line end of buffer or def/class line
-      while e <= line('$') && getline(e) !~# '^\s*\(def\|class\)'
-        " if line ends with ''' followed by optional whitespace
-        if getline(e) =~ close_pattern
-          " TODO check first for blank lines above to select instead
-          " for 'around', extend search end through blank lines
-          if a:inner
-            let e -= 1
-            let s += 1
-          else
-            let x = e + 1
-            while x <= line('$') && getline(x) =~ '^\s*$'
-              let e = x
-              let x = x + 1
-            endwhile
-          endif
-          " visual line select from start to end (first cursor move)
-          exe 'norm '.s.'ggV'.e.'gg'
-          return
-        endif
-        " move search end down a line
-        let e = e + 1
-      endwhile
-    endif
-    " move search start down a line
-    let s = s + 1
-  endwhile
-endfunction
-
-" Remap in/around python docstring text objects
-let g:is_pythonsense_suppress_object_keymaps = 1
-augroup python_docstring_map
-  autocmd!
-  autocmd FileType python onoremap <buffer> ad :<C-u>call PyDocstrTxtObj(0)<CR>
-  autocmd FileType python onoremap <buffer> id :<C-u>call PyDocstrTxtObj(1)<CR>
-  autocmd FileType python vnoremap <buffer> ad :<C-u>call PyDocstrTxtObj(0)<CR>
-  autocmd FileType python vnoremap <buffer> id :<C-u>call PyDocstrTxtObj(1)<CR>
-augroup END
 
 " AppleScript key mappings
 function! s:insertAppleScriptContinuationCharacter()
