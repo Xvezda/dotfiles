@@ -614,4 +614,4 @@ alias mkenv='virtualenv venv'
 alias mkreq='python -m pip freeze > requirements.txt'
 
 # Use docker to see quick extra manpages
-alias extman='docker run --rm -it petrem/manpages man'
+alias extman='docker run --rm -it xvezda/manpages man'
