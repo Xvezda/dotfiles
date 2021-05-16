@@ -615,3 +615,5 @@ alias mkreq='python -m pip freeze > requirements.txt'
 
 # Use docker to see quick extra manpages
 alias extman='docker run --rm -it xvezda/manpages man'
+
+alias pwnbox='docker run --rm --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -it pwnbox'
