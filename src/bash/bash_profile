@@ -160,7 +160,9 @@ function xvzd_darwin_init() {
 
     function pyenv_() {
         unalias pyenv
-        eval "$(pyenv init -)"
+        export PYENV_ROOT="$HOME/.pyenv"
+        export PATH="$PYENV_ROOT/bin:$PATH"
+        eval "$(pyenv init --path)"
         if [ ! -z "$1" ]; then
             case "$1" in
                 install)
