@@ -42,6 +42,7 @@ iabbrev inlcude include
 iabbrev ipmort import
 iabbrev itme item
 iabbrev itmes items
+iabbrev lnog long
 iabbrev namepsace namespace
 iabbrev paht path
 iabbrev pakcage package
