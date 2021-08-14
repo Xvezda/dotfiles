@@ -433,8 +433,8 @@ function gpgenc() {
         pidarr+=($!)
     done
 
-    trap "exit_handler; return 1" HUP INT QUIT TERM
-    function exit_handler() {
+    trap "_exit_handler; return 1" HUP INT QUIT TERM
+    function _exit_handler() {
         trap - HUP INT QUIT TERM
         set -m
 
@@ -581,11 +581,11 @@ function gitanon() {
 
 
 function fakeua() {
-    function usage() {
+    function _usage() {
         >&2 echo "usage: ${FUNCNAME[0]} <ie|msie|opera|chrome|google|firefox|ff|safari|random>"
     }
     if [ -z "$1" ]; then
-        usage
+        _usage
         return 1
     fi
     case "$1" in
@@ -593,7 +593,7 @@ function fakeua() {
             python3 -c "from fake_useragent import UserAgent as UA; ua = UA(); print(ua.$1)"
             ;;
         *)
-            usage;;
+            _usage;;
     esac
 }
 
