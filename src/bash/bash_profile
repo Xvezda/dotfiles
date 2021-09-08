@@ -127,6 +127,7 @@ function xvzd_darwin_init() {
         # Libraries path
         "$HOME/Library/Python/2.7/bin"
         "$HOME/Library/Python/3.7/bin"
+        "$HOME/.cargo/bin"
         "$HOME/development/flutter/bin"
         "/usr/local/opt/qt/bin"
         "/Library/TeX/Root/bin/x86_64-darwin"
