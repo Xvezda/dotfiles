@@ -97,5 +97,7 @@ autocmd FileType python setlocal colorcolumn=72
 " Vim script indent options
 autocmd FileType vim setlocal shiftwidth=2 softtabstop=2 expandtab
 
+" Git commit indent to 2 spaces
+autocmd FileType gitcommit setlocal shiftwidth=2 softtabstop=2 expandtab
 
 " vim:ft=vim
