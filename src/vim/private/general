@@ -70,7 +70,7 @@ autocmd FileType java setlocal colorcolumn=100
 " Javascript indent to 2 spaces
 autocmd FileType javascript,javascriptreact,
       \ setlocal shiftwidth=2 softtabstop=2 expandtab
-autocmd FileType json setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType json,jsonc setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType jst setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType typescript,typescriptreact setlocal colorcolumn=100
       \ shiftwidth=2 softtabstop=2 expandtab
