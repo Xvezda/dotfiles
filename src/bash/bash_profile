@@ -81,6 +81,8 @@ function xvzd_common_init() {
 
     alias easy_install="easy_install --prefix=$HOME/.local"
 
+    bind '"\C-xp": print-last-kbd-macro'
+
     if type fasd >/dev/null 2>&1; then
         fasd_cache="$HOME/.fasd-init-bash"
         if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
