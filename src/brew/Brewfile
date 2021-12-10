@@ -84,6 +84,7 @@ brew "git-svn"
 brew "gitmoji"
 brew "glfw"
 brew "gnu-sed"
+brew "gnu-tar"
 brew "libksba"
 brew "gnupg", link: false
 brew "lua"
