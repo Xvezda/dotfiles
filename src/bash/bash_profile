@@ -68,12 +68,6 @@ function xvzd_common_init() {
     test -z $XDG_CACHE_HOME && export XDG_CACHE_HOME="$HOME/.cache"
     test -z $XDG_DATA_HOME && export XDG_DATA_HOME="$HOME/.local/share"
 
-    if [ ! -z "$EDITOR" ] && [ "$(basename $EDITOR)" = "nvim" ]; then
-        alias vi="$EDITOR"
-        alias vim="$EDITOR"
-        alias vimdiff="$EDITOR -d"
-    fi
-
     alias ls="ls -G"
 
     # rm to rm trash
