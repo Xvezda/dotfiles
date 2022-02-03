@@ -45,7 +45,7 @@ brew "cmake"
 brew "libyaml"
 brew "cocoapods"
 brew "tidy-html5"
-brew "php", restart_service: true
+brew "php"
 brew "composer"
 brew "coreutils"
 brew "cppman"
@@ -137,7 +137,7 @@ brew "ocrmypdf"
 brew "opam"
 brew "opencv", link: false
 brew "openssh"
-brew "openvpn", restart_service: true
+brew "openvpn"
 brew "opusfile"
 brew "pinentry-mac"
 brew "portmidi"
