@@ -182,6 +182,7 @@ brew "upx"
 brew "vim"
 brew "wabt"
 brew "wakeonlan"
+brew "wasm3"
 brew "watch", link: false
 brew "wget"
 brew "wimlib"
