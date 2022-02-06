@@ -180,6 +180,7 @@ brew "tree"
 brew "unar"
 brew "upx"
 brew "vim"
+brew "wabt"
 brew "wakeonlan"
 brew "watch", link: false
 brew "wget"
