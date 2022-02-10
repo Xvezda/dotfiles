@@ -594,6 +594,19 @@ function fakeua() {
     esac
 }
 
+function obj2txt() {
+    if [ -z "$1" ]; then
+        >&2 echo "usage: ${FUNCNAME[0]} <object_file>"
+        return 1
+    fi
+    {
+        printf ' ';
+        objdump --section=.text -D "$1" \
+            | cut -d$'\t' -f2 \
+            | grep -E '^[0-9a-f][0-9a-f] ' \
+            | xargs;
+    } | sed 's/ /\\x/g'
+}
 
 # Aliases
 alias proxychains="proxychains4"
