@@ -129,6 +129,7 @@ brew "moreutils"
 brew "portaudio"
 brew "n"
 brew "ncurses"
+brew "nano"
 brew "neofetch"
 brew "nmap"
 brew "nss", link: false
