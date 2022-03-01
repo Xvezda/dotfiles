@@ -131,6 +131,7 @@ function xvzd_darwin_init() {
         "/usr/local/opt/john-jumbo/share/john"
         "/usr/local/opt/curl/bin"
         "/usr/local/opt/openjdk/bin"
+        "/usr/local/opt/binutils/bin"
     )
 
     XVZD_POST_PATHS+=(
