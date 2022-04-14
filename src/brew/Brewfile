@@ -1,5 +1,4 @@
 tap "adoptopenjdk/openjdk"
-tap "buo/cask-upgrade"
 tap "caffix/amass"
 tap "clojure/tools"
 tap "cloudflare/cloudflare"
