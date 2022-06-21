@@ -572,7 +572,7 @@ function gitanon() {
 
 function fakeua() {
     function _usage() {
-        >&2 echo "usage: ${FUNCNAME[0]} <ie|msie|opera|chrome|google|firefox|ff|safari|random>"
+        >&2 echo "usage: fakeua <ie|msie|opera|chrome|google|firefox|ff|safari|random>"
     }
     if [ -z "$1" ]; then
         _usage
