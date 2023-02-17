@@ -36,24 +36,17 @@ function nvimconf_setup() {
     # Install nvim configurations
     type nvim > /dev/null 2>&1 || return 0
 
+    XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+    if [ -d "$XDG_CONFIG_HOME/nvim" ]; then
+        printf '%s' "overwrite $XDG_CONFIG_HOME/nvim? [y/n]: "
+        read yn
+        [ $yn != 'y' ] && return 0
+    fi
+
+    echo install nvim
     # Move configuration files to home directory
-    VIMDOT_PATH="$DIR/src/vim"
-    mkdir -p $XDG_CONFIG_HOME/nvim/private
-    mkdir -p $XDG_CONFIG_HOME/nvim/syntax
-    mkdir -p $XDG_CONFIG_HOME/nvim/UltiSnips
-    cp -R $VIMDOT_PATH/private/* $XDG_CONFIG_HOME/nvim/private
-    cp -R $VIMDOT_PATH/UltiSnips/* $XDG_CONFIG_HOME/nvim/UltiSnips
-    cp $VIMDOT_PATH/vimrc $XDG_CONFIG_HOME/nvim/init.vim
-    cp $VIMDOT_PATH/vimrc.local $XDG_CONFIG_HOME/nvim/local_init.vim
-    cp $VIMDOT_PATH/vimrc.local.bundles $XDG_CONFIG_HOME/nvim/local_bundles.vim
-
-    test -d $HOME/.vim || ln -s $XDG_CONFIG_HOME/nvim $HOME/.vim
-    test -f $HOME/.vimrc || ln -s $XDG_CONFIG_HOME/nvim/init.vim $HOME/.vimrc
-    test -f $HOME/.vimrc.local || ln -s $XDG_CONFIG_HOME/nvim/local_init.vim $HOME/.vimrc.local
-    test -f $HOME/.vimrc.local.bundles || ln -s $XDG_CONFIG_HOME/nvim/local_bundles.vim $HOME/.vimrc.local.bundles
-
-    # Install vim plugins
-    nvim -es +'silent! PlugInstall' +qall
+    VIMDOT_PATH="$DIR/src/nvim"
+    cp -fR $VIMDOT_PATH/ /tmp/nvim/
 }
 
 
@@ -148,6 +141,7 @@ commands:
             bash
             zsh
             vim
+            nvim
             tmux
     --fetch           update dotfiles pull from origin master
 

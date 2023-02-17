@@ -30,7 +30,7 @@ fi
 
 if type nvim &>/dev/null; then
     echo "[*] Backup nvim dotfiles"
-    cp -R $HOME/.config/nvim src/
+    cp -R $HOME/.config/nvim/ src/nvim/
 fi
 
 if type tmux &>/dev/null; then
