@@ -43,10 +43,11 @@ function nvimconf_setup() {
         [ $yn != 'y' ] && return 0
     fi
 
-    echo install nvim
     # Move configuration files to home directory
     VIMDOT_PATH="$DIR/src/nvim"
-    cp -fR $VIMDOT_PATH/ /tmp/nvim/
+    cp -fR $VIMDOT_PATH $XDG_CONFIG_HOME
+
+    echo nvim dotfiles installed
 }
 
 
