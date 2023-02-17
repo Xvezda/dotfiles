@@ -28,6 +28,11 @@ if type vim &>/dev/null; then
     cp $HOME/.vimrc.local.bundles src/vim/vimrc.local.bundles
 fi
 
+if type nvim &>/dev/null; then
+    echo "[*] Backup nvim dotfiles"
+    cp -R $HOME/.config/nvim src/nvim/
+fi
+
 if type tmux &>/dev/null; then
     echo "[*] Backup tmux dotfiles"
     cp $HOME/.tmux.conf src/tmux/tmux.conf
