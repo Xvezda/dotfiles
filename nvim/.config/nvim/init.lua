@@ -293,5 +293,6 @@ require("lazy").setup({
   'tpope/vim-surround',
   'tpope/vim-fugitive',
   'tpope/vim-repeat',
+  'tpope/vim-unimpaired',
   { 'wakatime/vim-wakatime', lazy = false }
 })
