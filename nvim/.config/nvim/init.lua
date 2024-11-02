@@ -50,6 +50,17 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function ()
+    vim.keymap.set('n', 'grn', vim.lsp.buf.rename)
+    vim.keymap.set({'n', 'v'}, 'gra', vim.lsp.buf.code_action)
+    vim.keymap.set('n', 'grr', vim.lsp.buf.references)
+    vim.keymap.set('n', 'gri', vim.lsp.buf.implementation)
+    vim.keymap.set('n', 'gO', vim.lsp.buf.document_symbol)
+    vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help)
+  end,
+})
+
 vim.opt.spell = true
 vim.opt.spelllang = 'en_us'
 
