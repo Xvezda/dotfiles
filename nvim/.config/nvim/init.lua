@@ -264,6 +264,19 @@ require("lazy").setup({
 	      },
 	    })
 	  end,
+	  denols = function ()
+	    require('lspconfig').denols.setup({
+	      on_attach = lsp_zero.on_attach,
+	      root_dir = require('lspconfig/util').root_pattern("deno.json", "deno.jsonc"),
+	    })
+	  end,
+	  tsserver = function ()
+	    require('lspconfig').tsserver.setup({
+	      on_attach = lsp_zero.on_attach,
+	      root_dir = require('lspconfig/util').root_pattern("package.json"),
+	      single_file_support = false,
+	    })
+	  end,
 	},
       })
 
