@@ -270,11 +270,36 @@ require("lazy").setup({
 	      root_dir = require('lspconfig/util').root_pattern("deno.json", "deno.jsonc"),
 	    })
 	  end,
-	  tsserver = function ()
-	    require('lspconfig').tsserver.setup({
+	  ts_ls = function ()
+	    require('lspconfig').ts_ls.setup({
 	      on_attach = lsp_zero.on_attach,
 	      root_dir = require('lspconfig/util').root_pattern("package.json"),
 	      single_file_support = false,
+	      init_options = {
+		plugins = {
+		  {
+		    name = '@vue/typescript-plugin',
+		    location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+		    languages = {"javascript", "typescript", "vue"},
+		  },
+		},
+	      },
+	      filetypes = {
+		"javascript",
+		"typescript",
+		"vue",
+	      },
+	    })
+	  end,
+	  volar = function ()
+	    require('lspconfig').volar.setup({
+	      on_attach = lsp_zero.on_attach,
+	      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+	      init_options = {
+		vue = {
+		  hybridMode = false,
+		},
+	      },
 	    })
 	  end,
 	},
