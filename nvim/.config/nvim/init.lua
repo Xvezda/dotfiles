@@ -246,8 +246,11 @@ require("lazy").setup({
 	lsp_zero.default_keymaps({buffer = bufnr})
       end)
 
-      require('mason').setup({})
-      require('mason-lspconfig').setup({
+      local mason = require('mason')
+      local mason_lspconfig = require('mason-lspconfig')
+
+      mason.setup({})
+      mason_lspconfig.setup({
 	-- Replace the language servers listed here 
 	-- with the ones you want to install
 	ensure_installed = {'ts_ls', 'rust_analyzer'},
@@ -306,6 +309,12 @@ require("lazy").setup({
 		  hybridMode = false,
 		},
 	      },
+	    })
+	  end,
+	  intelephense = function ()
+	    require('lspconfig').intelephense.setup({
+	      on_attach = lsp_zero.on_attach,
+	      root_dir = require('lspconfig/util').root_pattern("composer.json", "Dockerfile"),
 	    })
 	  end,
 	},
