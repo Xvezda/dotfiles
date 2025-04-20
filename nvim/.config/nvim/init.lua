@@ -250,7 +250,7 @@ require("lazy").setup({
       require('mason-lspconfig').setup({
 	-- Replace the language servers listed here 
 	-- with the ones you want to install
-	ensure_installed = {'tsserver', 'rust_analyzer'},
+	ensure_installed = {'ts_ls', 'rust_analyzer'},
 	handlers = {
 	  lsp_zero.default_setup,
 	  lua_ls = function ()
@@ -276,6 +276,12 @@ require("lazy").setup({
 	      root_dir = require('lspconfig/util').root_pattern("package.json"),
 	      single_file_support = false,
 	      init_options = {
+		hostInfo = "neovim",
+		preferences = {
+		  includeCompletionsForModuleExports = true,
+		  includeCompletionsForImportStatements = true,
+		  importModuleSpecifierPreference = "relative",
+		},
 		plugins = {
 		  {
 		    name = '@vue/typescript-plugin',
@@ -294,7 +300,7 @@ require("lazy").setup({
 	  volar = function ()
 	    require('lspconfig').volar.setup({
 	      on_attach = lsp_zero.on_attach,
-	      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+	      filetypes = { 'vue' },
 	      init_options = {
 		vue = {
 		  hybridMode = false,
