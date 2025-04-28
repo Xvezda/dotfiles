@@ -336,9 +336,22 @@ require("lazy").setup({
   {
     "nvimtools/none-ls.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
+    config = function ()
       local null_ls = require("null-ls")
-      null_ls.setup()
+      local null_ls_utils = require("null-ls.utils")
+      null_ls.setup({
+	sources = {
+	  null_ls.builtins.diagnostics.phpstan.with({
+	    cwd = function (params)
+	      return null_ls_utils.root_pattern("composer.json")(params.bufname) or
+	             null_ls_utils.root_pattern("phpstan.neon")(params.bufname) or
+	             null_ls_utils.root_pattern("phpstan.neon.dist")(params.bufname) or
+	             null_ls_utils.root_pattern("phpstan.dist.neon")(params.bufname) or
+	             null_ls_utils.root_pattern(".git")(params.bufname)
+	    end,
+	  }),
+	}
+      })
     end,
   },
 
@@ -364,7 +377,6 @@ require("lazy").setup({
       require("telescope").load_extension("fzf")
     end,
   },
-
 
   {
     'mbbill/undotree',
