@@ -270,13 +270,13 @@ require("lazy").setup({
 	  denols = function ()
 	    require('lspconfig').denols.setup({
 	      on_attach = lsp_zero.on_attach,
-	      root_dir = require('lspconfig/util').root_pattern("deno.json", "deno.jsonc", ".git"),
+	      root_dir = require('lspconfig/util').root_pattern("deno.json", "deno.jsonc"),
 	    })
 	  end,
 	  ts_ls = function ()
 	    require('lspconfig').ts_ls.setup({
 	      on_attach = lsp_zero.on_attach,
-	      root_dir = require('lspconfig/util').root_pattern("package.json", ".git"),
+	      root_dir = require('lspconfig/util').root_pattern("package.json"),
 	      single_file_support = false,
 	      init_options = {
 		hostInfo = "neovim",
