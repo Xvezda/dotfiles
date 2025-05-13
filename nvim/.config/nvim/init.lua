@@ -167,30 +167,6 @@ require("lazy").setup({
   },
 
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    ---@module "ibl"
-    ---@type ibl.config
-    opts = {
-      indent = {
-	char = "▏",
-      },
-      scope = {
-	highlight = {"CustomIblScope"},
-	char = "▏",
-	show_start = false,
-	show_end = false,
-	show_exact_scope = true,
-	injected_languages = true,
-      },
-    },
-    config = function(_, opts)
-      vim.api.nvim_set_hl(0, "CustomIblScope", { fg = "#636da6" })
-      require("ibl").setup(opts)
-    end,
-  },
-
-  {
     'VonHeikemen/lsp-zero.nvim',
     dependencies = {
       {
@@ -467,6 +443,34 @@ require("lazy").setup({
       vim.api.nvim_set_hl(0, "TreesitterContext", {})
       vim.api.nvim_set_hl(0, "TreesitterContextSeparator", { fg = "#545c7e" })
       require("treesitter-context").setup(opts)
+    end,
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {
+      indent = {
+	char = "▏",
+      },
+      scope = {
+	enabled = true,
+	highlight = {"CustomIblScope"},
+	char = "▏",
+	show_start = false,
+	show_end = false,
+	show_exact_scope = true,
+	injected_languages = true,
+      },
+    },
+    config = function(_, opts)
+      vim.api.nvim_set_hl(0, "CustomIblScope", { fg = "#636da6" })
+      require("ibl").setup(opts)
     end,
   },
 
