@@ -221,7 +221,7 @@ require("lazy").setup({
 		{ name = 'nvim_lsp' },
 	      },
 	      completion = {
-		completeopt = 'menu,menuone',
+		completeopt = 'menu,menuone,preview',
 	      },
 	      mapping = cmp.mapping.preset.insert({
 		['<CR>'] = cmp.mapping(function(fallback)
