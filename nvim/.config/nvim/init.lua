@@ -229,20 +229,18 @@ require("lazy").setup({
 		{name = 'nvim_lsp'},
 	      },
 	      mapping = cmp.mapping.preset.insert({
-		['<CR>'] = cmp.mapping.confirm({
-		  -- documentation says this is important.
-		  -- I don't know why.
-		  behavior = cmp.ConfirmBehavior.Replace,
-		  select = false,
-		}),
+		['<CR>'] = cmp.mapping(function(fallback)
+		  if cmp.visible() then
+		    cmp.confirm({ select = true })
+		  else
+		    fallback()
+		  end
+		end, { "i", "s" }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 		  if cmp.visible() then
-		    cmp.select_next_item()
+		    cmp.confirm({ select = true })
 		  elseif vim.fn["vsnip#available"](1) == 1 then
 		    feedkey("<Plug>(vsnip-expand-or-jump)", "")
-		  elseif has_words_before() then
-		    cmp.complete()
-		    -- cmp_action.tab_complete()
 		  else
 		    fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
 		  end
