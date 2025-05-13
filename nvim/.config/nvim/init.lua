@@ -206,13 +206,6 @@ require("lazy").setup({
 	  },
 	  config = function()
 	    local cmp = require('cmp')
-	    -- local cmp_action = require('lsp-zero').cmp_action()
-
-	    local has_words_before = function()
-	      unpack = unpack or table.unpack
-	      local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	      return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-	    end
 
 	    local feedkey = function(key, mode)
 	      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
@@ -225,8 +218,10 @@ require("lazy").setup({
 		end,
 	      },
 	      sources = {
-		-- {name = 'copilot'},
-		{name = 'nvim_lsp'},
+		{ name = 'nvim_lsp' },
+	      },
+	      completion = {
+		completeopt = 'menu,menuone',
 	      },
 	      mapping = cmp.mapping.preset.insert({
 		['<CR>'] = cmp.mapping(function(fallback)
@@ -236,6 +231,7 @@ require("lazy").setup({
 		    fallback()
 		  end
 		end, { "i", "s" }),
+
 		["<Tab>"] = cmp.mapping(function(fallback)
 		  if cmp.visible() then
 		    cmp.confirm({ select = true })
@@ -249,9 +245,24 @@ require("lazy").setup({
 		["<S-Tab>"] = cmp.mapping(function()
 		  if cmp.visible() then
 		    cmp.select_prev_item()
-		    -- cmp_action.select_prev_or_fallback()
 		  elseif vim.fn["vsnip#jumpable"](-1) == 1 then
 		    feedkey("<Plug>(vsnip-jump-prev)", "")
+		  end
+		end, { "i", "s" }),
+
+		["<C-n>"] = cmp.mapping(function ()
+		  cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+		  local entry = cmp.get_selected_entry()
+		  if not entry then
+		    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+		  end
+		end, { "i", "s" }),
+
+		["<C-p>"] = cmp.mapping(function ()
+		  cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+		  local entry = cmp.get_selected_entry()
+		  if not entry then
+		    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
 		  end
 		end, { "i", "s" }),
 	      })
