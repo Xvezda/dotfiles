@@ -3,6 +3,7 @@ vim.api.nvim_exec('language en_US', true)
 vim.g.mapleader = " "
 
 vim.opt.guicursor = ""
+vim.opt.cursorline = true
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -154,14 +155,40 @@ require("lazy").setup({
 	styles = {
 	  sidebars = "transparent",
 	  floats = "transparent",
-	}
+	},
+	cache = true,
       })
       -- load the colorscheme here
       vim.cmd([[colorscheme tokyonight]])
+
+      vim.api.nvim_set_hl(0, "CursorLine", { bg = "#272b45" })
+      vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#636da6" })
     end,
   },
 
-  "lukas-reineke/indent-blankline.nvim",
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {
+      indent = {
+	char = "▏",
+      },
+      scope = {
+	highlight = {"CustomIblScope"},
+	char = "▏",
+	show_start = false,
+	show_end = false,
+	show_exact_scope = true,
+	injected_languages = true,
+      },
+    },
+    config = function(_, opts)
+      vim.api.nvim_set_hl(0, "CustomIblScope", { fg = "#636da6" })
+      require("ibl").setup(opts)
+    end,
+  },
 
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -424,12 +451,28 @@ require("lazy").setup({
   },
 
   {
-    "nvim-telescope/telescope.nvim",
+    "nvim-treesitter/nvim-treesitter-context",
     dependencies = {
       {
 	'nvim-treesitter/nvim-treesitter',
 	cmd = 'TSUpdate'
       },
+    },
+    opts = {
+      mode = "topline",
+      max_lines = 0,
+      separator = "─",
+    },
+    config = function(_, opts)
+      vim.api.nvim_set_hl(0, "TreesitterContext", {})
+      vim.api.nvim_set_hl(0, "TreesitterContextSeparator", { fg = "#545c7e" })
+      require("treesitter-context").setup(opts)
+    end,
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
       "nvim-lua/plenary.nvim",
       {
 	"nvim-telescope/telescope-fzf-native.nvim",
