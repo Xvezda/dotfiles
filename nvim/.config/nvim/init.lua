@@ -230,11 +230,15 @@ require("lazy").setup({
       'hrsh7th/cmp-path',
       {
 	'williamboman/mason.nvim',
+	branch = "v1.x",
 	config = function()
 	  require("mason").setup()
 	end
       },
-      'williamboman/mason-lspconfig.nvim',
+      {
+	'williamboman/mason-lspconfig.nvim',
+	branch = "v1.x",
+      },
     },
     config = function()
       local lsp_zero = require("lsp-zero")
