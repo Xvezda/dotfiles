@@ -445,7 +445,16 @@ require("lazy").setup({
     config = function(_, opts)
       vim.api.nvim_set_hl(0, "TreesitterContext", {})
       vim.api.nvim_set_hl(0, "TreesitterContextSeparator", { fg = "#545c7e" })
+
+      local context = require("treesitter-context")
       require("treesitter-context").setup(opts)
+
+      vim.keymap.set('n', '<leader>ct', function()
+	context.toggle()
+      end, { silent = true })
+      vim.keymap.set('n', '<leader>cg', function()
+	context.go_to_context(vim.v.count1)
+      end, { silent = true })
     end,
   },
 
