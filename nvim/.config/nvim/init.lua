@@ -388,6 +388,9 @@ require("lazy").setup({
 	      },
 	    })
 	  end,
+	  clangd = function ()
+	    require('lspconfig').clangd.setup({})
+	  end,
 	},
       })
 
