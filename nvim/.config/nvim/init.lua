@@ -305,7 +305,16 @@ require("lazy").setup({
       mason_lspconfig.setup({
 	-- Replace the language servers listed here 
 	-- with the ones you want to install
-	ensure_installed = {'lua_ls', 'tailwindcss', 'ts_ls', 'denols', 'volar', 'intelephense', 'rust_analyzer'},
+	ensure_installed = {
+	  'lua_ls',
+	  'eslint',
+	  'denols',
+	  'ts_ls',
+	  'volar',
+	  'intelephense',
+	  'rust_analyzer',
+	  'clangd',
+	},
 	handlers = {
 	  lua_ls = function ()
 	    require('lspconfig').lua_ls.setup({
@@ -317,6 +326,12 @@ require("lazy").setup({
 		  },
 		},
 	      },
+	    })
+	  end,
+	  eslint = function ()
+	    require('lspconfig').eslint.setup({
+	      on_attach = lsp_zero.on_attach,
+	      root_dir = require('lspconfig/util').root_pattern("eslint.config.js", "eslint.config.cjs", "eslint.config.mjs", ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", ".eslintrc.yml", ".eslintrc.yaml"),
 	    })
 	  end,
 	  denols = function ()
@@ -409,7 +424,10 @@ require("lazy").setup({
 
   {
     "nvimtools/none-ls.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvimtools/none-ls-extras.nvim",
+      "nvim-lua/plenary.nvim",
+    },
     config = function ()
       local null_ls = require("null-ls")
       local null_ls_utils = require("null-ls.utils")
