@@ -406,6 +406,9 @@ require("lazy").setup({
 	  clangd = function ()
 	    require('lspconfig').clangd.setup({})
 	  end,
+	  jsonls = function ()
+	    require('lspconfig').jsonls.setup({})
+	  end,
 	},
       })
 
