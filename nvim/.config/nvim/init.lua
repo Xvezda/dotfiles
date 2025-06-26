@@ -409,6 +409,9 @@ require("lazy").setup({
 	  jsonls = function ()
 	    require('lspconfig').jsonls.setup({})
 	  end,
+	  csharp_ls = function ()
+	    require('lspconfig').csharp_ls.setup({})
+	  end,
 	},
       })
 
