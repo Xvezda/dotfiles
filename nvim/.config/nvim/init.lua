@@ -280,7 +280,11 @@ require("lazy").setup({
 	'williamboman/mason.nvim',
 	branch = "v1.x",
 	config = function()
-	  require("mason").setup()
+	  require("mason").setup({
+	    registries = {
+	      "github:mason-org/mason-registry@2025-08-05-clear-drum",
+	    },
+	  })
 	end
       },
       {
