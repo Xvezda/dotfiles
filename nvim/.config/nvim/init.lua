@@ -306,6 +306,7 @@ require("lazy").setup({
 	-- Replace the language servers listed here 
 	-- with the ones you want to install
 	ensure_installed = {
+	  'biome',
 	  'lua_ls',
 	  'eslint',
 	  'denols',
@@ -314,6 +315,7 @@ require("lazy").setup({
 	  'intelephense',
 	  'rust_analyzer',
 	  'clangd',
+	  'jsonls',
 	},
 	handlers = {
 	  lua_ls = function ()
@@ -333,6 +335,9 @@ require("lazy").setup({
 	      on_attach = lsp_zero.on_attach,
 	      root_dir = require('lspconfig/util').root_pattern("eslint.config.js", "eslint.config.cjs", "eslint.config.mjs", ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", ".eslintrc.yml", ".eslintrc.yaml"),
 	    })
+	  end,
+	  tailwindcss = function ()
+	    require('lspconfig').tailwindcss.setup({})
 	  end,
 	  denols = function ()
 	    require('lspconfig').denols.setup({
@@ -407,6 +412,9 @@ require("lazy").setup({
 	  end,
 	  clangd = function ()
 	    require('lspconfig').clangd.setup({})
+	  end,
+	  biome = function ()
+	    require('lspconfig').biome.setup({})
 	  end,
 	  jsonls = function ()
 	    require('lspconfig').jsonls.setup({})
