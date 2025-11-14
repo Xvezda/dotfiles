@@ -12,7 +12,7 @@
  '(global-display-line-numbers-mode t)
  '(indent-tabs-mode nil)
  '(inferior-lisp-program "sbcl")
- '(package-selected-packages '(gruber-darker-theme slime))
+ '(package-selected-packages '(gruber-darker-theme rust-mode slime))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
