@@ -10,6 +10,7 @@
      default))
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode t)
+ '(indent-tabs-mode nil)
  '(inferior-lisp-program "sbcl")
  '(package-selected-packages '(gruber-darker-theme slime))
  '(tool-bar-mode nil))
