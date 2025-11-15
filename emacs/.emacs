@@ -13,7 +13,7 @@
  '(indent-tabs-mode nil)
  '(inferior-lisp-program "sbcl")
  '(package-selected-packages
-   '(exec-path-from-shell gruber-darker-theme haskell-mode
+   '(exec-path-from-shell gruber-darker-theme haskell-mode magit
                           multiple-cursors rust-mode slime))
  '(tool-bar-mode nil))
 (custom-set-faces
