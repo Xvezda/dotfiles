@@ -12,7 +12,9 @@
  '(global-display-line-numbers-mode t)
  '(indent-tabs-mode nil)
  '(inferior-lisp-program "sbcl")
- '(package-selected-packages '(gruber-darker-theme rust-mode slime))
+ '(package-selected-packages
+   '(exec-path-from-shell gruber-darker-theme haskell-mode
+                          multiple-cursors rust-mode slime))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -20,3 +22,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "D2Coding" :foundry "nil" :slant normal :weight regular :height 180 :width normal)))))
+
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
