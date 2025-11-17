@@ -10,10 +10,11 @@
      default))
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode t)
+ '(hindent-reformat-buffer-on-save t)
  '(indent-tabs-mode nil)
  '(inferior-lisp-program "sbcl")
  '(package-selected-packages
-   '(exec-path-from-shell gruber-darker-theme haskell-mode magit
+   '(exec-path-from-shell gruber-darker-theme haskell-mode hindent magit
                           multiple-cursors rust-mode slime))
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -35,3 +36,6 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+(require 'hindent)
+(add-hook 'haskell-mode-hook #'hindent-mode)
