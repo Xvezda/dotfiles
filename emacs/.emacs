@@ -11,6 +11,7 @@
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode t)
  '(hindent-reformat-buffer-on-save t)
+ '(ido-mode 'file nil (ido))
  '(indent-tabs-mode nil)
  '(inferior-lisp-program "sbcl")
  '(package-selected-packages
