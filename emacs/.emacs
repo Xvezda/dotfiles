@@ -24,6 +24,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "D2Coding" :foundry "nil" :slant normal :weight regular :height 180 :width normal)))))
 
+(global-set-key (kbd "M-S-<backspace>") 'kill-whole-line)
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
