@@ -1,4 +1,6 @@
-vim.api.nvim_exec('language en_US', true)
+pcall(function ()
+  vim.api.nvim_exec('language en_US', true)
+end)
 
 vim.g.mapleader = " "
 
@@ -290,7 +292,6 @@ require("lazy").setup({
     },
     config = function()
       local lsp_zero = require("lsp-zero")
-      lsp_zero.preset('recommend')
 
       lsp_zero.on_attach(function(client, bufnr)
 	-- see :help lsp-zero-keybindings
