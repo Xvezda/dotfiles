@@ -320,7 +320,7 @@ require("lazy").setup({
 	},
 	handlers = {
 	  lua_ls = function ()
-	    require('lspconfig').lua_ls.setup({
+	    vim.lsp.config('lua_ls', {
 	      on_init = lsp_zero.on_init,
 	      settings = {
 		Lua = {
@@ -330,26 +330,30 @@ require("lazy").setup({
 		},
 	      },
 	    })
+	    vim.lsp.enable('lua_ls')
 	  end,
 	  eslint = function ()
-	    require('lspconfig').eslint.setup({
+	    vim.lsp.config('eslint', {
 	      on_attach = lsp_zero.on_attach,
-	      root_dir = require('lspconfig/util').root_pattern("eslint.config.js", "eslint.config.cjs", "eslint.config.mjs", ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", ".eslintrc.yml", ".eslintrc.yaml"),
+	      root_markers =  { "eslint.config.js", "eslint.config.cjs", "eslint.config.mjs", ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", ".eslintrc.yml", ".eslintrc.yaml" },
 	    })
+	    vim.lsp.enable('eslint')
 	  end,
 	  tailwindcss = function ()
-	    require('lspconfig').tailwindcss.setup({})
+	    vim.lsp.config('tailwindcss', {})
+	    vim.lsp.enable('tailwindcss')
 	  end,
 	  denols = function ()
-	    require('lspconfig').denols.setup({
+	    vim.lsp.config('denols', {
 	      on_attach = lsp_zero.on_attach,
-	      root_dir = require('lspconfig/util').root_pattern("deno.json", "deno.jsonc"),
+	      root_markers = { "deno.json", "deno.jsonc" },
 	    })
+	    vim.lsp.enable('denols')
 	  end,
 	  ts_ls = function ()
-	    require('lspconfig').ts_ls.setup({
+	    vim.lsp.config('ts_ls', {
 	      on_attach = lsp_zero.on_attach,
-	      root_dir = require('lspconfig/util').root_pattern("package.json"),
+	      root_markers = { "package.json" },
 	      single_file_support = false,
 	      init_options = {
 		hostInfo = "neovim",
@@ -374,9 +378,10 @@ require("lazy").setup({
 		"vue",
 	      },
 	    })
+	    vim.lsp.enable('ts_ls')
 	  end,
 	  volar = function ()
-	    require('lspconfig').volar.setup({
+	    vim.lsp.config('volar', {
 	      on_attach = lsp_zero.on_attach,
 	      filetypes = { 'vue' },
 	      init_options = {
@@ -385,15 +390,17 @@ require("lazy").setup({
 		},
 	      },
 	    })
+	    vim.lsp.enable('volar')
 	  end,
 	  intelephense = function ()
-	    require('lspconfig').intelephense.setup({
+	    vim.lsp.config('intelephense', {
 	      on_attach = lsp_zero.on_attach,
-	      root_dir = require('lspconfig/util').root_pattern("composer.json", "Dockerfile", ".git"),
+	      root_markers = { "composer.json", "Dockerfile", ".git" },
 	    })
+	    vim.lsp.enable('intelephense')
 	  end,
 	  rust_analyzer = function ()
-	    require('lspconfig').rust_analyzer.setup({
+	    vim.lsp.config('rust_analyzer', {
 	      on_attach = lsp_zero.on_attach,
 	      settings = {
 		["rust-analyzer"] = {
@@ -410,18 +417,23 @@ require("lazy").setup({
 		},
 	      },
 	    })
+	    vim.lsp.enable('rust_analyzer')
 	  end,
 	  clangd = function ()
-	    require('lspconfig').clangd.setup({})
+	    vim.lsp.config('clangd', {})
+	    vim.lsp.enable('clangd')
 	  end,
 	  biome = function ()
-	    require('lspconfig').biome.setup({})
+	    vim.lsp.config('biome', {})
+	    vim.lsp.enable('biome')
 	  end,
 	  jsonls = function ()
-	    require('lspconfig').jsonls.setup({})
+	    vim.lsp.config('jsonls', {})
+	    vim.lsp.enable('jsonls')
 	  end,
 	  csharp_ls = function ()
-	    require('lspconfig').csharp_ls.setup({})
+	    vim.lsp.config('csharp_ls', {})
+	    vim.lsp.enable('csharp_ls')
 	  end,
 	},
       })
