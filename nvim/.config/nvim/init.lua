@@ -185,7 +185,8 @@ require("lazy").setup({
 	      event = "InsertEnter",
 	      dependencies = {
 		{
-		  "zbirenbaum/copilot-cmp",
+		  "fstp/copilot-cmp",
+		  commit = "06430ebf99834ebc5d86c63816e409f4cb51fe79",
 		  config = function()
 		    require('copilot_cmp').setup()
 		  end
