@@ -13,10 +13,10 @@
  '(hindent-reformat-buffer-on-save t)
  '(ido-mode 'file nil (ido))
  '(indent-tabs-mode nil)
- '(inferior-lisp-program "sbcl")
  '(package-selected-packages
-   '(exec-path-from-shell gruber-darker-theme haskell-mode hindent magit
-                          multiple-cursors rust-mode slime))
+   '(exec-path-from-shell go-mode gruber-darker-theme haskell-mode
+                          hindent magit multiple-cursors rust-mode
+                          slime))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -24,6 +24,17 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "D2Coding" :foundry "nil" :slant normal :weight regular :height 180 :width normal)))))
+(setq-default tab-width 4
+              indent-tabs-mode nil
+              default-input-method "korean-hangul"
+              compilation-scroll-output)
+
+(require 'ansi-color)
+(defun my/ansi-color-compilation-filter ()
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+
+(add-hook 'compilation-filter-hook 'my/ansi-color-compilation-filter)
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -31,6 +42,10 @@
 ;; and `package-pinned-packages`. Most users will not need or want to do this.
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
+
+(setq inferior-lisp-program "sbcl")
+(require 'slime)
+(slime-setup '(slime-fancy))
 
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
