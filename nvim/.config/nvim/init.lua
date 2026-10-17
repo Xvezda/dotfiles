@@ -393,6 +393,13 @@ require("lazy").setup({
 	    })
 	    vim.lsp.enable('volar')
 	  end,
+	  gopls = function ()
+	    vim.lsp.config('gopls', {
+	      on_attach = lsp_zero.on_attach,
+	      root_markers = { "go.mod", ".git" },
+	    })
+	    vim.lsp.enable('gopls')
+	  end,
 	  intelephense = function ()
 	    vim.lsp.config('intelephense', {
 	      on_attach = lsp_zero.on_attach,
