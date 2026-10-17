@@ -29,6 +29,13 @@
               default-input-method "korean-hangul"
               compilation-scroll-output)
 
+; Source - https://stackoverflow.com/a/25164056
+; Posted by Gordon Gustafson, modified by community. See post 'Timeline' for change history
+; Retrieved 2026-10-17, License - CC BY-SA 3.0
+(defadvice align-regexp (around align-regexp-with-spaces activate)
+  (let ((indent-tabs-mode nil))
+    ad-do-it))
+
 (require 'ansi-color)
 (defun my/ansi-color-compilation-filter ()
   (let ((inhibit-read-only t))
