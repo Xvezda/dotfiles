@@ -76,3 +76,5 @@
 
 (require 'hindent)
 (add-hook 'haskell-mode-hook #'hindent-mode)
+
+(global-wakatime-mode)
