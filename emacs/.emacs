@@ -6,7 +6,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(gruber-darker))
  '(custom-safe-themes
-   '("e13beeb34b932f309fb2c360a04a460821ca99fe58f69e65557d6c1b10ba18c7"
+   '("01a9797244146bbae39b18ef37e6f2ca5bebded90d9fe3a2f342a9e863aaa4fd"
+     "e13beeb34b932f309fb2c360a04a460821ca99fe58f69e65557d6c1b10ba18c7"
      default))
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode t)
@@ -16,8 +17,21 @@
  '(package-selected-packages
    '(exec-path-from-shell go-mode gruber-darker-theme haskell-mode
                           hindent magit multiple-cursors rust-mode
-                          slime))
+                          slime wakatime-mode xterm-color))
  '(tool-bar-mode nil))
+
+; Suppress warnings
+; https://emacs.stackexchange.com/a/85974
+(define-advice display-warning
+    (:around (orig-fun type &rest args) silence-missing-lexical-binding-cookie)
+  "Silence warnings about missing lexical-binding cookies."
+  (if (memq 'missing-lexbind-cookie type)
+      t
+    (apply orig-fun type args)))
+; https://www.reddit.com/r/emacs/comments/1uy4xid/comment/p5uqq8x/
+(when (eq system-type 'darwin)
+  (setenv "MACOSX_DEPLOYMENT_TARGET" "27.0"))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
