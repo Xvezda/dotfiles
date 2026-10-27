@@ -16,8 +16,8 @@
  '(indent-tabs-mode nil)
  '(package-selected-packages
    '(exec-path-from-shell go-mode gruber-darker-theme haskell-mode
-                          hindent magit multiple-cursors rust-mode
-                          slime wakatime-mode xterm-color))
+                          hindent magit multiple-cursors paredit
+                          rust-mode slime wakatime-mode xterm-color))
  '(tool-bar-mode nil))
 
 ; Suppress warnings
@@ -76,5 +76,8 @@
 
 (require 'hindent)
 (add-hook 'haskell-mode-hook #'hindent-mode)
+
+(require 'paredit)
+(add-hook 'lisp-mode-hook 'enable-paredit-mode)
 
 (global-wakatime-mode)
